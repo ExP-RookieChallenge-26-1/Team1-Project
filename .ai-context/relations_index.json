@@ -107,7 +107,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "SpriteRenderer",
+    "to_type": "VisualManager",
     "relation_type": "component-access",
     "strength": 3
   },
@@ -121,13 +121,6 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Color",
-    "relation_type": "creates",
-    "strength": 2
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
     "to_type": "List",
     "relation_type": "creates",
     "strength": 2
@@ -135,7 +128,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Vector3",
+    "to_type": "Vector2",
     "relation_type": "creates",
     "strength": 2
   },
@@ -145,6 +138,13 @@
     "to_type": "MonoBehaviour",
     "relation_type": "inherits",
     "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
+    "to_type": "Abs",
+    "relation_type": "uses",
+    "strength": 1
   },
   {
     "from_file": "Assets/Scripts/GameManager.cs",
@@ -170,6 +170,13 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
+    "to_type": "bool",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
     "to_type": "BurgerTile",
     "relation_type": "uses",
     "strength": 1
@@ -177,7 +184,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Cheese",
+    "to_type": "BurgerTile[,]",
     "relation_type": "uses",
     "strength": 1
   },
@@ -198,13 +205,6 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Color",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
     "to_type": "CookedPatty",
     "relation_type": "uses",
     "strength": 1
@@ -219,7 +219,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Destroy",
+    "to_type": "Distance",
     "relation_type": "uses",
     "strength": 1
   },
@@ -240,6 +240,20 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
+    "to_type": "DrawOrderList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
+    "to_type": "DrawPreview",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
     "to_type": "float",
     "relation_type": "uses",
     "strength": 1
@@ -254,14 +268,14 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "GetComponent",
+    "to_type": "GetBestBurger",
     "relation_type": "uses",
     "strength": 1
   },
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "GetIngredientColor",
+    "to_type": "GetComponent",
     "relation_type": "uses",
     "strength": 1
   },
@@ -282,27 +296,6 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Input",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
-    "to_type": "InputSystem",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
-    "to_type": "Instantiate",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
     "to_type": "int",
     "relation_type": "uses",
     "strength": 1
@@ -310,7 +303,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Keyboard",
+    "to_type": "Join",
     "relation_type": "uses",
     "strength": 1
   },
@@ -324,14 +317,21 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Lettuce",
+    "to_type": "Log",
     "relation_type": "uses",
     "strength": 1
   },
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Log",
+    "to_type": "LogWarning",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
+    "to_type": "MaxValue",
     "relation_type": "uses",
     "strength": 1
   },
@@ -345,7 +345,21 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Onion",
+    "to_type": "OnMoveInput",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
+    "to_type": "OnResetInput",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
+    "to_type": "OnSubmitInput",
     "relation_type": "uses",
     "strength": 1
   },
@@ -373,7 +387,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Settings",
+    "to_type": "SetBackgroundColor",
     "relation_type": "uses",
     "strength": 1
   },
@@ -387,13 +401,6 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "SpriteRenderer",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
     "to_type": "Start",
     "relation_type": "uses",
     "strength": 1
@@ -401,7 +408,7 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "string",
+    "to_type": "StartGame",
     "relation_type": "uses",
     "strength": 1
   },
@@ -422,20 +429,6 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Tomato",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
-    "to_type": "ToString",
-    "relation_type": "uses",
-    "strength": 1
-  },
-  {
-    "from_file": "Assets/Scripts/GameManager.cs",
-    "from_class": "GameManager",
     "to_type": "UnityEngine",
     "relation_type": "uses",
     "strength": 1
@@ -450,7 +443,14 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Update",
+    "to_type": "UpdateAllVisuals",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameManager.cs",
+    "from_class": "GameManager",
+    "to_type": "UpdateOrderVisual",
     "relation_type": "uses",
     "strength": 1
   },
@@ -464,13 +464,489 @@
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
-    "to_type": "Vector3",
+    "to_type": "Vector2",
     "relation_type": "uses",
     "strength": 1
   },
   {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
+    "to_type": "VisualManager",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "GameManager",
+    "relation_type": "component-access",
+    "strength": 3
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "MonoBehaviour",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Down",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "GameManager",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "GetComponent",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "InputSystem",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Keyboard",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Left",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "OnMoveInput",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "OnResetInput",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "OnSubmitInput",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Right",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Space",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Start",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Up",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/InputManager.cs",
+    "from_class": "InputManager",
+    "to_type": "Update",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "GameManager",
+    "relation_type": "component-access",
+    "strength": 3
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "MonoBehaviour",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "Add",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "GameManager",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "GetComponent",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "Ingredient",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "OnClickAddIngredient",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "OnClickStart",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "Start",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "StartGame",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "UpdateOrderVisual",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/UIManager.cs",
+    "from_class": "UIManager",
+    "to_type": "VisualManager",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "SpriteRenderer",
+    "relation_type": "component-access",
+    "strength": 3
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Color",
+    "relation_type": "creates",
+    "strength": 2
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "List",
+    "relation_type": "creates",
+    "strength": 2
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Vector3",
+    "relation_type": "creates",
+    "strength": 2
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "MonoBehaviour",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Add",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "BurgerTile",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Camera",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "CameraClearFlags",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Cheese",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Clear",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Collections",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Color",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "CookedPatty",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Count",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Destroy",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "DrawBackgroundGrid",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "DrawOrderList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "DrawPreview",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "float",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Generic",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "GetComponent",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "GetIngredientColor",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Ingredient",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Instantiate",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Lettuce",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Onion",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "RawPatty",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "SetBackgroundColor",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Settings",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "SolidColor",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "SpriteRenderer",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Tomato",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "UpdateVisuals",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
+    "to_type": "Vector3",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/VisualManager.cs",
+    "from_class": "VisualManager",
     "to_type": "Visual",
     "relation_type": "uses",
     "strength": 1

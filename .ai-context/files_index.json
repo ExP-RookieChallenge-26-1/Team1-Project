@@ -91,13 +91,13 @@
     "file_id": "Assets/Scripts/GameManager.cs",
     "path": "Assets/Scripts/GameManager.cs",
     "file_name": "GameManager.cs",
-    "content_hash": "3318c41384080f1d91c0d9fa5a7f32869b609a36",
-    "size": 18613,
-    "line_count": 500,
+    "content_hash": "bfbeb49ad9e16c4801c3efa01494cde47ed00702",
+    "size": 10785,
+    "line_count": 326,
     "namespace": "",
     "using_list": [
-      "UnityEngine",
-      "System.Collections.Generic"
+      "System.Collections.Generic",
+      "UnityEngine"
     ],
     "classes": [
       {
@@ -116,20 +116,494 @@
     "main_class_name": "GameManager",
     "unity_type": "MonoBehaviour",
     "methods": [
-      "Color",
       "Start",
-      "Update",
       "InitializeBoard",
       "BurgerTile",
+      "StartGame",
+      "UpdateOrderVisual",
+      "OnMoveInput",
+      "OnSubmitInput",
+      "OnResetInput",
+      "UpdateAllVisuals",
+      "GetBestBurger",
+      "Vector2",
       "SpawnNextIngredient",
-      "SubmitAndClear",
       "MoveTiles",
-      "UpdateVisuals",
-      "Vector3",
-      "GetIngredientColor",
-      "DrawBackgroundGrid"
+      "SubmitAndClear"
     ],
     "fields": [
+      {
+        "name": "visualManager",
+        "type": "VisualManager",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "gameBoard",
+        "type": "BurgerTile[,]",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "isPlaying",
+        "type": "bool",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "best",
+        "type": "BurgerTile",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "maxHeight",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "minDistance",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "minY",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "height",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "nextMaterial",
+        "type": "Ingredient",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "targetTile",
+        "type": "BurgerTile",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "didAnyMove",
+        "type": "bool",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "dx",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "changedInPass",
+        "type": "bool",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "nx",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "ny",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currStack",
+        "type": "List<Ingredient>",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "targetStack",
+        "type": "List<Ingredient>",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 1,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 9,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "VisualManager",
+      "BurgerTile[,]",
+      "bool",
+      "BurgerTile",
+      "int",
+      "float",
+      "Ingredient",
+      "System",
+      "Collections",
+      "Generic",
+      "UnityEngine",
+      "Start",
+      "GetComponent",
+      "SetBackgroundColor",
+      "InitializeBoard",
+      "DrawBackgroundGrid",
+      "StartGame",
+      "Count",
+      "LogWarning",
+      "Log",
+      "Join",
+      "SpawnNextIngredient",
+      "UpdateAllVisuals",
+      "UpdateOrderVisual",
+      "DrawOrderList",
+      "OnMoveInput",
+      "MoveTiles",
+      "OnSubmitInput",
+      "GetBestBurger",
+      "SubmitAndClear",
+      "OnResetInput",
+      "Clear",
+      "UpdateVisuals",
+      "DrawPreview",
+      "MaxValue",
+      "Vector2",
+      "Distance",
+      "Abs",
+      "Add",
+      "CookedPatty",
+      "RawPatty",
+      "AddIngredient",
+      "RemoveAt",
+      "Right",
+      "Left",
+      "Up",
+      "Down",
+      "AddRange"
+    ],
+    "component_access_types": [
+      "VisualManager"
+    ],
+    "created_types": [
+      "List",
+      "BurgerTile",
+      "Vector2"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [
+      "주문 리스트가 비어있습니다!",
+      "[게임 시작] 처음 주문 목록: {string.Join(",
+      ", initialOrderList)}",
+      "[{direction}] 방향으로 스와이프 완료",
+      ", ",
+      "빈 접시",
+      "=========================",
+      "🔔 버거 완성 및 제출!",
+      "목표 주문: {initialOrder}",
+      "제출된 버거: {submittedIngredients}",
+      "보드판 및 주문 초기화됨",
+      "Right",
+      "Left",
+      "Up",
+      "Down"
+    ],
+    "numeric_literals": [
+      4,
+      5,
+      3,
+      0.01,
+      2048
+    ],
+    "guessed_roles": [
+      "runtime",
+      "player",
+      "manager"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/InputManager.cs",
+    "path": "Assets/Scripts/InputManager.cs",
+    "file_name": "InputManager.cs",
+    "content_hash": "d9da0dbb0b59dc2f8928413de59ed5a525d2e88f",
+    "size": 1253,
+    "line_count": 30,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "InputManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "InputManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Start",
+      "Update"
+    ],
+    "fields": [
+      {
+        "name": "gameManager",
+        "type": "GameManager",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Start",
+      "Update"
+    ],
+    "has_update": true,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "GameManager",
+      "UnityEngine",
+      "Start",
+      "GetComponent",
+      "Update",
+      "InputSystem",
+      "Keyboard",
+      "OnMoveInput",
+      "Right",
+      "Left",
+      "Up",
+      "Down",
+      "Space",
+      "OnSubmitInput",
+      "OnResetInput"
+    ],
+    "component_access_types": [
+      "GameManager"
+    ],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Right",
+      "Left",
+      "Up",
+      "Down"
+    ],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "runtime",
+      "player",
+      "manager"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "Update 기반 처리 존재",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/UIManager.cs",
+    "path": "Assets/Scripts/UIManager.cs",
+    "file_name": "UIManager.cs",
+    "content_hash": "b455975ef841b64ff934bb5a094cf8b4205f1d02",
+    "size": 617,
+    "line_count": 27,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "UIManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "UIManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Start",
+      "OnClickAddIngredient",
+      "OnClickStart"
+    ],
+    "fields": [
+      {
+        "name": "gameManager",
+        "type": "GameManager",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "GameManager",
+      "UnityEngine",
+      "Start",
+      "GetComponent",
+      "OnClickAddIngredient",
+      "Ingredient",
+      "Add",
+      "VisualManager",
+      "UpdateOrderVisual",
+      "OnClickStart",
+      "StartGame"
+    ],
+    "component_access_types": [
+      "GameManager"
+    ],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "runtime",
+      "ui",
+      "manager"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/VisualManager.cs",
+    "path": "Assets/Scripts/VisualManager.cs",
+    "file_name": "VisualManager.cs",
+    "content_hash": "6ed36a1cfba483a033caf6a42a4c1732cd8f2907",
+    "size": 4737,
+    "line_count": 137,
+    "namespace": "",
+    "using_list": [
+      "System.Collections.Generic",
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "VisualManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "VisualManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Color",
+      "SetBackgroundColor",
+      "DrawBackgroundGrid",
+      "Vector3",
+      "UpdateVisuals",
+      "DrawPreview",
+      "DrawOrderList",
+      "GetIngredientColor"
+    ],
+    "fields": [
+      {
+        "name": "ingredientPrefab",
+        "type": "GameObject",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
       {
         "name": "colorRawPatty",
         "type": "Color",
@@ -166,128 +640,16 @@
         "is_static": false
       },
       {
-        "name": "nextMaterial",
-        "type": "Ingredient",
-        "access": "internal",
+        "name": "offsetX",
+        "type": "float",
+        "access": "private",
         "serialized": false,
         "is_static": false
       },
       {
-        "name": "maxCount",
-        "type": "int",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "currentCount",
-        "type": "int",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "submittedList",
-        "type": "string",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "lastIdx",
-        "type": "int",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "lastIdx",
-        "type": "int",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "rightStack",
-        "type": "List<Ingredient>",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "leftStack",
-        "type": "List<Ingredient>",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "break",
-        "type": "else",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "lastIdx",
-        "type": "int",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "topStack",
-        "type": "List<Ingredient>",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "bottomStack",
-        "type": "List<Ingredient>",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "break",
-        "type": "else",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "lastIdx",
-        "type": "int",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "bottomStack",
-        "type": "List<Ingredient>",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "topStack",
-        "type": "List<Ingredient>",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "break",
-        "type": "else",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "bottomTile",
-        "type": "BurgerTile",
-        "access": "internal",
+        "name": "offsetY",
+        "type": "float",
+        "access": "private",
         "serialized": false,
         "is_static": false
       },
@@ -299,13 +661,6 @@
         "is_static": false
       },
       {
-        "name": "currentIngredient",
-        "type": "Ingredient",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
         "name": "posX",
         "type": "float",
         "access": "internal",
@@ -313,21 +668,7 @@
         "is_static": false
       },
       {
-        "name": "posY",
-        "type": "float",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
         "name": "posX",
-        "type": "float",
-        "access": "internal",
-        "serialized": false,
-        "is_static": false
-      },
-      {
-        "name": "posY",
         "type": "float",
         "access": "internal",
         "serialized": false,
@@ -336,120 +677,91 @@
     ],
     "properties": [],
     "events": [],
-    "unity_messages": [
-      "Start",
-      "Update"
-    ],
-    "has_update": true,
+    "unity_messages": [],
+    "has_update": false,
     "has_fixed_update": false,
     "has_late_update": false,
     "has_awake": false,
-    "has_start": true,
+    "has_start": false,
     "has_on_enable": false,
     "has_on_disable": false,
     "serialize_field_count": 0,
-    "public_field_count": 5,
-    "get_component_count": 2,
+    "public_field_count": 6,
+    "get_component_count": 4,
     "find_call_count": 0,
-    "new_keyword_count": 22,
+    "new_keyword_count": 11,
     "coroutine_count": 0,
     "singleton_candidate": false,
     "dont_destroy_on_load": false,
     "referenced_types": [
       "Color",
-      "Ingredient",
-      "int",
-      "string",
-      "BurgerTile",
       "float",
-      "UnityEngine",
       "System",
       "Collections",
       "Generic",
+      "UnityEngine",
       "Visual",
       "Settings",
-      "Start",
-      "InitializeBoard",
+      "SetBackgroundColor",
+      "Camera",
+      "CameraClearFlags",
+      "SolidColor",
       "DrawBackgroundGrid",
-      "Add",
-      "Cheese",
-      "CookedPatty",
-      "Lettuce",
-      "Onion",
-      "SpawnNextIngredient",
-      "UpdateVisuals",
-      "Log",
-      "Update",
-      "InputSystem",
-      "Keyboard",
-      "Input",
-      "MoveTiles",
-      "Right",
-      "Left",
-      "Up",
-      "Down",
-      "SubmitAndClear",
-      "Count",
-      "RawPatty",
-      "AddIngredient",
-      "RemoveAt",
-      "ToString",
-      "Clear",
-      "AddRange",
-      "Destroy",
       "Instantiate",
       "Vector3",
       "SpriteRenderer",
       "GetComponent",
+      "UpdateVisuals",
+      "BurgerTile",
+      "Destroy",
+      "Clear",
+      "Ingredient",
+      "Count",
+      "Add",
       "GetIngredientColor",
+      "DrawPreview",
+      "DrawOrderList",
+      "RawPatty",
+      "CookedPatty",
+      "Cheese",
+      "Onion",
+      "Lettuce",
       "Tomato"
     ],
     "component_access_types": [
       "SpriteRenderer"
     ],
     "created_types": [
-      "List",
       "Color",
-      "BurgerTile",
+      "List",
       "Vector3"
     ],
     "singleton_access_types": [],
     "string_literals": [
-      "Visual Settings",
-      "시작",
-      "Right",
-      "Left",
-      "Up",
-      "Down",
-      "더 이상 스폰할 재료가 없습니다.",
-      " ",
-      "제출 완료.",
-      "선택된 위치: ({targetX}, {targetY}) / 갯수: {maxCount}개",
-      "제출된 버거 재료: [ {submittedList}]",
-      "제출할 햄버거가 없습니다!",
-      "[{direction}] 방향으로 슬라이드",
-      "({x}, 4) 위치의 패티가 그릴에서 구워졌습니다!"
+      "Visual Settings"
     ],
     "numeric_literals": [
-      4,
-      5,
       0.4,
       0.2,
       0,
+      2.25,
       3,
-      2,
+      0.9,
+      0.95,
+      1,
+      5,
+      4,
       1.5,
-      0.8
+      0.8,
+      4.5
     ],
     "guessed_roles": [
       "runtime",
-      "player",
       "manager",
       "combat"
     ],
     "summary_signals": [
       "런타임 컴포넌트",
-      "Update 기반 처리 존재",
       "전투 계열 로직 포함",
       "컴포넌트 조회 사용"
     ]
