@@ -36,6 +36,38 @@
     "risk_score": 51
   },
   {
+    "file_id": "Assets/Scripts/StageFlowManager.cs",
+    "class_name": "StageFlowManager",
+    "risk_flags": [
+      "high-coupling",
+      "init-order-sensitive",
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "초기화 순서에 민감할 가능성",
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 48
+  },
+  {
+    "file_id": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "class_name": "ScoreCalculationSystem",
+    "risk_flags": [
+      "init-order-sensitive",
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "초기화 순서에 민감할 가능성",
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 30
+  },
+  {
     "file_id": "Assets/Scripts/InputManager.cs",
     "class_name": "InputManager",
     "risk_flags": [
@@ -66,6 +98,45 @@
     "risk_score": 28
   },
   {
+    "file_id": "Assets/Scripts/CustomerData.cs",
+    "class_name": "CustomerData",
+    "risk_flags": [
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 20
+  },
+  {
+    "file_id": "Assets/Scripts/IngredientData.cs",
+    "class_name": "IngredientData",
+    "risk_flags": [
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 20
+  },
+  {
+    "file_id": "Assets/Scripts/StageData.cs",
+    "class_name": "StageData",
+    "risk_flags": [
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 20
+  },
+  {
     "file_id": "Assets/Scripts/BurgerTile.cs",
     "class_name": "BurgerTile",
     "risk_flags": [
@@ -77,5 +148,38 @@
       "상태 중심 또는 관리 중심 클래스일 가능성"
     ],
     "risk_score": 16
+  },
+  {
+    "file_id": "Assets/Scripts/CustomerQueueManager.cs",
+    "class_name": "CustomerQueueManager",
+    "risk_flags": [
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 8
+  },
+  {
+    "file_id": "Assets/Scripts/GameEvents.cs",
+    "class_name": "GameEvents",
+    "risk_flags": [
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 8
+  },
+  {
+    "file_id": "Assets/Scripts/RecipeChecker.cs",
+    "class_name": "IOrderEvaluator",
+    "risk_flags": [
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 8
   }
 ]

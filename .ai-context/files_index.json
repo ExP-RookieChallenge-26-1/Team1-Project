@@ -88,6 +88,250 @@
     "summary_signals": []
   },
   {
+    "file_id": "Assets/Scripts/CustomerData.cs",
+    "path": "Assets/Scripts/CustomerData.cs",
+    "file_name": "CustomerData.cs",
+    "content_hash": "9dc18e20a9412a270b947b3a1580cbe7de73040c",
+    "size": 407,
+    "line_count": 11,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "System.Collections.Generic"
+    ],
+    "classes": [
+      {
+        "name": "CustomerData",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "ScriptableObject"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "CustomerData",
+    "unity_type": "ScriptableObject",
+    "methods": [],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "System",
+      "Collections",
+      "Generic",
+      "CreateAssetMenu",
+      "Customer",
+      "Objects",
+      "IngredientData",
+      "IReadOnlyList",
+      "Recipe",
+      "AsReadOnly"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Customer",
+      "Objects/Customer"
+    ],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "data",
+      "save-load"
+    ],
+    "summary_signals": [
+      "데이터 자산 중심 구조",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/CustomerQueueManager.cs",
+    "path": "Assets/Scripts/CustomerQueueManager.cs",
+    "file_name": "CustomerQueueManager.cs",
+    "content_hash": "69557d67f6f3ce3d1b352cbba149dda48d3cd584",
+    "size": 983,
+    "line_count": 31,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "System.Collections.Generic"
+    ],
+    "classes": [
+      {
+        "name": "CustomerQueueManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "CustomerQueueManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "PrepareQueue",
+      "GetNextCustomer",
+      "GetCurrentCustomer"
+    ],
+    "fields": [
+      {
+        "name": "currentCustomer",
+        "type": "CustomerData",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 2,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "CustomerData",
+      "UnityEngine",
+      "System",
+      "Collections",
+      "Generic",
+      "PrepareQueue",
+      "IReadOnlyList",
+      "GetNextCustomer",
+      "Count",
+      "Dequeue",
+      "GameEvents",
+      "TriggerNewCustomerAppeared",
+      "GetCurrentCustomer"
+    ],
+    "component_access_types": [],
+    "created_types": [
+      "Queue"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "manager",
+      "data",
+      "runtime"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/GameEvents.cs",
+    "path": "Assets/Scripts/GameEvents.cs",
+    "file_name": "GameEvents.cs",
+    "content_hash": "7db5ba815caa114d806af721f0d3d8e037d96089",
+    "size": 1050,
+    "line_count": 37,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "System"
+    ],
+    "classes": [
+      {
+        "name": "GameEvents",
+        "kind": "class",
+        "access": "internal",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "GameEvents",
+    "unity_type": "None",
+    "methods": [
+      "TriggerReputationChanged",
+      "TriggerNewCustomerAppeared",
+      "TriggerStageChanged",
+      "TriggerAllStagesCleared"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "System",
+      "OnReputationChanged",
+      "CustomerData",
+      "OnNewCustomerAppeared",
+      "OnStageChanged",
+      "OnAllStagesCleared",
+      "TriggerReputationChanged",
+      "Invoke",
+      "TriggerNewCustomerAppeared",
+      "TriggerStageChanged",
+      "TriggerAllStagesCleared"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "data"
+    ],
+    "summary_signals": []
+  },
+  {
     "file_id": "Assets/Scripts/GameManager.cs",
     "path": "Assets/Scripts/GameManager.cs",
     "file_name": "GameManager.cs",
@@ -366,6 +610,88 @@
     ]
   },
   {
+    "file_id": "Assets/Scripts/IngredientData.cs",
+    "path": "Assets/Scripts/IngredientData.cs",
+    "file_name": "IngredientData.cs",
+    "content_hash": "34df4e7882f7d88c2619ac92f4f645cab1960ea8",
+    "size": 503,
+    "line_count": 20,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "IngredientData",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "ScriptableObject"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "IngredientData",
+    "unity_type": "ScriptableObject",
+    "methods": [],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "IngredientType",
+      "FrozenPatty",
+      "BakedPatty",
+      "Cheese",
+      "Onion",
+      "Lettuce",
+      "Tomato",
+      "CreateAssetMenu",
+      "Ingredient",
+      "Objects"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Ingredient",
+      "Objects/Ingredient"
+    ],
+    "numeric_literals": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "guessed_roles": [
+      "data",
+      "save-load"
+    ],
+    "summary_signals": [
+      "데이터 자산 중심 구조",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
     "file_id": "Assets/Scripts/InputManager.cs",
     "path": "Assets/Scripts/InputManager.cs",
     "file_name": "InputManager.cs",
@@ -463,6 +789,402 @@
     "summary_signals": [
       "런타임 컴포넌트",
       "Update 기반 처리 존재",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/RecipeChecker.cs",
+    "path": "Assets/Scripts/RecipeChecker.cs",
+    "file_name": "RecipeChecker.cs",
+    "content_hash": "b9189fb2003cba519bd74daa64f227c03a8bf970",
+    "size": 1146,
+    "line_count": 29,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "System.Collections.Generic",
+      "System.Linq"
+    ],
+    "classes": [
+      {
+        "name": "IOrderEvaluator",
+        "kind": "interface",
+        "access": "public",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      },
+      {
+        "name": "RecipeChecker",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "IOrderEvaluator"
+        ],
+        "interfaces": [
+          "IOrderEvaluator"
+        ],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "IOrderEvaluator",
+    "unity_type": "None",
+    "methods": [
+      "Evaluate"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "System",
+      "Collections",
+      "Generic",
+      "Linq",
+      "ReputationResult",
+      "Perfect",
+      "Incomplete",
+      "Wrong",
+      "Evaluate",
+      "IReadOnlyList",
+      "IngredientData",
+      "SequenceEqual",
+      "Select",
+      "IngredientType",
+      "OrderBy"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "data"
+    ],
+    "summary_signals": []
+  },
+  {
+    "file_id": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "path": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "file_name": "ScoreCalculationSystem.cs",
+    "content_hash": "54833a2e8abb80863a79947b205a283ad4d160a4",
+    "size": 1616,
+    "line_count": 48,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "ScoreCalculationSystem",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "ScoreCalculationSystem",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "OnEnable",
+      "OnDisable",
+      "ResetReputation",
+      "AddReputation"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "OnEnable",
+      "OnDisable"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": true,
+    "has_on_disable": true,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "OnEnable",
+      "GameEvents",
+      "OnStageChanged",
+      "ResetReputation",
+      "OnDisable",
+      "TriggerReputationChanged",
+      "AddReputation",
+      "ReputationResult",
+      "Perfect",
+      "Incomplete",
+      "Wrong",
+      "Max"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [
+      30,
+      15,
+      10
+    ],
+    "guessed_roles": [
+      "save-load",
+      "runtime"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/StageData.cs",
+    "path": "Assets/Scripts/StageData.cs",
+    "file_name": "StageData.cs",
+    "content_hash": "d077db90edffb03320b88b43f512b1dcd8c7e1fa",
+    "size": 601,
+    "line_count": 15,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "System.Collections.Generic"
+    ],
+    "classes": [
+      {
+        "name": "StageData",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "ScriptableObject"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "StageData",
+    "unity_type": "ScriptableObject",
+    "methods": [],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "System",
+      "Collections",
+      "Generic",
+      "CreateAssetMenu",
+      "Stage",
+      "Objects",
+      "StageLevel",
+      "CustomerData",
+      "IReadOnlyList",
+      "CustomerPool",
+      "AsReadOnly",
+      "TargetClearCount"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Stage",
+      "Objects/Stage"
+    ],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "data",
+      "save-load"
+    ],
+    "summary_signals": [
+      "데이터 자산 중심 구조",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/StageFlowManager.cs",
+    "path": "Assets/Scripts/StageFlowManager.cs",
+    "file_name": "StageFlowManager.cs",
+    "content_hash": "f3e93af6a5bc6379d833f163d2af0bd131bbc86c",
+    "size": 2654,
+    "line_count": 78,
+    "namespace": "",
+    "using_list": [
+      "System.Collections.Generic",
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "StageFlowManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "StageFlowManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "RecipeChecker",
+      "Start",
+      "LoadStage",
+      "OnBurgerSubmitted",
+      "CheckStageProgress"
+    ],
+    "fields": [
+      {
+        "name": "customerQueueManager",
+        "type": "CustomerQueueManager",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "scoreCalculationSystem",
+        "type": "ScoreCalculationSystem",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "evaluator",
+        "type": "IOrderEvaluator",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake",
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 2,
+    "find_call_count": 0,
+    "new_keyword_count": 1,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "CustomerQueueManager",
+      "ScoreCalculationSystem",
+      "IOrderEvaluator",
+      "System",
+      "Collections",
+      "Generic",
+      "UnityEngine",
+      "StageData",
+      "Awake",
+      "GetComponent",
+      "RecipeChecker",
+      "Start",
+      "LoadStage",
+      "Count",
+      "GameEvents",
+      "TriggerAllStagesCleared",
+      "PrepareQueue",
+      "CustomerPool",
+      "TriggerStageChanged",
+      "StageLevel",
+      "GetNextCustomer",
+      "OnBurgerSubmitted",
+      "IReadOnlyList",
+      "IngredientData",
+      "CustomerData",
+      "GetCurrentCustomer",
+      "ReputationResult",
+      "Evaluate",
+      "Recipe",
+      "AddReputation",
+      "CheckStageProgress",
+      "TargetClearCount"
+    ],
+    "component_access_types": [
+      "CustomerQueueManager",
+      "ScoreCalculationSystem"
+    ],
+    "created_types": [
+      "RecipeChecker"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "runtime",
+      "save-load",
+      "manager",
+      "data",
+      "player"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "저장/불러오기 관련 로직 포함",
       "컴포넌트 조회 사용"
     ]
   },

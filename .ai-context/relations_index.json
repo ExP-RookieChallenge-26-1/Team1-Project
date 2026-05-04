@@ -105,6 +105,279 @@
     "strength": 1
   },
   {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "ScriptableObject",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "AsReadOnly",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "Collections",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "CreateAssetMenu",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "Customer",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "Generic",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "IngredientData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "IReadOnlyList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "Objects",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "Recipe",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerData.cs",
+    "from_class": "CustomerData",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "Queue",
+    "relation_type": "creates",
+    "strength": 2
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "MonoBehaviour",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "Collections",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "Count",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "CustomerData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "Dequeue",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "GameEvents",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "Generic",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "GetCurrentCustomer",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "GetNextCustomer",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "IReadOnlyList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "PrepareQueue",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "TriggerNewCustomerAppeared",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/CustomerQueueManager.cs",
+    "from_class": "CustomerQueueManager",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "CustomerData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "Invoke",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "OnAllStagesCleared",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "OnNewCustomerAppeared",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "OnReputationChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "OnStageChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "TriggerAllStagesCleared",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "TriggerNewCustomerAppeared",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "TriggerReputationChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "TriggerStageChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/GameEvents.cs",
+    "from_class": "GameEvents",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
     "from_file": "Assets/Scripts/GameManager.cs",
     "from_class": "GameManager",
     "to_type": "VisualManager",
@@ -476,6 +749,90 @@
     "strength": 1
   },
   {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "ScriptableObject",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "BakedPatty",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "Cheese",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "CreateAssetMenu",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "FrozenPatty",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "Ingredient",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "IngredientType",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "Lettuce",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "Objects",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "Onion",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "Tomato",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/IngredientData.cs",
+    "from_class": "IngredientData",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
     "from_file": "Assets/Scripts/InputManager.cs",
     "from_class": "InputManager",
     "to_type": "GameManager",
@@ -591,6 +948,573 @@
     "from_file": "Assets/Scripts/InputManager.cs",
     "from_class": "InputManager",
     "to_type": "Update",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "RecipeChecker",
+    "to_type": "IOrderEvaluator",
+    "relation_type": "implements",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Collections",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Evaluate",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Generic",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Incomplete",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "IngredientData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "IngredientType",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "IReadOnlyList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Linq",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "OrderBy",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Perfect",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "ReputationResult",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Select",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "SequenceEqual",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/RecipeChecker.cs",
+    "from_class": "IOrderEvaluator",
+    "to_type": "Wrong",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "MonoBehaviour",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "AddReputation",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "GameEvents",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "Incomplete",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "Max",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "OnDisable",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "OnEnable",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "OnStageChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "Perfect",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "ReputationResult",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "ResetReputation",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "TriggerReputationChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/ScoreCalculationSystem.cs",
+    "from_class": "ScoreCalculationSystem",
+    "to_type": "Wrong",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "ScriptableObject",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "AsReadOnly",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "Collections",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "CreateAssetMenu",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "CustomerData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "CustomerPool",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "Generic",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "IReadOnlyList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "Objects",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "Stage",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "StageLevel",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "TargetClearCount",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageData.cs",
+    "from_class": "StageData",
+    "to_type": "UnityEngine",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "CustomerQueueManager",
+    "relation_type": "component-access",
+    "strength": 3
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "ScoreCalculationSystem",
+    "relation_type": "component-access",
+    "strength": 3
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "RecipeChecker",
+    "relation_type": "creates",
+    "strength": 2
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "MonoBehaviour",
+    "relation_type": "inherits",
+    "strength": 4
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "AddReputation",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Awake",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "CheckStageProgress",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Collections",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Count",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "CustomerData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "CustomerPool",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "CustomerQueueManager",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Evaluate",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "GameEvents",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Generic",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "GetComponent",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "GetCurrentCustomer",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "GetNextCustomer",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "IngredientData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "IOrderEvaluator",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "IReadOnlyList",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "LoadStage",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "OnBurgerSubmitted",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "PrepareQueue",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Recipe",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "RecipeChecker",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "ReputationResult",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "ScoreCalculationSystem",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "StageData",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "StageLevel",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "Start",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "System",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "TargetClearCount",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "TriggerAllStagesCleared",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "TriggerStageChanged",
+    "relation_type": "uses",
+    "strength": 1
+  },
+  {
+    "from_file": "Assets/Scripts/StageFlowManager.cs",
+    "from_class": "StageFlowManager",
+    "to_type": "UnityEngine",
     "relation_type": "uses",
     "strength": 1
   },
