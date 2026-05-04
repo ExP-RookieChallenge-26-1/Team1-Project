@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Inst;
+    
     private VisualManager visualManager;
     private BurgerTile[,] gameBoard = new BurgerTile[4, 5];
     
@@ -13,7 +15,12 @@ public class GameManager : MonoBehaviour
     private List<Ingredient> initialOrderList = new List<Ingredient>();
 
     public bool isPlaying = false;
-
+    
+    private void Awake()
+    {
+        Inst = this;
+    }
+    
     void Start()
     {
         visualManager = GetComponent<VisualManager>();
@@ -34,6 +41,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
+    //뒤집개를 충분히 드래그해서, 조리탭이 올라왔을때 호출됩니다
+    public void OnTongEndDrag()
+    {
+        //여기부터 게임 로직이 시작되면 될 것 같아요
+        Debug.Log("OnTongEndDrag");
+    }
+
 
     public void StartGame()
     {
