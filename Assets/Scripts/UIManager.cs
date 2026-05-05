@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     {
         if (gameManager.isPlaying) return; 
 
-        Ingredient selected = (Ingredient)ingredientNumber;
+        IngredientType selected = (IngredientType)ingredientNumber;
         gameManager.orderList.Add(selected);
         
         // 텍스트 대신, VisualManager에게 그림을 새로 쌓으라고 지시!

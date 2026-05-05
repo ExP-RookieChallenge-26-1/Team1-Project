@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,10 +10,10 @@ public class GameManager : MonoBehaviour
     private BurgerTile[,] gameBoard = new BurgerTile[4, 5];
     
     // 현재 스폰 대기 중인 남은 주문 리스트
-    public List<Ingredient> orderList = new List<Ingredient>();
+    public List<IngredientType> orderList = new List<IngredientType>();
     
     // 처음 게임 시작 시 들어온 전체 주문 리스트 (제출 시 비교용)
-    private List<Ingredient> initialOrderList = new List<Ingredient>();
+    private List<IngredientType> initialOrderList = new List<IngredientType>();
 
     public bool isPlaying = false;
     
@@ -47,19 +48,33 @@ public class GameManager : MonoBehaviour
     {
         //여기부터 게임 로직이 시작되면 될 것 같아요
         Debug.Log("OnTongEndDrag");
+        StartGame();
     }
 
 
     public void StartGame()
     {
-        if (orderList.Count == 0)
+
+        if (StageFlowManager.Inst)
         {
-            Debug.LogWarning("주문 리스트가 비어있습니다!");
-            return;
+            var currentCustomer = StageFlowManager.Inst.customerQueueManager.GetCurrentCustomer();
+            orderList = new();
+            foreach (var data in currentCustomer.Recipe)
+            {
+                orderList.Add(data.IngredientType);
+            }
+        }
+        else
+        {
+            if (orderList.Count == 0)
+            {
+                Debug.LogWarning("주문 리스트가 비어있습니다!");
+                return;
+            }
         }
         
         // 원본 주문 내역을 백업해둠
-        initialOrderList = new List<Ingredient>(orderList);
+        initialOrderList = new List<IngredientType>(orderList);
         
         isPlaying = true;
         Debug.Log($"[게임 시작] 처음 주문 목록: {string.Join(", ", initialOrderList)}");
@@ -110,6 +125,21 @@ public class GameManager : MonoBehaviour
         UpdateAllVisuals();
     }
 
+    public IReadOnlyList<IngredientData> GetBestBurgerData()
+    {
+        var list = new List<IngredientData>();
+        BurgerTile bestBurger = GetBestBurger();
+        foreach (var ingredientType in bestBurger.stackedIngredients)
+        {
+            var data = new IngredientData();
+            data.ingredientType = ingredientType;
+            list.Add(data);
+        }
+
+        list.Reverse();
+        return list;
+    }
+
     public void OnResetInput()
     {
         Debug.Log("보드판 및 주문 초기화됨");
@@ -130,7 +160,7 @@ public class GameManager : MonoBehaviour
     }
 
     // 우상단(3, 0)에서 가장 가까운 최고점 블록 탐색 (거리 동일 시 높이(Y축) 우선)
-    private BurgerTile GetBestBurger()
+    public BurgerTile GetBestBurger()
     {
         BurgerTile best = null;
         int maxHeight = 0;
@@ -198,10 +228,10 @@ public class GameManager : MonoBehaviour
         if (emptyTiles.Count > 0)
         {
             int randomIndex = Random.Range(0, emptyTiles.Count);
-            Ingredient nextMaterial = orderList[0];
+            IngredientType nextMaterial = orderList[0];
 
             // 생성되는 패티는 항상 생패티 상태로 스폰
-            if (nextMaterial == Ingredient.CookedPatty) nextMaterial = Ingredient.RawPatty;
+            if (nextMaterial == IngredientType.BakedPatty) nextMaterial = IngredientType.FrozenPatty;
 
             BurgerTile targetTile = emptyTiles[randomIndex];
             targetTile.AddIngredient(nextMaterial);
@@ -210,9 +240,9 @@ public class GameManager : MonoBehaviour
             visualManager.DrawOrderList(orderList); 
 
             // 스폰된 위치가 그릴이라면 즉시 굽기 처리
-            if (targetTile.isGrill && targetTile.stackedIngredients[0] == Ingredient.RawPatty)
+            if (targetTile.isGrill && targetTile.stackedIngredients[0] == IngredientType.BakedPatty)
             {
-                targetTile.stackedIngredients[0] = Ingredient.CookedPatty;
+                targetTile.stackedIngredients[0] = IngredientType.BakedPatty;
             }
         }
     }
@@ -253,8 +283,8 @@ public class GameManager : MonoBehaviour
 
                         if (nx < 0 || nx >= 4 || ny < 0 || ny >= 5) continue;
 
-                        List<Ingredient> currStack = gameBoard[x, y].stackedIngredients;
-                        List<Ingredient> targetStack = gameBoard[nx, ny].stackedIngredients;
+                        List<IngredientType> currStack = gameBoard[x, y].stackedIngredients;
+                        List<IngredientType> targetStack = gameBoard[nx, ny].stackedIngredients;
 
                         if (targetStack.Count == 0)
                         {
@@ -267,7 +297,7 @@ public class GameManager : MonoBehaviour
                         else if (currStack.Count == targetStack.Count)
                         {
                             // 블록 높이가 같을 경우 병합 (재료 종류 무관)
-                            List<Ingredient> mergedStack = new List<Ingredient>();
+                            List<IngredientType> mergedStack = new List<IngredientType>();
 
                             if (dx != 0) 
                             {
@@ -316,9 +346,9 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < gameBoard[x, 4].stackedIngredients.Count; i++)
                 {
-                    if (gameBoard[x, 4].stackedIngredients[i] == Ingredient.RawPatty)
+                    if (gameBoard[x, 4].stackedIngredients[i] == IngredientType.FrozenPatty)
                     {
-                        gameBoard[x, 4].stackedIngredients[i] = Ingredient.CookedPatty;
+                        gameBoard[x, 4].stackedIngredients[i] = IngredientType.BakedPatty;
                         didAnyMove = true; 
                     }
                 }

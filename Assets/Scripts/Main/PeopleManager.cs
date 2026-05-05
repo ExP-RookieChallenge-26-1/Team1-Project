@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,8 @@ using UnityEngine.UI;
 
 public class PeopleManager : MonoBehaviour
 {
+    public static PeopleManager Inst;
+    
     public Image peopleImg;
     public CanvasGroup txtChatGroup, imgChatGroup;
     public RectTransform txtChatRect, imgChatRect;
@@ -17,10 +20,15 @@ public class PeopleManager : MonoBehaviour
     //MaterialType의 인덱스와 대응되게
     public Sprite[] materialSprites;
     public Sprite downBurn, upBurn;
-    public Image materialImgPrefab;
+    public MaterialItem materialImgPrefab;
     
     private float _txtStartY, _imgStartY;
-    
+
+    private void Awake()
+    {
+        Inst = this;
+    }
+
     void Start()
     {
         //UI 초기화
@@ -42,27 +50,18 @@ public class PeopleManager : MonoBehaviour
         peopleImg.gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if(Keyboard.current.jKey.isPressed)
-            ShowPeople();
-        
-        if(Keyboard.current.kKey.isPressed)
-            ShowChat("안녕하세요!\n\n싸이버거를 주세요!");
-
-        if (Keyboard.current.lKey.isPressed)
-        {
-            var list = new List<MaterialType> { MaterialType.Cheese , MaterialType.GrilledPatty, MaterialType.Lettuce, MaterialType.Tomato};
-            ShowHamburger(list);
-        }
-            
-    }
-
     public void ShowPeople()
     {
         peopleImg.gameObject.SetActive(true);
         peopleImg.color = peopleImg.color.SetAlpha(0);
         peopleImg.DOFade(1, 0.5f);
+    }
+
+    public void HidePeople()
+    {
+        peopleImg.DOFade(0, 0.5f);
+        imgChatGroup.DOFade(0, 0.5f);
+        txtChatGroup.DOFade(0, 0.5f);
     }
 
     public void ShowChat(string chat)
@@ -80,7 +79,7 @@ public class PeopleManager : MonoBehaviour
         txtChatRect.DOAnchorPos3DY(_txtStartY, 0.3f);
     }
 
-    public void ShowHamburger(List<MaterialType> materialTypes)
+    public void ShowHamburger(IReadOnlyList<IngredientData> datas)
     {
         txtChatGroup.gameObject.SetActive(false);
 
@@ -99,23 +98,25 @@ public class PeopleManager : MonoBehaviour
         
         //햄버거 이미지 생성
         var upBurnMaterial = Instantiate(materialImgPrefab, burgerContainer);
-        upBurnMaterial.sprite = upBurn;
-        
-        foreach (var materialType in materialTypes)
+        upBurnMaterial.Init(IngredientType.Burn);
+        //upBurnMaterial.sprite = upBurn;
+
+        var reverse = datas.Reverse();
+        foreach (var data in reverse)
         {
-            var index = (int)materialType;
+            var index = (int)data.IngredientType;
             if (index < 0 || index >= materialSprites.Length)
             {
-                Debug.LogWarning($"{materialType}({index}) 스프라이트 없음");
+                Debug.LogWarning($"{data.IngredientType}({index}) 스프라이트 없음");
                 continue;
             }
 
             var newMaterial = Instantiate(materialImgPrefab, burgerContainer);
-            newMaterial.sprite = materialSprites[index];
+            newMaterial.Init(data.IngredientType);
+            //newMaterial.sprite = materialSprites[index];
         }
         
         var downBurnMaterial = Instantiate(materialImgPrefab, burgerContainer);
-        downBurnMaterial.sprite = downBurn;
+        downBurnMaterial.Init(IngredientType.Burn);
     }
-
 }

@@ -16,6 +16,12 @@ public class DataLoader : MonoBehaviour
         LoadData();
     }
 
+    private void Start()
+    {
+        //Test
+        Screen.SetResolution(540, 1170, FullScreenMode.Windowed);
+    }
+
     void LoadData()
     {
         if (Loaded)

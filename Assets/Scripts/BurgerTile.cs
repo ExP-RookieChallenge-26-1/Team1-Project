@@ -3,25 +3,12 @@ using System.Collections.Generic;
 // 타일 하나에 대한 설정
 public class BurgerTile
 {
-    public List<Ingredient> stackedIngredients = new List<Ingredient>();
+    public List<IngredientType> stackedIngredients = new List<IngredientType>();
 
     public bool isGrill = false;
 
-    public void AddIngredient(Ingredient newIngredient)
+    public void AddIngredient(IngredientType newIngredient)
     {
         stackedIngredients.Add(newIngredient);
     }
-}
-
-public enum Ingredient
-{
-    Empty = 0,
-
-    RawPatty = 10,
-    CookedPatty = 11,
-
-    Cheese = 20,
-    Onion = 21,
-    Lettuce = 22,
-    Tomato = 23
 }

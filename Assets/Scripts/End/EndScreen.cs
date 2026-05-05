@@ -3,10 +3,13 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndScreen : MonoBehaviour
 {
+    public static EndScreen Inst;
+    
     public Image fadeBG;
     public Image[] starFills;
     public CanvasGroup[] stars;
@@ -14,15 +17,27 @@ public class EndScreen : MonoBehaviour
     public TextMeshProUGUI endTxt, todayRatingTxt;
     public Button nextDayBtn;
 
+    private void Awake()
+    {
+        Inst = this;
+    }
+
     private void Start()
     {
         endCanvas.SetActive(false);
     }
 
-    private void Update()
+    public void GoToNextStage()
     {
-        if(Keyboard.current.spaceKey.isPressed)
-            ShowEndScreen(65);
+        endCanvas.SetActive(false);
+        if (ScnMain.Inst.allStageEnded)
+        {
+            SceneManager.LoadScene("Intro");
+        }
+        else
+        {
+            ScnMain.Inst.StartFlow();   
+        }
     }
 
     public void ShowEndScreen(float score)
