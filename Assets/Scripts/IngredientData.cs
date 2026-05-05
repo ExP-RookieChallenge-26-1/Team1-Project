@@ -7,13 +7,14 @@ public enum IngredientType
     Cheese = 2,
     Onion = 3,
     Lettuce = 4,
-    Tomato = 5
+    Tomato = 5,
+    Burn = 100
 }
 
 [CreateAssetMenu(fileName = "Ingredient", menuName = "Objects/Ingredient")]
 public class IngredientData : ScriptableObject
 {
-    [SerializeField] private IngredientType ingredientType; // 재료 종류
+    [SerializeField] public IngredientType ingredientType; // 재료 종류
     public IngredientType IngredientType => ingredientType;
     [SerializeField] private string ingredientName; // 재료 이름
 }

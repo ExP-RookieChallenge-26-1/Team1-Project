@@ -22,9 +22,9 @@ public class InputManager : MonoBehaviour
         if (UnityEngine.InputSystem.Keyboard.current.downArrowKey.wasPressedThisFrame) gameManager.OnMoveInput("Down");
 
         // 제출 입력 처리 (Space)
-        if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) gameManager.OnSubmitInput();
+        //if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) gameManager.OnSubmitInput();
 
         // 초기화 및 재시작 입력 처리 (R)
-        if (UnityEngine.InputSystem.Keyboard.current.rKey.wasPressedThisFrame) gameManager.OnResetInput();
+        //if (UnityEngine.InputSystem.Keyboard.current.rKey.wasPressedThisFrame) gameManager.OnResetInput();
     }
 }

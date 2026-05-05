@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class VisualManager : MonoBehaviour
 {
+    public static VisualManager Inst;
+    
     [Header("Visual Settings")]
     public GameObject ingredientPrefab;
 
@@ -12,6 +15,7 @@ public class VisualManager : MonoBehaviour
     public Color colorOnion = Color.white;
     public Color colorLettuce = Color.green;
     public Color colorTomato = Color.red;
+    public Color colorBurn = Color.darkSalmon;
 
     private List<GameObject> activeVisuals = new List<GameObject>();
     private List<GameObject> previewVisuals = new List<GameObject>(); 
@@ -21,10 +25,15 @@ public class VisualManager : MonoBehaviour
     private float offsetX = -2.25f;
     private float offsetY = 3.0f;
 
+    private void Awake()
+    {
+        Inst = this;
+    }
+
     public void SetBackgroundColor()
     {
-        Camera.main.clearFlags = CameraClearFlags.SolidColor;
-        Camera.main.backgroundColor = new Color(0.9f, 0.95f, 1f); 
+        /*Camera.main.clearFlags = CameraClearFlags.SolidColor;
+        Camera.main.backgroundColor = new Color(0.9f, 0.95f, 1f); */
     }
 
     public void DrawBackgroundGrid()
@@ -58,7 +67,7 @@ public class VisualManager : MonoBehaviour
         {
             for (int x = 0; x < 4; x++)
             {
-                List<Ingredient> stack = gameBoard[x, y].stackedIngredients;
+                List<IngredientType> stack = gameBoard[x, y].stackedIngredients;
                 for (int i = 0; i < stack.Count; i++)
                 {
                     GameObject newObj = Instantiate(ingredientPrefab);
@@ -100,7 +109,7 @@ public class VisualManager : MonoBehaviour
         }
     }
 
-    public void DrawOrderList(List<Ingredient> orderList)
+    public void DrawOrderList(List<IngredientType> orderList)
     {
         foreach (GameObject obj in orderVisuals) Destroy(obj);
         orderVisuals.Clear();
@@ -121,16 +130,17 @@ public class VisualManager : MonoBehaviour
         }
     }
 
-    private Color GetIngredientColor(Ingredient type)
+    public Color GetIngredientColor(IngredientType type)
     {
         switch (type)
         {
-            case Ingredient.RawPatty: return colorRawPatty;
-            case Ingredient.CookedPatty: return colorCookedPatty;
-            case Ingredient.Cheese: return colorCheese;
-            case Ingredient.Onion: return colorOnion;
-            case Ingredient.Lettuce: return colorLettuce;
-            case Ingredient.Tomato: return colorTomato;
+            case IngredientType.BakedPatty: return colorRawPatty;
+            case IngredientType.FrozenPatty: return colorCookedPatty;
+            case IngredientType.Cheese: return colorCheese;
+            case IngredientType.Onion: return colorOnion;
+            case IngredientType.Lettuce: return colorLettuce;
+            case IngredientType.Tomato: return colorTomato;
+            case IngredientType.Burn: return colorBurn;
             default: return Color.white;
         }
     }
