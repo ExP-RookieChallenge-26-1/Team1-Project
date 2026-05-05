@@ -1,12 +1,40 @@
 [
   {
-    "file_id": "Assets/Scripts/VisualManager.cs",
-    "class_name": "VisualManager",
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenAnimationInspector.cs",
+    "class_name": "DOTweenAnimationInspector",
+    "risk_flags": [
+      "high-coupling",
+      "getcomponent-heavy",
+      "magic-number-heavy",
+      "large-class",
+      "init-order-sensitive",
+      "save-load-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "GetComponent/TryGetComponent 호출이 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "초기화 순서에 민감할 가능성",
+      "저장/불러오기 관련 로직 포함",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 93
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenAnimation.cs",
+    "class_name": "DOTweenAnimation",
     "risk_flags": [
       "high-coupling",
       "public-field-heavy",
       "getcomponent-heavy",
       "magic-number-heavy",
+      "large-class",
+      "init-order-sensitive",
+      "ui-runtime-mixed",
       "state-owner"
     ],
     "risk_reasons": [
@@ -14,9 +42,311 @@
       "public 필드 노출 수가 많음",
       "GetComponent/TryGetComponent 호출이 많음",
       "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "초기화 순서에 민감할 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 91
+  },
+  {
+    "file_id": "Assets/Scripts/PausedMenu/PausedController.cs",
+    "class_name": "PausedController",
+    "risk_flags": [
+      "singleton-candidate",
+      "high-coupling",
+      "public-field-heavy",
+      "magic-number-heavy",
+      "init-order-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "Instance 또는 DontDestroyOnLoad 패턴 감지",
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "초기화 순서에 민감할 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 79
+  },
+  {
+    "file_id": "Assets/Scripts/Intro/ScnIntro.cs",
+    "class_name": "ScnIntro",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "magic-number-heavy",
+      "init-order-sensitive",
+      "save-load-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "초기화 순서에 민감할 가능성",
+      "저장/불러오기 관련 로직 포함",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 76
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenTextMeshPro.cs",
+    "class_name": "DOTweenTMPAnimator",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "magic-number-heavy",
+      "large-class",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 69
+  },
+  {
+    "file_id": "Assets/Scripts/Credit/ScnCredit.cs",
+    "class_name": "ScnCredit",
+    "risk_flags": [
+      "update-heavy",
+      "high-coupling",
+      "init-order-sensitive",
+      "save-load-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "Unity 업데이트 루프 사용",
+      "참조 타입 또는 관계 수가 많음",
+      "초기화 순서에 민감할 가능성",
+      "저장/불러오기 관련 로직 포함",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 68
+  },
+  {
+    "file_id": "Assets/Scripts/VisualManager.cs",
+    "class_name": "VisualManager",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "getcomponent-heavy",
+      "magic-number-heavy",
+      "init-order-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "GetComponent/TryGetComponent 호출이 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "초기화 순서에 민감할 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 66
+  },
+  {
+    "file_id": "Assets/Scripts/End/EndScreen.cs",
+    "class_name": "EndScreen",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "magic-number-heavy",
+      "init-order-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "초기화 순서에 민감할 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 64
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs",
+    "class_name": "DOTweenModuleUtils",
+    "risk_flags": [
+      "high-coupling",
+      "getcomponent-heavy",
+      "save-load-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "GetComponent/TryGetComponent 호출이 많음",
+      "저장/불러오기 관련 로직 포함",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 60
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs",
+    "class_name": "DOTweenModuleUI",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "large-class",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 59
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUIToolkit.cs",
+    "class_name": "DOTweenModuleUIToolkit",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "large-class",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 59
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs",
+    "class_name": "WaitForCompletion",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "large-class",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 59
+  },
+  {
+    "file_id": "Assets/Scripts/Intro/DataLoader.cs",
+    "class_name": "DataLoader",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "init-order-sensitive",
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "초기화 순서에 민감할 가능성",
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 58
+  },
+  {
+    "file_id": "Assets/Scripts/Main/PeopleManager.cs",
+    "class_name": "PeopleManager",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "init-order-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "초기화 순서에 민감할 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
       "상태 중심 또는 관리 중심 클래스일 가능성"
     ],
     "risk_score": 56
+  },
+  {
+    "file_id": "Assets/Scripts/Main/ScnMain.cs",
+    "class_name": "ScnMain",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "init-order-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "초기화 순서에 민감할 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 56
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenPreviewManager.cs",
+    "class_name": "DOTweenPreviewManager",
+    "risk_flags": [
+      "high-coupling",
+      "public-field-heavy",
+      "magic-number-heavy",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "public 필드 노출 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 54
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs",
+    "class_name": "DOTweenModuleAudio",
+    "risk_flags": [
+      "high-coupling",
+      "large-class",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "파일/메서드/필드 수가 많아 책임이 커질 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 51
   },
   {
     "file_id": "Assets/Scripts/GameManager.cs",
@@ -51,6 +381,102 @@
       "상태 중심 또는 관리 중심 클래스일 가능성"
     ],
     "risk_score": 48
+  },
+  {
+    "file_id": "Assets/Scripts/Main/Tong.cs",
+    "class_name": "Tong",
+    "risk_flags": [
+      "high-coupling",
+      "init-order-sensitive",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "초기화 순서에 민감할 가능성",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 46
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenProShortcuts.cs",
+    "class_name": "DOTweenProShortcuts",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 44
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenTk2d.cs",
+    "class_name": "ShortcutExtensionsTk2d",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "ui-runtime-mixed",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 44
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs",
+    "class_name": "DOTweenModuleEPOOutline",
+    "risk_flags": [
+      "high-coupling",
+      "save-load-sensitive",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "저장/불러오기 관련 로직 포함",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 38
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs",
+    "class_name": "DOTweenModulePhysics",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 34
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs",
+    "class_name": "DOTweenModulePhysics2D",
+    "risk_flags": [
+      "high-coupling",
+      "magic-number-heavy",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 34
   },
   {
     "file_id": "Assets/Scripts/ScoreCalculationSystem.cs",
@@ -98,6 +524,19 @@
     "risk_score": 28
   },
   {
+    "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs",
+    "class_name": "DOTweenModuleSprite",
+    "risk_flags": [
+      "high-coupling",
+      "state-owner"
+    ],
+    "risk_reasons": [
+      "참조 타입 또는 관계 수가 많음",
+      "상태 중심 또는 관리 중심 클래스일 가능성"
+    ],
+    "risk_score": 26
+  },
+  {
     "file_id": "Assets/Scripts/CustomerData.cs",
     "class_name": "CustomerData",
     "risk_flags": [
@@ -137,17 +576,28 @@
     "risk_score": 20
   },
   {
-    "file_id": "Assets/Scripts/BurgerTile.cs",
-    "class_name": "BurgerTile",
+    "file_id": "Assets/Scripts/Main/MaterialItem.cs",
+    "class_name": "MaterialItem",
     "risk_flags": [
-      "magic-number-heavy",
+      "ui-runtime-mixed",
       "state-owner"
     ],
     "risk_reasons": [
-      "숫자 리터럴이 많아 의미 파악이 어려울 수 있음",
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성",
       "상태 중심 또는 관리 중심 클래스일 가능성"
     ],
-    "risk_score": 16
+    "risk_score": 18
+  },
+  {
+    "file_id": "Assets/Scripts/Main/MainBG.cs",
+    "class_name": "MainBG",
+    "risk_flags": [
+      "ui-runtime-mixed"
+    ],
+    "risk_reasons": [
+      "UI와 런타임 책임이 한 파일에 섞였을 가능성"
+    ],
+    "risk_score": 10
   },
   {
     "file_id": "Assets/Scripts/CustomerQueueManager.cs",
@@ -181,5 +631,47 @@
       "상태 중심 또는 관리 중심 클래스일 가능성"
     ],
     "risk_score": 8
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenDeAudio.cs",
+    "class_name": "DOTweenDeAudio",
+    "risk_flags": [],
+    "risk_reasons": [],
+    "risk_score": 0
+  },
+  {
+    "file_id": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenDeUnityExtended.cs",
+    "class_name": "DOTweenDeUnityExtended",
+    "risk_flags": [],
+    "risk_reasons": [],
+    "risk_score": 0
+  },
+  {
+    "file_id": "Assets/Scripts/BurgerTile.cs",
+    "class_name": "BurgerTile",
+    "risk_flags": [],
+    "risk_reasons": [],
+    "risk_score": 0
+  },
+  {
+    "file_id": "Assets/Scripts/Credit/CreditData.cs",
+    "class_name": "CreditData",
+    "risk_flags": [],
+    "risk_reasons": [],
+    "risk_score": 0
+  },
+  {
+    "file_id": "Assets/Scripts/Credit/PartData.cs",
+    "class_name": "PartData",
+    "risk_flags": [],
+    "risk_reasons": [],
+    "risk_score": 0
+  },
+  {
+    "file_id": "Assets/Scripts/Utils.cs",
+    "class_name": "Utils",
+    "risk_flags": [],
+    "risk_reasons": [],
+    "risk_score": 0
   }
 ]
