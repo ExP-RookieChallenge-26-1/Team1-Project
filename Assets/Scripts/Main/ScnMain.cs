@@ -62,7 +62,7 @@ public class ScnMain : MonoBehaviour
         submitBtn.interactable = false;
         tong.ResetTongPos();
 
-        dayText.text = $"Day {StageFlowManager.Inst.servedCount + 1} | Stage {StageFlowManager.Inst.currentStageIndex + 1}";
+        dayText.text = $"Day 1 | Stage {StageFlowManager.Inst.currentStageIndex + 1}";
         yield return new WaitForSeconds(3);
         if (!_currentCustomerData)
             yield break;

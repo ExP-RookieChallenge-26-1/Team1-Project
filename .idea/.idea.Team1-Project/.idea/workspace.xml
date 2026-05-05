@@ -7,6 +7,8 @@
     <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/PeopleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/PeopleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +113,7 @@
       <workItem from="1777535557123" duration="3879000" />
       <workItem from="1777608951038" duration="7261000" />
       <workItem from="1777793366724" duration="3427000" />
-      <workItem from="1777986211291" duration="911000" />
+      <workItem from="1777986211291" duration="2026000" />
     </task>
     <servers />
   </component>
