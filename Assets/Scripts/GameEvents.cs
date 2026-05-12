@@ -7,7 +7,7 @@ public static class GameEvents
     public static event Action<int> OnReputationChanged;
 
     // 새 손님이 등장하면 방송
-    public static event Action<CustomerRuntimeState> OnNewCustomerAppeared;
+    public static event Action<CustomerData> OnNewCustomerAppeared;
 
     // 스테이지 변경 시 방송
     public static event Action<int> OnStageChanged;
@@ -20,9 +20,9 @@ public static class GameEvents
         OnReputationChanged?.Invoke(currentReputation);
     }
 
-    public static void TriggerNewCustomerAppeared(CustomerRuntimeState customerState)
+    public static void TriggerNewCustomerAppeared(CustomerData customer)
     {
-        OnNewCustomerAppeared?.Invoke(customerState);
+        OnNewCustomerAppeared?.Invoke(customer);
     }
 
     public static void TriggerStageChanged(int stageLevel)

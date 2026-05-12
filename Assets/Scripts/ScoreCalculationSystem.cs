@@ -3,7 +3,6 @@ using UnityEngine;
 public class ScoreCalculationSystem : MonoBehaviour
 {
     private int currentReputation = 0;  // 현재 평판 점수
-    public int CurrentReputation => currentReputation;
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
     [SerializeField] private int wrongScore = -10;
@@ -24,7 +23,7 @@ public class ScoreCalculationSystem : MonoBehaviour
         GameEvents.TriggerReputationChanged(currentReputation);
     }
 
-    public void AddReputation(ReputationResult result, int bonus = 0)
+    public void AddReputation(ReputationResult result)
     {
         switch (result)
         {
@@ -42,16 +41,7 @@ public class ScoreCalculationSystem : MonoBehaviour
                 break;
         }
 
-        // 특수 손님이 주는 보너스 점수 합산
-        currentReputation += bonus;
-
         // 현재 평판 점수 방송
-        GameEvents.TriggerReputationChanged(currentReputation);
-    }
-
-    public void SetReputation(int savedScore)
-    {
-        currentReputation = savedScore;
         GameEvents.TriggerReputationChanged(currentReputation);
     }
 }

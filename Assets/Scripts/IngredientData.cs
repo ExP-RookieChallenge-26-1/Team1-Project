@@ -2,8 +2,8 @@ using UnityEngine;
 
 public enum IngredientType
 {
-    RawPatty = 0,
-    CookedPatty = 1,
+    FrozenPatty = 0,
+    BakedPatty = 1,
     Cheese = 2,
     Onion = 3,
     Lettuce = 4,
