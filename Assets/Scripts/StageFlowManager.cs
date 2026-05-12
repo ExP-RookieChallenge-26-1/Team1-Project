@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class StageFlowManager : MonoBehaviour
 {
     [SerializeField] private List<StageData> stages;
+    public IReadOnlyList<StageData> Stages => stages.AsReadOnly();
 
     private CustomerQueueManager customerQueueManager;
     private ScoreCalculationSystem scoreCalculationSystem;
     private IOrderEvaluator evaluator;
-
     private int currentStageIndex = 0;  // 현재 스테이지 번호
     private int servedCount = 0;    // 음식을 제작한 횟수
+    public int currentStageIndex { get; private set; } = 0;  // 현재 스테이지 번호
+    public int servedCount { get; private set; } = 0;    // 음식을 제작한 횟수
 
     private void Awake()
     {
@@ -19,7 +22,15 @@ public class StageFlowManager : MonoBehaviour
         evaluator = new RecipeChecker();
     }
 
-    private void Start() => LoadStage(currentStageIndex);
+    private void Start()
+    {
+        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedScore); ;
+        currentStageIndex = savedStage;
+        servedCount = savedServed;
+        scoreCalculationSystem.SetReputation(savedScore);
+
+        LoadStage(currentStageIndex);
+    }
 
     private void LoadStage(int index)
     {
@@ -30,9 +41,8 @@ public class StageFlowManager : MonoBehaviour
             return;
         }
 
-        servedCount = 0;
-        customerQueueManager.PrepareQueue(stages[index].CustomerPool);
-
+        var remainingCustomers = stages[index].CustomerPool.Skip(servedCount).ToList();
+        customerQueueManager.PrepareQueue(remainingCustomers);
         GameEvents.TriggerStageChanged(stages[index].StageLevel);
 
         // 첫 번째 손님 호출
@@ -49,12 +59,21 @@ public class StageFlowManager : MonoBehaviour
         ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
 
         // 점수 계산
-        scoreCalculationSystem.AddReputation(result);
+        int bonus = currentCustomer.GetBonusScore(result);
+        scoreCalculationSystem.AddReputation(result, bonus);
+
+        CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
+        if (currentState != null)
+        {
+            currentState.UpdateEmotion(result);
+        }
+
         servedCount++;
+
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
 
         CheckStageProgress();
     }
-
     private void CheckStageProgress()
     {
         // 해당 스테이지에서 손님을 모두 받았다면 다음 스테이지로 넘어가기
@@ -62,6 +81,7 @@ public class StageFlowManager : MonoBehaviour
         {
             currentStageIndex++;
             LoadStage(currentStageIndex);
+            AdvanceToNextStage();
         }
         else
         {
@@ -69,9 +89,16 @@ public class StageFlowManager : MonoBehaviour
             // 손님이 부족한 경우 예외 처리로 다음 스테이지로 넘어가기
             if (nextCustomer == null)
             {
-                currentStageIndex++;
-                LoadStage(currentStageIndex);
+                AdvanceToNextStage();
             }
         }
+    }
+
+    private void AdvanceToNextStage()
+    {
+        currentStageIndex++;
+        servedCount = 0;
+
+        LoadStage(currentStageIndex);
     }
 }
