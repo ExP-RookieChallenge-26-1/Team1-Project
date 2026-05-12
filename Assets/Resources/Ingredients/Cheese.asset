@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f04d494af6313428f97e7934932645, type: 3}
   m_Name: Cheese
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
-  ingredientType: 0
+  ingredientType: 2
   ingredientName: 

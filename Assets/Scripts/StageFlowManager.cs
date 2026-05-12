@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class StageFlowManager : MonoBehaviour
 {
+    public static StageFlowManager Inst;
+    
     [SerializeField] private List<StageData> stages;
 
-    private CustomerQueueManager customerQueueManager;
-    private ScoreCalculationSystem scoreCalculationSystem;
-    private IOrderEvaluator evaluator;
+    [HideInInspector] public CustomerQueueManager customerQueueManager;
+    [HideInInspector] public  ScoreCalculationSystem scoreCalculationSystem;
+    [HideInInspector] public IOrderEvaluator evaluator;
 
-    private int currentStageIndex = 0;  // 현재 스테이지 번호
-    private int servedCount = 0;    // 음식을 제작한 횟수
+    public int currentStageIndex = 0;  // 현재 스테이지 번호
+    public int servedCount = 0;    // 음식을 제작한 횟수
 
     private void Awake()
     {
+        Inst = this;
+        
         customerQueueManager = GetComponent<CustomerQueueManager>();
         scoreCalculationSystem = GetComponent<ScoreCalculationSystem>();
         evaluator = new RecipeChecker();
@@ -21,8 +25,9 @@ public class StageFlowManager : MonoBehaviour
 
     private void Start() => LoadStage(currentStageIndex);
 
-    private void LoadStage(int index)
+    public void LoadStage(int index)
     {
+        Debug.Log($"ASD: {index}");
         // index가 스테이지 수보다 많다면 종료
         if (index >= stages.Count)
         {
@@ -61,6 +66,7 @@ public class StageFlowManager : MonoBehaviour
         if (servedCount >= stages[currentStageIndex].TargetClearCount)
         {
             currentStageIndex++;
+            Debug.Log($"새로운 스테이지 인덱스: {currentStageIndex}");
             LoadStage(currentStageIndex);
         }
         else

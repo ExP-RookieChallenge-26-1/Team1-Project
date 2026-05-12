@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ScoreCalculationSystem : MonoBehaviour
 {
-    private int currentReputation = 0;  // 현재 평판 점수
+    public int currentReputation = 0;  // 현재 평판 점수
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
     [SerializeField] private int wrongScore = -10;
