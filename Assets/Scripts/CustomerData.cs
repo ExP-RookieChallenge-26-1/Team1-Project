@@ -23,5 +23,7 @@ public abstract class CustomerData : ScriptableObject
 
     public abstract string GetDialogue();
 
-    public abstract void SetState(CustomerRuntimeState state);
+    public abstract string GetReputationDialogue(ReputationResult result);
+
+    public virtual void SetState(CustomerRuntimeState state) { }
 }

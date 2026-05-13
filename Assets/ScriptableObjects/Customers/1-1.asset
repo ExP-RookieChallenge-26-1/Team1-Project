@@ -18,8 +18,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
   - {fileID: 11400000, guid: 0a19159b2e279e44483833895b50e8bf, type: 2}
   - {fileID: 11400000, guid: fd5f894d7e4ccb843b2a4b824f112163, type: 2}
-  fixedGender: 0
-  fixedSkin: 0
-  fixedClothes: 0
-  fixedHair: 0
-  fixedDialogue: 
+  fixedDialogue: "\uC548\uB155\uD558\uB5BC\uC5EC...\n....\n......\n\uC544\uB38C\uB760
+    \uC5EC\uB07C \uBED0\uAC70 \uD30C\uB294 \uC9D1 \uB9C8\uC7C8\uC5EC...?\n...\n\uBED0\uAC70
+    \uD558\uB098 \uC8FC\uB5F4\uC5EC...."
+  perfectDialogue:
+  - "....!\n....\uAC10\uC7C8\uD569\uB2C8\uB2E4!.."
+  incompleteDialogue:
+  - "....\n.....\uAC10\uC7C8\uD569\uB2C8\uB2E4!..."
+  wrongDialogue:
+  - "....\n......\uAC10\uC7C8\uD568\uB2C8\uB2E4"
+  specialSprites: []
+  emotionSprites: []

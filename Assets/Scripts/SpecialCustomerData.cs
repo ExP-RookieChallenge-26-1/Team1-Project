@@ -5,26 +5,35 @@ using UnityEngine;
 // 특수 손님 state
 public class SpecialCustomerData : CustomerData
 {
-    [Header("Special Customer State")]
-    public CustomerGender fixedGender;
-    public CustomerSkin fixedSkin;
-    public CustomerClothes fixedClothes;
-    public CustomerHair fixedHair;
     [TextArea]
     [SerializeField] private string fixedDialogue = "";
+    [TextArea] public string[] perfectDialogue;
+    [TextArea] public string[] incompleteDialogue;
+    [TextArea] public string[] wrongDialogue;
+    [Header("Special Sprites")]
+    public Sprite[] specialSprites;
 
-    public override void SetState(CustomerRuntimeState state)
-    {
-        state.Gender = fixedGender;
-        state.Skin = fixedSkin;
-        state.Clothes = fixedClothes;
-        state.Hair = fixedHair;
-    }
+    [Header("Emotion Sprites (Happy, Neutral, Angry)")]
+    public Sprite[] emotionSprites;
 
     // 특수 손님 대사
     public override string GetDialogue()
     {
         return fixedDialogue;
+    }
+
+    // 평판에 따른 손님 대사
+    public override string GetReputationDialogue(ReputationResult result)
+    {
+        switch (result)
+        {
+            case ReputationResult.Perfect:
+                return "기쁨";
+            case ReputationResult.Wrong:
+                return "실망";
+            default:
+                return "기본";
+        }
     }
 
     // 특수 손님 보너스 점수

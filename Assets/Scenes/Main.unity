@@ -2646,7 +2646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd5d0e4567ada74f9ef98150e9eed6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreCalculationSystem
-  currentReputation: 0
   perfectScore: 30
   incompleteScore: 15
   wrongScore: -10
@@ -2675,12 +2674,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageFlowManager
   stages:
-  - {fileID: 11400000, guid: 41a3f2f62c609d24dbc8025ec1c54e61, type: 2}
+  - {fileID: 11400000, guid: ae4dd15128fdb9b47a9e82435b9962f6, type: 2}
   - {fileID: 11400000, guid: 67e175d673f1ffd48b717905a5d5a6cd, type: 2}
-  customerQueueManager: {fileID: 0}
-  scoreCalculationSystem: {fileID: 0}
-  currentStageIndex: 0
-  servedCount: 0
+  - {fileID: 11400000, guid: cfec369c7f4fe5f449b93bac8f912598, type: 2}
+  - {fileID: 11400000, guid: 7647c329eb788c14084c22a6b5cf885a, type: 2}
+  - {fileID: 11400000, guid: 6a76b0b268616f448916a8b0cf101822, type: 2}
 --- !u!4 &1381859224
 Transform:
   m_ObjectHideFlags: 0

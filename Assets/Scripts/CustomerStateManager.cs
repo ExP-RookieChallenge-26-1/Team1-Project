@@ -11,36 +11,73 @@ public class CustomerStateManager : MonoBehaviour
     public Image emotionImage;
     public Image clothesImage;
     public Image hairImage;
+    public Image specialImage;
 
     [Header("Databases")]
     public CustomerStateDB stateDB;
+
+    private CustomerData currentCustomerData;
 
     private void Awake()
     {
         Inst = this;
     }
 
-    public void ShowCustomer(CustomerRuntimeState state)
+    public void ShowCustomer(CustomerData data, CustomerRuntimeState state)
     {
-        if (genderImage != null)
+        currentCustomerData = data;
+
+        if (data is SpecialCustomerData specialData)
+        {
+            if (specialImage != null && specialData.specialSprites.Length > 0)
+            {
+                specialImage.gameObject.SetActive(true);
+                specialImage.sprite = specialData.specialSprites[0];
+            }
+
+            if (genderImage != null) genderImage.gameObject.SetActive(false);
+            if (skinImage != null) skinImage.gameObject.SetActive(false);
+            if (clothesImage != null) clothesImage.gameObject.SetActive(false);
+            if (hairImage != null) hairImage.gameObject.SetActive(false);
+        }
+
+        else if (data is DefaultCustomerData)
+        {
+            if (specialImage != null) specialImage.gameObject.SetActive(false);
+
+            if (genderImage != null)
+                genderImage.gameObject.SetActive(true);
             genderImage.sprite = stateDB.genderSprites[(int)state.Gender];
 
-        if (skinImage != null)
-            skinImage.sprite = stateDB.skinSprites[(int)state.Skin];
+            if (skinImage != null)
+                skinImage.gameObject.SetActive(true);
+            genderImage.sprite = stateDB.skinSprites[(int)state.Skin];
 
-        if (clothesImage != null)
+            if (clothesImage != null)
+                clothesImage.gameObject.SetActive(true);
             clothesImage.sprite = stateDB.clothesSprites[(int)state.Clothes];
 
-        if (hairImage != null)
+            if (hairImage != null)
+                hairImage.gameObject.SetActive(true);
             hairImage.sprite = stateDB.hairSprites[(int)state.Hair];
 
-        gameObject.SetActive(true);
+            gameObject.SetActive(true);
+        }
     }
 
     // 평판에 따른 손님 감정 변화 UI
     public void UpdateEmotionUI(CustomerEmotion newEmotion)
     {
-        if (emotionImage != null)
+        if (emotionImage == null) return;
+
+        if (currentCustomerData is SpecialCustomerData specialData)
+        {
+            if (specialData.emotionSprites.Length > (int)newEmotion)
+            {
+                emotionImage.sprite = specialData.emotionSprites[(int)newEmotion];
+            }
+        }
+        else
         {
             emotionImage.sprite = stateDB.emotionSprites[(int)newEmotion];
         }

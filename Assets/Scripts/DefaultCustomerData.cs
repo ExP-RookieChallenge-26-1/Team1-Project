@@ -13,12 +13,30 @@ public class DefaultCustomerData : CustomerData
         state.Hair = (CustomerHair)Random.Range(0, 3);
     }
 
-    // 기본 손님 대사
     [TextArea] public string[] randomDialogues;
+    [TextArea] public string[] perfectDialogues;
+    [TextArea] public string[] incompleteDialogues;
+    [TextArea] public string[] wrongDialogues;
+
+    // 기본 손님 대사
     public override string GetDialogue()
     {
         if (randomDialogues != null && randomDialogues.Length > 0)
             return randomDialogues[Random.Range(0, randomDialogues.Length)];
         return "버거 주세요!";
+    }
+
+    // 평판에 따른 손님 대사
+    public override string GetReputationDialogue(ReputationResult result)
+    {
+        switch (result)
+        {
+            case ReputationResult.Perfect:
+                return "기쁨";
+            case ReputationResult.Wrong:
+                return "실망";
+            default:
+                return "기본";
+        }
     }
 }
