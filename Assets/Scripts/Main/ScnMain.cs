@@ -16,7 +16,7 @@ public class ScnMain : MonoBehaviour
     public Button submitBtn;
     public bool allStageEnded;
     
-    private CustomerData _currentCustomerData;
+    private CustomerRuntimeState _currentCustomerState;
     private bool _stageEnded;
     
     private void Awake()
@@ -40,9 +40,9 @@ public class ScnMain : MonoBehaviour
 
     }
 
-    private void GameEventsOnOnNewCustomerAppeared(CustomerData data)
+    private void GameEventsOnOnNewCustomerAppeared(CustomerRuntimeState customerState)
     {
-        _currentCustomerData = data;
+        _currentCustomerState = customerState;
     }
 
     private void Start()
@@ -64,15 +64,15 @@ public class ScnMain : MonoBehaviour
 
         dayText.text = $"Day {StageFlowManager.Inst.servedCount + 1} | Stage {StageFlowManager.Inst.currentStageIndex + 1}";
         yield return new WaitForSeconds(3);
-        if (!_currentCustomerData)
+        if (_currentCustomerState == null)
             yield break;
         
         PeopleManager.Inst.ShowPeople();
         yield return new WaitForSeconds(1);
-        string chat = $"[{_currentCustomerData.customerName}]\n안녕하세요!\n\n[버거 이름]을 주세요!";
+        string chat = $"[{_currentCustomerState.BaseData.CustomerName}]\n안녕하세요!\n\n[버거 이름]을 주세요!";
         PeopleManager.Inst.ShowChat(chat);
         yield return new WaitForSeconds(5);
-        PeopleManager.Inst.ShowHamburger(_currentCustomerData.Recipe);
+        PeopleManager.Inst.ShowHamburger(_currentCustomerState.BaseData.Recipe);
         yield return new WaitForSeconds(1.5f);
         tong.enableDrag = true;
         submitBtn.interactable = true;
@@ -94,14 +94,29 @@ public class ScnMain : MonoBehaviour
         GameManager.Inst.OnSubmitInput();
         StageFlowManager.Inst.OnBurgerSubmitted(data); 
         Debug.Log(_stageEnded);
+        CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
-        PeopleManager.Inst.ShowChat($"평판: {StageFlowManager.Inst.scoreCalculationSystem.currentReputation}");
+        PeopleManager.Inst.ShowChat($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
         yield return new WaitForSeconds(3);
         PeopleManager.Inst.HidePeople();
         yield return new WaitForSeconds(1);
         if (_stageEnded)
         {
-            EndScreen.Inst.ShowEndScreen(StageFlowManager.Inst.scoreCalculationSystem.currentReputation);
+            int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
+            StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
+            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation;
+
+            int maxScore = 0;
+            foreach (var customer in currentStage.CustomerPool)
+            {
+                maxScore += 30;
+
+                if (customer is SpecialCustomerData)
+                {
+                    maxScore += 15;
+                }
+            }
+            EndScreen.Inst.ShowEndScreen(myScore, maxScore);
         }
         else
         {

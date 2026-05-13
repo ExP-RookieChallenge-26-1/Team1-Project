@@ -1,33 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class StageFlowManager : MonoBehaviour
 {
     public static StageFlowManager Inst;
-    
     [SerializeField] private List<StageData> stages;
+    public IReadOnlyList<StageData> Stages => stages.AsReadOnly();
 
-    [HideInInspector] public CustomerQueueManager customerQueueManager;
-    [HideInInspector] public  ScoreCalculationSystem scoreCalculationSystem;
-    [HideInInspector] public IOrderEvaluator evaluator;
-
-    public int currentStageIndex = 0;  // 현재 스테이지 번호
-    public int servedCount = 0;    // 음식을 제작한 횟수
+    private CustomerQueueManager customerQueueManager;
+    public CustomerQueueManager CustomerQueueManager => customerQueueManager;
+    private ScoreCalculationSystem scoreCalculationSystem;
+    public ScoreCalculationSystem ScoreCalculationSystem => scoreCalculationSystem;
+    private IOrderEvaluator evaluator;
+    public int currentStageIndex { get; private set; } = 0;  // 현재 스테이지 번호
+    public int servedCount { get; private set; } = 0;    // 음식을 제작한 횟수
 
     private void Awake()
     {
-        Inst = this;
-        
         customerQueueManager = GetComponent<CustomerQueueManager>();
         scoreCalculationSystem = GetComponent<ScoreCalculationSystem>();
         evaluator = new RecipeChecker();
     }
 
-    private void Start() => LoadStage(currentStageIndex);
-
-    public void LoadStage(int index)
+    private void Start()
     {
-        Debug.Log($"ASD: {index}");
+        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedScore); ;
+        currentStageIndex = savedStage;
+        servedCount = savedServed;
+        scoreCalculationSystem.SetReputation(savedScore);
+
+        LoadStage(currentStageIndex);
+    }
+
+    private void LoadStage(int index)
+    {
         // index가 스테이지 수보다 많다면 종료
         if (index >= stages.Count)
         {
@@ -35,9 +42,8 @@ public class StageFlowManager : MonoBehaviour
             return;
         }
 
-        servedCount = 0;
-        customerQueueManager.PrepareQueue(stages[index].CustomerPool);
-
+        var remainingCustomers = stages[index].CustomerPool.Skip(servedCount).ToList();
+        customerQueueManager.PrepareQueue(remainingCustomers);
         GameEvents.TriggerStageChanged(stages[index].StageLevel);
 
         // 첫 번째 손님 호출
@@ -54,20 +60,29 @@ public class StageFlowManager : MonoBehaviour
         ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
 
         // 점수 계산
-        scoreCalculationSystem.AddReputation(result);
+        int bonus = currentCustomer.GetBonusScore(result);
+        scoreCalculationSystem.AddReputation(result, bonus);
+
+        CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
+        if (currentState != null)
+        {
+            currentState.UpdateEmotion(result);
+        }
+
         servedCount++;
+
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
 
         CheckStageProgress();
     }
-
     private void CheckStageProgress()
     {
         // 해당 스테이지에서 손님을 모두 받았다면 다음 스테이지로 넘어가기
         if (servedCount >= stages[currentStageIndex].TargetClearCount)
         {
             currentStageIndex++;
-            Debug.Log($"새로운 스테이지 인덱스: {currentStageIndex}");
             LoadStage(currentStageIndex);
+            AdvanceToNextStage();
         }
         else
         {
@@ -75,9 +90,16 @@ public class StageFlowManager : MonoBehaviour
             // 손님이 부족한 경우 예외 처리로 다음 스테이지로 넘어가기
             if (nextCustomer == null)
             {
-                currentStageIndex++;
-                LoadStage(currentStageIndex);
+                AdvanceToNextStage();
             }
         }
+    }
+
+    private void AdvanceToNextStage()
+    {
+        currentStageIndex++;
+        servedCount = 0;
+
+        LoadStage(currentStageIndex);
     }
 }

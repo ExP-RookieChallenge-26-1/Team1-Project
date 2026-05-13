@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1dbfe5a4d1251a459b454ef6281a079, type: 3}
+  m_Name: Stage2
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  stageLevel: 2
+  customerPool:
+  - {fileID: 11400000, guid: 7b3c4927d9b0b2b4798446f8fcf20c2a, type: 2}
+  - {fileID: 11400000, guid: 920d303230d585945bc5202aaafde6ba, type: 2}
+  - {fileID: 11400000, guid: b21002e84e87f124c83fddcbc8f0bbfd, type: 2}
+  - {fileID: 11400000, guid: d98d938b61540ae4297fdde5a76f618b, type: 2}
+  targetClearCount: 1
