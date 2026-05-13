@@ -216,6 +216,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48043495}
   m_CullTransparentMesh: 1
+--- !u!1 &89256102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89256103}
+  m_Layer: 5
+  m_Name: BoardUIRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &89256103
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89256102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1461744250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1170}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &171598711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,14 +2453,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb1f2e71b41de44db76fb41ca6c7668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VisualManager
-  ingredientPrefab: {fileID: 1566320613921455789, guid: 671eabe97369c9e43b782d7759442136, type: 3}
-  colorRawPatty: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  colorCookedPatty: {r: 0.4, g: 0.2, b: 0, a: 1}
-  colorCheese: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  colorOnion: {r: 1, g: 1, b: 1, a: 1}
-  colorLettuce: {r: 0, g: 1, b: 0, a: 1}
-  colorTomato: {r: 1, g: 0, b: 0, a: 1}
-  colorBurn: {r: 0.9137256, g: 0.5882353, b: 0.4784314, a: 1}
+  boardUIRoot: {fileID: 89256103}
+  previewUIRoot: {fileID: 0}
+  ingredientUIPrefab: {fileID: 7995081139570748125, guid: 70ea3a6350acd594f94b5f95fed4bfc5, type: 3}
+  cellSize: 110
+  previewStackOffset: 18
+  spriteFrozenPatty: {fileID: 0}
+  spriteBakedPatty: {fileID: 0}
+  spriteCheese: {fileID: 0}
+  spriteOnion: {fileID: 0}
+  spriteLettuce: {fileID: 0}
+  spriteTomato: {fileID: 0}
+  spriteBurn: {fileID: 0}
 --- !u!1 &1085382132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,6 +2894,7 @@ RectTransform:
   - {fileID: 1663890784}
   - {fileID: 2132948141}
   - {fileID: 390256977}
+  - {fileID: 89256103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3199,15 +3239,6 @@ MonoBehaviour:
   imgChatRect: {fileID: 1745044138}
   chatTxt: {fileID: 868059857}
   burgerContainer: {fileID: 2036951398}
-  materialSprites:
-  - {fileID: -4095121533239334879, guid: 7590992ced273604fbd13c02821df9d8, type: 3}
-  - {fileID: -4415990913136846025, guid: 357bc3f81fe7f0d47a2b1bb8e4955ecb, type: 3}
-  - {fileID: 6582011127417039112, guid: c2325b42fb98168499f4e4f22ddf6e16, type: 3}
-  - {fileID: 5465580561085644368, guid: 99181e4125431da41bd3acd812d5305d, type: 3}
-  - {fileID: -7523970955242101793, guid: f0e2a47d4677d434aa61159e3a75081e, type: 3}
-  - {fileID: -8113185096396602001, guid: 8561526d4cefb2f48b1c1e4f77bbf4e1, type: 3}
-  downBurn: {fileID: -2155852121259104947, guid: bb7abc5d7c915cb47b86f1021d2d268d, type: 3}
-  upBurn: {fileID: -2155852121259104947, guid: bb7abc5d7c915cb47b86f1021d2d268d, type: 3}
   materialImgPrefab: {fileID: -4289417930449893368, guid: 860d7bf0333a93941b72b9d4ee0c9fe4, type: 3}
 --- !u!1001 &1728213116
 PrefabInstance:
