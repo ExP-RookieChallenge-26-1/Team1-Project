@@ -5,6 +5,7 @@ using DG.Tweening;
 public class Tong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public MainBG mainBG;
+    public bool enableDrag;
     
     private RectTransform _rect;
     private Vector2 _startPos;
@@ -14,6 +15,12 @@ public class Tong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Awake()
     {
         _rect = GetComponent<RectTransform>();
+        _startPos = _rect.anchoredPosition;
+    }
+
+    public void ResetTongPos()
+    {
+        _rect.anchoredPosition = _startPos;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -25,6 +32,8 @@ public class Tong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(!enableDrag)
+            return;
         if (_isTweening) return;
 
         float newY = _rect.anchoredPosition.y + eventData.delta.y;

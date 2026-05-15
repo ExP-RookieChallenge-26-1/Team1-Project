@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91a07bc580ce964fa517422498e57b5, type: 3}
+  m_Name: Customer3
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerData
+  customerName: Customer3
+  recipe:
+  - {fileID: 11400000, guid: fd5f894d7e4ccb843b2a4b824f112163, type: 2}
+  - {fileID: 11400000, guid: 0a19159b2e279e44483833895b50e8bf, type: 2}
+  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
