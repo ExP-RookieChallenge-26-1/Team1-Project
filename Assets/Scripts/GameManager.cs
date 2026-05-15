@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
 
         if (StageFlowManager.Inst)
         {
-            var currentCustomer = StageFlowManager.Inst.customerQueueManager.GetCurrentCustomer();
+
+            var currentCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
             orderList = new();
             foreach (var data in currentCustomer.Recipe)
             {
@@ -132,7 +133,7 @@ public class GameManager : MonoBehaviour
         foreach (var ingredientType in bestBurger.stackedIngredients)
         {
             var data = new IngredientData();
-            data.ingredientType = ingredientType;
+            data.IngredientType = ingredientType;
             list.Add(data);
         }
 
@@ -231,7 +232,8 @@ public class GameManager : MonoBehaviour
             IngredientType nextMaterial = orderList[0];
 
             // 생성되는 패티는 항상 생패티 상태로 스폰
-            if (nextMaterial == IngredientType.BakedPatty) nextMaterial = IngredientType.FrozenPatty;
+
+            if (nextMaterial == IngredientType.CookedPatty) nextMaterial = IngredientType.RawPatty;
 
             BurgerTile targetTile = emptyTiles[randomIndex];
             targetTile.AddIngredient(nextMaterial);
@@ -240,9 +242,10 @@ public class GameManager : MonoBehaviour
             visualManager.DrawOrderList(orderList); 
 
             // 스폰된 위치가 그릴이라면 즉시 굽기 처리
-            if (targetTile.isGrill && targetTile.stackedIngredients[0] == IngredientType.BakedPatty)
+
+            if (targetTile.isGrill && targetTile.stackedIngredients[0] == IngredientType.RawPatty)
             {
-                targetTile.stackedIngredients[0] = IngredientType.BakedPatty;
+                targetTile.stackedIngredients[0] = IngredientType.CookedPatty;
             }
         }
     }
@@ -346,9 +349,9 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < gameBoard[x, 4].stackedIngredients.Count; i++)
                 {
-                    if (gameBoard[x, 4].stackedIngredients[i] == IngredientType.FrozenPatty)
+                    if (gameBoard[x, 4].stackedIngredients[i] == IngredientType.RawPatty)
                     {
-                        gameBoard[x, 4].stackedIngredients[i] = IngredientType.BakedPatty;
+                        gameBoard[x, 4].stackedIngredients[i] = IngredientType.CookedPatty;
                         didAnyMove = true; 
                     }
                 }

@@ -40,7 +40,7 @@ public class EndScreen : MonoBehaviour
         }
     }
 
-    public void ShowEndScreen(float score)
+    public void ShowEndScreen(float score, float maxScore)
     {
         endCanvas.SetActive(true);
         
@@ -59,7 +59,12 @@ public class EndScreen : MonoBehaviour
         {
             starFill.fillAmount = 0;
         }
-        
+
+        float ratio = maxScore > 0 ? score / maxScore : 0f;
+        ratio = Mathf.Clamp01(ratio);
+
+        float totalStarsToFill = ratio * starFills.Length;
+
         fadeBG.DOFade(0.9f, 0.5f).OnComplete(() =>
         {
             endTxt.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutElastic).OnComplete(() =>
@@ -77,7 +82,7 @@ public class EndScreen : MonoBehaviour
                         int index = i;
                         var star = starFills[index];
 
-                        float v = Mathf.Clamp01((score - index * 15f) / 15f);
+                        float v = Mathf.Clamp01(totalStarsToFill - index);
 
                         DOVirtual.Float(0, v, 0.3f, (x) =>
                             {

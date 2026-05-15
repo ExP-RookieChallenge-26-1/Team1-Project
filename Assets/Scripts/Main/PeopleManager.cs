@@ -16,6 +16,10 @@ public class PeopleManager : MonoBehaviour
     public RectTransform txtChatRect, imgChatRect;
     public TextMeshProUGUI chatTxt;
     public RectTransform burgerContainer;
+    
+    //MaterialType의 인덱스와 대응되게
+    public Sprite[] materialSprites;
+    public Sprite downBurn, upBurn;
 
     public MaterialItem materialImgPrefab;
     
@@ -97,11 +101,16 @@ public class PeopleManager : MonoBehaviour
         var upBurnMaterial = Instantiate(materialImgPrefab, burgerContainer);
         upBurnMaterial.Init(IngredientType.Burn);
 
+        //upBurnMaterial.sprite = upBurn;
+        
+
         var reverse = datas.Reverse();
         foreach (var data in reverse)
         {
             var newMaterial = Instantiate(materialImgPrefab, burgerContainer);
             newMaterial.Init(data.IngredientType);
+
+            //newMaterial.sprite = materialSprites[index];
         }
         
         var downBurnMaterial = Instantiate(materialImgPrefab, burgerContainer);

@@ -2,19 +2,22 @@ using UnityEngine;
 
 public enum IngredientType
 {
-    FrozenPatty = 0,
-    BakedPatty = 1,
+    Burn = 0,
+    RawPatty = -1,
+    CookedPatty = 1,
     Cheese = 2,
     Onion = 3,
     Lettuce = 4,
-    Tomato = 5,
-    Burn = 100
+    Tomato = 5
 }
 
 [CreateAssetMenu(fileName = "Ingredient", menuName = "Objects/Ingredient")]
 public class IngredientData : ScriptableObject
 {
-    [SerializeField] public IngredientType ingredientType; // Àç·á Á¾·ù
-    public IngredientType IngredientType => ingredientType;
-    [SerializeField] private string ingredientName; // Àç·á ÀÌ¸§
+    [SerializeField] private IngredientType ingredientType; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public IngredientType IngredientType
+    {
+        get => ingredientType; set => ingredientType = value;
+    }
+    [SerializeField] private string ingredientName; // ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 }

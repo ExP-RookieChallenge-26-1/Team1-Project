@@ -134,8 +134,9 @@ public class VisualManager : MonoBehaviour
     {
         switch (type)
         {
-            case IngredientType.FrozenPatty: return colorRawPatty;
-            case IngredientType.BakedPatty: return colorCookedPatty;
+
+            case IngredientType.RawPatty: return colorRawPatty;
+            case IngredientType.CookedPatty: return colorCookedPatty;
             case IngredientType.Cheese: return colorCheese;
             case IngredientType.Onion: return colorOnion;
             case IngredientType.Lettuce: return colorLettuce;
