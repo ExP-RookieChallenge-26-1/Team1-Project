@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/IngredientUI.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/IngredientUI.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai-context/context_build_report.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/context_build_report.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai-context/context_meta.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/context_meta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai-context/files_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/files_index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai-context/project_profile.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/project_profile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai-context/relations_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/relations_index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai-context/risk_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/risk_index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/Examples Assets/dotweenpro_logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/Examples Assets/dotweenpro_logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/1-1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/1-1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/CustomerStateDB.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/CustomerStateDB.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Cheese.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Cheese.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/CookedPatty.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/CookedPatty.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Lettuce.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Lettuce.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Onion.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Onion.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/RawPatty.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/RawPatty.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Tomato.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Tomato.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DefaultCustomerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DefaultCustomerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IngredientData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IngredientData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedTong.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedTong.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/PeopleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/PeopleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/ScnMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/ScnMain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreCalculationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreCalculationSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StageFlowManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StageFlowManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/2 L0NG H4M8UGER 기획서 (4).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/2 L0NG H4M8UGER 기획서 (4).png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Bell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Bell.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Bell.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Burn.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Burn.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Cheese.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Cheese.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/GameDraft.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/GameDraft.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/GrilledPatty.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/GrilledPatty.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/IntroDraft.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/IntroDraft.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Lettuce.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Lettuce.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Onion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Onion.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/RawPatty.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/RawPatty.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/SettingIcon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/SettingIcon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Tomato.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Tomato.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Tongs.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Tongs.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/seiji_souridaijin_nobg3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/seiji_souridaijin_nobg3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/CreditData.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/MainBG.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/Tong.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@11343a6274f3/Editor/TMP/TMP_BaseEditorPanel.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3D2MwW4ywXy9fwv8flXI8Wn1T5i" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging wooohju&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Build\Team1Project.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Coding\ExP\Rookie1\Merge\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Coding\ExP\Rookie1\Team1-Project -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Coding\ExP\Rookie1\Team1-Project" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Coding\ExP\Rookie1\Team1-Project -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Coding\ExP\Rookie1\Team1-Project" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="" />
+      <created>1777475952936</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777475952936</updated>
+      <workItem from="1777475952937" duration="2378000" />
+      <workItem from="1777535534731" duration="4000" />
+      <workItem from="1777535557123" duration="3879000" />
+      <workItem from="1777608951038" duration="7261000" />
+      <workItem from="1777793366724" duration="3427000" />
+      <workItem from="1777986211291" duration="2026000" />
+      <workItem from="1778899149916" duration="67000" />
+      <workItem from="1778900251486" duration="4931000" />
+      <workItem from="1778913086684" duration="3938000" />
+      <workItem from="1778917336557" duration="9249000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+</project>

@@ -5,6 +5,7 @@ public class ScoreCalculationSystem : MonoBehaviour
 
     private int currentReputation = 0;  // ���� ���� ����
     public int CurrentReputation => currentReputation;
+
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
     [SerializeField] private int wrongScore = -10;

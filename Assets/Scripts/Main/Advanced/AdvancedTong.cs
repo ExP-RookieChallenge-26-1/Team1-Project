@@ -14,6 +14,12 @@ public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _rect = GetComponent<RectTransform>();
         _startPos = _rect.anchoredPosition;
     }
+
+    public void ResetTong()
+    {
+        _rect.transform.localScale = Vector3.one;
+        _rect.anchoredPosition3D = _startPos;
+    }
     
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -21,6 +27,8 @@ public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     public void OnDrag(PointerEventData eventData)
     {
+        if(!AdvancedDialogue.Inst.isDialogEnd)
+            return;
         if (_isTweening) return;
         
         _rect.anchoredPosition = _rect.anchoredPosition3D.AddY(eventData.delta.y);
@@ -48,6 +56,8 @@ public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                     MainUIManager.Inst.OpenGameView();
                 });
             _rect.transform.DOScale(Vector3.zero, 0.3f).SetDelay(0.1f);
+            
+            AdvancedMain.Inst.OnEndDragTong();
         }
     }
 }

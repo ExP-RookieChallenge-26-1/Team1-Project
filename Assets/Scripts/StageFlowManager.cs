@@ -2,11 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-
 public class StageFlowManager : MonoBehaviour
 {
     public static StageFlowManager Inst;
-
     [SerializeField] private List<StageData> stages;
     public IReadOnlyList<StageData> Stages => stages.AsReadOnly();
 
@@ -20,11 +18,11 @@ public class StageFlowManager : MonoBehaviour
 
     private void Awake()
     {
+        Inst = this;
         customerQueueManager = GetComponent<CustomerQueueManager>();
         scoreCalculationSystem = GetComponent<ScoreCalculationSystem>();
         evaluator = new RecipeChecker();
     }
-
 
     private void Start()
     {
@@ -44,7 +42,7 @@ public class StageFlowManager : MonoBehaviour
             GameEvents.TriggerAllStagesCleared();
             return;
         }
-        
+
         var remainingCustomers = stages[index].CustomerPool.Skip(servedCount).ToList();
         customerQueueManager.PrepareQueue(remainingCustomers);
         GameEvents.TriggerStageChanged(stages[index].StageLevel);
@@ -53,17 +51,16 @@ public class StageFlowManager : MonoBehaviour
         customerQueueManager.GetNextCustomer();
     }
 
-    public void OnBurgerSubmitted(IReadOnlyList<IngredientData> playerBurger)
+    public ReputationResult OnBurgerSubmitted(IReadOnlyList<IngredientData> playerBurger)
     {
-        // ���� �� ���� ��������
+        // ���� ���� ���� ��������
         CustomerData currentCustomer = customerQueueManager.GetCurrentCustomer();
-        if (currentCustomer == null) return;
+        if (currentCustomer == null) return ReputationResult.Incomplete;
 
         // �� ��� ��������
         ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
 
         // ���� ���
-
         int bonus = currentCustomer.GetBonusScore(result);
         scoreCalculationSystem.AddReputation(result, bonus);
 
@@ -78,8 +75,8 @@ public class StageFlowManager : MonoBehaviour
         SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
 
         CheckStageProgress();
+        return result;
     }
-
     private void CheckStageProgress()
     {
         // �ش� ������������ �մ��� ��� �޾Ҵٸ� ���� ���������� �Ѿ��

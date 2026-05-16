@@ -15,9 +15,9 @@ public class ScnMain : MonoBehaviour
     public TextMeshProUGUI dayText;
     public Button submitBtn;
     public bool allStageEnded;
-    
 
     private CustomerRuntimeState _currentCustomerState;
+
 
     private bool _stageEnded;
     
@@ -41,12 +41,11 @@ public class ScnMain : MonoBehaviour
         _stageEnded = true;
 
     }
-
+    
 
     private void GameEventsOnOnNewCustomerAppeared(CustomerRuntimeState customerState)
     {
         _currentCustomerState = customerState;
-
     }
 
     private void Start()
@@ -66,7 +65,6 @@ public class ScnMain : MonoBehaviour
         submitBtn.interactable = false;
         tong.ResetTongPos();
 
-
         dayText.text = $"Day {StageFlowManager.Inst.servedCount + 1} | Stage {StageFlowManager.Inst.currentStageIndex + 1}";
         yield return new WaitForSeconds(3);
         if (_currentCustomerState == null)
@@ -75,10 +73,12 @@ public class ScnMain : MonoBehaviour
         PeopleManager.Inst.ShowPeople();
         yield return new WaitForSeconds(1);
 
+
         string chat = $"[{_currentCustomerState.BaseData.CustomerName}]\n안녕하세요!\n\n[버거 이름]을 주세요!";
         PeopleManager.Inst.ShowChat(chat);
         yield return new WaitForSeconds(5);
         PeopleManager.Inst.ShowHamburger(_currentCustomerState.BaseData.Recipe);
+
         yield return new WaitForSeconds(1.5f);
         tong.enableDrag = true;
         submitBtn.interactable = true;
@@ -101,9 +101,11 @@ public class ScnMain : MonoBehaviour
         StageFlowManager.Inst.OnBurgerSubmitted(data); 
         Debug.Log(_stageEnded);
 
+
         CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
         PeopleManager.Inst.ShowChat($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
+
 
         yield return new WaitForSeconds(3);
         PeopleManager.Inst.HidePeople();
@@ -126,6 +128,7 @@ public class ScnMain : MonoBehaviour
                 }
             }
             EndScreen.Inst.ShowEndScreen(myScore, maxScore);
+
         }
         else
         {

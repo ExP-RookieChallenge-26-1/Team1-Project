@@ -4,8 +4,10 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Customer", menuName = "Objects/Customer")]
 public abstract class CustomerData : ScriptableObject
 {
+
     [SerializeField] private string customerName;   // 손님 이름
     public string CustomerName => customerName;
+
     [SerializeField] private List<IngredientData> recipe;   // 주문한 메뉴
     public IReadOnlyList<IngredientData> Recipe => recipe.AsReadOnly();
 
@@ -23,7 +25,7 @@ public abstract class CustomerData : ScriptableObject
 
     public abstract string GetDialogue();
 
-    public abstract string GetReputationDialogue(ReputationResult result);
+    public abstract bool GetReputationDialogue(ReputationResult result, out string dialogue);
 
     public virtual void SetState(CustomerRuntimeState state) { }
 }

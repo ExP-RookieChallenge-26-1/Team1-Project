@@ -3,6 +3,7 @@ using UnityEngine;
 public enum IngredientType
 {
     Burn = 0,
+    TopBurn = 100,
     RawPatty = -1,
     CookedPatty = 1,
     Cheese = 2,
@@ -20,4 +21,5 @@ public class IngredientData : ScriptableObject
         get => ingredientType; set => ingredientType = value;
     }
     [SerializeField] private string ingredientName; // ��� �̸�
+
 }

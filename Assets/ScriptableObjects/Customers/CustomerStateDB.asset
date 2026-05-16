@@ -12,8 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb68db9e0ed536f46851c67a7520f6f1, type: 3}
   m_Name: CustomerStateDB
   m_EditorClassIdentifier: Assembly-CSharp::CustomerStateDB
-  genderSprites: []
-  skinSprites: []
-  emotionSprites: []
-  hairSprites: []
-  clothesSprites: []
+  genderSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  skinSprites:
+  - {fileID: 4061953906681916132, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+  - {fileID: -5436480842344572743, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+  - {fileID: 2336260406047093378, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+  - {fileID: -6022047713095679604, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+  emotionSprites:
+  - {fileID: -402063912365843581, guid: dafbb2c8a4d8d8747bdf8ac868b72152, type: 3}
+  - {fileID: -5326339328624165837, guid: dafbb2c8a4d8d8747bdf8ac868b72152, type: 3}
+  - {fileID: -1003728081765179237, guid: dafbb2c8a4d8d8747bdf8ac868b72152, type: 3}
+  hairSprites:
+  - {fileID: 5435969918008081698, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+  - {fileID: -602068282714178530, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+  - {fileID: -1730615155879624807, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+  clothesSprites:
+  - {fileID: 6300031214801545913, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
+  - {fileID: 5082219762713069878, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
+  - {fileID: -124687628379704350, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}

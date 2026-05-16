@@ -1,11 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CustomerStateManager : MonoBehaviour
 {
     public static CustomerStateManager Inst;
 
-    [Header("UI References")]
+    [Header("UI References")] 
+    public RectTransform customerRect;
     public Image genderImage;
     public Image skinImage;
     public Image emotionImage;
@@ -21,6 +24,11 @@ public class CustomerStateManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+    }
+
+    private void Start()
+    {
+        customerRect.gameObject.SetActive(false);
     }
 
     public void ShowCustomer(CustomerData data, CustomerRuntimeState state)
@@ -39,6 +47,7 @@ public class CustomerStateManager : MonoBehaviour
             if (skinImage != null) skinImage.gameObject.SetActive(false);
             if (clothesImage != null) clothesImage.gameObject.SetActive(false);
             if (hairImage != null) hairImage.gameObject.SetActive(false);
+            if (emotionImage != null) emotionImage.gameObject.SetActive(false);
         }
 
         else if (data is DefaultCustomerData)
@@ -46,30 +55,55 @@ public class CustomerStateManager : MonoBehaviour
             if (specialImage != null) specialImage.gameObject.SetActive(false);
 
             if (genderImage != null)
+            {
                 genderImage.gameObject.SetActive(true);
-            genderImage.sprite = stateDB.genderSprites[(int)state.Gender];
+                genderImage.sprite = stateDB.genderSprites[(int)state.Gender];    
+            }
+
 
             if (skinImage != null)
+            {
                 skinImage.gameObject.SetActive(true);
-            genderImage.sprite = stateDB.skinSprites[(int)state.Skin];
+                skinImage.sprite = stateDB.skinSprites[(int)state.Skin];
+            }
+
 
             if (clothesImage != null)
+            {
                 clothesImage.gameObject.SetActive(true);
-            clothesImage.sprite = stateDB.clothesSprites[(int)state.Clothes];
+                clothesImage.sprite = stateDB.clothesSprites[(int)state.Clothes];
+            }
+
 
             if (hairImage != null)
+            {
                 hairImage.gameObject.SetActive(true);
-            hairImage.sprite = stateDB.hairSprites[(int)state.Hair];
+                hairImage.sprite = stateDB.hairSprites[(int)state.Hair];
+            }
+                
 
             gameObject.SetActive(true);
         }
+
+        customerRect.GetComponent<CanvasGroup>().alpha = 1;
+        customerRect.gameObject.SetActive(true);
+        customerRect.transform.localScale = new Vector3(1, 0.8f, 1);
+        customerRect.anchoredPosition3D = customerRect.anchoredPosition3D.SetY(-680);
+        customerRect.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutBack);
+        customerRect.DOAnchorPos3DY(-89, 0.15f);
+    }
+
+    public void HideCustomer()
+    {
+        customerRect.GetComponent<CanvasGroup>().DOFade(0, 1f);
+        
     }
 
     // 평판에 따른 손님 감정 변화 UI
     public void UpdateEmotionUI(CustomerEmotion newEmotion)
     {
         if (emotionImage == null) return;
-
+        emotionImage.gameObject.SetActive(true);
         if (currentCustomerData is SpecialCustomerData specialData)
         {
             if (specialData.emotionSprites.Length > (int)newEmotion)

@@ -23,16 +23,19 @@ public class SpecialCustomerData : CustomerData
     }
 
     // ÆòÆÇ¿¡ µû¸¥ ¼Õ´Ô ´ë»ç
-    public override string GetReputationDialogue(ReputationResult result)
+    public override bool GetReputationDialogue(ReputationResult result, out string resultDialogue)
     {
         switch (result)
         {
             case ReputationResult.Perfect:
-                return "±â»Ý";
+                //return "±â»Ý";
+                return perfectDialogue.GetRandomTxt(out resultDialogue,"±â»Ý");
             case ReputationResult.Wrong:
-                return "½Ç¸Á";
+                //return "½Ç¸Á";
+                return wrongDialogue.GetRandomTxt(out resultDialogue,"½Ç¸Á");
             default:
-                return "±âº»";
+                //return "±âº»";
+                return incompleteDialogue.GetRandomTxt(out resultDialogue,"±âº»");
         }
     }
 

@@ -1,0 +1,14 @@
+using UnityEngine;
+using UnityEditor;
+
+public static class PlayerPrefsUtils
+{
+    [MenuItem("Tools/Clear PlayerPrefs")]
+    public static void ClearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        Debug.Log("PlayerPrefs cleared!");
+    }
+}

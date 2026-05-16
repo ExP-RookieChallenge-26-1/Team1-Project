@@ -2,6 +2,19 @@ using UnityEngine;
 
 public static class Utils
 {
+    public static bool GetRandomTxt(this string[] array, out string dialogue,  string defaultTxt = "")
+    {
+        if (array.Length == 0)
+        {
+            dialogue = defaultTxt;
+            return false;
+            
+        }
+
+        dialogue= array[Random.Range(0, array.Length)];
+        return true;
+    }
+    
     public static Color SetAlpha(this Color c, float a)
     {
         return new Color(c.r, c.g, c.b, a);
@@ -36,4 +49,5 @@ public static class Utils
     {
         return new Vector3(vec.x, vec.y, vec.z + z);
     }
+
 }
