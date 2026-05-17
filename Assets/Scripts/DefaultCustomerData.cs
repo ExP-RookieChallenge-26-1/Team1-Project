@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Analytics;
 
 [CreateAssetMenu(fileName = "DefaultCustomer", menuName = "Objects/Customer/Default")]
 public class DefaultCustomerData : CustomerData
 {
-    // ±âº» ¼Õ´Ô state
+    // ê¸°ë³¸ ì†ë‹˜ state
     public override void SetState(CustomerRuntimeState state)
     {
         state.Gender = (CustomerGender)Random.Range(0, 2);
@@ -18,28 +18,28 @@ public class DefaultCustomerData : CustomerData
     [TextArea] public string[] incompleteDialogues;
     [TextArea] public string[] wrongDialogues;
 
-    // ±âº» ¼Õ´Ô ´ë»ç
+    // ê¸°ë³¸ ì†ë‹˜ ëŒ€ì‚¬
     public override string GetDialogue()
     {
         if (randomDialogues != null && randomDialogues.Length > 0)
             return randomDialogues[Random.Range(0, randomDialogues.Length)];
-        return "¹ö°Å ÁÖ¼¼¿ä!";
+        return "ë²„ê±° ì£¼ì„¸ìš”!";
     }
 
-    // ÆòÆÇ¿¡ µû¸¥ ¼Õ´Ô ´ë»ç
+    // í‰íŒì— ë”°ë¥¸ ì†ë‹˜ ëŒ€ì‚¬
     public override bool GetReputationDialogue(ReputationResult result, out string resultDialogue)
     {
         switch (result)
         {
             case ReputationResult.Perfect:
-                //return "±â»İ";
-                return perfectDialogues.GetRandomTxt(out resultDialogue,"±â»İ");
+                //return "ê¸°ì¨";
+                return perfectDialogues.GetRandomTxt(out resultDialogue,"ê¸°ì¨");
             case ReputationResult.Wrong:
-                //return "½Ç¸Á";
-                return wrongDialogues.GetRandomTxt(out resultDialogue,"½Ç¸Á");
+                //return "ì‹¤ë§";
+                return wrongDialogues.GetRandomTxt(out resultDialogue,"ì‹¤ë§");
             default:
-                //return "±âº»";
-                return incompleteDialogues.GetRandomTxt(out resultDialogue,"±âº»");
+                //return "ê¸°ë³¸";
+                return incompleteDialogues.GetRandomTxt(out resultDialogue,"ê¸°ë³¸");
         }
     }
 }

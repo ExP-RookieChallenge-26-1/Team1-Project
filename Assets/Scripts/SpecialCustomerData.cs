@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [CreateAssetMenu(fileName = "SpecialCustomer", menuName = "Objects/Customer/Special")]
 
-// Æ¯¼ö ¼Õ´Ô state
+// íŠ¹ìˆ˜ ì†ë‹˜ state
 public class SpecialCustomerData : CustomerData
 {
     [TextArea]
@@ -16,33 +16,33 @@ public class SpecialCustomerData : CustomerData
     [Header("Emotion Sprites (Happy, Neutral, Angry)")]
     public Sprite[] emotionSprites;
 
-    // Æ¯¼ö ¼Õ´Ô ´ë»ç
+    // íŠ¹ìˆ˜ ì†ë‹˜ ëŒ€ì‚¬
     public override string GetDialogue()
     {
         return fixedDialogue;
     }
 
-    // ÆòÆÇ¿¡ µû¸¥ ¼Õ´Ô ´ë»ç
+    // í‰íŒì— ë”°ë¥¸ ì†ë‹˜ ëŒ€ì‚¬
     public override bool GetReputationDialogue(ReputationResult result, out string resultDialogue)
     {
         switch (result)
         {
             case ReputationResult.Perfect:
-                //return "±â»İ";
-                return perfectDialogue.GetRandomTxt(out resultDialogue,"±â»İ");
+                //return "ê¸°ì¨";
+                return perfectDialogue.GetRandomTxt(out resultDialogue,"ê¸°ì¨");
             case ReputationResult.Wrong:
-                //return "½Ç¸Á";
-                return wrongDialogue.GetRandomTxt(out resultDialogue,"½Ç¸Á");
+                //return "ì‹¤ë§";
+                return wrongDialogue.GetRandomTxt(out resultDialogue,"ì‹¤ë§");
             default:
-                //return "±âº»";
-                return incompleteDialogue.GetRandomTxt(out resultDialogue,"±âº»");
+                //return "ê¸°ë³¸";
+                return incompleteDialogue.GetRandomTxt(out resultDialogue,"ê¸°ë³¸");
         }
     }
 
-    // Æ¯¼ö ¼Õ´Ô º¸³Ê½º Á¡¼ö
+    // íŠ¹ìˆ˜ ì†ë‹˜ ë³´ë„ˆìŠ¤ ì ìˆ˜
     public override int GetBonusScore(ReputationResult result)
     {
-        // ÆòÆÇÀÌ Perfect È¤Àº Incomplete¶ó¸é bonus 15Á¡
+        // í‰íŒì´ Perfect í˜¹ì€ Incompleteë¼ë©´ bonus 15ì 
         if (result == ReputationResult.Perfect || result == ReputationResult.Incomplete) return 15;
         else return 0;
     }
