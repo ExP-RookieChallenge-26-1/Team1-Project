@@ -9,6 +9,12 @@ public class AdvancedIntro : MonoBehaviour
 {
     public NeonSignEffect neonSignEffect;
     public Image fadeImg;
+    public AudioSource bellAudio;
+
+    private void Awake()
+    {
+        neonSignEffect = GetComponent<NeonSignEffect>();
+    }
 
     public void OnClickOpen()
     {
@@ -19,12 +25,15 @@ public class AdvancedIntro : MonoBehaviour
     {
         neonSignEffect.Play();
         yield return new WaitForSeconds(2f);
-        fadeImg.DOFade(1, 0.6f).OnComplete(() =>
+
+        bellAudio.Play();
+
+        fadeImg.DOFade(1, 2.5f).OnComplete(() =>
         {
             GoToGameScene();
         });
     }
-    
+
     void GoToGameScene()
     {
         SceneManager.LoadScene("Main");

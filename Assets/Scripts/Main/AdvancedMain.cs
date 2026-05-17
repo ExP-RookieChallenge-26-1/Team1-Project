@@ -10,6 +10,7 @@ public class AdvancedMain : MonoBehaviour
 
     public AdvancedTong tong;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip;
+    public AudioSource bellAudio;
     public SpecialCustomer specialCustomer;
     public CanvasGroup previewInCounter;
     private CustomerRuntimeState _currentCustomerState;
@@ -28,6 +29,7 @@ public class AdvancedMain : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(bellAudioWait());
         StartFlow();
     }
 
@@ -166,5 +168,11 @@ public class AdvancedMain : MonoBehaviour
         {
             StartFlow();
         }
+    }
+
+    public IEnumerator bellAudioWait()
+    {
+        bellAudio.Play();
+        yield return new WaitForSeconds(2f);
     }
 }

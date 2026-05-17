@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class StageFlowManager : MonoBehaviour
 {
@@ -79,20 +80,22 @@ public class StageFlowManager : MonoBehaviour
     }
     private void CheckStageProgress()
     {
-        // �ش� ������������ �մ��� ��� �޾Ҵٸ� ���� ���������� �Ѿ��
-        if (servedCount >= stages[currentStageIndex].TargetClearCount)
         {
-            currentStageIndex++;
-            LoadStage(currentStageIndex);
-            AdvanceToNextStage();
-        }
-        else
-        {
-            CustomerData nextCustomer = customerQueueManager.GetNextCustomer();
-            // �մ��� ������ ��� ���� ó���� ���� ���������� �Ѿ��
-            if (nextCustomer == null)
+            // �ش� ������������ �մ��� ��� �޾Ҵٸ� ���� ���������� �Ѿ��
+            if (servedCount >= stages[currentStageIndex].TargetClearCount)
             {
+                currentStageIndex++;
+                LoadStage(currentStageIndex);
                 AdvanceToNextStage();
+            }
+            else
+            {
+                CustomerData nextCustomer = customerQueueManager.GetNextCustomer();
+                // �մ��� ������ ��� ���� ó���� ���� ���������� �Ѿ��
+                if (nextCustomer == null)
+                {
+                    AdvanceToNextStage();
+                }
             }
         }
     }

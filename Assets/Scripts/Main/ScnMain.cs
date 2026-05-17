@@ -135,6 +135,5 @@ public class ScnMain : MonoBehaviour
         {
             StartCoroutine(CorCustomerFlow());    
         }
-        
     }
 }

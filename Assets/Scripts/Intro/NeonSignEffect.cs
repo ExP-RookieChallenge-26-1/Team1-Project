@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class NeonSignEffect : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource neonAudio;
 
     [Header("Image")]
     public Image neonImage;
@@ -23,17 +23,18 @@ public class NeonSignEffect : MonoBehaviour
 
     private bool flashing = false;
     private float flashTimer = 0f;
+    public float FlashTimer => flashTimer;
 
     public float flashDuration = 0.1f;
 
     void Update()
     {
-        if (!audioSource.isPlaying)
+        if (!neonAudio.isPlaying)
             return;
 
         // 박자 체크
         if (currentIndex < beatTimes.Length &&
-            audioSource.time >= beatTimes[currentIndex])
+            neonAudio.time >= beatTimes[currentIndex])
         {
             Flash();
 
@@ -67,6 +68,6 @@ public class NeonSignEffect : MonoBehaviour
 
         neonImage.sprite = normalSprite;
 
-        audioSource.Play();
+        neonAudio.Play();
     }
 }
