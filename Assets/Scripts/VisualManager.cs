@@ -9,56 +9,56 @@ public class VisualManager : MonoBehaviour
     public static VisualManager Inst;
 
     [Header("UI Roots")]
-    [Tooltip("4x5 조리판 위에 생성되는 재료 UI들의 기준 위치")]
+    [Tooltip("Board root for spawned ingredient UI")]
     public RectTransform boardUIRoot;
 
-    [Tooltip("오른쪽 위 프리뷰에 생성되는 재료 UI들의 기준 위치")]
+    [Tooltip("Preview root for burger preview UI")]
     public RectTransform previewUIRoot;
 
     [Header("UI Prefab")]
-    [Tooltip("재료 하나를 표시할 UI 프리팹. Image 컴포넌트와 StackText 자식이 있어야 함")]
+    [Tooltip("Ingredient UI prefab with Image and stack text")]
     public GameObject ingredientUIPrefab;
 
     [Header("Board UI Settings")]
-    [Tooltip("조리판 한 칸 사이의 UI 간격")]
+    [Tooltip("Board cell size and spacing")]
     public float cellSize = 110f;
 
     public Vector2 cellStartPos, cellSpacing;
 
     [Header("Preview UI Settings")]
-    [Tooltip("프리뷰에서 재료가 위로 쌓여 보이는 간격")]
+    [Tooltip("Vertical offset between preview ingredients")]
     public float previewStackOffset = 18f;
 
     [Header("Animation Settings")]
-    [Tooltip("재료가 한 칸 이동하는 데 걸리는 시간")]
+    [Tooltip("Duration for ingredient movement animation")]
     public float moveDuration = 0.12f;
 
-    [Tooltip("합쳐질 때 살짝 커지는 크기")]
+    [Tooltip("Scale used for merge pop effect")]
     public float popScale = 1.15f;
 
-    [Tooltip("합쳐질 때 팝 연출 시간")]
+    [Tooltip("Duration for merge pop effect")]
     public float popDuration = 0.08f;
 
     [Header("Ingredient Sprites")]
-    [Tooltip("생패티 이미지")]
+    [Tooltip("Frozen patty sprite")]
     public Sprite spriteFrozenPatty;
 
-    [Tooltip("구운 패티 이미지")]
+    [Tooltip("Cooked patty sprite")]
     public Sprite spriteBakedPatty;
 
-    [Tooltip("치즈 이미지")]
+    [Tooltip("Cheese sprite")]
     public Sprite spriteCheese;
 
-    [Tooltip("양파 이미지")]
+    [Tooltip("Onion sprite")]
     public Sprite spriteOnion;
 
-    [Tooltip("양상추 이미지")]
+    [Tooltip("Lettuce sprite")]
     public Sprite spriteLettuce;
 
-    [Tooltip("토마토 이미지")]
+    [Tooltip("Tomato sprite")]
     public Sprite spriteTomato;
 
-    [Tooltip("탄 재료 이미지")]
+    [Tooltip("Burnt ingredient sprite")]
     public Sprite spriteBurn;
 
     private readonly List<GameObject> activeVisuals = new List<GameObject>();
@@ -72,20 +72,20 @@ public class VisualManager : MonoBehaviour
         Inst = this;
     }
 
-    // 기존 GameManager.Start()에서 호출하고 있어서 남겨둔 함수
-    // 현재 Canvas UI 방식에서는 카메라 배경색을 직접 바꾸지 않는다.
+    // 湲곗〈 GameManager.Start()?먯꽌 ?몄텧?섍퀬 ?덉뼱???④꺼???⑥닔
+    // ?꾩옱 Canvas UI 諛⑹떇?먯꽌??移대찓??諛곌꼍?됱쓣 吏곸젒 諛붽씀吏 ?딅뒗??
     public void SetBackgroundColor()
     {
     }
 
-    // 기존 GameManager.Start()에서 호출하고 있어서 남겨둔 함수
-    // 조리판 배경은 Canvas에 배치된 UI 이미지가 담당한다고 가정한다.
+    // 湲곗〈 GameManager.Start()?먯꽌 ?몄텧?섍퀬 ?덉뼱???④꺼???⑥닔
+    // 議곕━??諛곌꼍? Canvas??諛곗튂??UI ?대?吏媛 ?대떦?쒕떎怨?媛?뺥븳??
     public void DrawBackgroundGrid()
     {
     }
 
-    // 현재 4x5 gameBoard 상태를 Canvas UI에 다시 그리는 함수
-    // 각 칸마다 TileRoot를 만들고, 그 아래에 재료 UI들을 겹쳐서 배치한다.
+    // ?꾩옱 4x5 gameBoard ?곹깭瑜?Canvas UI???ㅼ떆 洹몃━???⑥닔
+    // 媛?移몃쭏??TileRoot瑜?留뚮뱾怨? 洹??꾨옒???щ즺 UI?ㅼ쓣 寃뱀퀜??諛곗튂?쒕떎.
     public void UpdateVisuals(BurgerTile[,] gameBoard)
     {
         ClearVisualList(activeVisuals);
@@ -93,7 +93,7 @@ public class VisualManager : MonoBehaviour
 
         if (boardUIRoot == null || ingredientUIPrefab == null)
         {
-            Debug.LogWarning("VisualManager: BoardUIRoot 또는 IngredientUIPrefab이 연결되지 않았습니다.");
+            Debug.LogWarning("VisualManager: BoardUIRoot ?먮뒗 IngredientUIPrefab???곌껐?섏? ?딆븯?듬땲??");
             return;
         }
 
@@ -112,7 +112,7 @@ public class VisualManager : MonoBehaviour
                 RectTransform tileRoot = CreateTileRoot(boardPos);
                 activeTileRoots[boardPos] = tileRoot;
 
-                // 한 칸에 쌓인 재료들을 같은 위치에 겹쳐서 생성한다.
+                // ??移몄뿉 ?볦씤 ?щ즺?ㅼ쓣 媛숈? ?꾩튂??寃뱀퀜???앹꽦?쒕떎.
                 for (int i = 0; i < stack.Count; i++)
                 {
                     GameObject newObj = Instantiate(ingredientUIPrefab, tileRoot);
@@ -126,7 +126,7 @@ public class VisualManager : MonoBehaviour
 
                     SetIngredientImage(newObj, stack[i]);
 
-                    // 가장 위에 보이는 재료에만 스택 개수를 표시한다.
+                    // 媛???꾩뿉 蹂댁씠???щ즺?먮쭔 ?ㅽ깮 媛쒖닔瑜??쒖떆?쒕떎.
                     SetStackText(newObj, i == stack.Count - 1 ? stack.Count.ToString() : "");
 
                     newObj.transform.SetAsLastSibling();
@@ -135,7 +135,7 @@ public class VisualManager : MonoBehaviour
         }
     }
 
-    // 현재 제출될 버거 덩어리를 오른쪽 위 프리뷰 UI에 보여주는 함수
+    // ?꾩옱 ?쒖텧??踰꾧굅 ?⑹뼱由щ? ?ㅻⅨ履????꾨━酉?UI??蹂댁뿬二쇰뒗 ?⑥닔
     public void DrawPreview(BurgerTile bestBurger)
     {
         ClearVisualList(previewVisuals);
@@ -150,7 +150,12 @@ public class VisualManager : MonoBehaviour
             return;
         }
 
-        List<IngredientType> stack = bestBurger.stackedIngredients;
+        List<IngredientType> stack = new List<IngredientType>(bestBurger.stackedIngredients);
+        stack.Insert(0, IngredientType.Burn);
+        stack.Add(IngredientType.TopBurn);
+        SideBurgerRenderer.Inst.BuildBurger(stack, previewUIRoot);
+        previewUIRoot.GetComponent<CanvasGroup>().alpha = 0.7f;
+        return;
 
         for (int i = 0; i < stack.Count; i++)
         {
@@ -161,30 +166,30 @@ public class VisualManager : MonoBehaviour
 
             if (rect != null)
             {
-                // 프리뷰는 재료 순서를 보기 쉽도록 살짝 위로 쌓아서 보여준다.
+                // ?꾨━酉곕뒗 ?щ즺 ?쒖꽌瑜?蹂닿린 ?쎈룄濡??댁쭩 ?꾨줈 ?볦븘??蹂댁뿬以??
                 rect.anchoredPosition = new Vector2(0f, i * previewStackOffset);
                 rect.localScale = Vector3.one;
             }
 
             SetIngredientImage(newObj, stack[i]);
 
-            // 프리뷰도 가장 위 재료에만 전체 스택 개수를 표시한다.
+            // ?꾨━酉곕룄 媛?????щ즺?먮쭔 ?꾩껜 ?ㅽ깮 媛쒖닔瑜??쒖떆?쒕떎.
             SetStackText(newObj, i == stack.Count - 1 ? stack.Count.ToString() : "");
 
             newObj.transform.SetAsLastSibling();
         }
     }
 
-    // 조리탭 왼쪽에 남은 재료 목록을 표시하던 함수
-    // 기획 변경으로 이제 남은 재료 목록은 표시하지 않는다.
+    // 議곕━???쇱そ???⑥? ?щ즺 紐⑸줉???쒖떆?섎뜕 ?⑥닔
+    // 湲고쉷 蹂寃쎌쑝濡??댁젣 ?⑥? ?щ즺 紐⑸줉? ?쒖떆?섏? ?딅뒗??
     public void DrawOrderList(List<IngredientType> orderList)
     {
         ClearVisualList(orderVisuals);
 
-        // 남은 재료 목록 UI는 더 이상 표시하지 않음
+        // ?⑥? ?щ즺 紐⑸줉 UI?????댁긽 ?쒖떆?섏? ?딆쓬
     }
 
-    // 보드 좌표를 UI 좌표로 바꾼다.
+    // 蹂대뱶 醫뚰몴瑜?UI 醫뚰몴濡?諛붽씔??
     private Vector2 BoardToUIPosition(Vector2Int boardPos)
     {
         float posX = cellStartPos.x +boardPos.x * (cellSize + cellSpacing.x);
@@ -193,7 +198,7 @@ public class VisualManager : MonoBehaviour
         return new Vector2(posX, posY);
     }
 
-    // 특정 보드 칸에 해당하는 UI 묶음 오브젝트를 만든다.
+    // ?뱀젙 蹂대뱶 移몄뿉 ?대떦?섎뒗 UI 臾띠쓬 ?ㅻ툕?앺듃瑜?留뚮뱺??
     private RectTransform CreateTileRoot(Vector2Int boardPos)
     {
         GameObject rootObj = new GameObject($"TileRoot_{boardPos.x}_{boardPos.y}", typeof(RectTransform));
@@ -208,7 +213,7 @@ public class VisualManager : MonoBehaviour
         return rect;
     }
 
-    // GameManager에서 넘겨준 이동 기록대로 실제 UI를 출발 칸에서 도착 칸까지 움직인다.
+    // GameManager?먯꽌 ?섍꺼以 ?대룞 湲곕줉?濡??ㅼ젣 UI瑜?異쒕컻 移몄뿉???꾩갑 移멸퉴吏 ?吏곸씤??
     public IEnumerator PlayMoveAnimation(List<GameManager.TileMoveRecord> records)
     {
         if (records == null || records.Count == 0)
@@ -216,43 +221,110 @@ public class VisualManager : MonoBehaviour
             yield break;
         }
 
+        int maxStep = 0;
         foreach (GameManager.TileMoveRecord record in records)
         {
-            if (!activeTileRoots.TryGetValue(record.from, out RectTransform movingRoot))
+            if (record.step > maxStep)
             {
-                continue;
+                maxStep = record.step;
+            }
+        }
+        SFXPlayer.Instance.Play(AdvancedMain.Inst.swipeClip);
+        for (int step = 0; step <= maxStep; step++)
+        {
+            List<GameManager.TileMoveRecord> stepRecords = records.FindAll(record => record.step == step);
+            List<GameManager.TileMoveRecord> animatedRecords = new List<GameManager.TileMoveRecord>();
+            List<RectTransform> movingRoots = new List<RectTransform>();
+            List<Vector2> targetPositions = new List<Vector2>();
+
+            foreach (GameManager.TileMoveRecord record in stepRecords)
+            {
+                if (!activeTileRoots.TryGetValue(record.from, out RectTransform movingRoot))
+                {
+                    continue;
+                }
+
+                animatedRecords.Add(record);
+                movingRoots.Add(movingRoot);
+                targetPositions.Add(BoardToUIPosition(record.to));
             }
 
-            Vector2 targetPos = BoardToUIPosition(record.to);
-
-            yield return StartCoroutine(MoveToPosition(movingRoot, targetPos, moveDuration));
-
-            if (record.merged)
+            if (movingRoots.Count > 0)
             {
-                // 병합된 경우: 움직인 쪽은 사라지고, 도착 칸 쪽이 팝 연출을 한다.
+                yield return StartCoroutine(MoveBatch(movingRoots, targetPositions, moveDuration));
+            }
+
+            List<RectTransform> popTargets = new List<RectTransform>();
+
+            for (int i = 0; i < animatedRecords.Count; i++)
+            {
+                GameManager.TileMoveRecord record = animatedRecords[i];
+                RectTransform movingRoot = movingRoots[i];
+
                 activeTileRoots.Remove(record.from);
 
-                if (activeTileRoots.TryGetValue(record.to, out RectTransform targetRoot) && targetRoot != movingRoot)
+                if (record.merged)
                 {
-                    Destroy(movingRoot.gameObject);
-                    yield return StartCoroutine(PopEffect(targetRoot));
+                    SFXPlayer.Instance.Play(AdvancedMain.Inst.mergeClip);
+                    if (activeTileRoots.TryGetValue(record.to, out RectTransform targetRoot) && targetRoot != movingRoot)
+                    {
+                        Destroy(movingRoot.gameObject);
+                        if (!popTargets.Contains(targetRoot))
+                        {
+                            popTargets.Add(targetRoot);
+                        }
+                    }
+                    else
+                    {
+                        activeTileRoots[record.to] = movingRoot;
+                        if (!popTargets.Contains(movingRoot))
+                        {
+                            popTargets.Add(movingRoot);
+                        }
+                    }
                 }
                 else
                 {
                     activeTileRoots[record.to] = movingRoot;
-                    yield return StartCoroutine(PopEffect(movingRoot));
                 }
             }
-            else
+
+            foreach (RectTransform popTarget in popTargets)
             {
-                // 단순 이동인 경우: 위치 기록만 갱신한다.
-                activeTileRoots.Remove(record.from);
-                activeTileRoots[record.to] = movingRoot;
+                yield return StartCoroutine(PopEffect(popTarget));
             }
         }
     }
 
-    // UI 오브젝트를 현재 위치에서 목표 위치까지 부드럽게 이동시킨다.
+    private IEnumerator MoveBatch(List<RectTransform> rects, List<Vector2> targetPositions, float duration)
+    {
+        List<Vector2> startPositions = new List<Vector2>(rects.Count);
+        for (int i = 0; i < rects.Count; i++)
+        {
+            startPositions.Add(rects[i].anchoredPosition);
+        }
+
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(time / duration));
+
+            for (int i = 0; i < rects.Count; i++)
+            {
+                rects[i].anchoredPosition = Vector2.Lerp(startPositions[i], targetPositions[i], t);
+            }
+
+            yield return null;
+        }
+
+        for (int i = 0; i < rects.Count; i++)
+        {
+            rects[i].anchoredPosition = targetPositions[i];
+        }
+    }
+
+    // UI ?ㅻ툕?앺듃瑜??꾩옱 ?꾩튂?먯꽌 紐⑺몴 ?꾩튂源뚯? 遺?쒕읇寃??대룞?쒗궓??
     private IEnumerator MoveToPosition(RectTransform rect, Vector2 targetPos, float duration)
     {
         Vector2 startPos = rect.anchoredPosition;
@@ -261,7 +333,7 @@ public class VisualManager : MonoBehaviour
         while (time < duration)
         {
             time += Time.deltaTime;
-            float t = Mathf.Clamp01(time / duration);
+            float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(time / duration));
 
             rect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
 
@@ -271,7 +343,7 @@ public class VisualManager : MonoBehaviour
         rect.anchoredPosition = targetPos;
     }
 
-    // 합쳐진 재료 덩어리가 살짝 커졌다가 원래 크기로 돌아오는 연출
+    // ?⑹퀜吏??щ즺 ?⑹뼱由ш? ?댁쭩 而ㅼ죱?ㅺ? ?먮옒 ?ш린濡??뚯븘?ㅻ뒗 ?곗텧
     private IEnumerator PopEffect(RectTransform rect)
     {
         Vector3 originalScale = Vector3.one;
@@ -304,7 +376,7 @@ public class VisualManager : MonoBehaviour
         rect.localScale = originalScale;
     }
 
-    // 생성된 UI 오브젝트들을 삭제하고 리스트를 비운다.
+    // ?앹꽦??UI ?ㅻ툕?앺듃?ㅼ쓣 ??젣?섍퀬 由ъ뒪?몃? 鍮꾩슫??
     private void ClearVisualList(List<GameObject> visuals)
     {
         foreach (GameObject obj in visuals)
@@ -318,14 +390,14 @@ public class VisualManager : MonoBehaviour
         visuals.Clear();
     }
 
-    // 재료 UI 오브젝트의 Image에 재료 종류에 맞는 Sprite를 넣는다.
+    // ?щ즺 UI ?ㅻ툕?앺듃??Image???щ즺 醫낅쪟??留욌뒗 Sprite瑜??ｋ뒗??
     public void SetIngredientImage(GameObject targetObj, IngredientType type)
     {
         Image image = targetObj.GetComponent<Image>();
 
         if (image == null)
         {
-            Debug.LogWarning("VisualManager: IngredientUI 프리팹에 Image 컴포넌트가 없습니다.");
+            Debug.LogWarning("VisualManager: IngredientUI ?꾨━?뱀뿉 Image 而댄룷?뚰듃媛 ?놁뒿?덈떎.");
             return;
         }
 
@@ -334,7 +406,7 @@ public class VisualManager : MonoBehaviour
         image.preserveAspect = true;
     }
 
-    // 재료 UI 오브젝트 안의 StackText에 스택 개수를 표시한다.
+    // ?щ즺 UI ?ㅻ툕?앺듃 ?덉쓽 StackText???ㅽ깮 媛쒖닔瑜??쒖떆?쒕떎.
     private void SetStackText(GameObject targetObj, string text)
     {
         TMP_Text stackText = targetObj.GetComponentInChildren<TMP_Text>();
@@ -345,8 +417,8 @@ public class VisualManager : MonoBehaviour
         }
     }
 
-    // 재료 종류에 맞는 Sprite를 반환한다.
-    private Sprite GetIngredientSprite(IngredientType type)
+    // ?щ즺 醫낅쪟??留욌뒗 Sprite瑜?諛섑솚?쒕떎.
+    public Sprite GetIngredientSprite(IngredientType type)
     {
         switch (type)
         {
@@ -376,8 +448,8 @@ public class VisualManager : MonoBehaviour
         }
     }
 
-    // 기존 다른 스크립트와의 호환을 위해 남겨둔 함수
-    // MaterialItem 등에서 재료 타입별 색상이 필요할 때 사용한다.
+    // 湲곗〈 ?ㅻⅨ ?ㅽ겕由쏀듃????명솚???꾪빐 ?④꺼???⑥닔
+    // MaterialItem ?깆뿉???щ즺 ??낅퀎 ?됱긽???꾩슂?????ъ슜?쒕떎.
     public Color GetIngredientColor(IngredientType type)
     {
         switch (type)

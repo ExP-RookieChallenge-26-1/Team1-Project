@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class AdvancedMain : MonoBehaviour
@@ -8,9 +9,12 @@ public class AdvancedMain : MonoBehaviour
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
-    
+    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip;
+    public SpecialCustomer specialCustomer;
+    public CanvasGroup previewInCounter;
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
+    public bool enableSubmit;
     private bool _stageEnded;
 
     private void Awake()
@@ -49,6 +53,7 @@ public class AdvancedMain : MonoBehaviour
     //손님 등장 ~ 뒤집개 드래그 전까지
     IEnumerator CorStartGame()
     {
+        enableSubmit = false;
         tong.ResetTong();
         yield return new WaitForSeconds(1);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
@@ -57,31 +62,59 @@ public class AdvancedMain : MonoBehaviour
         var texts = current.GetDialogue().Split('\n');
         AdvancedDialogue.Inst.SetTexts(texts);
         List<IngredientType> types = new();
+        
         foreach (var t in current.Recipe)
         {
             types.Add(t.IngredientType);
         }
         AdvancedDialogue.Inst.SetPreview(types);
         
-        AdvancedDialogue.Inst.ShowNextDialogue();
+        if (current.CustomerName == "Kid")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            specialCustomer.StartAnimation();
+
+            var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
+            chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(198);
+            
+            var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
+            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(341);
+        }
+        else
+        {
+            AdvancedDialogue.Inst.ShowNextDialogue();    
+            var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
+            chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(574);
+            
+            var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
+            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(825);
+        }
+        
     }
 
     //뒤집개 드래그했을때
     public void OnEndDragTong()
     {
+        enableSubmit = true;
+        SFXPlayer.Instance.Play(unplugTongClip);
         GameManager.Inst.StartGame();
     }
     
     //제출 버튼
     public void OnClickSubmit()
     {
+        if(!enableSubmit)
+            return;
+        SFXPlayer.Instance.Play(bellClip);
         StartCoroutine(CorSubmitBurger());
+        enableSubmit = false;
     }
 
     IEnumerator CorSubmitBurger()
     {
         _stageEnded = false;
         MainUIManager.Inst.CloseGameView();
+        previewInCounter.DOFade(1, 0.5f);
         yield return new WaitForSeconds(2);
         var data = GameManager.Inst.GetBestBurgerData();
         GameManager.Inst.OnSubmitInput();

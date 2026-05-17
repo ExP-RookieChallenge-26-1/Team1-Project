@@ -53,8 +53,9 @@ public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 .OnComplete(() =>
                 {
                     _isTweening = false;
-                    MainUIManager.Inst.OpenGameView();
+                    
                 });
+            MainUIManager.Inst.OpenGameView();
             _rect.transform.DOScale(Vector3.zero, 0.3f).SetDelay(0.1f);
             
             AdvancedMain.Inst.OnEndDragTong();

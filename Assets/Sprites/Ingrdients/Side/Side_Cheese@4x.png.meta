@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,12 +116,12 @@ TextureImporter:
       name: Side_Cheese@4x_0
       rect:
         serializedVersion: 2
-        x: 79
-        y: 1
+        x: 76
+        y: 32
         width: 1244
-        height: 160
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 16a843935a775c646884c82f713a1bf5
     internalID: 0
     vertices: []
     indices: 

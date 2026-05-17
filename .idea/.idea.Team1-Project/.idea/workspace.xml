@@ -5,60 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/IngredientUI.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/IngredientUI.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ai-context/context_build_report.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/context_build_report.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ai-context/context_meta.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/context_meta.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ai-context/files_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/files_index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ai-context/project_profile.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/project_profile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ai-context/relations_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/relations_index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ai-context/risk_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/.ai-context/risk_index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/Examples Assets/dotweenpro_logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/Examples Assets/dotweenpro_logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/PausedController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/PausedController.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/1-1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/1-1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/CustomerStateDB.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/CustomerStateDB.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Cheese.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Cheese.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/CookedPatty.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/CookedPatty.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Lettuce.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Lettuce.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Onion.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Onion.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/RawPatty.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/RawPatty.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Tomato.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Ingredients/Tomato.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DefaultCustomerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DefaultCustomerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IngredientData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/IngredientData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedCustomer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedCustomer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedTong.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedTong.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/PeopleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/PeopleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/ScnMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/ScnMain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreCalculationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreCalculationSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StageFlowManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StageFlowManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/2 L0NG H4M8UGER 기획서 (4).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/2 L0NG H4M8UGER 기획서 (4).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Bell.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Bell.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Bell.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Burn.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Burn.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Cheese.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Cheese.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/GameDraft.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/GameDraft.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/GrilledPatty.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/GrilledPatty.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/IntroDraft.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/IntroDraft.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Lettuce.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Lettuce.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Onion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Onion.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/RawPatty.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/RawPatty.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/SettingIcon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/SettingIcon.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Tomato.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Tomato.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/Tongs.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/Tongs.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Test/seiji_souridaijin_nobg3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Test/seiji_souridaijin_nobg3.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/Counter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/Counter.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/CounterBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/CounterBG.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Props/2 L0NG H4M8UGER 기획서 (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Props/2 L0NG H4M8UGER 기획서 (2).png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,12 +53,16 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Resources/CreditData.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Intro/AdvancedIntro.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Intro/NeonSignEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedCustomer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/MainBG.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/Tong.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SideBurgetRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialCustomer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@11343a6274f3/Editor/TMP/TMP_BaseEditorPanel.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -95,7 +81,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging wooohju&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;wooohju&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -169,7 +155,9 @@
       <workItem from="1778899149916" duration="67000" />
       <workItem from="1778900251486" duration="4931000" />
       <workItem from="1778913086684" duration="3938000" />
-      <workItem from="1778917336557" duration="9249000" />
+      <workItem from="1778917336557" duration="9467000" />
+      <workItem from="1779001024622" duration="3100000" />
+      <workItem from="1779005236004" duration="8617000" />
     </task>
     <servers />
   </component>

@@ -15,7 +15,8 @@ public class ScnMain : MonoBehaviour
     public TextMeshProUGUI dayText;
     public Button submitBtn;
     public bool allStageEnded;
-
+    
+    
     private CustomerRuntimeState _currentCustomerState;
 
 
@@ -87,11 +88,11 @@ public class ScnMain : MonoBehaviour
     //제출 버튼눌렀을떄
     public void SubmitBurger()
     {
-        StartCoroutine(CorSubmitBurger());
+        if(!AdvancedDialogue.Inst.isDialogEnd)
+            return;StartCoroutine(CorSubmitBurger());
     }
 
-    IEnumerator CorSubmitBurger()
-    {
+    IEnumerator CorSubmitBurger() {
         _stageEnded = false;
         mainBG.rect.DOAnchorPos3D(Vector3.zero, 1f);
         yield return new WaitForSeconds(1);

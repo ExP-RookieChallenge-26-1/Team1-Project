@@ -37,7 +37,7 @@ public class AdvancedDialogue : MonoBehaviour
     public RectTransform previewRect;
     public GameObject ingredientUIPrefab;
 
-    public bool isDialogEnd;
+    public bool isDialogEnd, blockDialogInput;
     public float previewStackOffset = 18;
     
     [Header("Ingredient Sprites")]
@@ -80,6 +80,9 @@ public class AdvancedDialogue : MonoBehaviour
     {
         if (_isDialoging)
         {
+            if(blockDialogInput)
+                return;
+            
             if (Keyboard.current.anyKey.wasPressedThisFrame)
             {
                 if (_dialogueIndex + 1> _dialogues.Count)
@@ -163,30 +166,10 @@ public class AdvancedDialogue : MonoBehaviour
         {
             Destroy(obj);
         }
-        stack.Insert(0, IngredientType.TopBurn);
-        stack.Add(IngredientType.Burn);
-        for (int i = 0; i < stack.Count; i++)
-        {
-            GameObject newObj = Instantiate(ingredientUIPrefab, previewRect);
-            //previewVisuals.Add(newObj);
-            chatIngredients.Add(newObj);
 
-            RectTransform rect = newObj.GetComponent<RectTransform>();
-
-            if (rect != null)
-            {
-                // 프리뷰는 재료 순서를 보기 쉽도록 살짝 위로 쌓아서 보여준다.
-                rect.anchoredPosition = new Vector2(0f, i * previewStackOffset);
-                rect.localScale = Vector3.one;
-            }
-
-            SetIngredientImage(newObj, stack[i]);
-
-            // 프리뷰도 가장 위 재료에만 전체 스택 개수를 표시한다.
-            //SetStackText(newObj, i == stack.Count - 1 ? stack.Count.ToString() : "");
-
-            newObj.transform.SetAsLastSibling();
-        }
+        stack.Insert(0, IngredientType.Burn);
+        stack.Add(IngredientType.TopBurn);
+        chatIngredients = SideBurgerRenderer.Inst.BuildBurger(stack, previewRect);
         
       
         chatImg.alpha = 0;

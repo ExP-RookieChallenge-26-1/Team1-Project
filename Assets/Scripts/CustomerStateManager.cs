@@ -7,6 +7,8 @@ public class CustomerStateManager : MonoBehaviour
 {
     public static CustomerStateManager Inst;
 
+    public SpecialCustomer kidCustomer;
+    
     [Header("UI References")] 
     public RectTransform customerRect;
     public Image genderImage;
@@ -96,12 +98,21 @@ public class CustomerStateManager : MonoBehaviour
     public void HideCustomer()
     {
         customerRect.GetComponent<CanvasGroup>().DOFade(0, 1f);
-        
+        if (currentCustomerData.CustomerName == "Kid")
+        {
+            kidCustomer.GetComponent<CanvasGroup>().DOFade(0, 1f);
+        }
     }
 
     // 평판에 따른 손님 감정 변화 UI
     public void UpdateEmotionUI(CustomerEmotion newEmotion)
     {
+        if (currentCustomerData.CustomerName == "Kid")
+        {
+            kidCustomer.body.sprite = kidCustomer.sprites[(int)newEmotion];
+            return;
+        }
+        
         if (emotionImage == null) return;
         emotionImage.gameObject.SetActive(true);
         if (currentCustomerData is SpecialCustomerData specialData)
