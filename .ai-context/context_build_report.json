@@ -1,11 +1,11 @@
 {
   "build_mode_used": "full",
-  "files_total": 43,
-  "files_parsed": 43,
-  "changed_cs_files": 0,
-  "added_cs_files": 0,
+  "files_total": 62,
+  "files_parsed": 62,
+  "changed_cs_files": 33,
+  "added_cs_files": 19,
   "deleted_cs_files": 0,
   "rebuild_reasons": [
-    "git diff 실패"
+    "변경된 C# 파일 수가 임계치 이상 (33)"
   ]
 }
