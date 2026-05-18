@@ -56,7 +56,7 @@ public class AdvancedMain : MonoBehaviour
         enableSubmit = false;
         tong.ResetTong();
         tong.enableDrag = false;
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
         SFXPlayer.Instance.Play(doorbellClip);
         yield return new WaitForSeconds(2);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
@@ -151,7 +151,7 @@ public class AdvancedMain : MonoBehaviour
         //StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer().GetReputationDialogue(StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation);
         CustomerStateManager.Inst.HideCustomer();
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
 
         if (_stageEnded)
         {

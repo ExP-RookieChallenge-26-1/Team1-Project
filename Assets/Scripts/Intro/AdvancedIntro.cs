@@ -9,7 +9,8 @@ public class AdvancedIntro : MonoBehaviour
 {
     public NeonSignEffect neonSignEffect;
     public Image fadeImg;
-    public AudioSource bellAudio;
+    public AudioClip bellAudio;
+    public Animator anim;
 
     private void Awake()
     {
@@ -25,10 +26,11 @@ public class AdvancedIntro : MonoBehaviour
     {
         neonSignEffect.Play();
         yield return new WaitForSeconds(2f);
-
-        bellAudio.Play();
-
-        fadeImg.DOFade(1, 2.5f).OnComplete(() =>
+        
+        SFXPlayer.Instance.Play(bellAudio);
+        
+        anim.SetTrigger("ZoomIn");
+        fadeImg.DOFade(1, 0.8f).OnComplete(() =>
         {
             GoToGameScene();
         });
