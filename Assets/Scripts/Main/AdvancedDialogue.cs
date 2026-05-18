@@ -91,10 +91,13 @@ public class AdvancedDialogue : MonoBehaviour
                     isDialogEnd = true;
                     CloseChat();
                     print("대화 종료");
+                    AdvancedMain.Inst.tong.enableDrag = true;
                 }
                 else
                 {
                     ShowNextDialogue();
+                    if (_dialogueIndex > _dialogues.Count - 1)
+                        AdvancedMain.Inst.tong.enableDrag = true;
                 }
             }
         }
@@ -128,6 +131,7 @@ public class AdvancedDialogue : MonoBehaviour
 
     public void ShowNextDialogue()
     {
+        if (_dialogueIndex >= _dialogues.Count) return;
         
         var dialogue = _dialogues[_dialogueIndex];
         if (dialogue.dialogueType == DialogueType.Text)

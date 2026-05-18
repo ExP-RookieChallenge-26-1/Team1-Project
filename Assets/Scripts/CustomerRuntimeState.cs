@@ -23,8 +23,9 @@ public class CustomerRuntimeState
     }
 
     // 평판에 따른 손님 감정 변화
-    public void UpdateEmotion(ReputationResult result)
+    public CustomerEmotion UpdateEmotion(ReputationResult result)
     {
         currentEmotion = BaseData.GetEmotion(result);
+        return currentEmotion;
     }
 }

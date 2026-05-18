@@ -198,6 +198,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfec369c7f4fe5f449b93bac8f912598, type: 2}
   - {fileID: 11400000, guid: 7647c329eb788c14084c22a6b5cf885a, type: 2}
   - {fileID: 11400000, guid: 6a76b0b268616f448916a8b0cf101822, type: 2}
+  oldEmotion: 0
 --- !u!1 &48694683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecafe47cd0a7fa458ddb31a48e74ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdvancedTong
+  enableDrag: 0
 --- !u!114 &1515044852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,7 +2097,6 @@ GameObject:
   - component: {fileID: 1735937882}
   - component: {fileID: 1735937883}
   - component: {fileID: 1735937884}
-  - component: {fileID: 1735937885}
   m_Layer: 0
   m_Name: AdvancedMain
   m_TagString: Untagged
@@ -2136,7 +2137,7 @@ MonoBehaviour:
   cookedClip: {fileID: 8300000, guid: 454ddb1cbf8af7b49b71a5189a18f4a4, type: 3}
   mergeClip: {fileID: 8300000, guid: f3bdf60df488d9340ac689928900ae05, type: 3}
   bellClip: {fileID: 8300000, guid: 77e2d5b74e2ac2045b212b04d44079fc, type: 3}
-  bellAudio: {fileID: 1735937885}
+  doorbellClip: {fileID: 8300000, guid: b7fba4b9dbc4c584f8e81be8637e553e, type: 3}
   specialCustomer: {fileID: 854728054}
   previewInCounter: {fileID: 340306838}
   allStageEnded: 0
@@ -2196,103 +2197,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8f50946124e6cd44e9485208dd0234e2, type: 3}
   - type: 3
     sprite: {fileID: 21300000, guid: 60131df5a950af04394aa06ba8aed955, type: 3}
---- !u!82 &1735937885
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735937880}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: b7fba4b9dbc4c584f8e81be8637e553e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1758905973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,8 +2828,8 @@ RectTransform:
   m_Children:
   - {fileID: 1987690685}
   - {fileID: 1692147371}
-  - {fileID: 1469468484}
   - {fileID: 2046228048}
+  - {fileID: 1469468484}
   m_Father: {fileID: 234470596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2941,7 +2845,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996123124}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2972,15 +2876,15 @@ RectTransform:
   m_GameObject: {fileID: 2046228047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.719956, y: 1.719956, z: 1.719956}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1996123125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: 314}
-  m_SizeDelta: {x: 161.2231, y: 265.5293}
+  m_AnchoredPosition: {x: -0.000015259, y: 381}
+  m_SizeDelta: {x: 107, y: 191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046228049
 MonoBehaviour:
@@ -3108,6 +3012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecafe47cd0a7fa458ddb31a48e74ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdvancedTong
+  enableDrag: 0
 --- !u!1 &2103351242
 GameObject:
   m_ObjectHideFlags: 0

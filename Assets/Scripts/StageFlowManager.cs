@@ -16,6 +16,7 @@ public class StageFlowManager : MonoBehaviour
     private IOrderEvaluator evaluator;
     public int currentStageIndex { get; private set; } = 0;  // ���� �������� ��ȣ
     public int servedCount { get; private set; } = 0;    // ������ ������ Ƚ��
+    public CustomerEmotion oldEmotion;
 
     private void Awake()
     {
@@ -68,7 +69,7 @@ public class StageFlowManager : MonoBehaviour
         CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
         if (currentState != null)
         {
-            currentState.UpdateEmotion(result);
+            oldEmotion = currentState.UpdateEmotion(result);
         }
 
         servedCount++;

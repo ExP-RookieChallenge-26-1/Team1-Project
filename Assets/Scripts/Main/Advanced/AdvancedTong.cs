@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform _rect;
-    private Vector2 _startPos;
-
+    private Vector3 _startPos;
+    
     private bool _isTweening;
+
+    public bool enableDrag;
     
     void Awake()
     {
@@ -17,8 +19,10 @@ public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void ResetTong()
     {
+        //-360 -> 26
         _rect.transform.localScale = Vector3.one;
-        _rect.anchoredPosition3D = _startPos;
+        _rect.anchoredPosition3D = _startPos.SetY(-360);
+        _rect.DOAnchorPos3DY(_startPos.y, 0.5f);
     }
     
     public void OnBeginDrag(PointerEventData eventData)
@@ -27,7 +31,7 @@ public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     public void OnDrag(PointerEventData eventData)
     {
-        if(!AdvancedDialogue.Inst.isDialogEnd)
+        if(!enableDrag)
             return;
         if (_isTweening) return;
         

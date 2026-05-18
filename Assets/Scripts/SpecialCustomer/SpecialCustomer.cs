@@ -27,9 +27,9 @@ public class SpecialCustomer : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ShowHand2();
         yield return new WaitForSeconds(0.5f);
-        AdvancedDialogue.Inst.ShowNextDialogue();
-        yield return new WaitForSeconds(1.5f);
         ShowBody();
+        yield return new WaitForSeconds(1.5f);
+        AdvancedDialogue.Inst.ShowNextDialogue();
         yield return new WaitForSeconds(1);
         AdvancedDialogue.Inst.blockDialogInput = false;
     }

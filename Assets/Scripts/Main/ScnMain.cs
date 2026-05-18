@@ -116,7 +116,7 @@ public class ScnMain : MonoBehaviour
 
             int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
             StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
-            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation;
+            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
 
             int maxScore = 0;
             foreach (var customer in currentStage.CustomerPool)

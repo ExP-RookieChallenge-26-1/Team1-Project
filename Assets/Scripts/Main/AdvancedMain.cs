@@ -9,8 +9,7 @@ public class AdvancedMain : MonoBehaviour
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
-    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip;
-    public AudioSource bellAudio;
+    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip;
     public SpecialCustomer specialCustomer;
     public CanvasGroup previewInCounter;
     private CustomerRuntimeState _currentCustomerState;
@@ -29,7 +28,6 @@ public class AdvancedMain : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(bellAudioWait());
         StartFlow();
     }
 
@@ -57,12 +55,18 @@ public class AdvancedMain : MonoBehaviour
     {
         enableSubmit = false;
         tong.ResetTong();
-        yield return new WaitForSeconds(1);
+        tong.enableDrag = false;
+        yield return new WaitForSeconds(3.5f);
+        SFXPlayer.Instance.Play(doorbellClip);
+        yield return new WaitForSeconds(2);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
+        if (!string.IsNullOrEmpty(current.GetDialogue()))
+        {
+            var texts = current.GetDialogue().Split('\n');
+            AdvancedDialogue.Inst.SetTexts(texts);    
+        }
         
-        var texts = current.GetDialogue().Split('\n');
-        AdvancedDialogue.Inst.SetTexts(texts);
         List<IngredientType> types = new();
         
         foreach (var t in current.Recipe)
@@ -84,6 +88,7 @@ public class AdvancedMain : MonoBehaviour
         }
         else
         {
+            yield return new WaitForSeconds(1);
             AdvancedDialogue.Inst.ShowNextDialogue();    
             var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
             chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(574);
@@ -98,8 +103,10 @@ public class AdvancedMain : MonoBehaviour
     public void OnEndDragTong()
     {
         enableSubmit = true;
+        tong.enableDrag = false;
         SFXPlayer.Instance.Play(unplugTongClip);
         GameManager.Inst.StartGame();
+        AdvancedDialogue.Inst.CloseChat();
     }
     
     //제출 버튼
@@ -126,7 +133,7 @@ public class AdvancedMain : MonoBehaviour
         //CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
         Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
-        CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
+        CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
         if (oldCustomer.GetReputationDialogue(result, out string dialogue))
         {
             var txts = dialogue.Split('\n');
@@ -151,7 +158,7 @@ public class AdvancedMain : MonoBehaviour
             int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
             StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
             int myScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation;
-
+            Debug.Log(myScore);
             int maxScore = 0;
             foreach (var customer in currentStage.CustomerPool)
             {
@@ -169,10 +176,5 @@ public class AdvancedMain : MonoBehaviour
             StartFlow();
         }
     }
-
-    public IEnumerator bellAudioWait()
-    {
-        bellAudio.Play();
-        yield return new WaitForSeconds(2f);
-    }
+    
 }

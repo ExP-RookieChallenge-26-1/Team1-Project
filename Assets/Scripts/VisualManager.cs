@@ -153,31 +153,15 @@ public class VisualManager : MonoBehaviour
         List<IngredientType> stack = new List<IngredientType>(bestBurger.stackedIngredients);
         stack.Insert(0, IngredientType.Burn);
         stack.Add(IngredientType.TopBurn);
-        SideBurgerRenderer.Inst.BuildBurger(stack, previewUIRoot);
-        previewUIRoot.GetComponent<CanvasGroup>().alpha = 0.7f;
-        return;
-
-        for (int i = 0; i < stack.Count; i++)
+        var list = SideBurgerRenderer.Inst.BuildBurger(stack, previewUIRoot);
+        foreach (var obj in list)
         {
-            GameObject newObj = Instantiate(ingredientUIPrefab, previewUIRoot);
-            previewVisuals.Add(newObj);
-
-            RectTransform rect = newObj.GetComponent<RectTransform>();
-
-            if (rect != null)
-            {
-                // ?꾨━酉곕뒗 ?щ즺 ?쒖꽌瑜?蹂닿린 ?쎈룄濡??댁쭩 ?꾨줈 ?볦븘??蹂댁뿬以??
-                rect.anchoredPosition = new Vector2(0f, i * previewStackOffset);
-                rect.localScale = Vector3.one;
-            }
-
-            SetIngredientImage(newObj, stack[i]);
-
-            // ?꾨━酉곕룄 媛?????щ즺?먮쭔 ?꾩껜 ?ㅽ깮 媛쒖닔瑜??쒖떆?쒕떎.
-            SetStackText(newObj, i == stack.Count - 1 ? stack.Count.ToString() : "");
-
-            newObj.transform.SetAsLastSibling();
+            obj.GetComponent<Image>().color = Color.white.SetAlpha(0.7f);
         }
+
+        list[0].GetComponent<Image>().color = Color.white;
+        list[^1].GetComponent<Image>().color = Color.white;
+        previewUIRoot.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     // 議곕━???쇱そ???⑥? ?щ즺 紐⑸줉???쒖떆?섎뜕 ?⑥닔

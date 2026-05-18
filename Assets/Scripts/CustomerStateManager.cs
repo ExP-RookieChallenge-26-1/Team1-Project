@@ -82,6 +82,12 @@ public class CustomerStateManager : MonoBehaviour
                 hairImage.gameObject.SetActive(true);
                 hairImage.sprite = stateDB.hairSprites[(int)state.Hair];
             }
+
+            if (emotionImage != null)
+            {
+                emotionImage.gameObject.SetActive(true);
+                emotionImage.sprite = stateDB.emotionSprites[1];
+            }
                 
 
             gameObject.SetActive(true);
@@ -102,6 +108,8 @@ public class CustomerStateManager : MonoBehaviour
         {
             kidCustomer.GetComponent<CanvasGroup>().DOFade(0, 1f);
         }
+
+        VisualManager.Inst.previewUIRoot.GetComponent<CanvasGroup>().DOFade(0, 1f);
     }
 
     // 평판에 따른 손님 감정 변화 UI
@@ -120,11 +128,13 @@ public class CustomerStateManager : MonoBehaviour
             if (specialData.emotionSprites.Length > (int)newEmotion)
             {
                 emotionImage.sprite = specialData.emotionSprites[(int)newEmotion];
+                emotionImage.SetNativeSize();
             }
         }
         else
         {
             emotionImage.sprite = stateDB.emotionSprites[(int)newEmotion];
+            emotionImage.SetNativeSize();
         }
     }
 }

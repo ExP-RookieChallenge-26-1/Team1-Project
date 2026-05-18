@@ -7,40 +7,20 @@
     <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/PausedController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/PausedController.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerRuntimeState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerRuntimeState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedCustomer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedCustomer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedTong.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/Advanced/AdvancedTong.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/ScnMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/ScnMain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreCalculationSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreCalculationSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialCustomer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialCustomer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StageFlowManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StageFlowManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VisualManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/Counter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/Counter.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/CounterBG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/BG/Main/CounterBG.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunDown@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_BunUp@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Cheese@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Lettuce@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Meat@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Onion@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Ingrdients/Side/Side_Tomato@4x.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Props/2 L0NG H4M8UGER 기획서 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Props/2 L0NG H4M8UGER 기획서 (2).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Face/Facetype_F_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Face/Facetype_F_1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,22 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;wooohju&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "jinsu",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Build\Team1Project.exe" />
@@ -158,6 +138,7 @@
       <workItem from="1778917336557" duration="9467000" />
       <workItem from="1779001024622" duration="3100000" />
       <workItem from="1779005236004" duration="8617000" />
+      <workItem from="1779076494922" duration="3283000" />
     </task>
     <servers />
   </component>

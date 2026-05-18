@@ -287,7 +287,7 @@ public class GameManager : MonoBehaviour
                 nextIngrdient.gameObject.SetActive(false);
                 return;
             }
-            nextIngrdient.sprite = visualManager.GetIngredientSprite(orderList[0]);
+            nextIngrdient.sprite = visualManager.GetIngredientSprite(orderList[0] == IngredientType.CookedPatty ? IngredientType.RawPatty : orderList[0]);
         }
     }
     bool MoveTiles(string direction, List<TileMoveRecord> records)

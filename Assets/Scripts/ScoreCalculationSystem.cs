@@ -5,7 +5,7 @@ public class ScoreCalculationSystem : MonoBehaviour
 
     private int currentReputation = 0;  // ���� ���� ����
     public int CurrentReputation => currentReputation;
-
+    public int oldReputation;
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
     [SerializeField] private int wrongScore = -10;
@@ -47,7 +47,7 @@ public class ScoreCalculationSystem : MonoBehaviour
         
         // Ư�� �մ��� �ִ� ���ʽ� ���� �ջ�
         currentReputation += bonus;
-
+        oldReputation = currentReputation;
         // ���� ���� ���� ���
         GameEvents.TriggerReputationChanged(currentReputation);
     }
@@ -55,6 +55,7 @@ public class ScoreCalculationSystem : MonoBehaviour
     public void SetReputation(int savedScore)
     {
         currentReputation = savedScore;
+        oldReputation = savedScore;
         GameEvents.TriggerReputationChanged(currentReputation);
     }
 }
