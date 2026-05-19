@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdvancedMain : MonoBehaviour
 {
@@ -124,6 +125,11 @@ public class AdvancedMain : MonoBehaviour
         _stageEnded = false;
         MainUIManager.Inst.CloseGameView();
         previewInCounter.DOFade(1, 0.5f);
+        foreach (Transform child in previewInCounter.transform)
+        {
+            if (child.TryGetComponent<Image>(out var img))
+                img.color = img.color.SetAlpha(1);
+        }
         yield return new WaitForSeconds(2);
         var data = GameManager.Inst.GetBestBurgerData();
         GameManager.Inst.OnSubmitInput();
