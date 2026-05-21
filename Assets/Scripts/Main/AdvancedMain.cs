@@ -92,10 +92,10 @@ public class AdvancedMain : MonoBehaviour
             yield return new WaitForSeconds(1);
             AdvancedDialogue.Inst.ShowNextDialogue();    
             var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
-            chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(574);
+            chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(533);
             
             var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
-            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(825);
+            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(670);
         }
         
     }
