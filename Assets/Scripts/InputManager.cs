@@ -6,25 +6,25 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-        // 동일 오브젝트에 부착된 GameManager 컴포넌트 참조 연결
+        // ?숈씪 ?ㅻ툕?앺듃??遺李⑸맂 GameManager 而댄룷?뚰듃 李몄“ ?곌껐
         gameManager = GetComponent<GameManager>();
     }
 
     void Update()
     {
-        // 키보드 연결 상태 예외 처리
+        // ?ㅻ낫???곌껐 ?곹깭 ?덉쇅 泥섎━
         if (UnityEngine.InputSystem.Keyboard.current == null) return;
 
-        // 이동 입력 처리 (방향키)
+        // ?대룞 ?낅젰 泥섎━ (諛⑺뼢??
         if (UnityEngine.InputSystem.Keyboard.current.rightArrowKey.wasPressedThisFrame) gameManager.OnMoveInput("Right");
         if (UnityEngine.InputSystem.Keyboard.current.leftArrowKey.wasPressedThisFrame) gameManager.OnMoveInput("Left");
         if (UnityEngine.InputSystem.Keyboard.current.upArrowKey.wasPressedThisFrame) gameManager.OnMoveInput("Up");
         if (UnityEngine.InputSystem.Keyboard.current.downArrowKey.wasPressedThisFrame) gameManager.OnMoveInput("Down");
 
-        // 제출 입력 처리 (Space)
-        //if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) gameManager.OnSubmitInput();
+        // ?쒖텧 ?낅젰 泥섎━ (Space)
+        if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.tabKey.wasPressedThisFrame) gameManager.OnSubmitInput();
 
-        // 초기화 및 재시작 입력 처리 (R)
+        // 珥덇린??諛??ъ떆???낅젰 泥섎━ (R)
         //if (UnityEngine.InputSystem.Keyboard.current.rKey.wasPressedThisFrame) gameManager.OnResetInput();
     }
 }

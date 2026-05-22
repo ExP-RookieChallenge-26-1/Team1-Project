@@ -1,8 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DataLoader : MonoBehaviour
 {
+    public AudioMixer mixer;
+    public static AudioMixer Mixer;
+    
     public static float BGMValue;
     public static float SFXValue;
 
@@ -14,6 +18,7 @@ public class DataLoader : MonoBehaviour
     private void Awake()
     {
         LoadData();
+        Mixer = mixer;
     }
 
     private void Start()
@@ -33,6 +38,7 @@ public class DataLoader : MonoBehaviour
         SFXValue = PlayerPrefs.GetFloat("SFXValue", DEFAULT_SFX_VALUE);
         
         Debug.Log($"BGMValue: {BGMValue} | SFXValue: {SFXValue}");
+        ApplyValue();
     }
     
 
@@ -46,6 +52,7 @@ public class DataLoader : MonoBehaviour
         PlayerPrefs.Save();
         
         Debug.Log($"BGMValue: {BGMValue}");
+        ApplyValue();
     }
     
     /// <summary>
@@ -58,5 +65,18 @@ public class DataLoader : MonoBehaviour
         PlayerPrefs.Save();
         
         Debug.Log($"SFXValue: {SFXValue}");
+        ApplyValue();
+    }
+
+    public static void ApplyValue()
+    {
+        if (Mixer != null)
+        {
+            float bgm = Mathf.Clamp(BGMValue, 0.0001f, 1f);
+            float sfx = Mathf.Clamp(SFXValue, 0.0001f, 1f);
+
+            Mixer.SetFloat("BGM", Mathf.Log10(bgm) * 20f);
+            Mixer.SetFloat("SFX", Mathf.Log10(sfx) * 20f);
+        }
     }
 }

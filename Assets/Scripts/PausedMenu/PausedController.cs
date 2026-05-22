@@ -33,6 +33,13 @@ public class PausedController : MonoBehaviour
         }
     }
 
+    public void ClearData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Application.Quit();
+    }
+
     public void OpenPausedMenu()
     {
         if (_opened)

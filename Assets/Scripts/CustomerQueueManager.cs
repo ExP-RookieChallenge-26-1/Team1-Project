@@ -4,11 +4,12 @@ using System.Collections.Generic;
 public class CustomerQueueManager : MonoBehaviour
 {
     private Queue<CustomerData> customerQueue = new Queue<CustomerData>();
-    private CustomerData currentCustomer;
+    private CustomerData currentCustomerData;
+    private CustomerRuntimeState currentCustomerState;
 
     public void PrepareQueue(IReadOnlyList<CustomerData> customerPool)
     {
-        // ¼Õ´Ô Á¤º¸¸¦ Queue¿¡ »ðÀÔ
+        // ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Queueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         customerQueue = new Queue<CustomerData>(customerPool);
     }
 
@@ -16,15 +17,20 @@ public class CustomerQueueManager : MonoBehaviour
     {
         if (customerQueue.Count > 0)
         {
-            currentCustomer = customerQueue.Dequeue();
-            GameEvents.TriggerNewCustomerAppeared(currentCustomer);
-            // ÇöÀç ¼Õ´Ô Á¤º¸ ¹ÝÈ¯
-            return currentCustomer;
+
+            currentCustomerData = customerQueue.Dequeue();
+            currentCustomerState = new CustomerRuntimeState(currentCustomerData);
+            GameEvents.TriggerNewCustomerAppeared(currentCustomerState);
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+            return currentCustomerData;
         }
 
-        // ´ë±â¿­¿¡ ¼Õ´ÔÀÌ ¾øÀ» °æ¿ì null ¹ÝÈ¯
+        // ï¿½ï¿½â¿­ï¿½ï¿½ ï¿½Õ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ null ï¿½ï¿½È¯
+        currentCustomerData = null;
+        currentCustomerState = null;
         return null;
     }
 
-    public CustomerData GetCurrentCustomer() => currentCustomer;    // ÇöÀç ¼Õ´Ô Á¤º¸ È®ÀÎ
+    public CustomerData GetCurrentCustomer() => currentCustomerData;    // ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+    public CustomerRuntimeState GetCurrentCustomerState() => currentCustomerState;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 }

@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class ScoreCalculationSystem : MonoBehaviour
 {
-    public int currentReputation = 0;  // ÇöÀç ÆòÆÇ Á¡¼ö
+
+    private int currentReputation = 0;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public int CurrentReputation => currentReputation;
+    public int oldReputation;
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
     [SerializeField] private int wrongScore = -10;
@@ -23,25 +26,36 @@ public class ScoreCalculationSystem : MonoBehaviour
         GameEvents.TriggerReputationChanged(currentReputation);
     }
 
-    public void AddReputation(ReputationResult result)
+
+    public void AddReputation(ReputationResult result, int bonus = 0)
     {
         switch (result)
         {
-            // ÆòÆÇÀÌ Perfect¶ó¸é perfectScore¸¸Å­ Á¡¼ö Áõ°¡
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Perfectï¿½ï¿½ï¿½ perfectScoreï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             case ReputationResult.Perfect:
                 currentReputation += perfectScore;
                 break;
-            // ÆòÆÇÀÌ Incomplete¶ó¸é incompleteScore¸¸Å­ Á¡¼ö Áõ°¡
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Incompleteï¿½ï¿½ï¿½ incompleteScoreï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             case ReputationResult.Incomplete:
                 currentReputation += incompleteScore;
                 break;
-            // ÆòÆÇÀÌ WrongÀÌ¶ó¸é wrongScore¸¸Å­ Á¡¼ö Áõ°¡(ÃÖ¼Ò Á¡¼ö 0Á¡)
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Wrongï¿½Ì¶ï¿½ï¿½ wrongScoreï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½)
             case ReputationResult.Wrong:
                 currentReputation = Mathf.Max(0, currentReputation + wrongScore);
                 break;
         }
+        
+        // Æ¯ï¿½ï¿½ ï¿½Õ´ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Ê½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Õ»ï¿½
+        currentReputation += bonus;
+        oldReputation = currentReputation;
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        GameEvents.TriggerReputationChanged(currentReputation);
+    }
 
-        // ÇöÀç ÆòÆÇ Á¡¼ö ¹æ¼Û
+    public void SetReputation(int savedScore)
+    {
+        currentReputation = savedScore;
+        oldReputation = savedScore;
         GameEvents.TriggerReputationChanged(currentReputation);
     }
 }

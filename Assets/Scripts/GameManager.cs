@@ -1,27 +1,41 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
-    
+    public Image nextIngrdient;
     private VisualManager visualManager;
     private BurgerTile[,] gameBoard = new BurgerTile[4, 5];
-    
-    // 현재 스폰 대기 중인 남은 주문 리스트
+
+    // ?꾩옱 ?ㅽ룿 ?湲?以묒씤 ?⑥? 二쇰Ц 由ъ뒪??
     public List<IngredientType> orderList = new List<IngredientType>();
-    
-    // 처음 게임 시작 시 들어온 전체 주문 리스트 (제출 시 비교용)
+
+    // 泥섏쓬 寃뚯엫 ?쒖옉 ???ㅼ뼱???꾩껜 二쇰Ц 由ъ뒪??(?쒖텧 ??鍮꾧탳??
     private List<IngredientType> initialOrderList = new List<IngredientType>();
 
     public bool isPlaying = false;
-    
+
+    // ?щ즺 UI ?대룞 ?좊땲硫붿씠?섏쓣 ?꾪븳 ?대룞 湲곕줉
+    public class TileMoveRecord
+    {
+        public Vector2Int from;
+        public Vector2Int to;
+        public bool merged;
+        public int step;
+    }
+
+    private readonly List<TileMoveRecord> moveRecords = new List<TileMoveRecord>();
+    private bool isAnimating = false;
+
     private void Awake()
     {
         Inst = this;
     }
-    
+
     void Start()
     {
         visualManager = GetComponent<VisualManager>();
@@ -37,27 +51,27 @@ public class GameManager : MonoBehaviour
             for (int x = 0; x < 4; x++)
             {
                 gameBoard[x, y] = new BurgerTile();
-                // 맨 아랫줄(y=4)은 그릴 타일로 설정
-                if (y == 4) gameBoard[x, y].isGrill = true;
+                // 留??꾨옯以?y=4)? 洹몃┫ ??쇰줈 ?ㅼ젙
+                if (y == 0) gameBoard[x, y].isGrill = true;
             }
         }
     }
-    
-    //뒤집개를 충분히 드래그해서, 조리탭이 올라왔을때 호출됩니다
+
+    //?ㅼ쭛媛쒕? 異⑸텇???쒕옒洹명빐?? 議곕━??씠 ?щ씪?붿쓣???몄텧?⑸땲??
     public void OnTongEndDrag()
     {
-        //여기부터 게임 로직이 시작되면 될 것 같아요
+        //?ш린遺??寃뚯엫 濡쒖쭅???쒖옉?섎㈃ ??寃?媛숈븘??
         Debug.Log("OnTongEndDrag");
         StartGame();
     }
 
-
+    [ContextMenu("START")]
     public void StartGame()
     {
 
         if (StageFlowManager.Inst)
         {
-            var currentCustomer = StageFlowManager.Inst.customerQueueManager.GetCurrentCustomer();
+            var currentCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
             orderList = new();
             foreach (var data in currentCustomer.Recipe)
             {
@@ -68,17 +82,17 @@ public class GameManager : MonoBehaviour
         {
             if (orderList.Count == 0)
             {
-                Debug.LogWarning("주문 리스트가 비어있습니다!");
+                Debug.LogWarning("二쇰Ц 由ъ뒪?멸? 鍮꾩뼱?덉뒿?덈떎!");
                 return;
             }
         }
-        
-        // 원본 주문 내역을 백업해둠
+
+        // ?먮낯 二쇰Ц ?댁뿭??諛깆뾽?대몺
         initialOrderList = new List<IngredientType>(orderList);
-        
+
         isPlaying = true;
-        Debug.Log($"[게임 시작] 처음 주문 목록: {string.Join(", ", initialOrderList)}");
-        
+        Debug.Log($"[寃뚯엫 ?쒖옉] 泥섏쓬 二쇰Ц 紐⑸줉: {string.Join(", ", initialOrderList)}");
+
         SpawnNextIngredient();
         UpdateAllVisuals();
     }
@@ -91,34 +105,50 @@ public class GameManager : MonoBehaviour
     public void OnMoveInput(string direction)
     {
         if (!isPlaying) return;
+        if (isAnimating) return;
 
-        bool hasMoved = MoveTiles(direction);
-        
-        if (hasMoved) 
+        StartCoroutine(CorMoveInput(direction));
+    }
+
+    // ?대룞 ?낅젰??泥섎━?섍퀬, ?ㅼ젣 UI ?대룞 ?좊땲硫붿씠?섏씠 ?앸궃 ??理쒖쥌 ?붾㈃??媛깆떊?쒕떎.
+    private IEnumerator CorMoveInput(string direction)
+    {
+        isAnimating = true;
+        moveRecords.Clear();
+
+        bool hasMoved = MoveTiles(direction, moveRecords);
+
+        if (hasMoved)
         {
-            Debug.Log($"[{direction}] 방향으로 스와이프 완료");
+           // Debug.Log($"[{direction}] 諛⑺뼢?쇰줈 ?ㅼ??댄봽 ?꾨즺");
+
+            // ?ㅼ젣 ?щ즺 UI瑜?異쒕컻 移몄뿉???꾩갑 移멸퉴吏 ?대룞?쒗궓??
+            yield return StartCoroutine(visualManager.PlayMoveAnimation(moveRecords));
+
+            // ?대룞???앸궃 ?????щ즺瑜??ㅽ룿?쒕떎.
             SpawnNextIngredient();
         }
 
         UpdateAllVisuals();
+        isAnimating = false;
     }
 
     public void OnSubmitInput()
     {
         if (!isPlaying) return;
-        
+
         BurgerTile bestBurger = GetBestBurger();
-        string submittedIngredients = (bestBurger != null && bestBurger.stackedIngredients.Count > 0) 
-            ? string.Join(", ", bestBurger.stackedIngredients) 
-            : "빈 접시";
-        
+        string submittedIngredients = (bestBurger != null && bestBurger.stackedIngredients.Count > 0)
+            ? string.Join(", ", bestBurger.stackedIngredients)
+            : "鍮??묒떆";
+
         string initialOrder = string.Join(", ", initialOrderList);
 
-        // 콘솔에 제출 결과 출력
+        // 肄섏넄???쒖텧 寃곌낵 異쒕젰
         Debug.Log("=========================");
-        Debug.Log("🔔 버거 완성 및 제출!");
-        Debug.Log($"목표 주문: {initialOrder}");
-        Debug.Log($"제출된 버거: {submittedIngredients}");
+        Debug.Log("?뵒 踰꾧굅 ?꾩꽦 諛??쒖텧!");
+        Debug.Log($"紐⑺몴 二쇰Ц: {initialOrder}");
+        Debug.Log($"?쒖텧??踰꾧굅: {submittedIngredients}");
         Debug.Log("=========================");
 
         SubmitAndClear();
@@ -129,10 +159,15 @@ public class GameManager : MonoBehaviour
     {
         var list = new List<IngredientData>();
         BurgerTile bestBurger = GetBestBurger();
+        if (bestBurger == null)
+        {
+            Debug.LogWarning("GetBestBurgerData: ?쒖텧???щ즺 ?⑹뼱由ш? ?놁뒿?덈떎.");
+            return list;
+        }
         foreach (var ingredientType in bestBurger.stackedIngredients)
         {
             var data = new IngredientData();
-            data.ingredientType = ingredientType;
+            data.IngredientType = ingredientType;
             list.Add(data);
         }
 
@@ -142,12 +177,12 @@ public class GameManager : MonoBehaviour
 
     public void OnResetInput()
     {
-        Debug.Log("보드판 및 주문 초기화됨");
-        
+        Debug.Log("蹂대뱶??諛?二쇰Ц 珥덇린?붾맖");
+
         orderList.Clear();
         initialOrderList.Clear();
         isPlaying = false;
-        
+
         SubmitAndClear();
         visualManager.DrawOrderList(orderList);
         UpdateAllVisuals();
@@ -159,14 +194,14 @@ public class GameManager : MonoBehaviour
         visualManager.DrawPreview(GetBestBurger());
     }
 
-    // 우상단(3, 0)에서 가장 가까운 최고점 블록 탐색 (거리 동일 시 높이(Y축) 우선)
+    // ?곗긽??3, 0)?먯꽌 媛??媛源뚯슫 理쒓퀬??釉붾줉 ?먯깋 (嫄곕━ ?숈씪 ???믪씠(Y異? ?곗꽑)
     public BurgerTile GetBestBurger()
     {
         BurgerTile best = null;
         int maxHeight = 0;
         float minDistance = float.MaxValue;
-        int minY = int.MaxValue; 
-        
+        int minY = int.MaxValue;
+
         Vector2 targetPos = new Vector2(3, 0);
 
         for (int y = 0; y < 5; y++)
@@ -230,32 +265,40 @@ public class GameManager : MonoBehaviour
             int randomIndex = Random.Range(0, emptyTiles.Count);
             IngredientType nextMaterial = orderList[0];
 
-            // 생성되는 패티는 항상 생패티 상태로 스폰
-            if (nextMaterial == IngredientType.BakedPatty) nextMaterial = IngredientType.FrozenPatty;
+            // ?앹꽦?섎뒗 ?⑦떚????긽 ?앺뙣???곹깭濡??ㅽ룿
+            if (nextMaterial == IngredientType.CookedPatty) nextMaterial = IngredientType.RawPatty;
 
             BurgerTile targetTile = emptyTiles[randomIndex];
             targetTile.AddIngredient(nextMaterial);
-            
-            orderList.RemoveAt(0);
-            visualManager.DrawOrderList(orderList); 
 
-            // 스폰된 위치가 그릴이라면 즉시 굽기 처리
-            if (targetTile.isGrill && targetTile.stackedIngredients[0] == IngredientType.BakedPatty)
+            orderList.RemoveAt(0);
+            visualManager.DrawOrderList(orderList);
+
+            // ?ㅽ룿???꾩튂媛 洹몃┫?대씪硫?利됱떆 援쎄린 泥섎━
+            if (targetTile.isGrill && targetTile.stackedIngredients[0] == IngredientType.RawPatty)
             {
-                targetTile.stackedIngredients[0] = IngredientType.BakedPatty;
+                targetTile.stackedIngredients[0] = IngredientType.CookedPatty;
+                SFXPlayer.Instance.Play(AdvancedMain.Inst.cookedClip);
             }
+
+            nextIngrdient.gameObject.SetActive(true);
+            if (orderList.Count == 0)
+            {
+                nextIngrdient.gameObject.SetActive(false);
+                return;
+            }
+            nextIngrdient.sprite = visualManager.GetIngredientSprite(orderList[0] == IngredientType.CookedPatty ? IngredientType.RawPatty : orderList[0]);
         }
     }
-
-    bool MoveTiles(string direction)
+    bool MoveTiles(string direction, List<TileMoveRecord> records)
     {
         bool didAnyMove = false;
         int dx = 0, dy = 0;
 
         if (direction == "Right") dx = 1;
         if (direction == "Left") dx = -1;
-        if (direction == "Up") dy = -1;
-        if (direction == "Down") dy = 1;
+        if (direction == "Up") dy = 1;
+        if (direction == "Down") dy = -1;
 
         int startX = (dx == 1) ? 3 : 0;
         int endX = (dx == 1) ? -1 : 4;
@@ -266,8 +309,8 @@ public class GameManager : MonoBehaviour
         int stepY = (dy == 1) ? -1 : 1;
 
         bool changedInPass = true;
-        
-        // 연쇄적인 2048 조합 처리를 위한 반복 루프 (더 이상 합쳐지지 않을 때까지)
+        int passIndex = 0;
+
         while (changedInPass)
         {
             changedInPass = false;
@@ -276,86 +319,104 @@ public class GameManager : MonoBehaviour
             {
                 for (int x = startX; x != endX; x += stepX)
                 {
-                    if (gameBoard[x, y].stackedIngredients.Count > 0)
+                    if (gameBoard[x, y].stackedIngredients.Count == 0)
                     {
-                        int nx = x + dx;
-                        int ny = y + dy;
+                        continue;
+                    }
 
-                        if (nx < 0 || nx >= 4 || ny < 0 || ny >= 5) continue;
+                    int nx = x + dx;
+                    int ny = y + dy;
 
-                        List<IngredientType> currStack = gameBoard[x, y].stackedIngredients;
-                        List<IngredientType> targetStack = gameBoard[nx, ny].stackedIngredients;
+                    if (nx < 0 || nx >= 4 || ny < 0 || ny >= 5)
+                    {
+                        continue;
+                    }
 
-                        if (targetStack.Count == 0)
+                    List<IngredientType> currStack = gameBoard[x, y].stackedIngredients;
+                    List<IngredientType> targetStack = gameBoard[nx, ny].stackedIngredients;
+
+                    if (targetStack.Count == 0)
+                    {
+                        records.Add(new TileMoveRecord
                         {
-                            // 빈칸으로 이동
-                            targetStack.AddRange(currStack);
-                            currStack.Clear();
-                            changedInPass = true;
-                            didAnyMove = true;
-                        }
-                        else if (currStack.Count == targetStack.Count)
+                            from = new Vector2Int(x, y),
+                            to = new Vector2Int(nx, ny),
+                            merged = false,
+                            step = passIndex
+                        });
+
+                        targetStack.AddRange(currStack);
+                        currStack.Clear();
+                        changedInPass = true;
+                        didAnyMove = true;
+                    }
+                    else if (currStack.Count == targetStack.Count && CanMergeStacks(currStack, targetStack))
+                    {
+                        records.Add(new TileMoveRecord
                         {
-                            // 블록 높이가 같을 경우 병합 (재료 종류 무관)
-                            List<IngredientType> mergedStack = new List<IngredientType>();
+                            from = new Vector2Int(x, y),
+                            to = new Vector2Int(nx, ny),
+                            merged = true,
+                            step = passIndex
+                        });
 
-                            if (dx != 0) 
-                            {
-                                // 좌우 이동: 무조건 오른쪽(X가 큰 쪽)이 상단으로 올라감
-                                if (x > nx) 
-                                {
-                                    mergedStack.AddRange(targetStack); 
-                                    mergedStack.AddRange(currStack);   
-                                }
-                                else 
-                                {
-                                    mergedStack.AddRange(currStack);   
-                                    mergedStack.AddRange(targetStack); 
-                                }
-                            }
-                            else 
-                            {
-                                // 상하 이동: 무조건 더 위쪽(Y가 작은 쪽)이 상단으로 올라감
-                                if (y < ny) 
-                                {
-                                    mergedStack.AddRange(targetStack); 
-                                    mergedStack.AddRange(currStack);   
-                                }
-                                else 
-                                {
-                                    mergedStack.AddRange(currStack);   
-                                    mergedStack.AddRange(targetStack); 
-                                }
-                            }
+                        List<IngredientType> mergedStack = new List<IngredientType>(currStack.Count + targetStack.Count);
 
-                            targetStack.Clear();
-                            targetStack.AddRange(mergedStack);
-                            currStack.Clear();
-                            changedInPass = true;
-                            didAnyMove = true;
+                        if (dx != 0)
+                        {
+                            mergedStack.AddRange(targetStack);
+                            mergedStack.AddRange(currStack);
                         }
+                        else if (dy > 0)
+                        {
+                            mergedStack.AddRange(currStack);
+                            mergedStack.AddRange(targetStack);
+                        }
+                        else
+                        {
+                            mergedStack.AddRange(targetStack);
+                            mergedStack.AddRange(currStack);
+                        }
+
+                        targetStack.Clear();
+                        targetStack.AddRange(mergedStack);
+                        currStack.Clear();
+                        changedInPass = true;
+                        didAnyMove = true;
                     }
                 }
             }
+
+            if (changedInPass)
+            {
+                passIndex++;
+            }
         }
 
-        // 이동 완료 후 맨 아랫줄(그릴) 검사 및 패티 굽기 처리
         for (int x = 0; x < 4; x++)
         {
-            if (gameBoard[x, 4].stackedIngredients.Count > 0)
+            if (gameBoard[x, 0].stackedIngredients.Count == 0)
             {
-                for (int i = 0; i < gameBoard[x, 4].stackedIngredients.Count; i++)
+                continue;
+            }
+
+            for (int i = 0; i < gameBoard[x, 0].stackedIngredients.Count; i++)
+            {
+                if (gameBoard[x, 0].stackedIngredients[i] == IngredientType.RawPatty)
                 {
-                    if (gameBoard[x, 4].stackedIngredients[i] == IngredientType.FrozenPatty)
-                    {
-                        gameBoard[x, 4].stackedIngredients[i] = IngredientType.BakedPatty;
-                        didAnyMove = true; 
-                    }
+                    gameBoard[x, 0].stackedIngredients[i] = IngredientType.CookedPatty;
+                    SFXPlayer.Instance.Play(AdvancedMain.Inst.cookedClip);
+                    didAnyMove = true;
                 }
             }
         }
 
         return didAnyMove;
+    }
+
+    bool CanMergeStacks(List<IngredientType> currStack, List<IngredientType> targetStack)
+    {
+        return !currStack.Contains(IngredientType.RawPatty) && !targetStack.Contains(IngredientType.RawPatty);
     }
 
     void SubmitAndClear()
@@ -369,3 +430,4 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+

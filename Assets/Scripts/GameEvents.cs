@@ -3,16 +3,16 @@ using System;
 
 public static class GameEvents
 {
-    // ÆòÆÇ Á¡¼ö°¡ ¹Ù²î¸é ¹æ¼Û
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½
     public static event Action<int> OnReputationChanged;
 
-    // »õ ¼Õ´ÔÀÌ µîÀåÇÏ¸é ¹æ¼Û
-    public static event Action<CustomerData> OnNewCustomerAppeared;
+    // ï¿½ï¿½ ï¿½Õ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½
+    public static event Action<CustomerRuntimeState> OnNewCustomerAppeared;
 
-    // ½ºÅ×ÀÌÁö º¯°æ ½Ã ¹æ¼Û
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
     public static event Action<int> OnStageChanged;
 
-    // ½ºÅ×ÀÌÁö ÀüºÎ Å¬¸®¾î ½Ã ¹æ¼Û
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
     public static event Action OnAllStagesCleared;
 
     public static void TriggerReputationChanged(int currentReputation)
@@ -20,9 +20,10 @@ public static class GameEvents
         OnReputationChanged?.Invoke(currentReputation);
     }
 
-    public static void TriggerNewCustomerAppeared(CustomerData customer)
+
+    public static void TriggerNewCustomerAppeared(CustomerRuntimeState customerState)
     {
-        OnNewCustomerAppeared?.Invoke(customer);
+        OnNewCustomerAppeared?.Invoke(customerState);
     }
 
     public static void TriggerStageChanged(int stageLevel)

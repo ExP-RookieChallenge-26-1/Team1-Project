@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2979f94e25b2614dac27b330b6d5d34, type: 3}
+  m_Name: 3-4
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultCustomerData
+  customerName: Customer3-4
+  recipe:
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: acd0bdd7265d00246a393a1c82d8b9ad, type: 2}
+  - {fileID: 11400000, guid: fd5f894d7e4ccb843b2a4b824f112163, type: 2}
+  - {fileID: 11400000, guid: 0a19159b2e279e44483833895b50e8bf, type: 2}
+  randomDialogues:
+  - "\uC548\uB155\uD558\uC138\uC694 \uC0AC\uC7A5\uB2D8!"
+  - "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C."
+  - "\uC8FC\uBB38\uD560\uAC8C\uC694~"
+  - "\uBB38 \uC5F4\uC5C8\uB098\uC694?"
+  perfectDialogues:
+  - "\uC644\uBCBD\uD558\uB124\uC694!"
+  - "\uC624...\uC644\uBCBD\uD569\uB2C8\uB2E4."
+  - "\uC790\uB791\uD574\uC57C\uACA0\uB294\uB370\uC694?"
+  - "\uBA39\uAE30 \uC544\uAE5D\uB124\uC694..!"
+  incompleteDialogues:
+  - "\uAC10\uC0AC\uD569\uB2C8\uB2E4!"
+  - "\uB9DB\uC788\uACA0\uAD70\uC694."
+  - "\uBD10\uC904\uB9CC \uD558\uB124\uC694!"
+  - "\uB0C4\uC0C8\uAC00 \uC88B\uB124\uC694!"
+  wrongDialogues:
+  - "\uC74C...\uAC10\uC0AC\uD569\uB2C8\uB2E4."
+  - "\uAC10\uC0AC\uD558\uC9C4 \uC54A\uC2B5\uB2C8\uB2E4."
+  - "\uC2E4\uB9DD\uC774 \uD06C\uB124\uC694~"
+  - "\uC694\uB9AC\uC0AC \uB9DE\uC544\uC694?"

@@ -1,83 +1,111 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StageFlowManager : MonoBehaviour
 {
     public static StageFlowManager Inst;
-    
     [SerializeField] private List<StageData> stages;
+    public IReadOnlyList<StageData> Stages => stages.AsReadOnly();
 
-    [HideInInspector] public CustomerQueueManager customerQueueManager;
-    [HideInInspector] public  ScoreCalculationSystem scoreCalculationSystem;
-    [HideInInspector] public IOrderEvaluator evaluator;
-
-    public int currentStageIndex = 0;  // ÇöÀç ½ºÅ×ÀÌÁö ¹øÈ£
-    public int servedCount = 0;    // À½½ÄÀ» Á¦ÀÛÇÑ È½¼ö
+    private CustomerQueueManager customerQueueManager;
+    public CustomerQueueManager CustomerQueueManager => customerQueueManager;
+    private ScoreCalculationSystem scoreCalculationSystem;
+    public ScoreCalculationSystem ScoreCalculationSystem => scoreCalculationSystem;
+    private IOrderEvaluator evaluator;
+    public int currentStageIndex { get; private set; } = 0;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+    public int servedCount { get; private set; } = 0;    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
+    public CustomerEmotion oldEmotion;
 
     private void Awake()
     {
         Inst = this;
-        
         customerQueueManager = GetComponent<CustomerQueueManager>();
         scoreCalculationSystem = GetComponent<ScoreCalculationSystem>();
         evaluator = new RecipeChecker();
     }
 
-    private void Start() => LoadStage(currentStageIndex);
-
-    public void LoadStage(int index)
+    private void Start()
     {
-        Debug.Log($"ASD: {index}");
-        // index°¡ ½ºÅ×ÀÌÁö ¼öº¸´Ù ¸¹´Ù¸é Á¾·á
+        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedScore); ;
+        currentStageIndex = savedStage;
+        servedCount = savedServed;
+        scoreCalculationSystem.SetReputation(savedScore);
+
+        LoadStage(currentStageIndex);
+    }
+
+    private void LoadStage(int index)
+    {
+        // indexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (index >= stages.Count)
         {
             GameEvents.TriggerAllStagesCleared();
             return;
         }
 
-        servedCount = 0;
-        customerQueueManager.PrepareQueue(stages[index].CustomerPool);
-
+        var remainingCustomers = stages[index].CustomerPool.Skip(servedCount).ToList();
+        customerQueueManager.PrepareQueue(remainingCustomers);
         GameEvents.TriggerStageChanged(stages[index].StageLevel);
 
-        // Ã¹ ¹øÂ° ¼Õ´Ô È£Ãâ
+        // Ã¹ ï¿½ï¿½Â° ï¿½Õ´ï¿½ È£ï¿½ï¿½
         customerQueueManager.GetNextCustomer();
     }
 
-    public void OnBurgerSubmitted(IReadOnlyList<IngredientData> playerBurger)
+    public ReputationResult OnBurgerSubmitted(IReadOnlyList<IngredientData> playerBurger)
     {
-        // ÇöÀç °í°´ Á¤º¸ °¡Á®¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         CustomerData currentCustomer = customerQueueManager.GetCurrentCustomer();
-        if (currentCustomer == null) return;
+        if (currentCustomer == null) return ReputationResult.Incomplete;
 
-        // Æò°¡ °á°ú °¡Á®¿À±â
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
 
-        // Á¡¼ö °è»ê
-        scoreCalculationSystem.AddReputation(result);
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        int bonus = currentCustomer.GetBonusScore(result);
+        scoreCalculationSystem.AddReputation(result, bonus);
+
+        CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
+        if (currentState != null)
+        {
+            oldEmotion = currentState.UpdateEmotion(result);
+        }
+
         servedCount++;
 
-        CheckStageProgress();
-    }
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
 
+        CheckStageProgress();
+        return result;
+    }
     private void CheckStageProgress()
     {
-        // ÇØ´ç ½ºÅ×ÀÌÁö¿¡¼­ ¼Õ´ÔÀ» ¸ðµÎ ¹Þ¾Ò´Ù¸é ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ³Ñ¾î°¡±â
-        if (servedCount >= stages[currentStageIndex].TargetClearCount)
         {
-            currentStageIndex++;
-            Debug.Log($"»õ·Î¿î ½ºÅ×ÀÌÁö ÀÎµ¦½º: {currentStageIndex}");
-            LoadStage(currentStageIndex);
-        }
-        else
-        {
-            CustomerData nextCustomer = customerQueueManager.GetNextCustomer();
-            // ¼Õ´ÔÀÌ ºÎÁ·ÇÑ °æ¿ì ¿¹¿Ü Ã³¸®·Î ´ÙÀ½ ½ºÅ×ÀÌÁö·Î ³Ñ¾î°¡±â
-            if (nextCustomer == null)
+            // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Þ¾Ò´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½
+            if (servedCount >= stages[currentStageIndex].TargetClearCount)
             {
                 currentStageIndex++;
                 LoadStage(currentStageIndex);
+                AdvanceToNextStage();
+            }
+            else
+            {
+                CustomerData nextCustomer = customerQueueManager.GetNextCustomer();
+                // ï¿½Õ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½
+                if (nextCustomer == null)
+                {
+                    AdvanceToNextStage();
+                }
             }
         }
+    }
+
+    private void AdvanceToNextStage()
+    {
+        currentStageIndex++;
+        servedCount = 0;
+
+        LoadStage(currentStageIndex);
     }
 }
