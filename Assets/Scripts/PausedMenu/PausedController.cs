@@ -77,8 +77,9 @@ public class PausedController : MonoBehaviour
         });
         
         //Intro 씬에서는 홈화면 버튼 없애기
-        homeBtn.gameObject.SetActive(!SceneManager.GetSceneByName("Intro").isLoaded);
-
+        bool isScnIntro = SceneManager.GetSceneByName("Intro").isLoaded;
+        homeBtn.gameObject.SetActive(!isScnIntro);
+        
     }
 
     public void ClosePausedMenu()

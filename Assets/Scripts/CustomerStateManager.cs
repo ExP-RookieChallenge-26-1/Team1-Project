@@ -7,7 +7,7 @@ public class CustomerStateManager : MonoBehaviour
 {
     public static CustomerStateManager Inst;
 
-    public SpecialCustomer kidCustomer;
+    public Stage1Customer stage1Customer;
     
     [Header("UI References")] 
     public RectTransform customerRect;
@@ -22,6 +22,7 @@ public class CustomerStateManager : MonoBehaviour
     public CustomerStateDB stateDB;
 
     private CustomerData currentCustomerData;
+    public SpecialBase currentSpecialCustomer;
 
     private void Awake()
     {
@@ -104,10 +105,11 @@ public class CustomerStateManager : MonoBehaviour
     public void HideCustomer()
     {
         customerRect.GetComponent<CanvasGroup>().DOFade(0, 1f);
-        if (currentCustomerData.CustomerName == "Kid")
+        if (currentSpecialCustomer != null)
         {
-            kidCustomer.GetComponent<CanvasGroup>().DOFade(0, 1f);
+            currentSpecialCustomer.HideAnimation();
         }
+
 
         VisualManager.Inst.previewUIRoot.GetComponent<CanvasGroup>().DOFade(0, 1f);
     }
@@ -115,12 +117,12 @@ public class CustomerStateManager : MonoBehaviour
     // 평판에 따른 손님 감정 변화 UI
     public void UpdateEmotionUI(CustomerEmotion newEmotion)
     {
-        if (currentCustomerData.CustomerName == "Kid")
+        if (currentSpecialCustomer != null)
         {
-            kidCustomer.body.sprite = kidCustomer.sprites[(int)newEmotion];
+            currentSpecialCustomer.UpdateEmotion(newEmotion);
             return;
         }
-        
+  
         if (emotionImage == null) return;
         emotionImage.gameObject.SetActive(true);
         if (currentCustomerData is SpecialCustomerData specialData)
