@@ -3,10 +3,7 @@ using UnityEngine;
 public class CustomerRuntimeState
 {
     public CustomerData BaseData;
-    public CustomerGender Gender;
-    public CustomerSkin Skin;
-    public CustomerClothes Clothes;
-    public CustomerHair Hair;
+    public CustomerAppearance Appearance;
     public string DialogueText;
 
     private CustomerEmotion currentEmotion;

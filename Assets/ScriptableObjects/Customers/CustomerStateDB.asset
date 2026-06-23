@@ -12,23 +12,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb68db9e0ed536f46851c67a7520f6f1, type: 3}
   m_Name: CustomerStateDB
   m_EditorClassIdentifier: Assembly-CSharp::CustomerStateDB
-  genderSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  skinSprites:
-  - {fileID: 4061953906681916132, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
-  - {fileID: -5436480842344572743, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
-  - {fileID: 2336260406047093378, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
-  - {fileID: -6022047713095679604, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+  maleSet:
+    bodyTypes:
+    - {fileID: 4061953906681916132, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+    - {fileID: -5436480842344572743, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+    - {fileID: 2336260406047093378, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+    - {fileID: -6022047713095679604, guid: fe4e14059ea59fa49a9af2d1dea1b7a7, type: 3}
+    clothesTypes:
+    - {fileID: 2220779615922432431, guid: 4d555e54e2dbb6743aec41b5201f4cc0, type: 3}
+    - {fileID: -1808017661586430930, guid: 4d555e54e2dbb6743aec41b5201f4cc0, type: 3}
+    - {fileID: 6228411236470687514, guid: 4d555e54e2dbb6743aec41b5201f4cc0, type: 3}
+    - {fileID: 6300031214801545913, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
+    - {fileID: 5082219762713069878, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
+    - {fileID: -124687628379704350, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
+    - {fileID: -6139464647999605629, guid: 97368a2dedd6a25438df77bcc01dbc8f, type: 3}
+    - {fileID: -3413140761371344897, guid: 97368a2dedd6a25438df77bcc01dbc8f, type: 3}
+    - {fileID: 1839791460589019538, guid: 97368a2dedd6a25438df77bcc01dbc8f, type: 3}
+    hairTypes:
+    - {fileID: 5435969918008081698, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+    - {fileID: -602068282714178530, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+    - {fileID: -1730615155879624807, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+    - {fileID: 791311940846561458, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
+    - {fileID: -1758532348767613796, guid: f0d65cd856667b04ba9a63e0d1bd57a2, type: 3}
+    - {fileID: -2883087907405716337, guid: f0d65cd856667b04ba9a63e0d1bd57a2, type: 3}
+    - {fileID: 6772785842876624499, guid: f0d65cd856667b04ba9a63e0d1bd57a2, type: 3}
+    - {fileID: 8591495239678896900, guid: f0d65cd856667b04ba9a63e0d1bd57a2, type: 3}
+    - {fileID: -8306249334993673905, guid: 9dc8b7099862315459aedb29540724b2, type: 3}
+    - {fileID: 102735031993202433, guid: 9dc8b7099862315459aedb29540724b2, type: 3}
+    - {fileID: 5418317583176151665, guid: 9dc8b7099862315459aedb29540724b2, type: 3}
+    - {fileID: 2769633314188205179, guid: 9dc8b7099862315459aedb29540724b2, type: 3}
+  femaleSet:
+    bodyTypes:
+    - {fileID: -1665694017479789863, guid: 914ed8f2dfc08844294c440db057ebe6, type: 3}
+    - {fileID: 2924993694649492862, guid: 914ed8f2dfc08844294c440db057ebe6, type: 3}
+    - {fileID: 1815486479044759825, guid: 914ed8f2dfc08844294c440db057ebe6, type: 3}
+    - {fileID: 6765819325861398507, guid: 914ed8f2dfc08844294c440db057ebe6, type: 3}
+    clothesTypes:
+    - {fileID: -8456464883972048755, guid: 56c611569c5301441807c66dc358971a, type: 3}
+    - {fileID: 6283396424633768969, guid: 56c611569c5301441807c66dc358971a, type: 3}
+    - {fileID: -1081820377600928535, guid: 56c611569c5301441807c66dc358971a, type: 3}
+    - {fileID: -8326936350382209380, guid: 60447dee66f3da544a4e5736a9616531, type: 3}
+    - {fileID: 7596066624828698316, guid: 60447dee66f3da544a4e5736a9616531, type: 3}
+    - {fileID: 289541125965793706, guid: 60447dee66f3da544a4e5736a9616531, type: 3}
+    - {fileID: 7094387829590680647, guid: 18f1ee29af3a8864e9c35eec0dfd72b9, type: 3}
+    - {fileID: -7851160712907874251, guid: 18f1ee29af3a8864e9c35eec0dfd72b9, type: 3}
+    - {fileID: -5043047451199876319, guid: 18f1ee29af3a8864e9c35eec0dfd72b9, type: 3}
+    hairTypes:
+    - {fileID: 3604250199622098727, guid: 625461b1f72ecb147b508ecb3cf6e11d, type: 3}
+    - {fileID: 3378277794174085326, guid: 625461b1f72ecb147b508ecb3cf6e11d, type: 3}
+    - {fileID: -6591963144820886900, guid: 625461b1f72ecb147b508ecb3cf6e11d, type: 3}
+    - {fileID: 267425352921655487, guid: 625461b1f72ecb147b508ecb3cf6e11d, type: 3}
+    - {fileID: 1828027642896617251, guid: e048dd2a982fa16469ea93c339ce7e64, type: 3}
+    - {fileID: -7682008412959863883, guid: e048dd2a982fa16469ea93c339ce7e64, type: 3}
+    - {fileID: -709966641592997190, guid: e048dd2a982fa16469ea93c339ce7e64, type: 3}
+    - {fileID: 4977802162440835988, guid: e048dd2a982fa16469ea93c339ce7e64, type: 3}
+    - {fileID: 3562737883914759717, guid: 2059c62d6059584479aaf39e597048ed, type: 3}
+    - {fileID: -813684218499226908, guid: 2059c62d6059584479aaf39e597048ed, type: 3}
+    - {fileID: -6507278629702977655, guid: 2059c62d6059584479aaf39e597048ed, type: 3}
+    - {fileID: -3906170087405112833, guid: 2059c62d6059584479aaf39e597048ed, type: 3}
   emotionSprites:
   - {fileID: -402063912365843581, guid: dafbb2c8a4d8d8747bdf8ac868b72152, type: 3}
   - {fileID: -5326339328624165837, guid: dafbb2c8a4d8d8747bdf8ac868b72152, type: 3}
   - {fileID: -1003728081765179237, guid: dafbb2c8a4d8d8747bdf8ac868b72152, type: 3}
-  hairSprites:
-  - {fileID: 5435969918008081698, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
-  - {fileID: -602068282714178530, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
-  - {fileID: -1730615155879624807, guid: d71abba2ea5ab8841860a9be8710036d, type: 3}
-  clothesSprites:
-  - {fileID: 6300031214801545913, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
-  - {fileID: 5082219762713069878, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}
-  - {fileID: -124687628379704350, guid: 969fc0b9ad8e3614c979846cf5ba87e2, type: 3}

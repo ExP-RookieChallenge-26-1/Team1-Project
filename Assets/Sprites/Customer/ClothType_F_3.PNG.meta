@@ -131,12 +131,12 @@ TextureImporter:
       name: ClothType_F_3_0
       rect:
         serializedVersion: 2
-        x: 982
-        y: 532
-        width: 401
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 956
+        y: 161
+        width: 477
+        height: 954
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: ClothType_F_3_1
       rect:
         serializedVersion: 2
-        x: 1508
-        y: 532
-        width: 401
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1501
+        y: 153
+        width: 422
+        height: 954
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: ClothType_F_3_2
       rect:
         serializedVersion: 2
-        x: 2021
-        y: 532
-        width: 401
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1966
+        y: 144
+        width: 476
+        height: 980
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,77 +193,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: ClothType_F_3_3
-      rect:
-        serializedVersion: 2
-        x: 1108
-        y: 213
-        width: 148
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b6bc769a1442d760800000000000000
-      internalID: 7481116812000409273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_F_3_4
-      rect:
-        serializedVersion: 2
-        x: 1634
-        y: 213
-        width: 148
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d2df3ea518515e50800000000000000
-      internalID: 6796310162819764946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_F_3_5
-      rect:
-        serializedVersion: 2
-        x: 2147
-        y: 213
-        width: 148
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca9be192f7f4df560800000000000000
-      internalID: 7349117574507837868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6aefc55dc16542949a6c8c0a3d72b841
     internalID: 0
     vertices: []
     indices: 

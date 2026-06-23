@@ -9,14 +9,15 @@ public class CustomerStateManager : MonoBehaviour
 
     public Stage1Customer stage1Customer;
     
-    [Header("UI References")] 
+    [Header("Appearance")] 
     public RectTransform customerRect;
-    public Image genderImage;
-    public Image skinImage;
-    public Image emotionImage;
-    public Image clothesImage;
-    public Image hairImage;
+    public Image bodyTypeImage;
+    public Image clothesTypeImage;
+    public Image hairTypeImage;
     public Image specialImage;
+
+    [Header("Emotion")]
+    public Image emotionImage;
 
     [Header("Databases")]
     public CustomerStateDB stateDB;
@@ -38,58 +39,33 @@ public class CustomerStateManager : MonoBehaviour
     {
         currentCustomerData = data;
 
+        string appLog = state != null ? $"성별:{state.Appearance.Gender}, Body:{state.Appearance.BodyTypeIndex}, Clothes:{state.Appearance.ClothesTypeIndex}, Hair:{state.Appearance.HairTypeIndex}" : "상태값 없음(Null)";
+        Debug.Log($"손님:{data.CustomerName} | 타입:{data.GetType().Name} | 생성된 외형 묶음 => {appLog}");
+
         if (data is SpecialCustomerData specialData)
         {
-            if (specialImage != null && specialData.specialSprites.Length > 0)
-            {
-                specialImage.gameObject.SetActive(true);
-                specialImage.sprite = specialData.specialSprites[0];
-            }
-
-            if (genderImage != null) genderImage.gameObject.SetActive(false);
-            if (skinImage != null) skinImage.gameObject.SetActive(false);
-            if (clothesImage != null) clothesImage.gameObject.SetActive(false);
-            if (hairImage != null) hairImage.gameObject.SetActive(false);
+            SetStandardAppearanceActive(false);
+            if (specialImage != null) specialImage.gameObject.SetActive(false);
             if (emotionImage != null) emotionImage.gameObject.SetActive(false);
         }
-
         else if (data is DefaultCustomerData)
         {
+            if (currentSpecialCustomer != null)
+            {
+                currentSpecialCustomer.gameObject.SetActive(false);
+                currentSpecialCustomer = null;
+            }
+
             if (specialImage != null) specialImage.gameObject.SetActive(false);
 
-            if (genderImage != null)
-            {
-                genderImage.gameObject.SetActive(true);
-                genderImage.sprite = stateDB.genderSprites[(int)state.Gender];    
-            }
-
-
-            if (skinImage != null)
-            {
-                skinImage.gameObject.SetActive(true);
-                skinImage.sprite = stateDB.skinSprites[(int)state.Skin];
-            }
-
-
-            if (clothesImage != null)
-            {
-                clothesImage.gameObject.SetActive(true);
-                clothesImage.sprite = stateDB.clothesSprites[(int)state.Clothes];
-            }
-
-
-            if (hairImage != null)
-            {
-                hairImage.gameObject.SetActive(true);
-                hairImage.sprite = stateDB.hairSprites[(int)state.Hair];
-            }
+            ApplyAppearanceSprites(state.Appearance);
+            SetStandardAppearanceActive(true);
 
             if (emotionImage != null)
             {
                 emotionImage.gameObject.SetActive(true);
                 emotionImage.sprite = stateDB.emotionSprites[1];
             }
-                
 
             gameObject.SetActive(true);
         }
@@ -100,6 +76,34 @@ public class CustomerStateManager : MonoBehaviour
         customerRect.anchoredPosition3D = customerRect.anchoredPosition3D.SetY(-680);
         customerRect.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutBack);
         customerRect.DOAnchorPos3DY(-89, 0.15f);
+    }
+
+    private void ApplyAppearanceSprites(CustomerAppearance appearance)
+    {
+        GenderSpriteSet targetSet = stateDB.GetSpriteSet(appearance.Gender);
+
+        if (bodyTypeImage != null)
+        {
+            bodyTypeImage.sprite = targetSet.bodyTypes[appearance.BodyTypeIndex];
+            bodyTypeImage.SetNativeSize();
+        }
+        if (clothesTypeImage != null)
+        {
+            clothesTypeImage.sprite = targetSet.clothesTypes[appearance.ClothesTypeIndex];
+            clothesTypeImage.SetNativeSize();
+        }
+        if (hairTypeImage != null)
+        {
+            hairTypeImage.sprite = targetSet.hairTypes[appearance.HairTypeIndex];
+            hairTypeImage.SetNativeSize();
+        }
+    }
+
+    private void SetStandardAppearanceActive(bool isActive)
+    {
+        if (bodyTypeImage != null) bodyTypeImage.gameObject.SetActive(isActive);
+        if (clothesTypeImage != null) clothesTypeImage.gameObject.SetActive(isActive);
+        if (hairTypeImage != null) hairTypeImage.gameObject.SetActive(isActive);
     }
 
     public void HideCustomer()

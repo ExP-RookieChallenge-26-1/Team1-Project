@@ -126,11 +126,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 82
-        y: 174
+        y: 200
         width: 447
         height: 381
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -148,11 +148,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 593
-        y: 174
+        y: 200
         width: 447
         height: 381
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -170,11 +170,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1118
-        y: 174
+        y: 200
         width: 447
         height: 381
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,11 +192,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1634
-        y: 174
+        y: 200
         width: 447
         height: 381
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2f264415b7da8d44a9f5256fa0f45a17
     internalID: 0
     vertices: []
     indices: 
@@ -227,6 +227,10 @@ TextureImporter:
       Hair type_F_3_1: -813684218499226908
       Hair type_F_3_2: -6507278629702977655
       Hair type_F_3_3: -3906170087405112833
+      Hair type_F_3_4: -1529048937
+      Hair type_F_3_5: -1608631209
+      Hair type_F_3_6: 2126434835
+      Hair type_F_3_7: 54890298
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

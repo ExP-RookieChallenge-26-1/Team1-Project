@@ -64,6 +64,7 @@ public class AdvancedMain : MonoBehaviour
         SFXPlayer.Instance.Play(doorbellClip);
         yield return new WaitForSeconds(2);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
+        var currentState = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomerState();
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         if (!string.IsNullOrEmpty(current.GetDialogue()))
         {

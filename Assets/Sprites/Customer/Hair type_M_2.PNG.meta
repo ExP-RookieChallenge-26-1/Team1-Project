@@ -125,12 +125,12 @@ TextureImporter:
       name: Hair type_M_2_0
       rect:
         serializedVersion: 2
-        x: 177
-        y: 1106
+        x: 171
+        y: 1050
         width: 292
-        height: 169
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 242
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -148,11 +148,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 561
-        y: 1106
+        y: 1050
         width: 292
-        height: 169
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 237
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -170,11 +170,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 959
-        y: 1106
+        y: 1050
         width: 292
-        height: 169
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 237
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,11 +192,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1367
-        y: 1106
+        y: 1050
         width: 292
-        height: 169
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 237
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

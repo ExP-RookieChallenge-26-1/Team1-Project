@@ -129,8 +129,8 @@ TextureImporter:
         y: 311
         width: 310
         height: 270
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,8 +151,8 @@ TextureImporter:
         y: 311
         width: 310
         height: 270
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: Hair type_F_1_2
       rect:
         serializedVersion: 2
-        x: 1181
+        x: 1183
         y: 311
         width: 310
         height: 270
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,8 +195,8 @@ TextureImporter:
         y: 311
         width: 310
         height: 270
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: adf01273df9574f49a27580abe7bf289
     internalID: 0
     vertices: []
     indices: 
@@ -227,6 +227,10 @@ TextureImporter:
       Hair type_F_1_1: 3378277794174085326
       Hair type_F_1_2: -6591963144820886900
       Hair type_F_1_3: 267425352921655487
+      Hair type_F_1_4: -869704813
+      Hair type_F_1_5: 902614323
+      Hair type_F_1_6: 227014472
+      Hair type_F_1_7: 1550702292
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

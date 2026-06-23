@@ -131,12 +131,12 @@ TextureImporter:
       name: ClothType_M_1_0
       rect:
         serializedVersion: 2
-        x: 162
-        y: 544
-        width: 294
-        height: 507
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 75
+        y: 156
+        width: 439
+        height: 975
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: ClothType_M_1_1
       rect:
         serializedVersion: 2
-        x: 548
-        y: 544
-        width: 294
-        height: 507
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 539
+        y: 160
+        width: 336
+        height: 992
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: ClothType_M_1_2
       rect:
         serializedVersion: 2
-        x: 944
-        y: 544
-        width: 294
-        height: 507
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 897
+        y: 151
+        width: 379
+        height: 988
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,77 +193,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: ClothType_M_1_3
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 234
-        width: 281
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 660c0f3b4eb782bb0800000000000000
-      internalID: -4960578767346941850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_M_1_4
-      rect:
-        serializedVersion: 2
-        x: 555
-        y: 234
-        width: 281
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e4ba7b64ecb5a35a0800000000000000
-      internalID: -6540814567294391474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_M_1_5
-      rect:
-        serializedVersion: 2
-        x: 951
-        y: 234
-        width: 281
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ffbe75e1762b35b40800000000000000
-      internalID: 5427878131872033791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a955d83795f7f16489b67f513d034117
     internalID: 0
     vertices: []
     indices: 

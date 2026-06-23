@@ -85,8 +85,6 @@ public class StageFlowManager : MonoBehaviour
             // �ش� ������������ �մ��� ��� �޾Ҵٸ� ���� ���������� �Ѿ��
             if (servedCount >= stages[currentStageIndex].TargetClearCount)
             {
-                currentStageIndex++;
-                LoadStage(currentStageIndex);
                 AdvanceToNextStage();
             }
             else

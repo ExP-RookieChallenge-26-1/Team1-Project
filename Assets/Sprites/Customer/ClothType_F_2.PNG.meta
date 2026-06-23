@@ -131,12 +131,12 @@ TextureImporter:
       name: ClothType_F_2_0
       rect:
         serializedVersion: 2
-        x: 1025
-        y: 542
-        width: 337
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1501
+        y: 154
+        width: 422
+        height: 1018
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: ClothType_F_2_1
       rect:
         serializedVersion: 2
-        x: 1552
-        y: 542
-        width: 337
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1987
+        y: 90
+        width: 477
+        height: 1073
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -172,89 +172,23 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClothType_F_2_2
+      name: ClothType_F_2_6
       rect:
         serializedVersion: 2
-        x: 2065
-        y: 542
-        width: 337
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 978
+        y: 171
+        width: 447
+        height: 971
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: aa9ce09be18a40400800000000000000
-      internalID: 289541125965793706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_F_2_3
-      rect:
-        serializedVersion: 2
-        x: 1088
-        y: 230
-        width: 193
-        height: 226
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d0a65593fdfaab830800000000000000
-      internalID: 4087772985066613261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_F_2_4
-      rect:
-        serializedVersion: 2
-        x: 1615
-        y: 230
-        width: 193
-        height: 226
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 108fe45882f4bedd0800000000000000
-      internalID: -2455782136346642431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ClothType_F_2_5
-      rect:
-        serializedVersion: 2
-        x: 2128
-        y: 230
-        width: 193
-        height: 226
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a5aaab703e4b1890800000000000000
-      internalID: -7486303985433139803
+      spriteID: 2d6ed3608a7d9d94e9a17afdc6a21d10
+      internalID: 1696505816
       vertices: []
       indices: 
       edges: []
@@ -263,7 +197,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 762b8880d818c8b4d806d78eacb10e02
     internalID: 0
     vertices: []
     indices: 
@@ -279,6 +213,7 @@ TextureImporter:
       ClothType_F_2_3: 4087772985066613261
       ClothType_F_2_4: -2455782136346642431
       ClothType_F_2_5: -7486303985433139803
+      ClothType_F_2_6: 1696505816
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

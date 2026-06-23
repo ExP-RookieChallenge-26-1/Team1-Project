@@ -53,4 +53,20 @@ public class Stage1Customer : SpecialBase
         bodyRect.transform.DOScale(new Vector3(0.39f, 0.39f, 1), 0.3f).SetEase(Ease.InOutBack);
         bodyRect.DOAnchorPos3DY(-512, 0.15f);
     }
+
+    public override void HideAnimation()
+    {
+        if (bodyRect != null && bodyRect.gameObject.activeSelf)
+        {
+            bodyRect.DOAnchorPos3DY(-800, 0.5f).SetEase(Ease.InBack);
+
+            if (body != null) body.DOFade(0, 0.5f);
+
+            DOVirtual.DelayedCall(0.5f, () => gameObject.SetActive(false));
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
