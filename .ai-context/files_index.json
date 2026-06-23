@@ -6380,14 +6380,16 @@
     "file_id": "Assets/Scripts/GameManager.cs",
     "path": "Assets/Scripts/GameManager.cs",
     "file_name": "GameManager.cs",
-    "content_hash": "e812414d2a10fcde2df66151531383ad8baf24ee",
-    "size": 12054,
-    "line_count": 371,
+    "content_hash": "61d86311b82b1fa9b807dbaf27408712c09334c1",
+    "size": 14232,
+    "line_count": 454,
     "namespace": "",
     "using_list": [
+      "System.Collections",
       "System.Collections.Generic",
       "System.Linq",
-      "UnityEngine"
+      "UnityEngine",
+      "UnityEngine.UI"
     ],
     "classes": [
       {
@@ -6397,6 +6399,16 @@
         "base_types": [
           "MonoBehaviour"
         ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      },
+      {
+        "name": "TileMoveRecord",
+        "kind": "class",
+        "access": "public",
+        "base_types": [],
         "interfaces": [],
         "attributes": [],
         "is_partial": false,
@@ -6414,15 +6426,19 @@
       "StartGame",
       "UpdateOrderVisual",
       "OnMoveInput",
+      "CorMoveInput",
       "OnSubmitInput",
       "GetBestBurgerData",
       "IngredientData",
       "OnResetInput",
+      "RestartStage",
       "UpdateAllVisuals",
       "GetBestBurger",
       "Vector2",
       "SpawnNextIngredient",
       "MoveTiles",
+      "Vector2Int",
+      "CanMergeStacks",
       "SubmitAndClear"
     ],
     "fields": [
@@ -6432,6 +6448,13 @@
         "access": "public",
         "serialized": false,
         "is_static": true
+      },
+      {
+        "name": "nextIngrdient",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
       },
       {
         "name": "visualManager",
@@ -6451,6 +6474,41 @@
         "name": "isPlaying",
         "type": "bool",
         "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "from",
+        "type": "Vector2Int",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "to",
+        "type": "Vector2Int",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "merged",
+        "type": "bool",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "step",
+        "type": "int",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "isAnimating",
+        "type": "bool",
+        "access": "private",
         "serialized": false,
         "is_static": false
       },
@@ -6525,6 +6583,13 @@
         "is_static": false
       },
       {
+        "name": "passIndex",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
         "name": "nx",
         "type": "int",
         "access": "internal",
@@ -6567,19 +6632,21 @@
     "has_on_enable": false,
     "has_on_disable": false,
     "serialize_field_count": 0,
-    "public_field_count": 2,
+    "public_field_count": 7,
     "get_component_count": 1,
     "find_call_count": 0,
-    "new_keyword_count": 11,
-    "coroutine_count": 0,
+    "new_keyword_count": 19,
+    "coroutine_count": 3,
     "singleton_candidate": false,
     "dont_destroy_on_load": false,
     "referenced_types": [
+      "Image",
       "VisualManager",
       "BurgerTile[,]",
       "bool",
-      "BurgerTile",
+      "Vector2Int",
       "int",
+      "BurgerTile",
       "float",
       "IngredientType",
       "System",
@@ -6587,6 +6654,7 @@
       "Generic",
       "Linq",
       "UnityEngine",
+      "UI",
       "Inst",
       "Awake",
       "Start",
@@ -6597,7 +6665,10 @@
       "OnTongEndDrag",
       "Log",
       "StartGame",
+      "ContextMenu",
+      "START",
       "StageFlowManager",
+      "CustomerQueueManager",
       "GetCurrentCustomer",
       "Recipe",
       "Add",
@@ -6609,7 +6680,11 @@
       "UpdateOrderVisual",
       "DrawOrderList",
       "OnMoveInput",
+      "StartCoroutine",
+      "CorMoveInput",
+      "Clear",
       "MoveTiles",
+      "PlayMoveAnimation",
       "OnSubmitInput",
       "GetBestBurger",
       "SubmitAndClear",
@@ -6618,22 +6693,32 @@
       "GetBestBurgerData",
       "Reverse",
       "OnResetInput",
-      "Clear",
+      "RestartStage",
+      "No",
+      "StopAllCoroutines",
       "UpdateVisuals",
       "DrawPreview",
       "MaxValue",
       "Vector2",
       "Distance",
       "Abs",
-      "BakedPatty",
-      "FrozenPatty",
+      "CookedPatty",
+      "RawPatty",
       "AddIngredient",
       "RemoveAt",
+      "SFXPlayer",
+      "Instance",
+      "Play",
+      "AdvancedMain",
+      "SetActive",
+      "GetIngredientSprite",
       "Right",
       "Left",
       "Up",
       "Down",
-      "AddRange"
+      "AddRange",
+      "CanMergeStacks",
+      "Contains"
     ],
     "component_access_types": [
       "VisualManager"
@@ -6642,22 +6727,28 @@
       "List",
       "BurgerTile",
       "IngredientData",
-      "Vector2"
+      "Vector2",
+      "Vector2Int"
     ],
-    "singleton_access_types": [],
+    "singleton_access_types": [
+      "SFXPlayer"
+    ],
     "string_literals": [
       "OnTongEndDrag",
-      "주문 리스트가 비어있습니다!",
-      "[게임 시작] 처음 주문 목록: {string.Join(",
+      "START",
+      "二쇰Ц 由ъ뒪?멸? 鍮꾩뼱?덉뒿?덈떎!",
+      "[寃뚯엫 ?쒖옉] 泥섏쓬 二쇰Ц 紐⑸줉: {string.Join(",
       ", initialOrderList)}",
-      "[{direction}] 방향으로 스와이프 완료",
+      "[{direction}] 諛⑺뼢?쇰줈 ?ㅼ??댄봽 ?꾨즺",
       ", ",
-      "빈 접시",
+      "鍮??묒떆",
       "=========================",
-      "🔔 버거 완성 및 제출!",
-      "목표 주문: {initialOrder}",
-      "제출된 버거: {submittedIngredients}",
-      "보드판 및 주문 초기화됨",
+      "?뵒 踰꾧굅 ?꾩꽦 諛??쒖텧!",
+      "紐⑺몴 二쇰Ц: {initialOrder}",
+      "?쒖텧??踰꾧굅: {submittedIngredients}",
+      "GetBestBurgerData: ?쒖텧???щ즺 ?⑹뼱由ш? ?놁뒿?덈떎.",
+      "蹂대뱶??諛?二쇰Ц 珥덇린?붾맖",
+      "No active order is available to restart.",
       "Right",
       "Left",
       "Up",
@@ -6667,17 +6758,18 @@
       4,
       5,
       3,
-      0.01,
-      2048
+      0.01
     ],
     "guessed_roles": [
       "runtime",
       "player",
+      "ui",
       "manager",
       "data"
     ],
     "summary_signals": [
       "런타임 컴포넌트",
+      "UI 관련 로직 포함",
       "컴포넌트 조회 사용"
     ]
   },
@@ -10855,12 +10947,14 @@
     "file_id": "Assets/Scripts/UIManager.cs",
     "path": "Assets/Scripts/UIManager.cs",
     "file_name": "UIManager.cs",
-    "content_hash": "554c961e26806739dbbd33fd36fffe56f00753fc",
-    "size": 625,
-    "line_count": 27,
+    "content_hash": "eb99adf2cd52716769a763dd19b1ac751d31efc0",
+    "size": 2535,
+    "line_count": 76,
     "namespace": "",
     "using_list": [
-      "UnityEngine"
+      "TMPro",
+      "UnityEngine",
+      "UnityEngine.UI"
     ],
     "classes": [
       {
@@ -10881,7 +10975,12 @@
     "methods": [
       "Start",
       "OnClickAddIngredient",
-      "OnClickStart"
+      "OnClickStart",
+      "OnClickRestartStage",
+      "CreateRestartButton",
+      "GameObject",
+      "Vector2",
+      "Color"
     ],
     "fields": [
       {
@@ -10906,41 +11005,87 @@
     "has_on_disable": false,
     "serialize_field_count": 0,
     "public_field_count": 0,
-    "get_component_count": 1,
-    "find_call_count": 0,
-    "new_keyword_count": 0,
+    "get_component_count": 6,
+    "find_call_count": 1,
+    "new_keyword_count": 8,
     "coroutine_count": 0,
     "singleton_candidate": false,
     "dont_destroy_on_load": false,
     "referenced_types": [
       "GameManager",
+      "TMPro",
       "UnityEngine",
+      "UI",
       "Start",
       "GetComponent",
+      "CreateRestartButton",
       "OnClickAddIngredient",
       "IngredientType",
       "Add",
       "VisualManager",
       "UpdateOrderVisual",
       "OnClickStart",
-      "StartGame"
+      "StartGame",
+      "OnClickRestartStage",
+      "RestartStage",
+      "Find",
+      "RestartStageButton",
+      "Canvas",
+      "FindFirstObjectByType",
+      "RectTransform",
+      "CanvasRenderer",
+      "Image",
+      "Button",
+      "SetParent",
+      "Vector2",
+      "Color",
+      "AddListener",
+      "Text",
+      "TMP",
+      "TextMeshProUGUI",
+      "RESTART",
+      "TextAlignmentOptions",
+      "Center"
     ],
     "component_access_types": [
-      "GameManager"
+      "GameManager",
+      "RectTransform",
+      "Image",
+      "Button",
+      "TextMeshProUGUI"
     ],
-    "created_types": [],
+    "created_types": [
+      "GameObject",
+      "Vector2",
+      "Color"
+    ],
     "singleton_access_types": [],
-    "string_literals": [],
-    "numeric_literals": [],
+    "string_literals": [
+      "RestartStageButton",
+      "Text (TMP)",
+      "RESTART"
+    ],
+    "numeric_literals": [
+      1,
+      24,
+      180,
+      54,
+      0.14,
+      0.9,
+      24
+    ],
     "guessed_roles": [
-      "runtime",
       "ui",
+      "runtime",
+      "combat",
       "manager"
     ],
     "summary_signals": [
       "런타임 컴포넌트",
       "UI 관련 로직 포함",
-      "컴포넌트 조회 사용"
+      "전투 계열 로직 포함",
+      "컴포넌트 조회 사용",
+      "Find 계열 탐색 사용"
     ]
   },
   {
