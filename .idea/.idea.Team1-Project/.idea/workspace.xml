@@ -6,10 +6,35 @@
   <component name="ChangeListManager">
     <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/IngredientUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/IngredientUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/PausedController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/PausedController.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/SettingItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PausedMenu/SettingItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Intro.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomerStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Intro/AdvancedIntro.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Intro/AdvancedIntro.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PausedMenu/PausedController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PausedMenu/PausedController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialCustomer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialCustomer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/hand_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/hand_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/handdown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/handdown.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/kid_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/kid_default.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/kid_disappoint.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/kid_disappoint.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/kid_perfect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/1Stage/kid_perfect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +57,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/MainBG.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main/Tong.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SideBurgetRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialCustomer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage1Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PressToStartAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@11343a6274f3/Editor/TMP/TMP_BaseEditorPanel.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -133,6 +161,8 @@
       <workItem from="1779081816331" duration="1501000" />
       <workItem from="1779087725733" duration="292000" />
       <workItem from="1779330962869" duration="325000" />
+      <workItem from="1782045703647" duration="1245000" />
+      <workItem from="1782136225574" duration="2358000" />
     </task>
     <servers />
   </component>

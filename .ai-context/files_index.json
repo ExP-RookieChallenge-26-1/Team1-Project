@@ -1,5 +1,85 @@
 [
   {
+    "file_id": "Assets/Editor/PlayerPrefsUtils.cs",
+    "path": "Assets/Editor/PlayerPrefsUtils.cs",
+    "file_name": "PlayerPrefsUtils.cs",
+    "content_hash": "a91d59377805bb31166fa4570faf3a73fd5fecea",
+    "size": 280,
+    "line_count": 14,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "UnityEditor"
+    ],
+    "classes": [
+      {
+        "name": "PlayerPrefsUtils",
+        "kind": "class",
+        "access": "internal",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "PlayerPrefsUtils",
+    "unity_type": "None",
+    "methods": [
+      "ClearPlayerPrefs"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "UnityEditor",
+      "MenuItem",
+      "Tools",
+      "Clear",
+      "PlayerPrefs",
+      "ClearPlayerPrefs",
+      "DeleteAll",
+      "Save",
+      "Log"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Tools/Clear PlayerPrefs",
+      "PlayerPrefs cleared!"
+    ],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "save-load",
+      "ui",
+      "player",
+      "inventory"
+    ],
+    "summary_signals": [
+      "UI 관련 로직 포함",
+      "인벤토리 계열 로직 포함",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
     "file_id": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs",
     "path": "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs",
     "file_name": "DOTweenModuleAudio.cs",
@@ -5391,6 +5471,648 @@
     ]
   },
   {
+    "file_id": "Assets/Scripts/CustomerRuntimeState.cs",
+    "path": "Assets/Scripts/CustomerRuntimeState.cs",
+    "file_name": "CustomerRuntimeState.cs",
+    "content_hash": "15d5d0b33a6402f5aa20fb065b0122ddf018ff61",
+    "size": 865,
+    "line_count": 32,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "CustomerRuntimeState",
+        "kind": "class",
+        "access": "public",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "CustomerRuntimeState",
+    "unity_type": "None",
+    "methods": [
+      "CustomerRuntimeState",
+      "UpdateEmotion"
+    ],
+    "fields": [
+      {
+        "name": "BaseData",
+        "type": "CustomerData",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "Gender",
+        "type": "CustomerGender",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "Skin",
+        "type": "CustomerSkin",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "Clothes",
+        "type": "CustomerClothes",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "Hair",
+        "type": "CustomerHair",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "DialogueText",
+        "type": "string",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentEmotion",
+        "type": "CustomerEmotion",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 6,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "CustomerData",
+      "CustomerGender",
+      "CustomerSkin",
+      "CustomerClothes",
+      "CustomerHair",
+      "string",
+      "CustomerEmotion",
+      "UnityEngine",
+      "BaseData",
+      "Gender",
+      "Skin",
+      "Clothes",
+      "Hair",
+      "DialogueText",
+      "CurrentEmotion",
+      "GetDialogue",
+      "Neutral",
+      "SetState",
+      "UpdateEmotion",
+      "ReputationResult",
+      "GetEmotion"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "data",
+      "runtime"
+    ],
+    "summary_signals": []
+  },
+  {
+    "file_id": "Assets/Scripts/CustomerStateDB.cs",
+    "path": "Assets/Scripts/CustomerStateDB.cs",
+    "file_name": "CustomerStateDB.cs",
+    "content_hash": "3b4c62546de943e196ac71ed40a62ad1957500ad",
+    "size": 653,
+    "line_count": 23,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "CustomerStateDB",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "ScriptableObject"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "CustomerStateDB",
+    "unity_type": "ScriptableObject",
+    "methods": [
+      "Sprites"
+    ],
+    "fields": [
+      {
+        "name": "genderSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "skinSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "emotionSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "hairSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "clothesSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 5,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "Sprite",
+      "UnityEngine",
+      "CreateAssetMenu",
+      "Objects",
+      "Gender",
+      "Sprites",
+      "Male",
+      "Female",
+      "Skin",
+      "Light",
+      "Medium",
+      "Tan",
+      "Dark",
+      "Emotion",
+      "Happy",
+      "Neutral",
+      "Angry",
+      "Hair",
+      "Style1",
+      "Style2",
+      "Style3",
+      "Clothes"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "CustomerStateDB",
+      "Objects/CustomerStateDB",
+      "Gender Sprites (Male, Female)",
+      "Skin Sprites (Light, Medium, Tan, Dark)",
+      "Emotion Sprites (Happy, Neutral, Angry)",
+      "Hair Sprites (Style1, Style2, Style3)",
+      "Clothes Sprites (Style1, Style2, Style3)"
+    ],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "data"
+    ],
+    "summary_signals": [
+      "데이터 자산 중심 구조"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/CustomerStateEnums.cs",
+    "path": "Assets/Scripts/CustomerStateEnums.cs",
+    "file_name": "CustomerStateEnums.cs",
+    "content_hash": "0aced9c770ff1e3500c4f3dd78a015d9994e7502",
+    "size": 296,
+    "line_count": 6,
+    "namespace": "",
+    "using_list": [],
+    "classes": [],
+    "main_class_name": "CustomerStateEnums",
+    "unity_type": "None",
+    "methods": [],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "CustomerGender",
+      "Male",
+      "Female",
+      "CustomerSkin",
+      "Light",
+      "Medium",
+      "Tan",
+      "Dark",
+      "CustomerEmotion",
+      "Happy",
+      "Neutral",
+      "Angry",
+      "CustomerClothes",
+      "Style1",
+      "Style2",
+      "Style3",
+      "CustomerHair"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [],
+    "summary_signals": []
+  },
+  {
+    "file_id": "Assets/Scripts/CustomerStateManager.cs",
+    "path": "Assets/Scripts/CustomerStateManager.cs",
+    "file_name": "CustomerStateManager.cs",
+    "content_hash": "d4e3196de8ff8341123e20cf331ef09738c0c295",
+    "size": 4337,
+    "line_count": 143,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "UnityEngine",
+      "UnityEngine.UI",
+      "DG.Tweening"
+    ],
+    "classes": [
+      {
+        "name": "CustomerStateManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "CustomerStateManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "Start",
+      "ShowCustomer",
+      "Vector3",
+      "HideCustomer",
+      "UpdateEmotionUI"
+    ],
+    "fields": [
+      {
+        "name": "Inst",
+        "type": "CustomerStateManager",
+        "access": "public",
+        "serialized": false,
+        "is_static": true
+      },
+      {
+        "name": "stage1Customer",
+        "type": "Stage1Customer",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "customerRect",
+        "type": "RectTransform",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "genderImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "skinImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "emotionImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "clothesImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "hairImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "specialImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "stateDB",
+        "type": "CustomerStateDB",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentCustomerData",
+        "type": "CustomerData",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentSpecialCustomer",
+        "type": "SpecialBase",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake",
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 11,
+    "get_component_count": 3,
+    "find_call_count": 0,
+    "new_keyword_count": 1,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "Stage1Customer",
+      "RectTransform",
+      "Image",
+      "CustomerStateDB",
+      "CustomerData",
+      "SpecialBase",
+      "System",
+      "UnityEngine",
+      "UI",
+      "DG",
+      "Tweening",
+      "Inst",
+      "References",
+      "Databases",
+      "Awake",
+      "Start",
+      "SetActive",
+      "ShowCustomer",
+      "CustomerRuntimeState",
+      "SpecialCustomerData",
+      "Length",
+      "DefaultCustomerData",
+      "Gender",
+      "Skin",
+      "Clothes",
+      "Hair",
+      "GetComponent",
+      "CanvasGroup",
+      "Vector3",
+      "SetY",
+      "DOScale",
+      "SetEase",
+      "Ease",
+      "InOutBack",
+      "DOAnchorPos3DY",
+      "HideCustomer",
+      "DOFade",
+      "HideAnimation",
+      "VisualManager",
+      "UpdateEmotionUI",
+      "CustomerEmotion",
+      "UpdateEmotion",
+      "SetNativeSize"
+    ],
+    "component_access_types": [
+      "CanvasGroup"
+    ],
+    "created_types": [
+      "Vector3"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [
+      "UI References",
+      "Databases"
+    ],
+    "numeric_literals": [
+      0.8,
+      680,
+      0.3,
+      89,
+      0.15,
+      1
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime",
+      "manager",
+      "data"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/DefaultCustomerData.cs",
+    "path": "Assets/Scripts/DefaultCustomerData.cs",
+    "file_name": "DefaultCustomerData.cs",
+    "content_hash": "7ae379ab91b3fd619f20d82e9b6f23fabdc20487",
+    "size": 1635,
+    "line_count": 46,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "UnityEngine.Analytics"
+    ],
+    "classes": [
+      {
+        "name": "DefaultCustomerData",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "CustomerData"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "DefaultCustomerData",
+    "unity_type": "None",
+    "methods": [
+      "SetState",
+      "GetDialogue",
+      "GetReputationDialogue"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "Analytics",
+      "CreateAssetMenu",
+      "DefaultCustomer",
+      "Objects",
+      "Customer",
+      "Default",
+      "CustomerData",
+      "SetState",
+      "CustomerRuntimeState",
+      "Gender",
+      "CustomerGender",
+      "Skin",
+      "CustomerSkin",
+      "Clothes",
+      "CustomerClothes",
+      "Hair",
+      "CustomerHair",
+      "TextArea",
+      "GetDialogue",
+      "Length",
+      "GetReputationDialogue",
+      "ReputationResult",
+      "Perfect",
+      "GetRandomTxt",
+      "Wrong"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "DefaultCustomer",
+      "Objects/Customer/Default",
+      "버거 주세요!",
+      "기쁨",
+      "실망",
+      "기본"
+    ],
+    "numeric_literals": [
+      2,
+      4,
+      3
+    ],
+    "guessed_roles": [
+      "data"
+    ],
+    "summary_signals": []
+  },
+  {
     "file_id": "Assets/Scripts/End/EndScreen.cs",
     "path": "Assets/Scripts/End/EndScreen.cs",
     "file_name": "EndScreen.cs",
@@ -6145,6 +6867,175 @@
     ]
   },
   {
+    "file_id": "Assets/Scripts/Intro/AdvancedIntro.cs",
+    "path": "Assets/Scripts/Intro/AdvancedIntro.cs",
+    "file_name": "AdvancedIntro.cs",
+    "content_hash": "1e6ad49772b9e35a2c7355014d319662bbfad40e",
+    "size": 1366,
+    "line_count": 55,
+    "namespace": "",
+    "using_list": [
+      "System.Collections",
+      "DG.Tweening",
+      "TMPro",
+      "Unity.VisualScripting",
+      "UnityEngine",
+      "UnityEngine.SceneManagement",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "AdvancedIntro",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "AdvancedIntro",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "OnClickOpen",
+      "CorAnim",
+      "WaitForSeconds",
+      "GoToGameScene"
+    ],
+    "fields": [
+      {
+        "name": "neonSignEffect",
+        "type": "NeonSignEffect",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "fadeImg",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "bellAudio",
+        "type": "AudioClip",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "press2Startxt",
+        "type": "CanvasGroup",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "anim",
+        "type": "Animator",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 5,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 1,
+    "coroutine_count": 2,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "NeonSignEffect",
+      "Image",
+      "AudioClip",
+      "CanvasGroup",
+      "Animator",
+      "System",
+      "Collections",
+      "DG",
+      "Tweening",
+      "TMPro",
+      "Unity",
+      "VisualScripting",
+      "UnityEngine",
+      "SceneManagement",
+      "UI",
+      "Awake",
+      "GetComponent",
+      "OnClickOpen",
+      "StartCoroutine",
+      "CorAnim",
+      "DOFade",
+      "Play",
+      "WaitForSeconds",
+      "SFXPlayer",
+      "Instance",
+      "SetTrigger",
+      "ZoomIn",
+      "OnComplete",
+      "GoToGameScene",
+      "SceneManager",
+      "LoadScene",
+      "Main",
+      "PausedController",
+      "Inst",
+      "SetActive",
+      "Color",
+      "SetDelay"
+    ],
+    "component_access_types": [
+      "NeonSignEffect"
+    ],
+    "created_types": [
+      "WaitForSeconds"
+    ],
+    "singleton_access_types": [
+      "SFXPlayer"
+    ],
+    "string_literals": [
+      "ZoomIn",
+      "Main"
+    ],
+    "numeric_literals": [
+      0.25,
+      2,
+      0.8,
+      1,
+      1.5
+    ],
+    "guessed_roles": [
+      "ui",
+      "scene",
+      "runtime",
+      "manager",
+      "player"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
     "file_id": "Assets/Scripts/Intro/DataLoader.cs",
     "path": "Assets/Scripts/Intro/DataLoader.cs",
     "file_name": "DataLoader.cs",
@@ -6289,6 +7180,265 @@
     "summary_signals": [
       "런타임 컴포넌트",
       "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Intro/GyroBG.cs",
+    "path": "Assets/Scripts/Intro/GyroBG.cs",
+    "file_name": "GyroBG.cs",
+    "content_hash": "f708beec3f9247f980dace33b5a89d9d587845df",
+    "size": 391,
+    "line_count": 23,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "GyroBG",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "GyroBG",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Start",
+      "Update"
+    ],
+    "fields": [
+      {
+        "name": "target",
+        "type": "RectTransform",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "moveAmount",
+        "type": "float",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "tilt",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "pos",
+        "type": "Vector2",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Start",
+      "Update"
+    ],
+    "has_update": true,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 2,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "RectTransform",
+      "float",
+      "Vector2",
+      "UnityEngine",
+      "Start",
+      "Input",
+      "Update"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [
+      100
+    ],
+    "guessed_roles": [
+      "runtime",
+      "player",
+      "ui"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "Update 기반 처리 존재",
+      "UI 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Intro/NeonSignEffect.cs",
+    "path": "Assets/Scripts/Intro/NeonSignEffect.cs",
+    "file_name": "NeonSignEffect.cs",
+    "content_hash": "e41d6f906ab05d9713ae29addc1640c06d092f53",
+    "size": 1354,
+    "line_count": 73,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "NeonSignEffect",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "NeonSignEffect",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Update",
+      "Flash",
+      "Play"
+    ],
+    "fields": [
+      {
+        "name": "neonAudio",
+        "type": "AudioSource",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "neonImage",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "normalSprite",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "flashSprite",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentIndex",
+        "type": "int",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "flashing",
+        "type": "bool",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "flashTimer",
+        "type": "float",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "flashDuration",
+        "type": "float",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Update"
+    ],
+    "has_update": true,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 5,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "AudioSource",
+      "Image",
+      "Sprite",
+      "int",
+      "bool",
+      "float",
+      "UnityEngine",
+      "UI",
+      "Sprites",
+      "FlashTimer",
+      "Update",
+      "Length",
+      "Flash",
+      "Play"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Image",
+      "Sprites"
+    ],
+    "numeric_literals": [
+      1.33,
+      1.65,
+      0,
+      0.1
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "Update 기반 처리 존재",
+      "UI 관련 로직 포함"
     ]
   },
   {
@@ -6473,6 +7623,954 @@
     ]
   },
   {
+    "file_id": "Assets/Scripts/Main/Advanced/AdvancedCustomer.cs",
+    "path": "Assets/Scripts/Main/Advanced/AdvancedCustomer.cs",
+    "file_name": "AdvancedCustomer.cs",
+    "content_hash": "312018d4a09de7c007bb299fb76167d7ac39917a",
+    "size": 160,
+    "line_count": 11,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "DG.Tweening",
+      "UnityEngine",
+      "UnityEngine.InputSystem",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "AdvancedCustomer",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "AdvancedCustomer",
+    "unity_type": "MonoBehaviour",
+    "methods": [],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "System",
+      "DG",
+      "Tweening",
+      "UnityEngine",
+      "InputSystem",
+      "UI"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "ui",
+      "player",
+      "runtime"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Main/Advanced/AdvancedTong.cs",
+    "path": "Assets/Scripts/Main/Advanced/AdvancedTong.cs",
+    "file_name": "AdvancedTong.cs",
+    "content_hash": "c109c9b383e05feee0a7d604ba1f8bd9b88d38f2",
+    "size": 1827,
+    "line_count": 69,
+    "namespace": "",
+    "using_list": [
+      "DG.Tweening",
+      "UnityEngine",
+      "UnityEngine.EventSystems"
+    ],
+    "classes": [
+      {
+        "name": "AdvancedTong",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour",
+          "IBeginDragHandler",
+          "IDragHandler",
+          "IEndDragHandler"
+        ],
+        "interfaces": [
+          "IBeginDragHandler",
+          "IDragHandler",
+          "IEndDragHandler"
+        ],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "AdvancedTong",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "ResetTong",
+      "OnBeginDrag",
+      "OnDrag",
+      "OnEndDrag",
+      "Vector2"
+    ],
+    "fields": [
+      {
+        "name": "_rect",
+        "type": "RectTransform",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_startPos",
+        "type": "Vector3",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_isTweening",
+        "type": "bool",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "enableDrag",
+        "type": "bool",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentY",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 1,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 1,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "RectTransform",
+      "Vector3",
+      "bool",
+      "float",
+      "DG",
+      "Tweening",
+      "UnityEngine",
+      "EventSystems",
+      "IBeginDragHandler",
+      "IDragHandler",
+      "IEndDragHandler",
+      "Awake",
+      "GetComponent",
+      "ResetTong",
+      "SetY",
+      "DOAnchorPos3DY",
+      "OnBeginDrag",
+      "PointerEventData",
+      "OnDrag",
+      "AddY",
+      "OnEndDrag",
+      "Screen",
+      "DOAnchorPos",
+      "SetEase",
+      "Ease",
+      "OutCubic",
+      "OnComplete",
+      "Vector2",
+      "MainUIManager",
+      "Inst",
+      "OpenGameView",
+      "DOScale",
+      "SetDelay",
+      "AdvancedMain",
+      "OnEndDragTong"
+    ],
+    "component_access_types": [
+      "RectTransform"
+    ],
+    "created_types": [
+      "Vector2"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [
+      360,
+      26,
+      0.5,
+      2.3,
+      0.3,
+      0.1
+    ],
+    "guessed_roles": [
+      "runtime",
+      "ui",
+      "manager",
+      "data"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Main/Advanced/MainUIManager.cs",
+    "path": "Assets/Scripts/Main/Advanced/MainUIManager.cs",
+    "file_name": "MainUIManager.cs",
+    "content_hash": "685fd4aa7d6a83eb5e36942e52c19d8b2fd88347",
+    "size": 770,
+    "line_count": 35,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "DG.Tweening",
+      "UnityEngine",
+      "UnityEngine.InputSystem"
+    ],
+    "classes": [
+      {
+        "name": "MainUIManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "MainUIManager",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "Start",
+      "OpenGameView",
+      "CloseGameView"
+    ],
+    "fields": [
+      {
+        "name": "Inst",
+        "type": "MainUIManager",
+        "access": "public",
+        "serialized": false,
+        "is_static": true
+      },
+      {
+        "name": "_scrollDelta",
+        "type": "float",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake",
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 1,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "float",
+      "System",
+      "DG",
+      "Tweening",
+      "UnityEngine",
+      "InputSystem",
+      "Inst",
+      "RectTransform",
+      "Awake",
+      "Start",
+      "OpenGameView",
+      "DOAnchorPos3DY",
+      "CloseGameView"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [
+      0.5
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime",
+      "player",
+      "manager"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Main/AdvancedDialogue.cs",
+    "path": "Assets/Scripts/Main/AdvancedDialogue.cs",
+    "file_name": "AdvancedDialogue.cs",
+    "content_hash": "2f9779dfad4f915c1d06a8d401d5f88387045bac",
+    "size": 5455,
+    "line_count": 228,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "System.Collections.Generic",
+      "DG.Tweening",
+      "TMPro",
+      "UnityEngine",
+      "UnityEngine.InputSystem",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "Dialogue",
+        "kind": "class",
+        "access": "public",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      },
+      {
+        "name": "AdvancedDialogue",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "Dialogue",
+    "unity_type": "None",
+    "methods": [
+      "Dialogue",
+      "Awake",
+      "Start",
+      "Update",
+      "SetTexts",
+      "SetPreview",
+      "ShowNextDialogue",
+      "ShowTextChat",
+      "CloseChat",
+      "ShowPreviewChat",
+      "SetIngredientImage",
+      "GetIngredientSprite"
+    ],
+    "fields": [
+      {
+        "name": "dialogueType",
+        "type": "DialogueType",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "types",
+        "type": "List<IngredientType>",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "Inst",
+        "type": "AdvancedDialogue",
+        "access": "public",
+        "serialized": false,
+        "is_static": true
+      },
+      {
+        "name": "chatTxt",
+        "type": "TextMeshProUGUI",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "chatImg",
+        "type": "CanvasGroup",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "previewBg",
+        "type": "CanvasGroup",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "previewRect",
+        "type": "RectTransform",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "ingredientUIPrefab",
+        "type": "GameObject",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "previewStackOffset",
+        "type": "float",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "spriteBakedPatty",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "spriteCheese",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "spriteOnion",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "spriteLettuce",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "spriteTomato",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "chatIngredients",
+        "type": "List<GameObject>",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_dialogues",
+        "type": "List<Dialogue>",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_isDialoging",
+        "type": "bool",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_dialogueIndex",
+        "type": "int",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "dialogue",
+        "type": "var",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake",
+      "Start",
+      "Update"
+    ],
+    "has_update": true,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 16,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 4,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "DialogueType",
+      "string",
+      "TextMeshProUGUI",
+      "CanvasGroup",
+      "RectTransform",
+      "float",
+      "Sprite",
+      "bool",
+      "int",
+      "System",
+      "Collections",
+      "Generic",
+      "DG",
+      "Tweening",
+      "TMPro",
+      "UnityEngine",
+      "InputSystem",
+      "UI",
+      "Text",
+      "Preview",
+      "IngredientType",
+      "Inst",
+      "Ingredient",
+      "Sprites",
+      "Awake",
+      "Start",
+      "Update",
+      "Keyboard",
+      "Count",
+      "CloseChat",
+      "AdvancedMain",
+      "ShowNextDialogue",
+      "SetTexts",
+      "Add",
+      "SetPreview",
+      "ShowTextChat",
+      "ShowPreviewChat",
+      "DOFade",
+      "DOText",
+      "Clear",
+      "Destroy",
+      "Insert",
+      "Burn",
+      "TopBurn",
+      "SideBurgerRenderer",
+      "BuildBurger",
+      "SetIngredientImage",
+      "Image",
+      "GetComponent",
+      "LogWarning",
+      "VisualManager",
+      "IngredientUI",
+      "GetIngredientSprite",
+      "Color",
+      "CookedPatty",
+      "Cheese",
+      "Onion",
+      "Lettuce",
+      "Tomato"
+    ],
+    "component_access_types": [
+      "Image"
+    ],
+    "created_types": [
+      "List",
+      "Dialogue"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Ingredient Sprites",
+      "구운 패티 이미지",
+      "치즈 이미지",
+      "양파 이미지",
+      "양상추 이미지",
+      "토마토 이미지",
+      "탄 재료 이미지",
+      "대화 종료",
+      "VisualManager: IngredientUI 프리팹에 Image 컴포넌트가 없습니다."
+    ],
+    "numeric_literals": [
+      18,
+      0.3,
+      0.5
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime",
+      "combat",
+      "player",
+      "manager"
+    ],
+    "summary_signals": [
+      "Update 기반 처리 존재",
+      "UI 관련 로직 포함",
+      "전투 계열 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Main/AdvancedMain.cs",
+    "path": "Assets/Scripts/Main/AdvancedMain.cs",
+    "file_name": "AdvancedMain.cs",
+    "content_hash": "6c5de805b4a5f33defedcb481248a38ed80eb63f",
+    "size": 6636,
+    "line_count": 197,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "System.Collections",
+      "System.Collections.Generic",
+      "DG.Tweening",
+      "UnityEngine",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "AdvancedMain",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "AdvancedMain",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "Start",
+      "StartFlow",
+      "GameEventsOnOnAllStagesCleared",
+      "GameEventsOnOnStageChanged",
+      "GameEventsOnOnNewCustomerAppeared",
+      "CorStartGame",
+      "WaitForSeconds",
+      "OnEndDragTong",
+      "OnClickSubmit",
+      "CorSubmitBurger",
+      "WaitUntil"
+    ],
+    "fields": [
+      {
+        "name": "Inst",
+        "type": "AdvancedMain",
+        "access": "public",
+        "serialized": false,
+        "is_static": true
+      },
+      {
+        "name": "tong",
+        "type": "AdvancedTong",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "previewInCounter",
+        "type": "CanvasGroup",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "stage1Customer",
+        "type": "Stage1Customer",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_currentCustomerState",
+        "type": "CustomerRuntimeState",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "allStageEnded",
+        "type": "bool",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "enableSubmit",
+        "type": "bool",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "_stageEnded",
+        "type": "bool",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentStageIndex",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentStage",
+        "type": "StageData",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "myScore",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "maxScore",
+        "type": "int",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake",
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 6,
+    "get_component_count": 5,
+    "find_call_count": 0,
+    "new_keyword_count": 7,
+    "coroutine_count": 4,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "AdvancedTong",
+      "CanvasGroup",
+      "Stage1Customer",
+      "CustomerRuntimeState",
+      "bool",
+      "int",
+      "StageData",
+      "System",
+      "Collections",
+      "Generic",
+      "DG",
+      "Tweening",
+      "UnityEngine",
+      "UI",
+      "Inst",
+      "AudioClip",
+      "SPECIAL",
+      "CUSTOMER",
+      "Awake",
+      "GameEvents",
+      "OnNewCustomerAppeared",
+      "GameEventsOnOnNewCustomerAppeared",
+      "OnStageChanged",
+      "GameEventsOnOnStageChanged",
+      "OnAllStagesCleared",
+      "GameEventsOnOnAllStagesCleared",
+      "Start",
+      "StartFlow",
+      "StartCoroutine",
+      "CorStartGame",
+      "ResetTong",
+      "WaitForSeconds",
+      "StageFlowManager",
+      "SFXPlayer",
+      "Instance",
+      "Play",
+      "CustomerQueueManager",
+      "GetCurrentCustomer",
+      "CustomerStateManager",
+      "ShowCustomer",
+      "IsNullOrEmpty",
+      "GetDialogue",
+      "Split",
+      "AdvancedDialogue",
+      "SetTexts",
+      "IngredientType",
+      "Recipe",
+      "Add",
+      "SetPreview",
+      "CustomerName",
+      "Kid",
+      "StartAnimation",
+      "GetComponent",
+      "RectTransform",
+      "SetY",
+      "WOW",
+      "ETC",
+      "ShowNextDialogue",
+      "OnEndDragTong",
+      "GameManager",
+      "StartGame",
+      "CloseChat",
+      "OnClickSubmit",
+      "CorSubmitBurger",
+      "MainUIManager",
+      "CloseGameView",
+      "DOFade",
+      "TryGetComponent",
+      "Image",
+      "SetAlpha",
+      "GetBestBurgerData",
+      "OnSubmitInput",
+      "OnBurgerSubmitted",
+      "UpdateEmotionUI",
+      "CurrentEmotion",
+      "Log",
+      "ScoreCalculationSystem",
+      "CurrentReputation",
+      "GetReputationDialogue",
+      "WaitUntil",
+      "HideCustomer",
+      "Stages",
+      "CustomerPool",
+      "SpecialCustomerData",
+      "EndScreen",
+      "ShowEndScreen"
+    ],
+    "component_access_types": [
+      "RectTransform",
+      "Image"
+    ],
+    "created_types": [
+      "WaitForSeconds",
+      "WaitUntil"
+    ],
+    "singleton_access_types": [
+      "SFXPlayer"
+    ],
+    "string_literals": [
+      "SPECIAL CUSTOMER",
+      "Kid",
+      "WOW",
+      "평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}"
+    ],
+    "numeric_literals": [
+      3.5,
+      2,
+      198,
+      341,
+      533,
+      670,
+      0.5,
+      30,
+      15
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime",
+      "player",
+      "manager",
+      "data"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
     "file_id": "Assets/Scripts/Main/MainBG.cs",
     "path": "Assets/Scripts/Main/MainBG.cs",
     "file_name": "MainBG.cs",
@@ -6634,9 +8732,9 @@
     "file_id": "Assets/Scripts/Main/PeopleManager.cs",
     "path": "Assets/Scripts/Main/PeopleManager.cs",
     "file_name": "PeopleManager.cs",
-    "content_hash": "3d9134a93ddeadf44f414a5f42642caf1263cc04",
-    "size": 3497,
-    "line_count": 123,
+    "content_hash": "d0c8e3d0efeb3f5d1e355d52ded121735ca4d3bd",
+    "size": 3016,
+    "line_count": 111,
     "namespace": "",
     "using_list": [
       "System",
@@ -6702,13 +8800,6 @@
         "is_static": false
       },
       {
-        "name": "materialSprites",
-        "type": "Sprite[]",
-        "access": "public",
-        "serialized": false,
-        "is_static": false
-      },
-      {
         "name": "materialImgPrefab",
         "type": "MaterialItem",
         "access": "public",
@@ -6730,7 +8821,7 @@
     "has_on_enable": false,
     "has_on_disable": false,
     "serialize_field_count": 0,
-    "public_field_count": 6,
+    "public_field_count": 5,
     "get_component_count": 0,
     "find_call_count": 0,
     "new_keyword_count": 0,
@@ -6741,7 +8832,6 @@
       "Image",
       "TextMeshProUGUI",
       "RectTransform",
-      "Sprite",
       "MaterialItem",
       "System",
       "Collections",
@@ -6755,7 +8845,6 @@
       "UI",
       "Inst",
       "CanvasGroup",
-      "MaterialType",
       "Awake",
       "Start",
       "SetActive",
@@ -6775,16 +8864,12 @@
       "Init",
       "IngredientType",
       "Burn",
-      "Reverse",
-      "Length",
-      "LogWarning"
+      "Reverse"
     ],
     "component_access_types": [],
     "created_types": [],
     "singleton_access_types": [],
-    "string_literals": [
-      "{data.IngredientType}({index}) 스프라이트 없음"
-    ],
+    "string_literals": [],
     "numeric_literals": [
       0.5,
       0.3,
@@ -6809,8 +8894,8 @@
     "file_id": "Assets/Scripts/Main/ScnMain.cs",
     "path": "Assets/Scripts/Main/ScnMain.cs",
     "file_name": "ScnMain.cs",
-    "content_hash": "1e4e9674e3584f5191628583b4106e1d248fd844",
-    "size": 3154,
+    "content_hash": "d3312f8f13912c5775e3e98fed111087dcc18091",
+    "size": 3116,
     "line_count": 113,
     "namespace": "",
     "using_list": [
@@ -6966,8 +9051,8 @@
       "CorCustomerFlow",
       "ResetTongPos",
       "Day",
-      "StageFlowManager",
       "Stage",
+      "StageFlowManager",
       "WaitForSeconds",
       "PeopleManager",
       "ShowPeople",
@@ -6994,6 +9079,7 @@
     ],
     "singleton_access_types": [],
     "string_literals": [
+      "Day 1 | Stage {StageFlowManager.Inst.currentStageIndex + 1}",
       "[{_currentCustomerData.customerName}]\\n안녕하세요!\\n\\n[버거 이름]을 주세요!",
       "FALSE",
       "평판: {StageFlowManager.Inst.scoreCalculationSystem.currentReputation}"
@@ -7015,6 +9101,137 @@
       "런타임 컴포넌트",
       "UI 관련 로직 포함",
       "전투 계열 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/Main/SFXPlayer.cs",
+    "path": "Assets/Scripts/Main/SFXPlayer.cs",
+    "file_name": "SFXPlayer.cs",
+    "content_hash": "1999a150b5aff80755bddabe1d02159154b1e5cb",
+    "size": 2330,
+    "line_count": 106,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine",
+      "UnityEngine.Audio",
+      "System.Collections.Generic"
+    ],
+    "classes": [
+      {
+        "name": "SFXPlayer",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "SFXPlayer",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "CreatePool",
+      "Play",
+      "PlayRandomPitch",
+      "GetAvailableSource"
+    ],
+    "fields": [
+      {
+        "name": "Instance",
+        "type": "SFXPlayer",
+        "access": "public",
+        "serialized": false,
+        "is_static": true
+      },
+      {
+        "name": "currentIndex",
+        "type": "int",
+        "access": "private",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "fallback",
+        "type": "AudioSource",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 1,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": true,
+    "dont_destroy_on_load": true,
+    "referenced_types": [
+      "int",
+      "AudioSource",
+      "UnityEngine",
+      "Audio",
+      "System",
+      "Collections",
+      "Generic",
+      "Instance",
+      "Pool",
+      "Settings",
+      "Mixer",
+      "AudioMixerGroup",
+      "Awake",
+      "Singleton",
+      "DontDestroyOnLoad",
+      "Destroy",
+      "CreatePool",
+      "AddComponent",
+      "Group",
+      "Add",
+      "Play",
+      "AudioClip",
+      "GetAvailableSource",
+      "PlayRandomPitch",
+      "Count"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "Pool Settings",
+      "Audio Mixer"
+    ],
+    "numeric_literals": [
+      10,
+      1,
+      0.9,
+      1.1
+    ],
+    "guessed_roles": [
+      "manager",
+      "save-load",
+      "runtime",
+      "player"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "싱글톤 후보",
+      "저장/불러오기 관련 로직 포함"
     ]
   },
   {
@@ -7203,9 +9420,9 @@
     "file_id": "Assets/Scripts/PausedMenu/PausedController.cs",
     "path": "Assets/Scripts/PausedMenu/PausedController.cs",
     "file_name": "PausedController.cs",
-    "content_hash": "669c4fb000817c61bddfba205aab52cebb78b879",
-    "size": 2976,
-    "line_count": 116,
+    "content_hash": "5d5495e2a160cd4df12b251e582aecd9ddff7f94",
+    "size": 3152,
+    "line_count": 124,
     "namespace": "",
     "using_list": [
       "System",
@@ -7232,6 +9449,7 @@
     "unity_type": "MonoBehaviour",
     "methods": [
       "Awake",
+      "ClearData",
       "OpenPausedMenu",
       "Vector3",
       "ClosePausedMenu",
@@ -7347,6 +9565,12 @@
       "Awake",
       "Destroy",
       "DontDestroyOnLoad",
+      "ClearData",
+      "PlayerPrefs",
+      "DeleteAll",
+      "Save",
+      "Application",
+      "Quit",
       "OpenPausedMenu",
       "SetActive",
       "Color",
@@ -7392,15 +9616,16 @@
     ],
     "guessed_roles": [
       "ui",
+      "save-load",
       "scene",
-      "manager",
-      "runtime",
-      "player"
+      "player",
+      "manager"
     ],
     "summary_signals": [
       "런타임 컴포넌트",
       "싱글톤 후보",
-      "UI 관련 로직 포함"
+      "UI 관련 로직 포함",
+      "저장/불러오기 관련 로직 포함"
     ]
   },
   {
@@ -7495,6 +9720,85 @@
     "summary_signals": []
   },
   {
+    "file_id": "Assets/Scripts/SaveDataManager.cs",
+    "path": "Assets/Scripts/SaveDataManager.cs",
+    "file_name": "SaveDataManager.cs",
+    "content_hash": "93845ae9d95bbe3507339f2e98bf3f13a7c28762",
+    "size": 722,
+    "line_count": 22,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "SaveDataManager",
+        "kind": "class",
+        "access": "public",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "SaveDataManager",
+    "unity_type": "None",
+    "methods": [
+      "SaveProgress",
+      "LoadProgress"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "UnityEngine",
+      "SaveProgress",
+      "PlayerPrefs",
+      "SetInt",
+      "SavedStage",
+      "SavedServedCount",
+      "SavedReputation",
+      "Save",
+      "LoadProgress",
+      "GetInt"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "SavedStage",
+      "SavedServedCount",
+      "SavedReputation"
+    ],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "save-load",
+      "player",
+      "manager",
+      "data"
+    ],
+    "summary_signals": [
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
     "file_id": "Assets/Scripts/ScoreCalculationSystem.cs",
     "path": "Assets/Scripts/ScoreCalculationSystem.cs",
     "file_name": "ScoreCalculationSystem.cs",
@@ -7579,6 +9883,564 @@
     ],
     "summary_signals": [
       "런타임 컴포넌트",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/SideBurgetRenderer.cs",
+    "path": "Assets/Scripts/SideBurgetRenderer.cs",
+    "file_name": "SideBurgetRenderer.cs",
+    "content_hash": "12d9a3ac241c48d4e614e4123986fd8e7db7f8d6",
+    "size": 4499,
+    "line_count": 119,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "System.Collections.Generic",
+      "UnityEngine",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "SideBurgerRenderer",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      },
+      {
+        "name": "IngredientSpriteMapping",
+        "kind": "struct",
+        "access": "public",
+        "base_types": [],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "SideBurgerRenderer",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Awake",
+      "BuildBurger",
+      "GameObject",
+      "Vector2"
+    ],
+    "fields": [
+      {
+        "name": "Inst",
+        "type": "SideBurgerRenderer",
+        "access": "public",
+        "serialized": false,
+        "is_static": true
+      },
+      {
+        "name": "type",
+        "type": "IngredientType",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "sprite",
+        "type": "Sprite",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentAnchorY",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "currentType",
+        "type": "IngredientType",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "pixelToRectRatio",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "spriteHeightInRect",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "overlapPixels",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "prevType",
+        "type": "IngredientType",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "overlapInRect",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "finalY",
+        "type": "float",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Awake"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": true,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 3,
+    "get_component_count": 2,
+    "find_call_count": 0,
+    "new_keyword_count": 7,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "IngredientType",
+      "Sprite",
+      "float",
+      "System",
+      "Collections",
+      "Generic",
+      "UnityEngine",
+      "UI",
+      "Inst",
+      "Serializable",
+      "Awake",
+      "ContainsKey",
+      "Add",
+      "BuildBurger",
+      "RectTransform",
+      "Count",
+      "Pivot",
+      "Anchor",
+      "DestroyImmediate",
+      "GetChild",
+      "TryGetValue",
+      "LogWarning",
+      "ToString",
+      "Image",
+      "SetParent",
+      "SetAsLastSibling",
+      "GetComponent",
+      "SetNativeSize",
+      "Vector2",
+      "Rect",
+      "Pixel",
+      "Cheese",
+      "Lettuce",
+      "RawPatty",
+      "CookedPatty"
+    ],
+    "component_access_types": [
+      "Image",
+      "RectTransform"
+    ],
+    "created_types": [
+      "Dictionary",
+      "List",
+      "GameObject",
+      "Vector2"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [
+      "재료 스프라이트 설정",
+      "{currentType}에 해당하는 스프라이트가 없습니다."
+    ],
+    "numeric_literals": [
+      0,
+      0.5,
+      2,
+      32,
+      3,
+      12,
+      5,
+      30,
+      4
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime",
+      "inventory",
+      "save-load"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "인벤토리 계열 로직 포함",
+      "저장/불러오기 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/SpecialCustomer/SpecialBase.cs",
+    "path": "Assets/Scripts/SpecialCustomer/SpecialBase.cs",
+    "file_name": "SpecialBase.cs",
+    "content_hash": "cf75c5e5276fa353b8d9e565f41e1dc0ecccd8cb",
+    "size": 516,
+    "line_count": 31,
+    "namespace": "",
+    "using_list": [
+      "System",
+      "System.Collections",
+      "UnityEngine",
+      "UnityEngine.InputSystem",
+      "DG.Tweening",
+      "UnityEngine.UI"
+    ],
+    "classes": [
+      {
+        "name": "SpecialBase",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "SpecialBase",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "StartAnimation",
+      "UpdateEmotion",
+      "HideAnimation",
+      "AnimationRoutine"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 2,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "System",
+      "Collections",
+      "UnityEngine",
+      "InputSystem",
+      "DG",
+      "Tweening",
+      "UI",
+      "StartAnimation",
+      "StartCoroutine",
+      "AnimationRoutine",
+      "UpdateEmotion",
+      "CustomerEmotion",
+      "HideAnimation"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "runtime",
+      "ui",
+      "player"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/SpecialCustomer/Stage1Customer.cs",
+    "path": "Assets/Scripts/SpecialCustomer/Stage1Customer.cs",
+    "file_name": "Stage1Customer.cs",
+    "content_hash": "f9212e7c745807a0e63093c4fb687c786687f5aa",
+    "size": 1978,
+    "line_count": 57,
+    "namespace": "",
+    "using_list": [
+      "System.Collections",
+      "UnityEngine",
+      "UnityEngine.UI",
+      "DG.Tweening"
+    ],
+    "classes": [
+      {
+        "name": "Stage1Customer",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "SpecialBase"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "Stage1Customer",
+    "unity_type": "None",
+    "methods": [
+      "AnimationRoutine",
+      "WaitForSeconds",
+      "ShowHand1",
+      "Vector3",
+      "ShowHand2",
+      "ShowBody"
+    ],
+    "fields": [
+      {
+        "name": "sprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "body",
+        "type": "Image",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 2,
+    "get_component_count": 2,
+    "find_call_count": 0,
+    "new_keyword_count": 8,
+    "coroutine_count": 1,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "Sprite",
+      "Image",
+      "System",
+      "Collections",
+      "UnityEngine",
+      "UI",
+      "DG",
+      "Tweening",
+      "SpecialBase",
+      "RectTransform",
+      "AnimationRoutine",
+      "AdvancedDialogue",
+      "Inst",
+      "GetComponent",
+      "SetY",
+      "ShowHand1",
+      "WaitForSeconds",
+      "ShowHand2",
+      "ShowBody",
+      "ShowNextDialogue",
+      "SetActive",
+      "Vector3",
+      "DOScale",
+      "SetEase",
+      "Ease",
+      "InOutBack",
+      "DOAnchorPos3DY"
+    ],
+    "component_access_types": [
+      "RectTransform"
+    ],
+    "created_types": [
+      "WaitForSeconds",
+      "Vector3"
+    ],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [
+      198,
+      341,
+      1,
+      0.5,
+      1.5,
+      0.39,
+      0.2,
+      400,
+      0.3,
+      369,
+      0.15,
+      0.25,
+      540,
+      512
+    ],
+    "guessed_roles": [
+      "ui",
+      "player"
+    ],
+    "summary_signals": [
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/SpecialCustomerData.cs",
+    "path": "Assets/Scripts/SpecialCustomerData.cs",
+    "file_name": "SpecialCustomerData.cs",
+    "content_hash": "945f87f99b73b51b2fd1b57ce34244c03bcf0983",
+    "size": 1628,
+    "line_count": 50,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "SpecialCustomerData",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "CustomerData"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "SpecialCustomerData",
+    "unity_type": "None",
+    "methods": [
+      "Sprites",
+      "GetDialogue",
+      "GetReputationDialogue",
+      "GetBonusScore"
+    ],
+    "fields": [
+      {
+        "name": "specialSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "emotionSprites",
+        "type": "Sprite[]",
+        "access": "public",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": false,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 2,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "Sprite",
+      "UnityEngine",
+      "CreateAssetMenu",
+      "SpecialCustomer",
+      "Objects",
+      "Customer",
+      "Special",
+      "CustomerData",
+      "TextArea",
+      "Sprites",
+      "Emotion",
+      "Happy",
+      "Neutral",
+      "Angry",
+      "GetDialogue",
+      "GetReputationDialogue",
+      "ReputationResult",
+      "Perfect",
+      "GetRandomTxt",
+      "Wrong",
+      "GetBonusScore",
+      "Incomplete"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [
+      "SpecialCustomer",
+      "Objects/Customer/Special",
+      "Special Sprites",
+      "Emotion Sprites (Happy, Neutral, Angry)",
+      "기쁨",
+      "실망",
+      "기본"
+    ],
+    "numeric_literals": [
+      15
+    ],
+    "guessed_roles": [
+      "data",
+      "save-load"
+    ],
+    "summary_signals": [
       "저장/불러오기 관련 로직 포함"
     ]
   },
@@ -7793,6 +10655,203 @@
     ]
   },
   {
+    "file_id": "Assets/Scripts/UI/PressToStartAnimation.cs",
+    "path": "Assets/Scripts/UI/PressToStartAnimation.cs",
+    "file_name": "PressToStartAnimation.cs",
+    "content_hash": "737690f334b05b5de6e30e9b73452e8c1eed6575",
+    "size": 316,
+    "line_count": 15,
+    "namespace": "",
+    "using_list": [
+      "TMPro",
+      "DG.Tweening",
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "PressToStartAnimation",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "PressToStartAnimation",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Start"
+    ],
+    "fields": [],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 0,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "TMPro",
+      "DG",
+      "Tweening",
+      "UnityEngine",
+      "TextMeshProUGUI",
+      "Start",
+      "DOFade",
+      "SetLoops",
+      "LoopType",
+      "Yoyo",
+      "SetEase",
+      "Ease",
+      "InOutSine"
+    ],
+    "component_access_types": [],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [
+      0.2,
+      0.8
+    ],
+    "guessed_roles": [
+      "ui",
+      "runtime",
+      "combat",
+      "save-load"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "전투 계열 로직 포함",
+      "저장/불러오기 관련 로직 포함"
+    ]
+  },
+  {
+    "file_id": "Assets/Scripts/UI/SafeArea.cs",
+    "path": "Assets/Scripts/UI/SafeArea.cs",
+    "file_name": "SafeArea.cs",
+    "content_hash": "ae04eae34d28909ad6e3becc0c80a79292e2034a",
+    "size": 638,
+    "line_count": 30,
+    "namespace": "",
+    "using_list": [
+      "UnityEngine"
+    ],
+    "classes": [
+      {
+        "name": "SafeArea",
+        "kind": "class",
+        "access": "public",
+        "base_types": [
+          "MonoBehaviour"
+        ],
+        "interfaces": [],
+        "attributes": [],
+        "is_partial": false,
+        "is_generic": false
+      }
+    ],
+    "main_class_name": "SafeArea",
+    "unity_type": "MonoBehaviour",
+    "methods": [
+      "Start",
+      "ApplySafeArea"
+    ],
+    "fields": [
+      {
+        "name": "rectTransform",
+        "type": "RectTransform",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "safeArea",
+        "type": "Rect",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "minAnchor",
+        "type": "Vector2",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      },
+      {
+        "name": "maxAnchor",
+        "type": "Vector2",
+        "access": "internal",
+        "serialized": false,
+        "is_static": false
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "unity_messages": [
+      "Start"
+    ],
+    "has_update": false,
+    "has_fixed_update": false,
+    "has_late_update": false,
+    "has_awake": false,
+    "has_start": true,
+    "has_on_enable": false,
+    "has_on_disable": false,
+    "serialize_field_count": 0,
+    "public_field_count": 0,
+    "get_component_count": 1,
+    "find_call_count": 0,
+    "new_keyword_count": 0,
+    "coroutine_count": 0,
+    "singleton_candidate": false,
+    "dont_destroy_on_load": false,
+    "referenced_types": [
+      "RectTransform",
+      "Rect",
+      "Vector2",
+      "UnityEngine",
+      "Start",
+      "GetComponent",
+      "ApplySafeArea",
+      "Screen"
+    ],
+    "component_access_types": [
+      "RectTransform"
+    ],
+    "created_types": [],
+    "singleton_access_types": [],
+    "string_literals": [],
+    "numeric_literals": [],
+    "guessed_roles": [
+      "runtime",
+      "ui"
+    ],
+    "summary_signals": [
+      "런타임 컴포넌트",
+      "UI 관련 로직 포함",
+      "컴포넌트 조회 사용"
+    ]
+  },
+  {
     "file_id": "Assets/Scripts/UIManager.cs",
     "path": "Assets/Scripts/UIManager.cs",
     "file_name": "UIManager.cs",
@@ -7960,7 +11019,7 @@
     "file_id": "Assets/Scripts/VisualManager.cs",
     "path": "Assets/Scripts/VisualManager.cs",
     "file_name": "VisualManager.cs",
-    "content_hash": "0982a01753b269829a01611c6ea010e0371b4dc3",
+    "content_hash": "039d24f674225734f183eeb77405238ff8f5ff43",
     "size": 4997,
     "line_count": 147,
     "namespace": "",
@@ -8139,8 +11198,8 @@
       "GetIngredientColor",
       "DrawPreview",
       "DrawOrderList",
-      "BakedPatty",
       "FrozenPatty",
+      "BakedPatty",
       "Cheese",
       "Onion",
       "Lettuce",

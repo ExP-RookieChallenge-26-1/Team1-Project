@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ public class AdvancedIntro : MonoBehaviour
     public NeonSignEffect neonSignEffect;
     public Image fadeImg;
     public AudioClip bellAudio;
+    public CanvasGroup press2Startxt;
     public Animator anim;
 
     private void Awake()
@@ -24,11 +26,11 @@ public class AdvancedIntro : MonoBehaviour
 
     IEnumerator CorAnim()
     {
+        press2Startxt.DOFade(0, 0.25f);
         neonSignEffect.Play();
         yield return new WaitForSeconds(2f);
         
         SFXPlayer.Instance.Play(bellAudio);
-        
         anim.SetTrigger("ZoomIn");
         fadeImg.DOFade(1, 0.8f).OnComplete(() =>
         {

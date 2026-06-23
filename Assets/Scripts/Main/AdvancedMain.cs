@@ -11,8 +11,11 @@ public class AdvancedMain : MonoBehaviour
 
     public AdvancedTong tong;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip;
-    public SpecialCustomer specialCustomer;
     public CanvasGroup previewInCounter;
+
+    [Header("SPECIAL CUSTOMER")] 
+    public Stage1Customer stage1Customer;
+    
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
     public bool enableSubmit;
@@ -79,13 +82,20 @@ public class AdvancedMain : MonoBehaviour
         if (current.CustomerName == "Kid")
         {
             AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage1Customer;
+            stage1Customer.StartAnimation();
+            /*AdvancedDialogue.Inst.blockDialogInput = true;
             specialCustomer.StartAnimation();
 
             var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
             chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(198);
             
             var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
-            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(341);
+            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(341);*/
+        }
+        else if (current.CustomerName == "WOW")
+        {
+            //ETC
         }
         else
         {
