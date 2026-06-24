@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -37,6 +36,11 @@ public class CustomerStateManager : MonoBehaviour
 
     public void ShowCustomer(CustomerData data, CustomerRuntimeState state)
     {
+        if (data == null)
+        {
+            return;
+        }
+
         currentCustomerData = data;
 
         string appLog = state != null ? $"성별:{state.Appearance.Gender}, Body:{state.Appearance.BodyTypeIndex}, Clothes:{state.Appearance.ClothesTypeIndex}, Hair:{state.Appearance.HairTypeIndex}" : "상태값 없음(Null)";
@@ -78,7 +82,34 @@ public class CustomerStateManager : MonoBehaviour
         customerRect.DOAnchorPos3DY(-89, 0.15f);
     }
 
-    private void ApplyAppearanceSprites(CustomerAppearance appearance)
+    public void ShowEndingVIP(Sprite body)
+    {
+        gameObject.SetActive(true);
+
+        customerRect.GetComponent<CanvasGroup>().alpha = 1;
+        customerRect.gameObject.SetActive(true);
+        customerRect.localScale = Vector3.one;
+        customerRect.anchoredPosition3D = customerRect.anchoredPosition3D.SetY(-89);
+
+        if (currentSpecialCustomer != null)
+        {
+            currentSpecialCustomer.gameObject.SetActive(false);
+            currentSpecialCustomer = null;
+        }
+        if (specialImage != null) specialImage.gameObject.SetActive(false);
+        if (clothesTypeImage != null) clothesTypeImage.gameObject.SetActive(false);
+        if (hairTypeImage != null) hairTypeImage.gameObject.SetActive(false);
+        if (emotionImage != null) emotionImage.gameObject.SetActive(false);
+
+        if (bodyTypeImage != null)
+        {
+            bodyTypeImage.gameObject.SetActive(true);
+            bodyTypeImage.sprite = body;
+            bodyTypeImage.SetNativeSize();
+        }
+    }
+
+    public void ApplyAppearanceSprites(CustomerAppearance appearance)
     {
         GenderSpriteSet targetSet = stateDB.GetSpriteSet(appearance.Gender);
 
@@ -142,5 +173,13 @@ public class CustomerStateManager : MonoBehaviour
             emotionImage.sprite = stateDB.emotionSprites[(int)newEmotion];
             emotionImage.SetNativeSize();
         }
+    }
+
+    public void ApplyEndingAppearance(Sprite body, Sprite clothes, Sprite hair, Sprite emotion)
+    {
+        if (bodyTypeImage != null && body != null) bodyTypeImage.sprite = body;
+        if (clothesTypeImage != null && clothes != null) clothesTypeImage.sprite = clothes;
+        if (hairTypeImage != null && hair != null) hairTypeImage.sprite = hair;
+        if (emotionImage != null && emotion != null) emotionImage.sprite = emotion;
     }
 }

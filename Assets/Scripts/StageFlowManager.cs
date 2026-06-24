@@ -18,6 +18,8 @@ public class StageFlowManager : MonoBehaviour
     public int servedCount { get; private set; } = 0;    // ������ ������ Ƚ��
     public CustomerEmotion oldEmotion;
 
+    public bool isAllGameCleared = false;
+
     private void Awake()
     {
         Inst = this;
@@ -28,10 +30,10 @@ public class StageFlowManager : MonoBehaviour
 
     private void Start()
     {
-        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedScore); ;
+        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedTotalScore, out int savedStageScore);
         currentStageIndex = savedStage;
         servedCount = savedServed;
-        scoreCalculationSystem.SetReputation(savedScore);
+        scoreCalculationSystem.SetLoadedReputation(savedTotalScore, savedStageScore);
 
         LoadStage(currentStageIndex);
     }
@@ -41,7 +43,8 @@ public class StageFlowManager : MonoBehaviour
         // index�� �������� ������ ���ٸ� ����
         if (index >= stages.Count)
         {
-            GameEvents.TriggerAllStagesCleared();
+            isAllGameCleared = true;
+            //GameEvents.TriggerAllStagesCleared();
             return;
         }
 
@@ -74,7 +77,7 @@ public class StageFlowManager : MonoBehaviour
 
         servedCount++;
 
-        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.totalReputation, scoreCalculationSystem.stageReputation);
 
         CheckStageProgress();
         return result;
