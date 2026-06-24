@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,6 +62,7 @@ public class AdvancedMain : MonoBehaviour
         enableSubmit = false;
         tong.ResetTong();
         tong.enableDrag = false;
+        CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
         yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
         var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
         SFXPlayer.Instance.Play(clip);

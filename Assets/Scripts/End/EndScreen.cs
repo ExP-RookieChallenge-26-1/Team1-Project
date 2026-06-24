@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -31,8 +32,11 @@ public class EndScreen : MonoBehaviour
         endCanvas.SetActive(false);
     }
 
-    public void GoToNextStage()
+
+    IEnumerator GoToNextStageRoutine()
     {
+        windowGroup.DOFade(0, 0.5f);
+        yield return StartCoroutine(CalenderCanvas.Inst.PlayRoutine(StageFlowManager.Inst.currentStageIndex - 1));
         endCanvas.SetActive(false);
         if (AdvancedMain.Inst.allStageEnded)
         {
@@ -42,6 +46,10 @@ public class EndScreen : MonoBehaviour
         {
             AdvancedMain.Inst.StartFlow();   
         }
+    }
+    public void GoToNextStage()
+    {
+        StartCoroutine(GoToNextStageRoutine());
     }
 
     /*private void Update()
@@ -99,7 +107,7 @@ public class EndScreen : MonoBehaviour
                 SFXPlayer.Instance.Play(endMyDaySfx);
                 for (int i = 0; i < stars.Length; i++)
                 {
-                    stars[i].DOFade(1, 0.2f).SetDelay(i*0.25f + 1.5f);
+                    stars[i].DOFade(1, 0.2f).SetDelay(i*0.25f + 0.5f);
                 }
                     
                 float delay = (stars.Length - 1 ) *0.25f + 2f;
