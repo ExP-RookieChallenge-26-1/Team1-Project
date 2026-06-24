@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageFlowManager
   stages:
-  - {fileID: 11400000, guid: 9d504e8d28a52564bba727754b0ad387, type: 2}
   - {fileID: 11400000, guid: ae4dd15128fdb9b47a9e82435b9962f6, type: 2}
   - {fileID: 11400000, guid: 67e175d673f1ffd48b717905a5d5a6cd, type: 2}
   - {fileID: 11400000, guid: cfec369c7f4fe5f449b93bac8f912598, type: 2}

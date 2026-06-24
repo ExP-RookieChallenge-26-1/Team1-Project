@@ -32,10 +32,10 @@ public class AdvancedMain : MonoBehaviour
         GameEvents.OnAllStagesCleared += GameEventsOnOnAllStagesCleared;
     }
 
-    private void Start()
+    /*private void Start()
     {
         StartFlow();
-    }
+    }*/
 
     public void StartFlow() => StartCoroutine(CorStartGame());
     
@@ -67,6 +67,10 @@ public class AdvancedMain : MonoBehaviour
         var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
         SFXPlayer.Instance.Play(clip);
         yield return new WaitForSeconds(2);
+        Debug.Log("WGY??????????????????????????" +StageFlowManager.Inst.currentStageIndex);
+        
+        //var current = StageFlowManager.Inst.CustomerQueueManager.GetNextCustomer();
+        //Debug.Log(current == null);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         if (!string.IsNullOrEmpty(current.GetDialogue()))
