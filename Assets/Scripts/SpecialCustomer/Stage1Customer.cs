@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Stage1Customer : SpecialBase
 {
+    public CanvasGroup canvasGroup;
     public RectTransform handRect, bodyRect, hand2Rect;
     public Sprite[] sprites;
     public Image body;
@@ -58,5 +59,11 @@ public class Stage1Customer : SpecialBase
         bodyRect.anchoredPosition3D = bodyRect.anchoredPosition3D.SetY(-540);
         bodyRect.transform.DOScale(new Vector3(0.39f, 0.39f, 1), 0.3f).SetEase(Ease.InOutBack);
         bodyRect.DOAnchorPos3DY(-512, 0.15f);
+    }
+
+    public override void HideAnimation()
+    {
+        base.HideAnimation();
+        canvasGroup.DOFade(0, 0.5f);
     }
 }

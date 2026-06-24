@@ -17,7 +17,8 @@ public class SideBurgerMaker : MonoBehaviour
     public RectTransform counterPreviewPivot;
     public CanvasGroup dialogueGroup;
     public Image burgerPrefab;
-    public int Count = 5;
+
+    public List<Transform> visualIng;
 
     private void Awake()
     {
@@ -72,8 +73,6 @@ public class SideBurgerMaker : MonoBehaviour
         }
         
         
-
-        
         var top = Instantiate(burgerPrefab, curContainer);
         top.sprite = topSprite;
         top.SetNativeSize();
@@ -86,12 +85,42 @@ public class SideBurgerMaker : MonoBehaviour
             ClampTop();
     }
 
-    public void MakeVisualIngredient(RectTransform target)
+    public void ClearVisualIng()
     {
-        var visual = Instantiate(burgerPrefab, counterPreviewPivot);
-        visual.sprite = target.GetComponent<Image>().sprite;
-        visual.GetComponent<RectTransform>().DOAnchorPos3D(target.anchoredPosition3D, 0.2f).SetEase(Ease.InQuart);
+        foreach (var v in visualIng)
+        {
+            Destroy(v.gameObject);
+        }
+        visualIng.Clear();
     }
+
+    public void ClearPreview()
+    {
+        foreach (Transform t in counterContainer)
+        {
+            Destroy(t.gameObject);
+        }
+    }
+
+    public IEnumerator FallingRoutine()
+    {
+        foreach (Transform t in counterContainer)
+        {
+            var target = t.gameObject.GetComponent<RectTransform>();
+            var visual = Instantiate(burgerPrefab, counterPreviewPivot);
+            var visualRect = visual.GetComponent<RectTransform>();
+            visual.sprite = target.GetComponent<Image>().sprite;
+            visualRect.anchoredPosition3D = visualRect.anchoredPosition3D.SetY(-target.anchoredPosition3D.y + 200);
+            var targetPos = target.anchoredPosition3D;
+            targetPos.y *= -1;
+            visual.transform.localScale = new Vector3(visual.transform.localScale.x, visual.transform.localScale.y * -1,
+                visual.transform.localScale.z);
+            visual.GetComponent<RectTransform>().DOAnchorPos3D(targetPos, 0.13f).SetEase(Ease.InQuart);
+            visualIng.Add(visual.transform);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+    
     
     public void ClampTop()
     {
@@ -127,27 +156,5 @@ public class SideBurgerMaker : MonoBehaviour
             default:
                 return null;
         }
-    }
-    
-    List<IngredientType> GetRandomIngredients(int count)
-    {
-        IngredientType[] available =
-        {
-            IngredientType.RawPatty,
-            IngredientType.CookedPatty,
-            IngredientType.Cheese,
-            IngredientType.Onion,
-            IngredientType.Lettuce,
-            IngredientType.Tomato
-        };
-
-        List<IngredientType> result = new();
-
-        for (int i = 0; i < count; i++)
-        {
-            result.Add(available[UnityEngine.Random.Range(0, available.Length)]);
-        }
-
-        return result;
     }
 }

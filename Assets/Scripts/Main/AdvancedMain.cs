@@ -130,13 +130,16 @@ public class AdvancedMain : MonoBehaviour
     {
         _stageEnded = false;
         MainUIManager.Inst.CloseGameView();
-        previewInCounter.DOFade(1, 0.5f);
-        foreach (Transform child in previewInCounter.transform)
+        previewInCounter.DOFade(0, 0.2f);
+        /*foreach (Transform child in previewInCounter.transform)
         {
             if (child.TryGetComponent<Image>(out var img))
                 img.color = img.color.SetAlpha(1);
-        }
+        }*/
+       
+        yield return StartCoroutine(SideBurgerMaker.Inst.FallingRoutine());
         yield return new WaitForSeconds(2);
+        SideBurgerMaker.Inst.ClearPreview();
         var data = GameManager.Inst.GetBestBurgerData();
         GameManager.Inst.OnSubmitInput();
         var oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();

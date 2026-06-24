@@ -194,11 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageFlowManager
   stages:
-  - {fileID: 11400000, guid: 4e69e9606c4251e479d00faf285b3ac6, type: 2}
   - {fileID: 11400000, guid: ae4dd15128fdb9b47a9e82435b9962f6, type: 2}
   - {fileID: 11400000, guid: 67e175d673f1ffd48b717905a5d5a6cd, type: 2}
   - {fileID: 11400000, guid: cfec369c7f4fe5f449b93bac8f912598, type: 2}
   - {fileID: 11400000, guid: 7647c329eb788c14084c22a6b5cf885a, type: 2}
+  - {fileID: 11400000, guid: 4e69e9606c4251e479d00faf285b3ac6, type: 2}
   - {fileID: 11400000, guid: 6a76b0b268616f448916a8b0cf101822, type: 2}
   oldEmotion: 0
 --- !u!1 &48694683
@@ -1123,6 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35edfdd4f24a104d99b879674706d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stage1Customer
+  canvasGroup: {fileID: 854728055}
   handRect: {fileID: 1617082307}
   bodyRect: {fileID: 1050891463}
   hand2Rect: {fileID: 743147258}
@@ -2637,7 +2638,7 @@ MonoBehaviour:
   mergeClip: {fileID: 8300000, guid: f3bdf60df488d9340ac689928900ae05, type: 3}
   bellClip: {fileID: 8300000, guid: 77e2d5b74e2ac2045b212b04d44079fc, type: 3}
   doorbellClip: {fileID: 8300000, guid: b7fba4b9dbc4c584f8e81be8637e553e, type: 3}
-  previewInCounter: {fileID: 340306838}
+  previewInCounter: {fileID: 1543621422}
   stage1Customer: {fileID: 854728056}
   stage5Customer: {fileID: 1780056940}
   allStageEnded: 0
@@ -2699,7 +2700,7 @@ MonoBehaviour:
   counterPreviewPivot: {fileID: 364371705}
   dialogueGroup: {fileID: 1410606409}
   burgerPrefab: {fileID: 2994719960124229797, guid: 5a39094606567104aaf24c1226aed31d, type: 3}
-  Count: 5
+  visualIng: []
 --- !u!1 &1758905973
 GameObject:
   m_ObjectHideFlags: 0
