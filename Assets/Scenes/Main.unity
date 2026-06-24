@@ -525,7 +525,7 @@ MonoBehaviour:
     m_Top: -87
     m_Bottom: -154
   m_ChildAlignment: 4
-  m_Spacing: -591.1
+  m_Spacing: -578.9
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1294,7 +1294,7 @@ MonoBehaviour:
     m_Top: -87
     m_Bottom: -154
   m_ChildAlignment: 4
-  m_Spacing: -591.1
+  m_Spacing: -578.9
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

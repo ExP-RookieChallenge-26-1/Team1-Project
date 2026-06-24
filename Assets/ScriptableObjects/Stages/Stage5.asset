@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dbfe5a4d1251a459b454ef6281a079, type: 3}
   m_Name: Stage5
   m_EditorClassIdentifier: Assembly-CSharp::StageData
-  stageLevel: 4
+  stageLevel: 5
   customerPool:
   - {fileID: 11400000, guid: 5dd162f3462cb6e49981c3c41dc434f7, type: 2}
   targetClearCount: 1

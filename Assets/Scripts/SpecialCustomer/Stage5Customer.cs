@@ -26,6 +26,11 @@ public class Stage5Customer : SpecialBase
         AdvancedDialogue.Inst.blockDialogInput = false;
     }
 
+    public override void HideAnimation()
+    {
+        canvasGroup.DOFade(0, 0.5f);
+    }
+
     void CreateIdle()
     {
         Sequence seq = DOTween.Sequence();
