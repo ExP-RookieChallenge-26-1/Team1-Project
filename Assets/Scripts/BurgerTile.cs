@@ -6,6 +6,7 @@ public class BurgerTile
     public List<IngredientType> stackedIngredients = new List<IngredientType>();
 
     public bool isGrill = false;
+    public bool isBlocked = false;
 
     public void AddIngredient(IngredientType newIngredient)
     {

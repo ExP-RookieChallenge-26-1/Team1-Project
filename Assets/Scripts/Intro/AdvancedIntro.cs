@@ -13,21 +13,10 @@ public class AdvancedIntro : MonoBehaviour
     public AudioClip bellAudio;
     public CanvasGroup press2Startxt;
     public Animator anim;
-    public Tween loopTween;
-    public RectTransform resetWindow;
-    public CanvasGroup resetGroup;
-    public Image resetBg;
 
     private void Awake()
     {
         neonSignEffect = GetComponent<NeonSignEffect>();
-    }
-    
-    private void Start()
-    {
-        loopTween = press2Startxt.DOFade(0.2f, 0.8f)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutSine);
     }
 
     public void OnClickOpen()
@@ -37,7 +26,6 @@ public class AdvancedIntro : MonoBehaviour
 
     IEnumerator CorAnim()
     {
-        loopTween.Kill(false);
         press2Startxt.DOFade(0, 0.25f);
         neonSignEffect.Play();
         yield return new WaitForSeconds(2f);
@@ -62,36 +50,5 @@ public class AdvancedIntro : MonoBehaviour
                 PausedController.Inst.fullFadeImg.gameObject.SetActive(false);
             });
         }
-    }
-
-    public void OpenReset()
-    {
-        resetBg.gameObject.SetActive(true);
-        
-        //초기값 설정
-        resetBg.color = Color.black.SetAlpha(0);
-        resetWindow.anchoredPosition3D = new Vector3(0, -185f, 0);
-        resetGroup.alpha = 0;
-        
-        //애니메이션
-        resetWindow.DOAnchorPos3DY(-6, 0.15f);
-        resetGroup.DOFade(1, 0.15f);
-        resetBg.DOFade(0.9f, 0.3f);
-    }
-
-    public void CloseReset()
-    {
-        resetGroup.DOFade(0, 0.3f);
-        resetBg.DOFade(0, 0.3f).OnComplete(() =>
-        {
-            resetBg.gameObject.SetActive(false);
-        });
-    }
-
-    public void ResetData()
-    {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        SceneManager.LoadScene("Intro");
     }
 }
