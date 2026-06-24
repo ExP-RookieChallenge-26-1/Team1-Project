@@ -26,6 +26,10 @@ public class AdvancedMain : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+        if (Stage5Mode.Inst == null)
+        {
+            gameObject.AddComponent<Stage5Mode>();
+        }
         
         GameEvents.OnNewCustomerAppeared += GameEventsOnOnNewCustomerAppeared;
         GameEvents.OnStageChanged += GameEventsOnOnStageChanged;
@@ -81,7 +85,11 @@ public class AdvancedMain : MonoBehaviour
         
         List<IngredientType> types = new();
         
-        foreach (var t in current.Recipe)
+        if (current.CustomerName == "PD" && Stage5Mode.Inst != null)
+        {
+            types = Stage5Mode.Inst.GetOrder();
+        }
+        else foreach (var t in current.Recipe)
         {
             types.Add(t.IngredientType);
         }
@@ -120,6 +128,10 @@ public class AdvancedMain : MonoBehaviour
         tong.enableDrag = false;
         SFXPlayer.Instance.Play(unplugTongClip);
         GameManager.Inst.StartGame();
+        if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
+        {
+            Stage5Mode.Inst.StartTimer();
+        }
         AdvancedDialogue.Inst.CloseChat();
     }
     
@@ -129,6 +141,12 @@ public class AdvancedMain : MonoBehaviour
         if(!enableSubmit)
             return;
         SFXPlayer.Instance.Play(bellClip);
+        if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
+        {
+            Stage5Mode.Inst.Submit();
+            enableSubmit = Stage5Mode.Inst.IsPlaying();
+            return;
+        }
         StartCoroutine(CorSubmitBurger());
         enableSubmit = false;
     }
