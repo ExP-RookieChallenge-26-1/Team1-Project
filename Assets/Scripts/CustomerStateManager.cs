@@ -6,6 +6,8 @@ using DG.Tweening;
 public class CustomerStateManager : MonoBehaviour
 {
     public static CustomerStateManager Inst;
+
+    public Stage1Customer stage1Customer;
     
     [Header("UI References")] 
     public RectTransform customerRect;
@@ -110,7 +112,6 @@ public class CustomerStateManager : MonoBehaviour
 
 
         VisualManager.Inst.previewUIRoot.GetComponent<CanvasGroup>().DOFade(0, 1f);
-        SideBurgerMaker.Inst.ClearVisualIng();
     }
 
     // 평판에 따른 손님 감정 변화 UI

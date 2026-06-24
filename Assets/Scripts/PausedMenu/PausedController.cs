@@ -15,8 +15,6 @@ public class PausedController : MonoBehaviour
     public Slider bgmSlider, sfxSlider;
     public Button homeBtn;
 
-    public AudioClip btnInteractionClip;
-
     private bool _opened;
     private bool _openAnimating;
     private bool _goIntroAnimating;
@@ -33,11 +31,6 @@ public class PausedController : MonoBehaviour
             Inst = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    public void PlayInteractionSFX()
-    {
-        SFXPlayer.Instance.Play(btnInteractionClip);
     }
 
     public void ClearData()

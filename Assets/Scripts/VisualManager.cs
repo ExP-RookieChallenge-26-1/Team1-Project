@@ -117,7 +117,7 @@ public class VisualManager : MonoBehaviour
                 {
                     GameObject newObj = Instantiate(ingredientUIPrefab, tileRoot);
                     RectTransform rect = newObj.GetComponent<RectTransform>();
-                    
+
                     if (rect != null)
                     {
                         rect.anchoredPosition = Vector2.zero;
@@ -131,8 +131,6 @@ public class VisualManager : MonoBehaviour
 
                     newObj.transform.SetAsLastSibling();
                 }
-                
-                
             }
         }
     }
@@ -153,10 +151,9 @@ public class VisualManager : MonoBehaviour
         }
 
         List<IngredientType> stack = new List<IngredientType>(bestBurger.stackedIngredients);
-        
-        SideBurgerMaker.Inst.Make(stack, isChat:false);
-        
-        /*var list = SideBurgerRenderer.Inst.BuildBurger(stack, previewUIRoot);
+        stack.Insert(0, IngredientType.Burn);
+        stack.Add(IngredientType.TopBurn);
+        var list = SideBurgerRenderer.Inst.BuildBurger(stack, previewUIRoot);
         foreach (var obj in list)
         {
             obj.GetComponent<Image>().color = Color.white.SetAlpha(0.7f);
@@ -164,7 +161,7 @@ public class VisualManager : MonoBehaviour
 
         list[0].GetComponent<Image>().color = Color.white;
         list[^1].GetComponent<Image>().color = Color.white;
-        previewUIRoot.GetComponent<CanvasGroup>().alpha = 1;*/
+        previewUIRoot.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     // 議곕━???쇱そ???⑥? ?щ즺 紐⑸줉???쒖떆?섎뜕 ?⑥닔
@@ -331,7 +328,7 @@ public class VisualManager : MonoBehaviour
     }
 
     // ?⑹퀜吏??щ즺 ?⑹뼱由ш? ?댁쭩 而ㅼ죱?ㅺ? ?먮옒 ?ш린濡??뚯븘?ㅻ뒗 ?곗텧
-    public IEnumerator PopEffect(RectTransform rect)
+    private IEnumerator PopEffect(RectTransform rect)
     {
         Vector3 originalScale = Vector3.one;
         Vector3 targetScale = Vector3.one * popScale;
