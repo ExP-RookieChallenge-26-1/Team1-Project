@@ -126,6 +126,8 @@ public class AdvancedMain : MonoBehaviour
         enableSubmit = false;
     }
 
+    public int DebugScore;
+
     IEnumerator CorSubmitBurger()
     {
         _stageEnded = false;
@@ -147,7 +149,8 @@ public class AdvancedMain : MonoBehaviour
         
         //CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
-        Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
+        var oldReput = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
+        //Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
         CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
         if (oldCustomer.GetReputationDialogue(result, out string dialogue))
         {
@@ -172,8 +175,6 @@ public class AdvancedMain : MonoBehaviour
         {
             int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
             StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
-            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation;
-            Debug.Log(myScore);
             int maxScore = 0;
             foreach (var customer in currentStage.CustomerPool)
             {
@@ -184,7 +185,7 @@ public class AdvancedMain : MonoBehaviour
                     maxScore += 15;
                 }
             }
-            EndScreen.Inst.ShowEndScreen(myScore, maxScore);
+            EndScreen.Inst.ShowEndScreen(oldReput, maxScore);
         }
         else
         {
