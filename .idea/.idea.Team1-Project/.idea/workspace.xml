@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage6.asset" afterDir="false" />
-    </list>
+    <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +15,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Resources/CreditData.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Calender/CalenderCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/End/EndScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Intro/AdvancedIntro.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Intro/DataLoader.cs" root0="FORCE_HIGHLIGHTING" />
@@ -142,6 +136,7 @@
       <workItem from="1782136225574" duration="5615000" />
       <workItem from="1782274910692" duration="15843000" />
       <workItem from="1782301103462" duration="4000" />
+      <workItem from="1782301111909" duration="8653000" />
     </task>
     <servers />
   </component>
