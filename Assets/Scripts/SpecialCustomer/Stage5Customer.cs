@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Stage5Customer : SpecialBase
 {
     public RectTransform rect;
     public CanvasGroup canvasGroup;
+    public Image bodyImg;
+    public Sprite[] sprites;
     [SerializeField] RectTransform body;
     [SerializeField] RectTransform arm;
 
@@ -29,6 +32,12 @@ public class Stage5Customer : SpecialBase
     public override void HideAnimation()
     {
         canvasGroup.DOFade(0, 0.5f);
+    }
+    
+    public override void UpdateEmotion(CustomerEmotion emotion)
+    {
+        base.UpdateEmotion(emotion);
+        bodyImg.sprite = sprites[(int)emotion];
     }
 
     void CreateIdle()

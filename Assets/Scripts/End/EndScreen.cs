@@ -19,6 +19,7 @@ public class EndScreen : MonoBehaviour
     public GameObject endCanvas;
     public TextMeshProUGUI endTxt, todayRatingTxt;
     public Button nextDayBtn;
+    public AudioClip endMyDaySfx;
 
     private void Awake()
     {
@@ -95,6 +96,7 @@ public class EndScreen : MonoBehaviour
         {
             windowGroup.DOFade(1, 0.5f).OnComplete(() =>
             {
+                SFXPlayer.Instance.Play(endMyDaySfx);
                 for (int i = 0; i < stars.Length; i++)
                 {
                     stars[i].DOFade(1, 0.2f).SetDelay(i*0.25f + 1.5f);

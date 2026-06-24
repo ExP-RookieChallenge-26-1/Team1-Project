@@ -10,7 +10,7 @@ public class AdvancedMain : MonoBehaviour
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
-    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip;
+    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
 
     [Header("SPECIAL CUSTOMER")] 
@@ -62,7 +62,8 @@ public class AdvancedMain : MonoBehaviour
         tong.ResetTong();
         tong.enableDrag = false;
         yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
-        SFXPlayer.Instance.Play(doorbellClip);
+        var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
+        SFXPlayer.Instance.Play(clip);
         yield return new WaitForSeconds(2);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
