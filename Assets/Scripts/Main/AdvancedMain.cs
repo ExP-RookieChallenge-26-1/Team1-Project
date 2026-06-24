@@ -15,6 +15,7 @@ public class AdvancedMain : MonoBehaviour
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
+    public Stage5Customer stage5Customer;
     
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
@@ -84,18 +85,13 @@ public class AdvancedMain : MonoBehaviour
             AdvancedDialogue.Inst.blockDialogInput = true;
             CustomerStateManager.Inst.currentSpecialCustomer = stage1Customer;
             stage1Customer.StartAnimation();
-            /*AdvancedDialogue.Inst.blockDialogInput = true;
-            specialCustomer.StartAnimation();
-
-            var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
-            chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(198);
-            
-            var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
-            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(341);*/
         }
-        else if (current.CustomerName == "WOW")
+        //5스테이지
+        else if (current.CustomerName == "PD")
         {
-            //ETC
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage5Customer;
+            stage5Customer.StartAnimation();
         }
         else
         {

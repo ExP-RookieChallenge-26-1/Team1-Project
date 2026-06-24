@@ -27,7 +27,13 @@ public class Stage1Customer : SpecialBase
         yield return new WaitForSeconds(1);
         AdvancedDialogue.Inst.blockDialogInput = false;
     }
-    
+
+    public override void UpdateEmotion(CustomerEmotion emotion)
+    {
+        base.UpdateEmotion(emotion);
+        body.sprite = sprites[(int)emotion];
+    }
+
     void ShowHand1()
     {
         handRect.gameObject.SetActive(true);
