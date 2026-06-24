@@ -100,7 +100,6 @@ public class Stage5Mode : MonoBehaviour
         Debug.Log($"[Stage5] burger: {result}, count: {count}, submitted: {BurgerToText(burger)}");
 
         GameManager.Inst.OnSubmitInput();
-        SideBurgerMaker.Inst.ClearPreview();
 
         SetOrder();
         GameManager.Inst.SpawnNextIngredient();
