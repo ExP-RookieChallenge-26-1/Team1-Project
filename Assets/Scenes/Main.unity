@@ -2696,6 +2696,7 @@ MonoBehaviour:
   dialogue: {fileID: 1410606408}
   counterContainer: {fileID: 196627454}
   counterPreview: {fileID: 1543621419}
+  counterPreviewPivot: {fileID: 364371705}
   dialogueGroup: {fileID: 1410606409}
   burgerPrefab: {fileID: 2994719960124229797, guid: 5a39094606567104aaf24c1226aed31d, type: 3}
   Count: 5
