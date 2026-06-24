@@ -33,7 +33,10 @@ public class StageFlowManager : MonoBehaviour
         servedCount = savedServed;
         scoreCalculationSystem.SetReputation(savedScore);
 
+        Debug.Log("SAVEDSERVER: " + savedServed);
+        Debug.Log("ASDASDSAD: " + currentStageIndex);
         LoadStage(currentStageIndex);
+        AdvancedMain.Inst.StartFlow();
     }
 
     private void LoadStage(int index)
@@ -45,8 +48,10 @@ public class StageFlowManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("PREPARE");
         var remainingCustomers = stages[index].CustomerPool.Skip(servedCount).ToList();
         customerQueueManager.PrepareQueue(remainingCustomers);
+        Debug.Log(remainingCustomers.Count);
         GameEvents.TriggerStageChanged(stages[index].StageLevel);
 
         // ù ��° �մ� ȣ��
@@ -72,20 +77,41 @@ public class StageFlowManager : MonoBehaviour
             oldEmotion = currentState.UpdateEmotion(result);
         }
 
-        servedCount++;
-
+        if (stages[currentStageIndex].CustomerPool[servedCount] != currentCustomer)
+        {
+            servedCount++;
+    
+        }
+        
         SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
 
         CheckStageProgress();
         return result;
     }
+
+    public void FinishStage5(ReputationResult result, int reputation)
+    {
+        CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
+        if (currentState != null)
+        {
+            oldEmotion = currentState.UpdateEmotion(result);
+        }
+
+        scoreCalculationSystem.SetReputation(scoreCalculationSystem.CurrentReputation + reputation);
+        servedCount = stages[currentStageIndex].TargetClearCount;
+
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
+        CheckStageProgress();
+    }
+
     private void CheckStageProgress()
     {
         {
             // �ش� ������������ �մ��� ��� �޾Ҵٸ� ���� ���������� �Ѿ��
             if (servedCount >= stages[currentStageIndex].TargetClearCount)
             {
-                currentStageIndex++;
+                //currentStageIndex++;
+                Debug.Log("CHECK!!!");
                 LoadStage(currentStageIndex);
                 AdvanceToNextStage();
             }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -11,11 +12,15 @@ public class EndScreen : MonoBehaviour
     public static EndScreen Inst;
     
     public Image fadeBG;
+    public Image windowImg;
+    public Sprite goodBg, sosoBg, badBg;
+    public CanvasGroup windowGroup;
     public Image[] starFills;
     public CanvasGroup[] stars;
     public GameObject endCanvas;
     public TextMeshProUGUI endTxt, todayRatingTxt;
     public Button nextDayBtn;
+    public AudioClip endMyDaySfx;
 
     private void Awake()
     {
@@ -27,8 +32,11 @@ public class EndScreen : MonoBehaviour
         endCanvas.SetActive(false);
     }
 
-    public void GoToNextStage()
+
+    IEnumerator GoToNextStageRoutine()
     {
+        windowGroup.DOFade(0, 0.5f);
+        yield return StartCoroutine(CalenderCanvas.Inst.PlayRoutine(StageFlowManager.Inst.currentStageIndex - 1));
         endCanvas.SetActive(false);
         if (AdvancedMain.Inst.allStageEnded)
         {
@@ -39,6 +47,18 @@ public class EndScreen : MonoBehaviour
             AdvancedMain.Inst.StartFlow();   
         }
     }
+    public void GoToNextStage()
+    {
+        StartCoroutine(GoToNextStageRoutine());
+    }
+
+    /*private void Update()
+    {
+        if (Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            ShowEndScreen(65,100);
+        }
+    }*/
 
     public void ShowEndScreen(float score, float maxScore)
     {
@@ -49,6 +69,8 @@ public class EndScreen : MonoBehaviour
         endTxt.transform.localScale = Vector2.zero;
         todayRatingTxt.transform.localScale = Vector2.zero;
         nextDayBtn.transform.localScale = Vector3.zero;
+        windowGroup.alpha = 0;
+        
 
         foreach (var start in stars)
         {
@@ -63,37 +85,48 @@ public class EndScreen : MonoBehaviour
         float ratio = maxScore > 0 ? score / maxScore : 0f;
         ratio = Mathf.Clamp01(ratio);
 
+        if (ratio <= 0.2f)
+        {
+            windowImg.sprite = badBg;
+        } 
+        else if (ratio <= 0.6f)
+        {
+            windowImg.sprite = sosoBg;
+        }
+        else
+        {
+            windowImg.sprite = goodBg;
+        }
+
         float totalStarsToFill = ratio * starFills.Length;
 
         fadeBG.DOFade(0.9f, 0.5f).OnComplete(() =>
         {
-            endTxt.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutElastic).OnComplete(() =>
+            windowGroup.DOFade(1, 0.5f).OnComplete(() =>
             {
-                todayRatingTxt.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutElastic).SetDelay(1.5f).OnComplete(() =>
+                SFXPlayer.Instance.Play(endMyDaySfx);
+                for (int i = 0; i < stars.Length; i++)
                 {
-                    for (int i = 0; i < stars.Length; i++)
-                    {
-                        stars[i].DOFade(1, 0.2f).SetDelay(i*0.25f + 1.5f);
-                    }
+                    stars[i].DOFade(1, 0.2f).SetDelay(i*0.25f + 0.5f);
+                }
                     
-                    float delay = (stars.Length - 1 ) *0.25f + 2f;
-                    for (int i = 0; i < starFills.Length; i++)
-                    {
-                        int index = i;
-                        var star = starFills[index];
+                float delay = (stars.Length - 1 ) *0.25f + 2f;
+                for (int i = 0; i < starFills.Length; i++)
+                {
+                    int index = i;
+                    var star = starFills[index];
 
-                        float v = Mathf.Clamp01(totalStarsToFill - index);
+                    float v = Mathf.Clamp01(totalStarsToFill - index);
 
-                        DOVirtual.Float(0, v, 0.3f, (x) =>
-                            {
-                                star.fillAmount = x;
-                            })
-                            .SetDelay(delay + index * 0.2f)
-                            .SetEase(Ease.Linear);
-                    }
+                    DOVirtual.Float(0, v, 0.3f, (x) =>
+                        {
+                            star.fillAmount = x;
+                        })
+                        .SetDelay(delay + index * 0.2f)
+                        .SetEase(Ease.Linear);
+                }
                     
-                    nextDayBtn.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutElastic).SetDelay(delay + 1 + starFills.Length * 0.2f);
-                });
+                nextDayBtn.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutElastic).SetDelay(delay + 1 + starFills.Length * 0.2f);
             });
         });
     }

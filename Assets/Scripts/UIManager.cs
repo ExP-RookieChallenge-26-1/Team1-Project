@@ -1,3 +1,4 @@
+using UnityEngine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gameManager = GetComponent<GameManager>();
-        CreateRestartButton();
     }
 
     public void OnClickAddIngredient(int ingredientNumber)
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     {
         gameManager.StartGame();
     }
-
+    
     public void OnClickRestartStage()
     {
         gameManager.RestartStage();
@@ -37,16 +37,11 @@ public class UIManager : MonoBehaviour
     {
         if (GameObject.Find("RestartStageButton") != null) return;
 
-        Canvas canvas = FindRestartButtonCanvas();
-        if (canvas == null)
-        {
-            Debug.LogWarning("Restart button could not find an active Canvas.");
-            return;
-        }
+        Canvas canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null) return;
 
         GameObject buttonObject = new GameObject("RestartStageButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         buttonObject.transform.SetParent(canvas.transform, false);
-        buttonObject.transform.SetAsLastSibling();
 
         RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
         buttonRect.anchorMin = new Vector2(1f, 1f);
@@ -76,28 +71,5 @@ public class UIManager : MonoBehaviour
         label.fontSize = 24;
         label.alignment = TextAlignmentOptions.Center;
         label.color = Color.white;
-        label.raycastTarget = false;
-    }
-
-    private Canvas FindRestartButtonCanvas()
-    {
-        Canvas namedCanvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
-        if (namedCanvas != null && namedCanvas.isActiveAndEnabled)
-        {
-            return namedCanvas;
-        }
-
-        Canvas[] canvases = FindObjectsByType<Canvas>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        Canvas bestCanvas = null;
-        foreach (Canvas canvas in canvases)
-        {
-            if (!canvas.isActiveAndEnabled) continue;
-            if (bestCanvas == null || canvas.sortingOrder > bestCanvas.sortingOrder)
-            {
-                bestCanvas = canvas;
-            }
-        }
-
-        return bestCanvas;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,12 @@ public class AdvancedMain : MonoBehaviour
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
-    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip;
+    public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
+    public Stage5Customer stage5Customer;
     
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
@@ -24,16 +26,20 @@ public class AdvancedMain : MonoBehaviour
     private void Awake()
     {
         Inst = this;
+        if (Stage5Mode.Inst == null)
+        {
+            gameObject.AddComponent<Stage5Mode>();
+        }
         
         GameEvents.OnNewCustomerAppeared += GameEventsOnOnNewCustomerAppeared;
         GameEvents.OnStageChanged += GameEventsOnOnStageChanged;
         GameEvents.OnAllStagesCleared += GameEventsOnOnAllStagesCleared;
     }
 
-    private void Start()
+    /*private void Start()
     {
         StartFlow();
-    }
+    }*/
 
     public void StartFlow() => StartCoroutine(CorStartGame());
     
@@ -60,9 +66,15 @@ public class AdvancedMain : MonoBehaviour
         enableSubmit = false;
         tong.ResetTong();
         tong.enableDrag = false;
+        CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
         yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
-        SFXPlayer.Instance.Play(doorbellClip);
+        var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
+        SFXPlayer.Instance.Play(clip);
         yield return new WaitForSeconds(2);
+        Debug.Log("WGY??????????????????????????" +StageFlowManager.Inst.currentStageIndex);
+        
+        //var current = StageFlowManager.Inst.CustomerQueueManager.GetNextCustomer();
+        //Debug.Log(current == null);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         if (!string.IsNullOrEmpty(current.GetDialogue()))
@@ -73,7 +85,11 @@ public class AdvancedMain : MonoBehaviour
         
         List<IngredientType> types = new();
         
-        foreach (var t in current.Recipe)
+        if (current.CustomerName == "PD" && Stage5Mode.Inst != null)
+        {
+            types = Stage5Mode.Inst.GetOrder();
+        }
+        else foreach (var t in current.Recipe)
         {
             types.Add(t.IngredientType);
         }
@@ -84,18 +100,13 @@ public class AdvancedMain : MonoBehaviour
             AdvancedDialogue.Inst.blockDialogInput = true;
             CustomerStateManager.Inst.currentSpecialCustomer = stage1Customer;
             stage1Customer.StartAnimation();
-            /*AdvancedDialogue.Inst.blockDialogInput = true;
-            specialCustomer.StartAnimation();
-
-            var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
-            chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(198);
-            
-            var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
-            previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(341);*/
         }
-        else if (current.CustomerName == "WOW")
+        //5스테이지
+        else if (current.CustomerName == "PD")
         {
-            //ETC
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage5Customer;
+            stage5Customer.StartAnimation();
         }
         else
         {
@@ -117,6 +128,10 @@ public class AdvancedMain : MonoBehaviour
         tong.enableDrag = false;
         SFXPlayer.Instance.Play(unplugTongClip);
         GameManager.Inst.StartGame();
+        if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
+        {
+            Stage5Mode.Inst.StartTimer();
+        }
         AdvancedDialogue.Inst.CloseChat();
     }
     
@@ -126,21 +141,32 @@ public class AdvancedMain : MonoBehaviour
         if(!enableSubmit)
             return;
         SFXPlayer.Instance.Play(bellClip);
+        if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
+        {
+            Stage5Mode.Inst.Submit();
+            enableSubmit = Stage5Mode.Inst.IsPlaying();
+            return;
+        }
         StartCoroutine(CorSubmitBurger());
         enableSubmit = false;
     }
+
+    public int DebugScore;
 
     IEnumerator CorSubmitBurger()
     {
         _stageEnded = false;
         MainUIManager.Inst.CloseGameView();
-        previewInCounter.DOFade(1, 0.5f);
-        foreach (Transform child in previewInCounter.transform)
+        previewInCounter.DOFade(0, 0.2f);
+        /*foreach (Transform child in previewInCounter.transform)
         {
             if (child.TryGetComponent<Image>(out var img))
                 img.color = img.color.SetAlpha(1);
-        }
+        }*/
+       
+        yield return StartCoroutine(SideBurgerMaker.Inst.FallingRoutine());
         yield return new WaitForSeconds(2);
+        SideBurgerMaker.Inst.ClearPreview();
         var data = GameManager.Inst.GetBestBurgerData();
         GameManager.Inst.OnSubmitInput();
         var oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
@@ -148,7 +174,8 @@ public class AdvancedMain : MonoBehaviour
         
         //CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
-        Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
+        var oldReput = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
+        //Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
         CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
         if (oldCustomer.GetReputationDialogue(result, out string dialogue))
         {
@@ -173,8 +200,6 @@ public class AdvancedMain : MonoBehaviour
         {
             int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
             StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
-            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation;
-            Debug.Log(myScore);
             int maxScore = 0;
             foreach (var customer in currentStage.CustomerPool)
             {
@@ -185,7 +210,7 @@ public class AdvancedMain : MonoBehaviour
                     maxScore += 15;
                 }
             }
-            EndScreen.Inst.ShowEndScreen(myScore, maxScore);
+            EndScreen.Inst.ShowEndScreen(oldReput, maxScore);
         }
         else
         {
