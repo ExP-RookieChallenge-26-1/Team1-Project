@@ -74,6 +74,8 @@ public class GameManager : MonoBehaviour
     [ContextMenu("START")]
     public void StartGame()
     {
+        isAnimating = false;
+        moveRecords.Clear();
 
         if (StageFlowManager.Inst)
         {
@@ -94,6 +96,11 @@ public class GameManager : MonoBehaviour
         }
 
         // ?먮낯 二쇰Ц ?댁뿭??諛깆뾽?대몺
+        if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
+        {
+            Stage5Mode.Inst.SetOrder();
+        }
+
         initialOrderList = new List<IngredientType>(orderList);
 
         isPlaying = true;
@@ -185,6 +192,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("蹂대뱶??諛?二쇰Ц 珥덇린?붾맖");
 
+        isAnimating = false;
+        moveRecords.Clear();
         orderList.Clear();
         initialOrderList.Clear();
         isPlaying = false;
