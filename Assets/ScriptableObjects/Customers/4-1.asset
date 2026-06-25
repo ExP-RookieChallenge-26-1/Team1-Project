@@ -9,36 +9,67 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2979f94e25b2614dac27b330b6d5d34, type: 3}
+  m_Script: {fileID: 11500000, guid: a90159bf239774947a4cb90c0e186ce7, type: 3}
   m_Name: 4-1
-  m_EditorClassIdentifier: Assembly-CSharp::DefaultCustomerData
-  customerName: Customer4-1
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialCustomerData
+  customerName: mukbang
   recipe:
-  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
-  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
-  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
-  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
+  - {fileID: 11400000, guid: 0a19159b2e279e44483833895b50e8bf, type: 2}
   - {fileID: 11400000, guid: fd5f894d7e4ccb843b2a4b824f112163, type: 2}
+  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
+  - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
   - {fileID: 11400000, guid: fd5f894d7e4ccb843b2a4b824f112163, type: 2}
   - {fileID: 11400000, guid: acd0bdd7265d00246a393a1c82d8b9ad, type: 2}
-  - {fileID: 11400000, guid: 0a19159b2e279e44483833895b50e8bf, type: 2}
-  randomDialogues:
-  - "\uC548\uB155\uD558\uC138\uC694 \uC0AC\uC7A5\uB2D8!"
-  - "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C."
-  - "\uC8FC\uBB38\uD560\uAC8C\uC694~"
-  - "\uBB38 \uC5F4\uC5C8\uB098\uC694?"
-  perfectDialogues:
-  - "\uC644\uBCBD\uD558\uB124\uC694!"
-  - "\uC624...\uC644\uBCBD\uD569\uB2C8\uB2E4."
-  - "\uC790\uB791\uD574\uC57C\uACA0\uB294\uB370\uC694?"
-  - "\uBA39\uAE30 \uC544\uAE5D\uB124\uC694..!"
-  incompleteDialogues:
-  - "\uAC10\uC0AC\uD569\uB2C8\uB2E4!"
-  - "\uB9DB\uC788\uACA0\uAD70\uC694."
-  - "\uBD10\uC904\uB9CC \uD558\uB124\uC694!"
-  - "\uB0C4\uC0C8\uAC00 \uC88B\uB124\uC694!"
-  wrongDialogues:
-  - "\uC74C...\uAC10\uC0AC\uD569\uB2C8\uB2E4."
-  - "\uAC10\uC0AC\uD558\uC9C4 \uC54A\uC2B5\uB2C8\uB2E4."
-  - "\uC2E4\uB9DD\uC774 \uD06C\uB124\uC694~"
-  - "\uC694\uB9AC\uC0AC \uB9DE\uC544\uC694?"
+  fixedDialogue: "\uC548\uB155\uD558\uC138\uC694 \uC5EC\uB7EC\uBD84~!\r\n\uC624\uB298\uB3C4
+    \uD55C\uC785\uC5D0 \uBA39.\uB294.\uB2E4!  \uBA39\uBC29 \uCC44\uB110 \uBA39\uBE44
+    \uC785\uB2C8\uB2E4!\r\n\uC624\uB298\uC740 \uC694\uC998 SNS\uC5D0\uC11C \uC5C4\uCCAD
+    \uD56B\uD558\uB2E4\uB294 \uBC84\uAC70\uC9D1\uC5D0 \uC640\uBD24\uB294\uB370\uC694!\r\n\uACFC\uC5F0
+    \uC18C\uBB38\uB9CC\uD07C \uB9DB\uC788\uC744\uC9C0~\r\n\uC9C1\uC811 \uBA39\uC5B4\uBCF4\uB3C4\uB85D
+    \uD558\uACA0\uC2B5\uB2C8\uB2E4!\r\n\uC0AC\uC7A5\uB2D8 \uC5EC\uAE30 \uD584\uBC84\uAC70
+    \uD558\uB098 \uBD80\uD0C1\uB4DC\uB9B4\uAC8C\uC694!\r\n\uB124?\r\n\uBA39\uBC29
+    \uC720\uD29C\uBC84\uAC00 \uBC84\uAC70\uB97C  \u2018\uD558\uB098\u2019 \uB9CC
+    \uC2DC\uD0A4\uB0D0\uACE0\uC694?\r\n\uD558\uD558\r\n\uC88B\uC740 \uC9C8\uBB38\uC774\uB124\uC694~\r\n\uADF8\uB798\uC11C
+    \uB9D0\uC778\uB370\uC694.\r\n\uB300\uC2E0...\r\n\uC591\uC0C1\uCD94\uC5D0, \uC591\uD30C,
+    \uCE58\uC988, \uD328\uD2F0, \uD328\uD2F0 \uD558\uB098\uB354 , \uBC1B\uACE0 \uB354\uBE14\uB85C
+    , \uB354\uC6B1\uB9CE\uC740 \uD328\uD2F0, \uD328\uD2F0, \uB610 \uD328\uD2F0, \uD328\uD2F0,
+    \uB610 \uB610 \uD328\uD2F0, \uD328\uD2F0, \uD328\uD2F0, \uCE58\uC988\uC5D0  \uC591\uD30C
+    \uD558\uB098 \uB354 , \uD1A0\uB9C8\uD1A0 \uAE4C\uC9C0 \uD574\uC11C \uC8FC\uC2DC\uACA0\uC5B4\uC694?\r\n\uACE0\uAE30\uB294
+    \uB9CE\uC744 \uC218\uB85D \uC88B\uC73C\uB2C8\uAE4C\uC694!"
+  perfectDialogue:
+  - "\uC5EC\uB7EC\uBD84, \uC774\uAC8C \uD569\uC131 \uC544\uB2C8\uACE0\uC694. \uC81C
+    \uC5BC\uAD74\uBCF4\uB2E4 \uB450 \uBC30\uB294 \uD070 16\uB2E8 \uD584\uBC84\uAC70\uC785\uB2C8\uB2E4!
+    \r\n\uC774\uAC70 \uC624\uB298 \uC548\uC5D4 \uB2E4 \uBA39\uC744 \uC218 \uC788\uC744\uAE4C\uC694?
+    \uBC14\uB85C \uBA39\uC5B4 \uBCF4\uACA0\uC2B5\uB2C8\uB2E4!\r\n\uC74C~\r\n\uC5EC\uB7EC\uBD84
+    \uB108\uBB34 \uB9DB\uC788\uB294\uB370\uC694?\r\n\uC694\uC998 \uD56B\uD55C \uC774\uC720\uAC00
+    \uB0A9\uB4DD\uC774 \uB418\uB294 \uB9DB\uC774\uB124\uC694!\r\n\uC0AC\uC7A5\uB2D8~\uB9DB\uC788\uAC8C
+    \uBA39\uACE0 \uAC11\uB2C8\uB2E4!\r\n\uC624\uB298\uB3C4 \uC990\uAC70\uC6B0\uC168\uB2E4\uBA74
+    \uC88B\uC544\uC694\uC640 \uAD6C\uB3C5 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4!"
+  incompleteDialogue:
+  - "\uC5EC\uB7EC\uBD84, \uC774\uAC8C \uD569\uC131 \uC544\uB2C8\uACE0\uC694. \uC81C
+    \uC5BC\uAD74\uBCF4\uB2E4 \uB450 \uBC30\uB294 \uD070 16\uB2E8 \uD584\uBC84\uAC70\uC785\uB2C8\uB2E4!
+    \r\n\uC774\uAC70 \uC624\uB298 \uC548\uC5D4 \uB2E4 \uBA39\uC744 \uC218 \uC788\uC744\uAE4C\uC694?
+    \uBC14\uB85C \uBA39\uC5B4 \uBCF4\uACA0\uC2B5\uB2C8\uB2E4!\r\n\uC74C~\r\n\uC5EC\uB7EC\uBD84
+    \uB108\uBB34 \uB9DB\uC788\uB294\uB370\uC694?\r\n\uC694\uC998 \uD56B\uD55C \uC774\uC720\uAC00
+    \uB0A9\uB4DD\uC774 \uB418\uB294 \uB9DB\uC774\uB124\uC694!\r\n\uC0AC\uC7A5\uB2D8~\uB9DB\uC788\uAC8C
+    \uBA39\uACE0 \uAC11\uB2C8\uB2E4!\r\n\uC624\uB298\uB3C4 \uC990\uAC70\uC6B0\uC168\uB2E4\uBA74
+    \uC88B\uC544\uC694\uC640 \uAD6C\uB3C5 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4!"
+  wrongDialogue:
+  - "\uADF8\uB7FC \uD55C\uBC88 \uBA39\uC5B4\uBCFC\uAE4C\uC694?\r\n\uC5B4\uC6B0\u2026\r\n\uC880
+    \uAE30\uB300 \uC774\uD558\uC778 \uAC83 \uAC19\uB124\uC694... \uC548\uC5D0 \uC7AC\uB8CC\uB3C4
+    \uB204\uB77D\uB41C \uAC70 \uAC19\uACE0, \uD328\uD2F0\uAC00 \uB2E4 \uC548\uC775\uC740
+    \uAC83 \uAC19\uAE30\uB3C4 \uD55C\uB370\uC694?\r\n\uAE30\uB300 \uB9CE\uC774 \uD588\uB294\uB370
+    \uC880 \uC18D\uC0C1\uD558\uB124\uC694\u2026\r\n\uC5EC\uB7EC\uBD84\uC740 \uC870\uC2EC\uD558\uC2DC\uB294\uAC8C
+    \uC88B\uACA0\uB124\uC694..!\r\n\uC624\uB298\uB3C4 \uC720\uC775\uD558\uC168\uB2E4\uBA74
+    \uC88B\uC544\uC694\uC640 \uAD6C\uB3C5 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4!\r\n\uC0AC\uC7A5\uB2D8~\uC548\uB155\uD788\uACC4\uC138\uC694!"
+  specialSprites: []
+  emotionSprites: []

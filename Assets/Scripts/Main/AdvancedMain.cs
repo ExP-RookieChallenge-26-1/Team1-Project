@@ -17,6 +17,7 @@ public class AdvancedMain : MonoBehaviour
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
     public Stage3Customer stage3Customer;
+    public Stage4Customer stage4Customer;
     public Stage5Customer stage5Customer;
 
     public Action onResultNormal;
@@ -112,6 +113,13 @@ public class AdvancedMain : MonoBehaviour
             AdvancedDialogue.Inst.blockDialogInput = true;
             CustomerStateManager.Inst.currentSpecialCustomer = stage3Customer;
             stage3Customer.StartAnimation();
+        }
+        //4스테이지
+        else if (current.CustomerName == "mukbang")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage4Customer;
+            stage4Customer.StartAnimation();
         }
         else
         {
