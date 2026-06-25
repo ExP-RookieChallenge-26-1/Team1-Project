@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class Stage5Mode : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Stage5Mode : MonoBehaviour
     private int count;
     private bool timerOn;
     private bool ended;
+    private bool submitting;
     private AudioClip timeUpClip;
 
     private readonly List<IngredientType> order = new()
@@ -89,6 +91,7 @@ public class Stage5Mode : MonoBehaviour
     {
         if (!IsOn()) return false;
         if (ended) return true;
+        if (submitting) return true;
 
         IReadOnlyList<IngredientData> burger = GameManager.Inst.GetBestBurgerData();
         ReputationResult result = Check(burger);
@@ -99,11 +102,7 @@ public class Stage5Mode : MonoBehaviour
 
         Debug.Log($"[Stage5] burger: {result}, count: {count}, submitted: {BurgerToText(burger)}");
 
-        GameManager.Inst.OnSubmitInput();
-        SideBurgerMaker.Inst.ClearPreview();
-
-        SetOrder();
-        GameManager.Inst.SpawnNextIngredient();
+        StartCoroutine(SubmitRoutine());
         return true;
     }
 
@@ -207,5 +206,18 @@ public class Stage5Mode : MonoBehaviour
     {
         if (timeText == null) return;
         CalenderCanvas.Inst.SetTimerTxt(Mathf.CeilToInt(time));
+    }
+
+    private IEnumerator SubmitRoutine()
+    {
+        submitting = true;
+
+        GameManager.Inst.OnSubmitInput();
+
+        yield return StartCoroutine(SideBurgerMaker.Inst.FadeOutPreviewRoutine());
+
+        SetOrder();
+        GameManager.Inst.SpawnNextIngredient();
+        submitting = false;
     }
 }
