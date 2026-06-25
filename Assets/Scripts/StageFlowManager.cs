@@ -89,6 +89,22 @@ public class StageFlowManager : MonoBehaviour
         CheckStageProgress();
         return result;
     }
+
+    public void FinishStage5(ReputationResult result, int reputation)
+    {
+        CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
+        if (currentState != null)
+        {
+            oldEmotion = currentState.UpdateEmotion(result);
+        }
+
+        scoreCalculationSystem.SetReputation(scoreCalculationSystem.CurrentReputation + reputation);
+        servedCount = stages[currentStageIndex].TargetClearCount;
+
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
+        CheckStageProgress();
+    }
+
     private void CheckStageProgress()
     {
         {

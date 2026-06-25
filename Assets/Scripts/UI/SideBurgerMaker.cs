@@ -104,6 +104,22 @@ public class SideBurgerMaker : MonoBehaviour
         }
     }
 
+    public IEnumerator FadeOutPreviewRoutine(float duration = 0.4f)
+    {
+        CanvasGroup group = counterPreview.GetComponent<CanvasGroup>();
+
+        if (group == null)
+        {
+            ClearPreview();
+            yield break;
+        }
+
+        yield return group.DOFade(0f, duration).WaitForCompletion();
+
+        ClearPreview();
+        group.alpha = 0.7f;
+    }
+    
     public IEnumerator FallingRoutine()
     {
         foreach (Transform t in counterContainer)

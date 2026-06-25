@@ -15,19 +15,49 @@ public class CalenderCanvas : MonoBehaviour
     public RectTransform originalCrop;
     public RectTransform safeArea;
     public float duration = 0.3f;
+    private TextMeshProUGUI dayText;
+    private Vector2 baseTextPos;
+    private bool hasBaseTextPos;
 
     private void Awake()
     {
         Inst = this;
+        FindDayText();
     }
 
     public void SetDayTxt(int stageIndex)
     {
+        SetDayTextVisible(true);
+        SetTimerTextPos(false);
         if (stageIndex <= dayNums.Length - 1)
         {
-            originalCrop.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text =
-                dayNums[stageIndex].ToString();   
+            SetText(dayNums[stageIndex].ToString());   
         }
+    }
+
+    public TextMeshProUGUI GetText()
+    {
+        return originalCrop.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
+    }
+
+    public void SetText(string text)
+    {
+        GetText().text = text;
+    }
+
+    public void SetTimerTxt(int seconds)
+    {
+        SetDayTextVisible(false);
+        SetTimerTextPos(true);
+        SetText($"<size=42>Time left</size>\n<size=130>{seconds}</size>");
+    }
+
+    public IEnumerator PlayTimerRoutine(int seconds)
+    {
+        PlayAnimationToCenter();
+        SetTimerTxt(seconds);
+        yield return new WaitForSeconds(0.8f);
+        PlayAnimationToLT();
     }
 
     public IEnumerator PlayRoutine(int stageIndex)
@@ -53,6 +83,46 @@ public class CalenderCanvas : MonoBehaviour
         
         yield return new WaitForSeconds(2);
         PlayAnimationToLT();
+    }
+
+    private void FindDayText()
+    {
+        if (target == null) return;
+
+        TextMeshProUGUI mainText = GetText();
+        foreach (TextMeshProUGUI text in target.GetComponentsInChildren<TextMeshProUGUI>(true))
+        {
+            if (text != mainText && text.text.Trim().ToLower() == "day")
+            {
+                dayText = text;
+                return;
+            }
+        }
+    }
+
+    private void SetDayTextVisible(bool visible)
+    {
+        if (dayText == null)
+        {
+            FindDayText();
+        }
+
+        if (dayText != null)
+        {
+            dayText.gameObject.SetActive(visible);
+        }
+    }
+
+    private void SetTimerTextPos(bool isTimer)
+    {
+        RectTransform textRect = GetText().rectTransform;
+        if (!hasBaseTextPos)
+        {
+            baseTextPos = textRect.anchoredPosition;
+            hasBaseTextPos = true;
+        }
+
+        textRect.anchoredPosition = isTimer ? baseTextPos + Vector2.up * 30f : baseTextPos;
     }
 
     public void PlayAnimationToLT()
