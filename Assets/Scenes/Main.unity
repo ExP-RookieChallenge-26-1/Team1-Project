@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd5d0e4567ada74f9ef98150e9eed6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreCalculationSystem
+  totalReputation: 0
   perfectScore: 30
   incompleteScore: 15
   wrongScore: -10
@@ -2653,17 +2654,17 @@ MonoBehaviour:
   doorbellClip: {fileID: 8300000, guid: b7fba4b9dbc4c584f8e81be8637e553e, type: 3}
   previewInCounter: {fileID: 340306838}
   stage1Customer: {fileID: 854728056}
-  allStageEnded: 0
+  allStageEnded: 1
   enableSubmit: 0
   specialEndingPanel: {fileID: 590554683}
   specialEndingImage: {fileID: 585677068}
   specialEndingTitle: {fileID: 625274346}
   specialEndingText: {fileID: 1591503587}
   endingSprites:
-  - {fileID: -4470592730861715767, guid: f07ced057779ec648bff6dff0507ac6d, type: 3}
-  - {fileID: 4886640995651106556, guid: 8c4883dde872e604f9649613d25dc82c, type: 3}
-  - {fileID: -5799712943298625689, guid: 1f40623ca56390247a55ed17706ffb8f, type: 3}
-  - {fileID: 3086124129358821961, guid: 6e73aad01d1610a4394d459caa029ac4, type: 3}
+  - {fileID: -5679939771737079116, guid: f724e98fb7f4b824da53ea6dbe9479ad, type: 3}
+  - {fileID: 4634279928015722384, guid: 91c9a63dedfbef446945c3f96f723b8d, type: 3}
+  - {fileID: 2143613066579617481, guid: dcc6ef1b589e35a4ba1c0a43f81fd7f7, type: 3}
+  - {fileID: -2084194791055509467, guid: 0b7cb1b146d61f64e87e9a8f1616e5ee, type: 3}
 --- !u!114 &1735937883
 MonoBehaviour:
   m_ObjectHideFlags: 0

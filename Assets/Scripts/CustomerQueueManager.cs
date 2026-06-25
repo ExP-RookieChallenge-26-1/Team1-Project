@@ -33,4 +33,12 @@ public class CustomerQueueManager : MonoBehaviour
 
     public CustomerData GetCurrentCustomer() => currentCustomerData;    // ���� �մ� ���� Ȯ��
     public CustomerRuntimeState GetCurrentCustomerState() => currentCustomerState;  // ���� �մ� ���� Ȯ��
+
+    public void ResetCustomerQueue()
+    {
+        if (customerQueue != null) customerQueue.Clear();
+
+        currentCustomerData = null;
+        currentCustomerState = null;
+    }
 }

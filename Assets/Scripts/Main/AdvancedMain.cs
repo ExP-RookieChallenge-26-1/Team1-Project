@@ -56,6 +56,7 @@ public class AdvancedMain : MonoBehaviour
 
     IEnumerator CorPlaySpecialEnding(int totalReputation)
     {
+        int currentEndingIndex = 0;
         int enterCountForImage = 3;
         Sprite endingSprite = null;
         string endingTitle = "";
@@ -63,6 +64,7 @@ public class AdvancedMain : MonoBehaviour
 
         if (totalReputation >= 750)
         {
+            currentEndingIndex = 0;
             enterCountForImage = 8;
             if (endingSprites.Length > 0) endingSprite = endingSprites[0];
             endingTitle = "퍼펙트 엔딩";
@@ -70,6 +72,7 @@ public class AdvancedMain : MonoBehaviour
         }
         else if (totalReputation >= 600)
         {
+            currentEndingIndex = 1;
             enterCountForImage = 8;
             if (endingSprites.Length > 1) endingSprite = endingSprites[1];
             endingTitle = "해피 엔딩";
@@ -77,6 +80,7 @@ public class AdvancedMain : MonoBehaviour
         }
         else if (totalReputation >= 450)
         {
+            currentEndingIndex = 2;
             enterCountForImage = 3;
             if (endingSprites.Length > 2) endingSprite = endingSprites[2];
             endingTitle = "노말 엔딩";
@@ -84,13 +88,15 @@ public class AdvancedMain : MonoBehaviour
         }
         else
         {
+            currentEndingIndex = 3;
             if (endingSprites.Length > 3) specialEndingImage.sprite = endingSprites[3];
             specialEndingTitle.text = "폐업 엔딩";
             specialEndingText.text = "당신은 최선을 다했지만 성공하지 못했다.";
             specialEndingPanel.SetActive(true);
 
             yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame));
-
+            SaveEndingResetData(currentEndingIndex);
+            StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
             UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
             yield break;
         }
@@ -139,6 +145,8 @@ public class AdvancedMain : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame));
+        SaveEndingResetData(currentEndingIndex);
+        StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
     
@@ -322,4 +330,34 @@ public class AdvancedMain : MonoBehaviour
         }
     }
 
+    private void SaveEndingResetData(int endingIndex)
+    {
+        float backupBGM = PlayerPrefs.GetFloat("BgmVolume", 1f);
+        float backupSFX = PlayerPrefs.GetFloat("SfxVolume", 1f);
+
+        int[] backupEndings = new int[4];
+        for (int i=0; i<4; i++)
+        {
+            backupEndings[i] = PlayerPrefs.GetInt("SeenEnding: " + i, 0);
+        }
+
+        backupEndings[endingIndex] = 1;
+
+        PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetFloat("BgmVolume", backupBGM);
+        PlayerPrefs.SetFloat("SfxVolume", backupSFX);
+
+        for (int i=0; i<4; i++)
+        {
+            if (backupEndings[i] == 1) PlayerPrefs.SetInt("SeenEnding: " + 1, 1);
+        }
+
+        PlayerPrefs.Save();
+
+        if (StageFlowManager.Inst != null && StageFlowManager.Inst.ScoreCalculationSystem != null)
+        {
+            StageFlowManager.Inst.ScoreCalculationSystem.totalReputation = 0;
+        }
+    }
 }
