@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class AdvancedMain : MonoBehaviour
 {
@@ -40,36 +41,28 @@ public class AdvancedMain : MonoBehaviour
         if (StageFlowManager.Inst.isAllGameCleared || allStageEnded)
         {
             StopAllCoroutines();
-            StartCoroutine(CorPlayFinalVIPEnding());
+            int testScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation; // 기본값 (원래 점수)
+            testScore = 760;
+            StartCoroutine(CorPlayFinalVIPEnding(testScore));
             return;
         }
 
         StartCoroutine(CorStartGame());
     }
 
-    IEnumerator CorPlayFinalVIPEnding()
+    IEnumerator CorPlayFinalVIPEnding(int testScore)
     {
         if (EndScreen.Inst != null) EndScreen.Inst.gameObject.SetActive(false);
 
         int totalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
-        EndingManager.Inst.PlayEnding(totalScore);
-
-        AdvancedDialogue.Inst.isDialogEnd = false;
-        AdvancedDialogue.Inst.ShowNextDialogue();
+        EndingManager.Inst.PlayEnding(testScore);
 
         var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
         chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(533);
         var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
         previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(670);
 
-        while (!AdvancedDialogue.Inst.isDialogEnd)
-        {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                AdvancedDialogue.Inst.ShowNextDialogue();
-            }
-            yield return null;
-        }
+        yield return new WaitUntil(() => AdvancedDialogue.Inst.isDialogEnd);
 
         AdvancedDialogue.Inst.CloseChat();
         CustomerStateManager.Inst.HideCustomer();

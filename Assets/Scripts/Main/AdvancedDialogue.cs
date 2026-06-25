@@ -127,6 +127,8 @@ public class AdvancedDialogue : MonoBehaviour
 
     public void SetTexts(string[] texts)
     {
+        texts = texts[0].Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
         if (_dialogues == null)
             _dialogues = new List<Dialogue>();
         foreach (var t in texts)
