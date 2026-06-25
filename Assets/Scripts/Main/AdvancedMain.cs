@@ -16,7 +16,11 @@ public class AdvancedMain : MonoBehaviour
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
+    public Stage3Customer stage3Customer;
     public Stage5Customer stage5Customer;
+
+    public Action onResultNormal;
+    public Action onResultBad;
     
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
@@ -86,6 +90,8 @@ public class AdvancedMain : MonoBehaviour
             types.Add(t.IngredientType);
         }
         AdvancedDialogue.Inst.SetPreview(types);
+
+        AdvancedDialogue.Inst.actionByIndexDic = null;
         
         if (current.CustomerName == "Kid")
         {
@@ -99,6 +105,13 @@ public class AdvancedMain : MonoBehaviour
             AdvancedDialogue.Inst.blockDialogInput = true;
             CustomerStateManager.Inst.currentSpecialCustomer = stage5Customer;
             stage5Customer.StartAnimation();
+        }
+        //3스테이지
+        else if (current.CustomerName == "Influencer")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage3Customer;
+            stage3Customer.StartAnimation();
         }
         else
         {
@@ -159,6 +172,11 @@ public class AdvancedMain : MonoBehaviour
         var oldReput = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
         //Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
         CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
+        if(result == ReputationResult.Incomplete || result == ReputationResult.Perfect)
+            onResultNormal?.Invoke();
+        else
+            onResultBad?.Invoke();
+        
         if (oldCustomer.GetReputationDialogue(result, out string dialogue))
         {
             var txts = dialogue.Split('\n');

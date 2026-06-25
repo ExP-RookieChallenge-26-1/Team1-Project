@@ -36,6 +36,7 @@ public class AdvancedDialogue : MonoBehaviour
     public CanvasGroup previewBg;
     public RectTransform previewRect;
     public GameObject ingredientUIPrefab;
+    public AudioClip currentHummingClip;
 
     public bool isDialogEnd, blockDialogInput;
     public float previewStackOffset = 18;
@@ -59,6 +60,9 @@ public class AdvancedDialogue : MonoBehaviour
 
     [Tooltip("탄 재료 이미지")]
     public Sprite spriteUnderBurn, spriteTopBurn;
+
+    public Dictionary<int, Action> actionByIndexDic;
+    public Action onEndChat;
 
     public List<GameObject> chatIngredients;
     private List<Dialogue> _dialogues;
@@ -92,6 +96,8 @@ public class AdvancedDialogue : MonoBehaviour
                     CloseChat();
                     print("대화 종료");
                     AdvancedMain.Inst.tong.enableDrag = true;
+                    actionByIndexDic = null;
+                    onEndChat?.Invoke();
                 }
                 else
                 {
@@ -142,6 +148,14 @@ public class AdvancedDialogue : MonoBehaviour
         {
             ShowPreviewChat(dialogue.types);
         }
+
+        if (actionByIndexDic != null && actionByIndexDic.TryGetValue(_dialogueIndex, out var action))
+        {
+            action?.Invoke();
+        }
+        
+        if(currentHummingClip != null)
+            SFXPlayer.Instance.PlayRandomPitch(currentHummingClip);
         
         
         _dialogueIndex += 1;
@@ -162,6 +176,12 @@ public class AdvancedDialogue : MonoBehaviour
 
         _dialogueIndex = 0;
         _dialogues.Clear();
+    }
+
+    public void CloseChatOnlyVisual()
+    {
+        chatImg.DOFade(0, 0.3f);
+        previewBg.DOFade(0, 0.3f);
     }
 
     public void ShowPreviewChat(List<IngredientType> stack)
