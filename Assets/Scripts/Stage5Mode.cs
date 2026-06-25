@@ -8,6 +8,7 @@ public class Stage5Mode : MonoBehaviour
     public static Stage5Mode Inst;
 
     public TMP_Text timeText;
+    public TMP_Text countText;
     public float limit = 60f;
     public int goalCount = 10;
 
@@ -75,6 +76,12 @@ public class Stage5Mode : MonoBehaviour
         time = limit;
         ended = false;
         timerOn = true;
+        
+        EnsureCountText();
+
+        countText.gameObject.SetActive(true);
+        countText.text = "X 0";
+
         StartCoroutine(CalenderCanvas.Inst.PlayTimerRoutine(Mathf.CeilToInt(time)));
         ShowTime();
     }
@@ -98,6 +105,11 @@ public class Stage5Mode : MonoBehaviour
         if (result == ReputationResult.Perfect)
         {
             count++;
+
+            if (countText != null)
+            {
+                countText.text = $"X {count}";
+            }
         }
 
         Debug.Log($"[Stage5] burger: {result}, count: {count}, submitted: {BurgerToText(burger)}");
@@ -185,6 +197,11 @@ public class Stage5Mode : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+        if (countText != null)
+        {
+            countText.gameObject.SetActive(false);
+        }
+
         ReputationResult result = ReputationResult.Wrong;
         int reward = 0;
 
@@ -254,5 +271,34 @@ public class Stage5Mode : MonoBehaviour
 
         time = seconds;
         ShowTime();
+    }
+
+    private void EnsureCountText()
+    {
+        if (countText != null) return;
+
+        if (CalenderCanvas.Inst == null)
+        {
+            Debug.LogWarning("Stage5CountText: CalenderCanvas not found.");
+            return;
+        }
+
+        TMP_Text baseText = CalenderCanvas.Inst.GetText();
+        GameObject obj = new GameObject("Stage5CountText");
+        obj.transform.SetParent(CalenderCanvas.Inst.transform, false);
+
+        countText = obj.AddComponent<TextMeshProUGUI>();
+        countText.font = baseText.font;
+        countText.fontSize = 56;
+        countText.color = Color.black;
+        countText.alignment = TextAlignmentOptions.Center;
+        countText.raycastTarget = false;
+
+        RectTransform rect = countText.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0f, 1f);
+        rect.anchorMax = new Vector2(0f, 1f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(160f, 80f);
+        rect.anchoredPosition = new Vector2(350f, -255f);
     }
 }
