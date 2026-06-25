@@ -172,9 +172,17 @@ public class Stage5Mode : MonoBehaviour
         timerOn = false;
         AdvancedMain.Inst.enableSubmit = false;
 
+        StartCoroutine(EndStageRoutine(timeUp));
+    }
+
+    private IEnumerator EndStageRoutine(bool timeUp)
+    {
+
         if (timeUp)
         {
+            ShowTime();
             SFXPlayer.Instance.Play(timeUpClip);
+            yield return new WaitForSeconds(1f);
         }
 
         ReputationResult result = ReputationResult.Wrong;
@@ -192,6 +200,7 @@ public class Stage5Mode : MonoBehaviour
         }
 
         int finalScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation + reward;
+        
         MainUIManager.Inst.CloseGameView();
         GameManager.Inst.OnResetInput();
         StageFlowManager.Inst.FinishStage5(result, reward);
@@ -220,4 +229,11 @@ public class Stage5Mode : MonoBehaviour
         GameManager.Inst.SpawnNextIngredient();
         submitting = false;
     }
+    public void SetTimeForTest(float seconds)
+    {
+        if (!timerOn || ended) return;
+
+        time = seconds;
+        ShowTime();
+}
 }
