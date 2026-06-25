@@ -22,8 +22,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
   - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
   - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
-  fixedGender: 0
-  fixedSkin: 0
-  fixedClothes: 0
-  fixedHair: 0
-  fixedDialogue: 
+  fixedDialogue: 1
+  perfectDialogue: []
+  incompleteDialogue: []
+  wrongDialogue: []
+  specialSprites: []
+  emotionSprites: []

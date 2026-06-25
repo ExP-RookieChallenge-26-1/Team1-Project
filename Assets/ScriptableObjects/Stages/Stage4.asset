@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageLevel: 4
   customerPool:
-  - {fileID: 11400000, guid: e93d2383246ae364587fed7e884fe511, type: 2}
+  - {fileID: 11400000, guid: b77ae5ebbde6e6e4f97dc54407a6fbeb, type: 2}
   - {fileID: 11400000, guid: 8b34903df73bcb045a26f356f4fa79ee, type: 2}
   - {fileID: 11400000, guid: 2e38a11e58ec3a14b913adcbd212ad91, type: 2}
-  - {fileID: 11400000, guid: 1317afe485a851142a9e4459d2731418, type: 2}
+  - {fileID: 11400000, guid: e93d2383246ae364587fed7e884fe511, type: 2}
   - {fileID: 11400000, guid: 3c69f2222e7032f47ac007d4d53d86b1, type: 2}
   targetClearCount: 5
