@@ -47,7 +47,7 @@ public class AdvancedMain : MonoBehaviour
         {
             StopAllCoroutines();
             int testScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation; // 기본값 (원래 점수)
-            testScore = 760;
+            testScore = 500;
             StartCoroutine(CorPlaySpecialEnding(testScore));
             return;
         }
