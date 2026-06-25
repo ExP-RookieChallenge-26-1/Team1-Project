@@ -207,27 +207,6 @@ public class GameManager : MonoBehaviour
         SpawnNextIngredient();
         UpdateAllVisuals();
     }
-
-    public void RestartStage()
-    {
-        if (initialOrderList.Count == 0)
-        {
-            Debug.LogWarning("No active order is available to restart.");
-            return;
-        }
-
-        StopAllCoroutines();
-        isAnimating = false;
-        moveRecords.Clear();
-
-        SubmitAndClear();
-        orderList = new List<IngredientType>(initialOrderList);
-        isPlaying = true;
-
-        SpawnNextIngredient();
-        UpdateAllVisuals();
-    }
-
     private void UpdateAllVisuals()
     {
         visualManager.UpdateVisuals(gameBoard);
