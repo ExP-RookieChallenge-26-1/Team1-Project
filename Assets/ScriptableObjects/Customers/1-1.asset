@@ -28,4 +28,7 @@ MonoBehaviour:
   wrongDialogue:
   - "....\n......\uAC10\uC7C8\uD568\uB2C8\uB2E4"
   specialSprites: []
-  emotionSprites: []
+  emotionSprites:
+  - {fileID: -1275377255091264952, guid: 3c27ddcbdff609c46979efe53c399842, type: 3}
+  - {fileID: -5829412457335716829, guid: 02b40652468ccf149a605b0ab49e0bb3, type: 3}
+  - {fileID: 2338123608047140483, guid: ad118833b9e31f84a9403fa3fe1d55d7, type: 3}
