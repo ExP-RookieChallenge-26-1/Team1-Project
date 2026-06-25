@@ -21,6 +21,11 @@ public class AdvancedMain : MonoBehaviour
     public bool allStageEnded;
     public bool enableSubmit;
     private bool _stageEnded;
+    public GameObject specialEndingPanel;
+    public UnityEngine.UI.Image specialEndingImage;
+    public TMPro.TextMeshProUGUI specialEndingTitle;
+    public TMPro.TextMeshProUGUI specialEndingText;
+    public Sprite[] endingSprites;
 
     private void Awake()
     {
@@ -43,35 +48,94 @@ public class AdvancedMain : MonoBehaviour
             StopAllCoroutines();
             int testScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation; // 기본값 (원래 점수)
             testScore = 760;
-            StartCoroutine(CorPlayFinalVIPEnding(testScore));
+            StartCoroutine(CorPlaySpecialEnding(testScore));
             return;
         }
 
         StartCoroutine(CorStartGame());
     }
 
-    IEnumerator CorPlayFinalVIPEnding(int testScore)
+    IEnumerator CorPlaySpecialEnding(int testScore)
     {
-        if (EndScreen.Inst != null) EndScreen.Inst.gameObject.SetActive(false);
+        int enterCountForImage = 3;
+        Sprite endingSprite = null;
+        string endingTitle = "";
+        string endingText = "";
 
-        int totalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
+        if (testScore >= 750)
+        {
+            enterCountForImage = 8;
+            if (endingSprites.Length > 0) endingSprite = endingSprites[0];
+            endingTitle = "퍼펙트 엔딩";
+            endingText = "최고의 식당으로 등극했다.";
+        }
+        else if (testScore >= 600)
+        {
+            enterCountForImage = 8;
+            if (endingSprites.Length > 1) endingSprite = endingSprites[0];
+            endingTitle = "해피 엔딩";
+            endingText = "당신의 노력은 결실을 맺었다.";
+        }
+        else if (testScore >= 450)
+        {
+            enterCountForImage = 3;
+            if (endingSprites.Length > 2) endingSprite = endingSprites[0];
+            endingTitle = "노말 엔딩";
+            endingText = "당신은 인기보다 더 가치있는 것을 얻었다.";
+        }
+        else
+        {
+            enterCountForImage = 0;
+            if (endingSprites.Length > 3) endingSprite = endingSprites[0];
+            endingTitle = "폐업 엔딩";
+            endingText = "당신은 최선을 다했지만 성공하지 못했다.";
+        }
+
         EndingManager.Inst.PlayEnding(testScore);
 
-        var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
-        chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(533);
-        var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
-        previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(670);
+        int enterCount = 0;
+        while (!AdvancedDialogue.Inst.isDialogEnd)
+        {
+            if (Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame))
+            {
+                enterCount++;
+                if (enterCount == enterCountForImage)
+                {
+                    if (specialEndingImage != null && endingSprite != null)
+                    {
+                        specialEndingImage.sprite = endingSprite;
+                    }
 
-        yield return new WaitUntil(() => AdvancedDialogue.Inst.isDialogEnd);
+                    if (specialEndingTitle != null)
+                    {
+                        specialEndingTitle.text = endingTitle;
+                    }
 
-        AdvancedDialogue.Inst.CloseChat();
+                    if (specialEndingText != null)
+                    {
+                        specialEndingText.text = endingText;
+                    }
+                    
+                    if (specialEndingPanel != null)
+                    {
+                        specialEndingPanel.SetActive(true);
+                    }
+                }
+
+                else specialEndingPanel.SetActive(false);
+            }
+            yield return null;
+        }
+
+        yield return null;
+        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame);
         CustomerStateManager.Inst.HideCustomer();
+        AdvancedDialogue.Inst.CloseChat();
 
         yield return new WaitForSeconds(0.5f);
 
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.KeypadEnter));
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene"); 
+        yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame));
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
     
     private void GameEventsOnOnAllStagesCleared()
