@@ -37,7 +37,8 @@ public class SideBurgerMaker : MonoBehaviour
         if(isChat)
             dialogueGroup.alpha = 0;
 
-        counterPreview.GetComponent<CanvasGroup>().alpha = 0.7f;
+        if(!isChat)
+            counterPreview.GetComponent<CanvasGroup>().alpha = 0.7f;
         MakeBurger(list, isChat);
         yield return new WaitForSeconds(0.1f);
         if (isChat)
@@ -89,7 +90,8 @@ public class SideBurgerMaker : MonoBehaviour
     {
         foreach (var v in visualIng)
         {
-            Destroy(v.gameObject);
+            if(v != null)
+                Destroy(v.gameObject);
         }
         visualIng.Clear();
     }

@@ -13,6 +13,7 @@ public class Dialogue
 {
     public DialogueType dialogueType;
     public string text;
+    public bool isFakeRecipe;
     public List<IngredientType> types;
 
     public Dialogue(string t)
@@ -69,6 +70,7 @@ public class AdvancedDialogue : MonoBehaviour
     private List<Dialogue> _dialogues;
     private bool _isDialoging;
     private int _dialogueIndex;
+    private bool _isFakePreview;
 
     private void Awake()
     {
@@ -90,20 +92,20 @@ public class AdvancedDialogue : MonoBehaviour
 
             if (Keyboard.current.anyKey.wasPressedThisFrame)
             {
-                if (_dialogueIndex + 1 > _dialogues.Count)
+                if (_dialogueIndex + 1 > _dialogues.Count || _isFakePreview)
                 {
                     _isDialoging = false;
                     isDialogEnd = true;
                     CloseChat();
                     print("대화 종료");
 
-                    if (isPlayingEndingDialogue)
+                    if (isPlayingEndingDialogue && !_isFakePreview)
                     {
                         Debug.Log("게임 종료");
                         return;
                     }
 
-                    if (StageFlowManager.Inst != null)
+                    if (StageFlowManager.Inst != null  && !_isFakePreview)
                     {
                         var lastCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
 
@@ -129,6 +131,17 @@ public class AdvancedDialogue : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResumeDialogue()
+    {
+        _isDialoging = true;
+        isDialogEnd = false;
+    }
+
+    public void InsertFakePreview(List<IngredientType> list, int index)
+    {
+        _dialogues.Insert(index, new Dialogue(list) {isFakeRecipe = true});
     }
 
     public void SetTexts(string[] texts)
@@ -162,6 +175,7 @@ public class AdvancedDialogue : MonoBehaviour
         if (_dialogueIndex >= _dialogues.Count) return;
 
         var dialogue = _dialogues[_dialogueIndex];
+        _isFakePreview = dialogue.isFakeRecipe;
         if (dialogue.dialogueType == DialogueType.Text)
         {
             ShowTextChat(dialogue.text);
@@ -184,22 +198,61 @@ public class AdvancedDialogue : MonoBehaviour
 
         _dialogueIndex += 1;
     }
+    void ShowTextChat(string text)
+    {
+        chatImg.alpha = 0;
+        chatImg.DOFade(1, 0.3f);
 
-    void ShowTextChat(string t)
+        // 전체 텍스트 세팅
+        chatTxt.text = text;
+
+        // 최종 높이 계산
+        chatTxt.ForceMeshUpdate();
+
+        var bubbleRect = chatImg.GetComponent<RectTransform>();
+
+        float targetHeight = chatTxt.preferredHeight + 40f; // 패딩
+
+        // 시작 높이
+        bubbleRect.SetSizeWithCurrentAnchors(
+            RectTransform.Axis.Vertical,
+            40f);
+
+        // 말풍선 확장
+        bubbleRect.DOSizeDelta(
+            new Vector2(bubbleRect.sizeDelta.x, targetHeight),
+            0.3f
+        ).SetEase(Ease.OutCubic);
+
+        // 글자 숨기기
+        chatTxt.maxVisibleCharacters = 0;
+
+        // 타이핑 효과
+        DOTween.To(
+            () => chatTxt.maxVisibleCharacters,
+            x => chatTxt.maxVisibleCharacters = x,
+            text.Length,
+            0.5f
+        ).SetEase(Ease.Linear);
+    }
+    /*void ShowTextChat(string t)
     {
         chatImg.alpha = 0;
         chatImg.DOFade(1, 0.3f);
         chatTxt.text = "";
         chatTxt.DOText(t, 0.5f);
-    }
+    }*/
 
     public void CloseChat()
     {
         chatImg.DOFade(0, 0.3f);
         previewBg.DOFade(0, 0.3f);
 
-        _dialogueIndex = 0;
-        _dialogues.Clear();
+        if (!_isFakePreview)
+        {
+            _dialogueIndex = 0;
+            _dialogues.Clear();   
+        }
     }
 
     public void CloseChatOnlyVisual()
@@ -219,7 +272,7 @@ public class AdvancedDialogue : MonoBehaviour
         /*stack.Insert(0, IngredientType.Burn);
         stack.Add(IngredientType.TopBurn);*/
 
-
+        chatImg.alpha = 0;
         SideBurgerMaker.Inst.Make(stack);
         //chatIngredients = SideBurgerRenderer.Inst.BuildBurger(stack, previewRect);
         

@@ -7,13 +7,25 @@
     <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/4-1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/4-1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/4-1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/4-1.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/2-4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/2-4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/6-3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/6-3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage2.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage6.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage1Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage1Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage5Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage5Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SideBurgerMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SideBurgerMaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_angry.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_angry.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_coldglance.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_coldglance.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_default.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_default.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_encounter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_encounter.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_happy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_happy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_transition.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_transition.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +50,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SideBurgetRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/SpecialBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage1Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage2Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage4Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage5Customer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage6Customer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/ClampToScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PressToStartAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/RectTransformUtil.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,22 +70,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "wooohju",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;wooohju&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../LastBuild\Team1Project.exe" />

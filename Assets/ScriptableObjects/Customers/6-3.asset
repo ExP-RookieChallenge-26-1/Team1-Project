@@ -46,8 +46,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
   - {fileID: 11400000, guid: 8e5df99b452ae674286b324817d0897f, type: 2}
   - {fileID: 11400000, guid: 6c58b7fb6b355cf469b33ba621805bba, type: 2}
-  fixedGender: 0
-  fixedSkin: 0
-  fixedClothes: 0
-  fixedHair: 0
-  fixedDialogue: 
+  fixedDialogue: "\uBB38 \uC5F4\uC5C8\uB098\uC694?\r\n\uD760\u2026\r\n\uC7A0\uC2DC\uB9CC\uC694.\r\n\uB098\uC058\uC9C0
+    \uC54A\uB124\uC694.\r\n\uBC84\uAC70 \uD558\uB098\uB9CC \uB354 \uBD80\uD0C1 \uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
+  perfectDialogue:
+  - "\u2026\r\n\u2026..\r\n\u2026\u2026\u2026\r\n\uC88B\uB124\uC694.\r\n\uB2E4\uC74C\uC5D0
+    \uB610 \uBD59\uC8E0."
+  incompleteDialogue:
+  - "\u2026\r\n\u2026..\r\n\u2026\u2026\u2026\r\n\uC88B\uB124\uC694.\r\n\uB2E4\uC74C\uC5D0
+    \uB610 \uBD59\uC8E0."
+  wrongDialogue:
+  - "\u2026\r\n\u2026..\r\n\u2026\u2026..\r\n\uC54C\uACA0\uC2B5\uB2C8\uB2E4.\r\n\uAC10\uC0AC\uD569\uB2C8\uB2E4,
+    \uC0AC\uC7A5\uB2D8."
+  specialSprites: []
+  emotionSprites: []

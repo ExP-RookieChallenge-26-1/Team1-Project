@@ -5,6 +5,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class AdvancedMain : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class AdvancedMain : MonoBehaviour
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
     private CustomerRuntimeState _oldstate;
+    public AudioClip[] manClips, womanClips;
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
+    public Stage2Customer stage2Customer;
     public Stage3Customer stage3Customer;
     public Stage4Customer stage4Customer;
     public Stage5Customer stage5Customer;
+    public Stage6Customer stage6Customer;
+    public bool isFaking;
 
     public Action onResultNormal;
     public Action onResultBad;
@@ -37,11 +42,6 @@ public class AdvancedMain : MonoBehaviour
         GameEvents.OnStageChanged += GameEventsOnOnStageChanged;
         GameEvents.OnAllStagesCleared += GameEventsOnOnAllStagesCleared;
     }
-
-    /*private void Start()
-    {
-        StartFlow();
-    }*/
 
     public void StartFlow()
     {
@@ -130,7 +130,10 @@ public class AdvancedMain : MonoBehaviour
 
         var currentState = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomerState();
         _oldstate = currentState;
-        Debug.Log($"오래된성별:{_oldstate.Appearance.Gender}");    
+        Debug.Log($"오래된성별:{_oldstate.Appearance.Gender}");
+        AdvancedDialogue.Inst.currentHummingClip = currentState.Appearance.Gender == CustomerGender.Male
+            ? manClips[Random.Range(0, manClips.Length)]
+            : womanClips[Random.Range(0, womanClips.Length)];
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         if (!string.IsNullOrEmpty(current.GetDialogue()))
         {
@@ -174,6 +177,20 @@ public class AdvancedMain : MonoBehaviour
             AdvancedDialogue.Inst.blockDialogInput = true;
             CustomerStateManager.Inst.currentSpecialCustomer = stage4Customer;
             stage4Customer.StartAnimation();
+        }
+        //6스테이지
+        else if (current.CustomerName == "Jury")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage6Customer;
+            stage6Customer.StartAnimation();
+        }
+        //2스테이지
+        else if (current.CustomerName == "Knight")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage2Customer;
+            stage2Customer.StartAnimation();
         }
         else
         {
@@ -224,6 +241,17 @@ public class AdvancedMain : MonoBehaviour
         yield return StartCoroutine(SideBurgerMaker.Inst.FallingRoutine());
         yield return new WaitForSeconds(2);
 
+        if (isFaking)
+        {
+            AdvancedDialogue.Inst.ResumeDialogue();
+            AdvancedDialogue.Inst.ShowNextDialogue();
+            AdvancedDialogue.Inst.blockDialogInput = false;
+            stage6Customer.SetActionsAfterFake();
+            isFaking = false;
+            tong.ResetTong();
+            yield break;
+        }
+
      
         int clampedStageIndex = Mathf.Clamp(StageFlowManager.Inst.currentStageIndex, 0, StageFlowManager.Inst.Stages.Count - 1);
         StageData timeCapsuleStage = StageFlowManager.Inst.Stages[clampedStageIndex];
@@ -236,6 +264,11 @@ public class AdvancedMain : MonoBehaviour
         GameManager.Inst.OnSubmitInput();
         var oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
         var result = StageFlowManager.Inst.OnBurgerSubmitted(data); 
+        
+        if(result == ReputationResult.Perfect || result == ReputationResult.Incomplete)
+            onResultNormal?.Invoke();
+        else
+            onResultBad?.Invoke();
         
         //CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용

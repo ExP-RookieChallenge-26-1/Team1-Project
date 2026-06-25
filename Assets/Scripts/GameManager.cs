@@ -71,11 +71,18 @@ public class GameManager : MonoBehaviour
 
         if (StageFlowManager.Inst)
         {
-            var currentCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
-            orderList = new();
-            foreach (var data in currentCustomer.Recipe)
+            if (AdvancedMain.Inst.isFaking)
             {
-                orderList.Add(data.IngredientType);
+                orderList = AdvancedMain.Inst.stage6Customer.fakeBurgers;
+            }
+            else
+            {
+                var currentCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
+                orderList = new();
+                foreach (var data in currentCustomer.Recipe)
+                {
+                    orderList.Add(data.IngredientType);
+                }   
             }
         }
         else

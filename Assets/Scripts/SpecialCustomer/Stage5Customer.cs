@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Stage5Customer : SpecialBase
 {
+    public AudioClip humming;
     public RectTransform rect;
     public CanvasGroup canvasGroup;
     public Image bodyImg;
@@ -22,6 +23,7 @@ public class Stage5Customer : SpecialBase
         var pos = rect.anchoredPosition;
         pos.x = -1018;
         rect.anchoredPosition = pos;
+        AdvancedDialogue.Inst.currentHummingClip = humming;
         rect.DOAnchorPos3DX(-124, 0.3f).SetEase(Ease.OutBack);
         canvasGroup.DOFade(1, 0.1f);
         AdvancedDialogue.Inst.ShowNextDialogue();
