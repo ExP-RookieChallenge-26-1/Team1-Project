@@ -1,9 +1,9 @@
 {
   "build_mode_used": "incremental",
-  "files_total": 65,
-  "files_parsed": 9,
-  "changed_cs_files": 8,
-  "added_cs_files": 3,
+  "files_total": 62,
+  "files_parsed": 19,
+  "changed_cs_files": 1,
+  "added_cs_files": 0,
   "deleted_cs_files": 0,
   "rebuild_reasons": []
 }
