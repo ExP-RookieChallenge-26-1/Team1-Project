@@ -65,7 +65,10 @@ public class Stage1Customer : SpecialBase
 
     public override void HideAnimation()
     {
+
         base.HideAnimation();
         canvasGroup.DOFade(0, 0.5f);
+
+
     }
 }
