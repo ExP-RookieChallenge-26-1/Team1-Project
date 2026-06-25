@@ -69,7 +69,7 @@ public class StageFlowManager : MonoBehaviour
 
         // �� ��� ��������
         ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
-
+        Debug.Log($"캬옹:{result}");
         // ���� ���
         int bonus = currentCustomer.GetBonusScore(result);
         scoreCalculationSystem.AddReputation(result, bonus);
@@ -98,10 +98,10 @@ public class StageFlowManager : MonoBehaviour
             oldEmotion = currentState.UpdateEmotion(result);
         }
 
-        scoreCalculationSystem.SetReputation(scoreCalculationSystem.CurrentReputation + reputation);
+        scoreCalculationSystem.AddReputation(result, reputation);
         servedCount = stages[currentStageIndex].TargetClearCount;
 
-        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
+        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.totalReputation, scoreCalculationSystem.stageReputation);
         CheckStageProgress();
     }
 

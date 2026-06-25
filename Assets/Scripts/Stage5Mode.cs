@@ -216,7 +216,7 @@ public class Stage5Mode : MonoBehaviour
             reward = 150;
         }
 
-        int finalScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation + reward;
+        int finalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation + reward;
         CustomerData oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
 
         MainUIManager.Inst.CloseGameView();
