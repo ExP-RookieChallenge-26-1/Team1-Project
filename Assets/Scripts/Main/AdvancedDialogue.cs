@@ -171,14 +171,17 @@ public class AdvancedDialogue : MonoBehaviour
             Destroy(obj);
         }
 
-        stack.Insert(0, IngredientType.Burn);
-        stack.Add(IngredientType.TopBurn);
-        chatIngredients = SideBurgerRenderer.Inst.BuildBurger(stack, previewRect);
+        /*stack.Insert(0, IngredientType.Burn);
+        stack.Add(IngredientType.TopBurn);*/
+
+
+        SideBurgerMaker.Inst.Make(stack);
+        //chatIngredients = SideBurgerRenderer.Inst.BuildBurger(stack, previewRect);
         
       
         chatImg.alpha = 0;
-        previewBg.alpha = 0;
-        previewBg.DOFade(1, 0.3f);
+        /*previewBg.alpha = 0;
+        previewBg.DOFade(1, 0.3f);*/
     }
     
     public void SetIngredientImage(GameObject targetObj, IngredientType type)
