@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Image nextIngrdient;
     private VisualManager visualManager;
     private BurgerTile[,] gameBoard = new BurgerTile[4, 5];
+    private static readonly Vector2Int blockedCellPosition = new Vector2Int(0,0);
 
     // ?꾩옱 ?ㅽ룿 ?湲?以묒씤 ?⑥? 二쇰Ц 由ъ뒪??
     public List<IngredientType> orderList = new List<IngredientType>();
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
             for (int x = 0; x < 4; x++)
             {
                 gameBoard[x, y] = new BurgerTile();
+                if (x == blockedCellPosition.x && y == blockedCellPosition.y)
+                {
+                    gameBoard[x, y].isBlocked = true;
+                    continue;
+                }
                 // 留??꾨옯以?y=4)? 洹몃┫ ??쇰줈 ?ㅼ젙
                 if (y == 0) gameBoard[x, y].isGrill = true;
             }
@@ -228,6 +234,11 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < 4; x++)
             {
+                if (gameBoard[x, y].isBlocked)
+                {
+                    continue;
+
+                }
                 int height = gameBoard[x, y].stackedIngredients.Count;
                 if (height > 0)
                 {
@@ -273,7 +284,7 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < 4; x++)
             {
-                if (gameBoard[x, y].stackedIngredients.Count == 0)
+                if (!gameBoard[x, y].isBlocked && gameBoard[x, y].stackedIngredients.Count == 0)
                 {
                     emptyTiles.Add(gameBoard[x, y]);
                 }
@@ -339,7 +350,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int x = startX; x != endX; x += stepX)
                 {
-                    if (gameBoard[x, y].stackedIngredients.Count == 0)
+                    if (gameBoard[x, y].isBlocked || gameBoard[x, y].stackedIngredients.Count == 0)
                     {
                         continue;
                     }
@@ -348,6 +359,11 @@ public class GameManager : MonoBehaviour
                     int ny = y + dy;
 
                     if (nx < 0 || nx >= 4 || ny < 0 || ny >= 5)
+                    {
+                        continue;
+                    }
+
+                    if (gameBoard[nx, ny].isBlocked)
                     {
                         continue;
                     }
