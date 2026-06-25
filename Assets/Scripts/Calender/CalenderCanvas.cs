@@ -49,7 +49,7 @@ public class CalenderCanvas : MonoBehaviour
     {
         SetDayTextVisible(false);
         SetTimerTextPos(true);
-        SetText($"<size=36>Time left</size>\n<size=72>00:{seconds:00}</size>");
+        SetText($"<size=42>Time left</size>\n<size=130>{seconds}</size>");
     }
 
     public IEnumerator PlayTimerRoutine(int seconds)
@@ -122,7 +122,7 @@ public class CalenderCanvas : MonoBehaviour
             hasBaseTextPos = true;
         }
 
-        textRect.anchoredPosition = isTimer ? baseTextPos + Vector2.up * 72f : baseTextPos;
+        textRect.anchoredPosition = isTimer ? baseTextPos + Vector2.up * 30f : baseTextPos;
     }
 
     public void PlayAnimationToLT()
