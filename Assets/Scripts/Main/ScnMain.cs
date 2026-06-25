@@ -105,7 +105,7 @@ public class ScnMain : MonoBehaviour
 
         CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
-        PeopleManager.Inst.ShowChat($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.customerReputation}");
+        PeopleManager.Inst.ShowChat($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
 
 
         yield return new WaitForSeconds(3);
@@ -116,7 +116,7 @@ public class ScnMain : MonoBehaviour
 
             int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
             StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
-            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.stageReputation;
+            int myScore = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
 
             int maxScore = 0;
             foreach (var customer in currentStage.CustomerPool)
