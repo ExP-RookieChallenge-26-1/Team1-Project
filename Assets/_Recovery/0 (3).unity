@@ -712,7 +712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4886640995651106556, guid: 8c4883dde872e604f9649613d25dc82c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1895,7 +1895,7 @@ MonoBehaviour:
       \uD584\uBD80\uAC00\uD2F0\uD584\uBD80\uAE30\uC628\uC564 \uC628\uC744 \uC2DC\uD0A4\uACA0\uB124"
   - tier: 1
     endingTitle: "\uD574\uD53C \uC5D4\uB529"
-    endingBody: {fileID: 6408639336493025854, guid: 4a91b9944c4f727449c5d9ea98dbcbe0, type: 3}
+    endingBody: {fileID: 5011754457233743445, guid: acbd1ddc995728544910a7d6fca9ad40, type: 3}
     dialogues:
     - "\uC5EC, \uCE5C\uAD6C! \uC7A5\uC0AC \uC798 \uB418\uACE0 \uC788\uB098?\n....\n\uBB58
       \uADF8\uB807\uAC8C \uC758\uC2EC\uC758 \uB208\uCD08\uB9AC\uB85C \uBCF4\uB294\uAC00?\n\uC624\uB298\uC740
@@ -1909,13 +1909,13 @@ MonoBehaviour:
       \uD584\uBD80\uAC00\uD2F0\uD584\uBD80\uAE30\uC628\uC564 \uC628\uC744 \uC2DC\uD0A4\uACA0\uB124"
   - tier: 2
     endingTitle: "\uB178\uB9D0 \uC5D4\uB529"
-    endingBody: {fileID: -1275377255091264952, guid: 3c27ddcbdff609c46979efe53c399842, type: 3}
+    endingBody: {fileID: 1818213698757126213, guid: cd3aea720f7eaf943ba610d0d2c556ea, type: 3}
     dialogues:
     - "....\n.....\n\uC544\uC838\uB760... \uC774\uAC70..."
     - "\uC81C... \uC81C\uAC00 \uADF8\uB824\uB5A0\uC694\n.....\n\uB610... \uC624\uAED8\uC694...!"
   - tier: 3
     endingTitle: "\uBC30\uB4DC \uC5D4\uB529"
-    endingBody: {fileID: 0}
+    endingBody: {fileID: -4340261226029995571, guid: ebe2fec3aef93544f8b8020a33e2dc36, type: 3}
     dialogues:
     - 
 --- !u!4 &1358621901

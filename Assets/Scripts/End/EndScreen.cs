@@ -30,14 +30,6 @@ public class EndScreen : MonoBehaviour
     public void GoToNextStage()
     {
         endCanvas.SetActive(false);
-        /*if (AdvancedMain.Inst.allStageEnded)
-        {
-            SceneManager.LoadScene("Intro");
-        }
-        else
-        {
-            AdvancedMain.Inst.StartFlow();   
-        }*/
         AdvancedMain.Inst.StartFlow();
     }
 

@@ -46,57 +46,61 @@ public class AdvancedMain : MonoBehaviour
         if (StageFlowManager.Inst.isAllGameCleared || allStageEnded)
         {
             StopAllCoroutines();
-            int testScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation; // 기본값 (원래 점수)
-            testScore = 760;
-            StartCoroutine(CorPlaySpecialEnding(testScore));
+            int totalReputation = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
+            StartCoroutine(CorPlaySpecialEnding(totalReputation));
             return;
         }
 
         StartCoroutine(CorStartGame());
     }
 
-    IEnumerator CorPlaySpecialEnding(int testScore)
+    IEnumerator CorPlaySpecialEnding(int totalReputation)
     {
         int enterCountForImage = 3;
         Sprite endingSprite = null;
         string endingTitle = "";
         string endingText = "";
 
-        if (testScore >= 750)
+        if (totalReputation >= 750)
         {
             enterCountForImage = 8;
             if (endingSprites.Length > 0) endingSprite = endingSprites[0];
             endingTitle = "퍼펙트 엔딩";
             endingText = "최고의 식당으로 등극했다.";
         }
-        else if (testScore >= 600)
+        else if (totalReputation >= 600)
         {
             enterCountForImage = 8;
-            if (endingSprites.Length > 1) endingSprite = endingSprites[0];
+            if (endingSprites.Length > 1) endingSprite = endingSprites[1];
             endingTitle = "해피 엔딩";
             endingText = "당신의 노력은 결실을 맺었다.";
         }
-        else if (testScore >= 450)
+        else if (totalReputation >= 450)
         {
             enterCountForImage = 3;
-            if (endingSprites.Length > 2) endingSprite = endingSprites[0];
+            if (endingSprites.Length > 2) endingSprite = endingSprites[2];
             endingTitle = "노말 엔딩";
             endingText = "당신은 인기보다 더 가치있는 것을 얻었다.";
         }
         else
         {
-            enterCountForImage = 0;
-            if (endingSprites.Length > 3) endingSprite = endingSprites[0];
-            endingTitle = "폐업 엔딩";
-            endingText = "당신은 최선을 다했지만 성공하지 못했다.";
+            if (endingSprites.Length > 3) specialEndingImage.sprite = endingSprites[3];
+            specialEndingTitle.text = "폐업 엔딩";
+            specialEndingText.text = "당신은 최선을 다했지만 성공하지 못했다.";
+            specialEndingPanel.SetActive(true);
+
+            yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame));
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
+            yield break;
         }
 
-        EndingManager.Inst.PlayEnding(testScore);
+        EndingManager.Inst.PlayEnding(totalReputation);
 
         int enterCount = 0;
         while (!AdvancedDialogue.Inst.isDialogEnd)
         {
-            if (Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame))
+            if (Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame))
             {
                 enterCount++;
                 if (enterCount == enterCountForImage)
