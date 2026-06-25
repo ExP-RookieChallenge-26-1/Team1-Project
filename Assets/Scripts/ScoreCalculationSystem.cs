@@ -3,59 +3,51 @@ using UnityEngine;
 public class ScoreCalculationSystem : MonoBehaviour
 {
 
-    private int currentReputation = 0;  // ���� ���� ����
-    public int CurrentReputation => currentReputation;
-    public int oldReputation;
+    public int customerReputation { get; private set; } = 0;
+    public int stageReputation { get; private set; } = 0;
+    public int totalReputation { get; private set; } = 0;
+
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
     [SerializeField] private int wrongScore = -10;
 
-    private void OnEnable()
-    {
-        GameEvents.OnStageChanged += ResetReputation;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.OnStageChanged -= ResetReputation;
-    }
-
-    private void ResetReputation(int stageLevel)
-    {
-        currentReputation = 0;
-        GameEvents.TriggerReputationChanged(currentReputation);
-    }
-
-
     public void AddReputation(ReputationResult result, int bonus = 0)
     {
-        switch (result)
+        customerReputation = 0;
+
+         switch (result)
         {
             // ������ Perfect��� perfectScore��ŭ ���� ����
             case ReputationResult.Perfect:
-                currentReputation += perfectScore;
+                customerReputation += perfectScore;
                 break;
             // ������ Incomplete��� incompleteScore��ŭ ���� ����
             case ReputationResult.Incomplete:
-                currentReputation += incompleteScore;
+                customerReputation += incompleteScore;
                 break;
             // ������ Wrong�̶�� wrongScore��ŭ ���� ����(�ּ� ���� 0��)
             case ReputationResult.Wrong:
-                currentReputation = Mathf.Max(0, currentReputation + wrongScore);
+                customerReputation = wrongScore;
                 break;
         }
         
         // Ư�� �մ��� �ִ� ���ʽ� ���� �ջ�
-        currentReputation += bonus;
-        oldReputation = currentReputation;
+        customerReputation += bonus;
+        stageReputation = Mathf.Max(0, stageReputation + customerReputation);
+        totalReputation = Mathf.Max(0, totalReputation + customerReputation);
         // ���� ���� ���� ���
-        GameEvents.TriggerReputationChanged(currentReputation);
+        GameEvents.TriggerReputationChanged(totalReputation);
     }
 
-    public void SetReputation(int savedScore)
+    public void ResetStageReputation()
     {
-        currentReputation = savedScore;
-        oldReputation = savedScore;
-        GameEvents.TriggerReputationChanged(currentReputation);
+        stageReputation = 0;
+    }
+    public void SetLoadedReputation(int savedTotal, int savedStageScore)
+    {
+        totalReputation = savedTotal;
+        stageReputation = savedStageScore;
+
+        GameEvents.TriggerReputationChanged(totalReputation);
     }
 }

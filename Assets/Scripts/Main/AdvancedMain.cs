@@ -13,6 +13,7 @@ public class AdvancedMain : MonoBehaviour
     public AdvancedTong tong;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
+    private CustomerRuntimeState _oldstate;
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
@@ -42,7 +43,51 @@ public class AdvancedMain : MonoBehaviour
         StartFlow();
     }*/
 
-    public void StartFlow() => StartCoroutine(CorStartGame());
+    public void StartFlow()
+    {
+        if (StageFlowManager.Inst.isAllGameCleared || allStageEnded)
+        {
+            StopAllCoroutines();
+            StartCoroutine(CorPlayFinalVIPEnding());
+            return;
+        }
+
+        StartCoroutine(CorStartGame());
+    }
+
+    IEnumerator CorPlayFinalVIPEnding()
+    {
+        if (EndScreen.Inst != null) EndScreen.Inst.gameObject.SetActive(false);
+
+        int totalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
+        EndingManager.Inst.PlayEnding(totalScore);
+
+        AdvancedDialogue.Inst.isDialogEnd = false;
+        AdvancedDialogue.Inst.ShowNextDialogue();
+
+        var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
+        chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(533);
+        var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
+        previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(670);
+
+        while (!AdvancedDialogue.Inst.isDialogEnd)
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                AdvancedDialogue.Inst.ShowNextDialogue();
+            }
+            yield return null;
+        }
+
+        AdvancedDialogue.Inst.CloseChat();
+        CustomerStateManager.Inst.HideCustomer();
+
+        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.KeypadEnter));
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene"); 
+    }
     
     private void GameEventsOnOnAllStagesCleared()
     {
@@ -77,6 +122,15 @@ public class AdvancedMain : MonoBehaviour
         //var current = StageFlowManager.Inst.CustomerQueueManager.GetNextCustomer();
         //Debug.Log(current == null);
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
+
+        if (current == null)
+        {
+            yield break;
+        }
+
+        var currentState = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomerState();
+        _oldstate = currentState;
+        Debug.Log($"오래된성별:{_oldstate.Appearance.Gender}");    
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         if (!string.IsNullOrEmpty(current.GetDialogue()))
         {
@@ -169,7 +223,15 @@ public class AdvancedMain : MonoBehaviour
        
         yield return StartCoroutine(SideBurgerMaker.Inst.FallingRoutine());
         yield return new WaitForSeconds(2);
-        SideBurgerMaker.Inst.ClearPreview();
+
+     
+        int clampedStageIndex = Mathf.Clamp(StageFlowManager.Inst.currentStageIndex, 0, StageFlowManager.Inst.Stages.Count - 1);
+        StageData timeCapsuleStage = StageFlowManager.Inst.Stages[clampedStageIndex];
+        int myTargetCount = timeCapsuleStage.TargetClearCount;
+        int nextServedCount = StageFlowManager.Inst.servedCount + 1;
+        bool isAllCleared = ((clampedStageIndex == (StageFlowManager.Inst.Stages.Count - 1)) && (nextServedCount >= myTargetCount))
+                            || StageFlowManager.Inst.isAllGameCleared;
+
         var data = GameManager.Inst.GetBestBurgerData();
         GameManager.Inst.OnSubmitInput();
         var oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
@@ -177,14 +239,27 @@ public class AdvancedMain : MonoBehaviour
         
         //CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
         //표정, 대사 적용
-        var oldReput = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
-        //Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
-        CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
-        if(result == ReputationResult.Incomplete || result == ReputationResult.Perfect)
-            onResultNormal?.Invoke();
-        else
-            onResultBad?.Invoke();
+
+        Debug.Log($"현재 평판: {StageFlowManager.Inst.ScoreCalculationSystem.customerReputation}");
+        Debug.Log($"스테이지 평판: {StageFlowManager.Inst.ScoreCalculationSystem.stageReputation}");
+        Debug.Log($"전체 평판: {StageFlowManager.Inst.ScoreCalculationSystem.totalReputation}");
+
         
+        Debug.Log($"종류: {oldCustomer}");
+        if (oldCustomer is DefaultCustomerData)
+        {
+            Debug.Log($"현재 손님 성별: {_oldstate.Appearance.Gender}");
+            CustomerStateManager.Inst.UpdateEmotionUI(
+                StageFlowManager.Inst.oldEmotion,
+
+                _oldstate.Appearance
+            );
+        }
+        else
+        {
+            CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
+        }
+
         if (oldCustomer.GetReputationDialogue(result, out string dialogue))
         {
             var txts = dialogue.Split('\n');
@@ -204,26 +279,38 @@ public class AdvancedMain : MonoBehaviour
         
         yield return new WaitForSeconds(1);
 
-        if (_stageEnded)
-        {
-            int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
-            StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
-            int maxScore = 0;
-            foreach (var customer in currentStage.CustomerPool)
-            {
-                maxScore += 30;
 
-                if (customer is SpecialCustomerData)
-                {
-                    maxScore += 15;
-                }
-            }
-            EndScreen.Inst.ShowEndScreen(oldReput, maxScore);
+
+        int totalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
+        int stageScore = StageFlowManager.Inst.ScoreCalculationSystem.stageReputation;
+        int maxScore = 0;
+
+        foreach (var customer in timeCapsuleStage.CustomerPool)
+        {
+            maxScore += 30;
+            if (customer is SpecialCustomerData) maxScore += 15;
+        }
+
+        if (isAllCleared)
+        {
+            StageFlowManager.Inst.isAllGameCleared = true;
+            allStageEnded = true;
+
+            EndScreen.Inst.ShowEndScreen(stageScore, maxScore);
+
+            yield break;
+        }
+        else if (_stageEnded)
+        {
+            EndScreen.Inst.ShowEndScreen(stageScore, maxScore);
+
+            StageFlowManager.Inst.ScoreCalculationSystem.ResetStageReputation();
+
         }
         else
         {
             StartFlow();
         }
     }
-    
+
 }

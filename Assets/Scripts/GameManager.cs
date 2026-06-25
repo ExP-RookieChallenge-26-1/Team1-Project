@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
         }
         foreach (var ingredientType in bestBurger.stackedIngredients)
         {
-            var data = new IngredientData();
+            var data = ScriptableObject.CreateInstance<IngredientData>();
             data.IngredientType = ingredientType;
             list.Add(data);
         }

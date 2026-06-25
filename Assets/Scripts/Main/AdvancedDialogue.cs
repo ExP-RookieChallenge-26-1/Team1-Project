@@ -39,8 +39,9 @@ public class AdvancedDialogue : MonoBehaviour
     public AudioClip currentHummingClip;
 
     public bool isDialogEnd, blockDialogInput;
+    public bool isPlayingEndingDialogue = false;
     public float previewStackOffset = 18;
-    
+
     [Header("Ingredient Sprites")]
 
     [Tooltip("구운 패티 이미지")]
@@ -68,7 +69,7 @@ public class AdvancedDialogue : MonoBehaviour
     private List<Dialogue> _dialogues;
     private bool _isDialoging;
     private int _dialogueIndex;
-    
+
     private void Awake()
     {
         Inst = this;
@@ -84,21 +85,42 @@ public class AdvancedDialogue : MonoBehaviour
     {
         if (_isDialoging)
         {
-            if(blockDialogInput)
+            if (blockDialogInput)
                 return;
-            
+
             if (Keyboard.current.anyKey.wasPressedThisFrame)
             {
-                if (_dialogueIndex + 1> _dialogues.Count)
+                if (_dialogueIndex + 1 > _dialogues.Count)
                 {
                     _isDialoging = false;
                     isDialogEnd = true;
                     CloseChat();
                     print("대화 종료");
+
+                    if (isPlayingEndingDialogue)
+                    {
+                        Debug.Log("게임 종료");
+                        return;
+                    }
+
+                    if (StageFlowManager.Inst != null)
+                    {
+                        var lastCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
+
+                        if (lastCustomer != null && lastCustomer.CustomerName == "6-3")
+                        {
+                            int finalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
+                            EndingManager.Inst.TriggerEnding(finalScore);
+
+                            return;
+                        }
+                    }
+
                     AdvancedMain.Inst.tong.enableDrag = true;
                     actionByIndexDic = null;
                     onEndChat?.Invoke();
                 }
+
                 else
                 {
                     ShowNextDialogue();
@@ -117,7 +139,7 @@ public class AdvancedDialogue : MonoBehaviour
         {
             _dialogues.Add(new Dialogue(t));
         }
-        
+
         _isDialoging = true;
         isDialogEnd = false;
         _dialogueIndex = 0;
@@ -128,17 +150,17 @@ public class AdvancedDialogue : MonoBehaviour
         if (_dialogues == null)
             _dialogues = new List<Dialogue>();
         _dialogues.Add(new Dialogue(list));
-        
+
         _isDialoging = true;
         isDialogEnd = false;
         _dialogueIndex = 0;
-   
+
     }
 
     public void ShowNextDialogue()
     {
         if (_dialogueIndex >= _dialogues.Count) return;
-        
+
         var dialogue = _dialogues[_dialogueIndex];
         if (dialogue.dialogueType == DialogueType.Text)
         {
@@ -149,6 +171,7 @@ public class AdvancedDialogue : MonoBehaviour
             ShowPreviewChat(dialogue.types);
         }
 
+
         if (actionByIndexDic != null && actionByIndexDic.TryGetValue(_dialogueIndex, out var action))
         {
             action?.Invoke();
@@ -158,6 +181,7 @@ public class AdvancedDialogue : MonoBehaviour
             SFXPlayer.Instance.PlayRandomPitch(currentHummingClip);
         
         
+
         _dialogueIndex += 1;
     }
 
@@ -191,6 +215,7 @@ public class AdvancedDialogue : MonoBehaviour
             Destroy(obj);
         }
 
+
         /*stack.Insert(0, IngredientType.Burn);
         stack.Add(IngredientType.TopBurn);*/
 
@@ -199,11 +224,9 @@ public class AdvancedDialogue : MonoBehaviour
         //chatIngredients = SideBurgerRenderer.Inst.BuildBurger(stack, previewRect);
         
       
-        chatImg.alpha = 0;
-        /*previewBg.alpha = 0;
-        previewBg.DOFade(1, 0.3f);*/
+
     }
-    
+
     public void SetIngredientImage(GameObject targetObj, IngredientType type)
     {
         Image image = targetObj.GetComponent<Image>();
@@ -218,7 +241,7 @@ public class AdvancedDialogue : MonoBehaviour
         image.color = Color.white;
         image.preserveAspect = true;
     }
-    
+
     private Sprite GetIngredientSprite(IngredientType type)
     {
         switch (type)
@@ -246,5 +269,13 @@ public class AdvancedDialogue : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    public void StartEndingDialogue(string[] endingText)
+    {
+        isPlayingEndingDialogue = true;
+        SetTexts(endingText);
+
+        ShowNextDialogue();
     }
 }
