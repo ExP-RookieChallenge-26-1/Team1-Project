@@ -12,6 +12,7 @@ public class AdvancedMain : MonoBehaviour
     public AdvancedTong tong;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip;
     public CanvasGroup previewInCounter;
+    private CustomerRuntimeState _oldstate;
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
@@ -115,6 +116,8 @@ public class AdvancedMain : MonoBehaviour
         }
 
         var currentState = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomerState();
+        _oldstate = currentState;
+        Debug.Log($"오래된성별:{_oldstate.Appearance.Gender}");    
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         if (!string.IsNullOrEmpty(current.GetDialogue()))
         {
@@ -192,7 +195,7 @@ public class AdvancedMain : MonoBehaviour
                 img.color = img.color.SetAlpha(1);
         }
         yield return new WaitForSeconds(2);
-
+     
         int clampedStageIndex = Mathf.Clamp(StageFlowManager.Inst.currentStageIndex, 0, StageFlowManager.Inst.Stages.Count - 1);
         StageData timeCapsuleStage = StageFlowManager.Inst.Stages[clampedStageIndex];
         int myTargetCount = timeCapsuleStage.TargetClearCount;
@@ -210,7 +213,21 @@ public class AdvancedMain : MonoBehaviour
         Debug.Log($"스테이지 평판: {StageFlowManager.Inst.ScoreCalculationSystem.stageReputation}");
         Debug.Log($"전체 평판: {StageFlowManager.Inst.ScoreCalculationSystem.totalReputation}");
 
-        CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
+        
+        Debug.Log($"종류: {oldCustomer}");
+        if (oldCustomer is DefaultCustomerData)
+        {
+            Debug.Log($"현재 손님 성별: {_oldstate.Appearance.Gender}");
+            CustomerStateManager.Inst.UpdateEmotionUI(
+                StageFlowManager.Inst.oldEmotion,
+
+                _oldstate.Appearance
+            );
+        }
+        else
+        {
+            CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
+        }
         if (oldCustomer.GetReputationDialogue(result, out string dialogue))
         {
             var txts = dialogue.Split('\n');

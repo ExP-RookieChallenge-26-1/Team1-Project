@@ -7,6 +7,7 @@ public struct CustomerAppearance
     public int BodyTypeIndex;
     public int ClothesTypeIndex;
     public int HairTypeIndex;
+    public int FaceTypeIndex;
 }
 
 public interface ICustomerAppearanceGenerator

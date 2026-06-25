@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using JetBrains.Annotations;
+using UnityEngine.Analytics;
 
 public class CustomerStateManager : MonoBehaviour
 {
@@ -62,14 +64,15 @@ public class CustomerStateManager : MonoBehaviour
 
             if (specialImage != null) specialImage.gameObject.SetActive(false);
 
-            ApplyAppearanceSprites(state.Appearance);
-            SetStandardAppearanceActive(true);
-
             if (emotionImage != null)
             {
                 emotionImage.gameObject.SetActive(true);
                 emotionImage.sprite = stateDB.emotionSprites[1];
             }
+            ApplyAppearanceSprites(state.Appearance);
+            SetStandardAppearanceActive(true);
+
+ 
 
             gameObject.SetActive(true);
         }
@@ -128,6 +131,13 @@ public class CustomerStateManager : MonoBehaviour
             hairTypeImage.sprite = targetSet.hairTypes[appearance.HairTypeIndex];
             hairTypeImage.SetNativeSize();
         }
+        if (emotionImage != null)
+        {
+            Debug.Log($"인덱스값:{appearance.FaceTypeIndex}");
+
+            emotionImage.sprite = targetSet.faceTypes[appearance.FaceTypeIndex];
+            emotionImage.SetNativeSize();
+        }
     }
 
     private void SetStandardAppearanceActive(bool isActive)
@@ -135,6 +145,7 @@ public class CustomerStateManager : MonoBehaviour
         if (bodyTypeImage != null) bodyTypeImage.gameObject.SetActive(isActive);
         if (clothesTypeImage != null) clothesTypeImage.gameObject.SetActive(isActive);
         if (hairTypeImage != null) hairTypeImage.gameObject.SetActive(isActive);
+        if (emotionImage != null) emotionImage.gameObject.SetActive(isActive);
     }
 
     public void HideCustomer()
@@ -150,30 +161,36 @@ public class CustomerStateManager : MonoBehaviour
     }
 
     // 평판에 따른 손님 감정 변화 UI
-    public void UpdateEmotionUI(CustomerEmotion newEmotion)
+    public void UpdateEmotionUI(CustomerEmotion newEmotion, CustomerAppearance? appearance = null)
     {
         if (currentSpecialCustomer != null)
         {
+            Debug.Log($"야르");
             currentSpecialCustomer.UpdateEmotion(newEmotion);
             return;
         }
   
         if (emotionImage == null) return;
+        
         emotionImage.gameObject.SetActive(true);
         if (currentCustomerData is SpecialCustomerData specialData)
         {
+            Debug.Log($"야르일까");
             if (specialData.emotionSprites.Length > (int)newEmotion)
             {
                 emotionImage.sprite = specialData.emotionSprites[(int)newEmotion];
                 emotionImage.SetNativeSize();
             }
         }
-        else
+        else if (appearance.HasValue)
         {
-            emotionImage.sprite = stateDB.emotionSprites[(int)newEmotion];
+            var app = appearance.Value;
+            Debug.Log(app.Gender);
+            emotionImage.sprite = stateDB.GetSpriteSet(app.Gender).faceTypes[app.FaceTypeIndex +(int)newEmotion *2];
             emotionImage.SetNativeSize();
         }
     }
+
 
     public void ApplyEndingAppearance(Sprite body, Sprite clothes, Sprite hair, Sprite emotion)
     {

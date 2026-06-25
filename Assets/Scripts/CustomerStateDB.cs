@@ -8,6 +8,7 @@ public class GenderSpriteSet
     public Sprite[] bodyTypes;
     public Sprite[] clothesTypes;
     public Sprite[] hairTypes;
+    public Sprite[] faceTypes;
 }
 
 [CreateAssetMenu(fileName = "CustomerStateDB", menuName = "Objects/CustomerStateDB")]
