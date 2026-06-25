@@ -200,15 +200,34 @@ public class Stage5Mode : MonoBehaviour
         }
 
         int finalScore = StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation + reward;
-        
+        CustomerData oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
+
         MainUIManager.Inst.CloseGameView();
         GameManager.Inst.OnResetInput();
+
         StageFlowManager.Inst.FinishStage5(result, reward);
         CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
+
+        if (oldCustomer != null && oldCustomer.GetReputationDialogue(result, out string dialogue))
+        {
+            var txts = dialogue.Split('\n');
+            AdvancedDialogue.Inst.SetTexts(txts);
+            AdvancedDialogue.Inst.ShowNextDialogue();
+        }
+        else
+        {
+            AdvancedDialogue.Inst.isDialogEnd = true;
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield return new WaitUntil(() => AdvancedDialogue.Inst.isDialogEnd);
+
         CustomerStateManager.Inst.HideCustomer();
+
+        yield return new WaitForSeconds(1f);
+
         EndScreen.Inst.ShowEndScreen(finalScore, 200);
         CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
-        Debug.Log($"[Stage5] end: {result}, count: {count}, reputation +{reward}");
     }
 
     private void ShowTime()
@@ -235,5 +254,5 @@ public class Stage5Mode : MonoBehaviour
 
         time = seconds;
         ShowTime();
-}
+    }
 }
