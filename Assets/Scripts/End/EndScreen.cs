@@ -38,6 +38,14 @@ public class EndScreen : MonoBehaviour
         windowGroup.DOFade(0, 0.5f);
         yield return StartCoroutine(CalenderCanvas.Inst.PlayRoutine(StageFlowManager.Inst.currentStageIndex - 1));
         endCanvas.SetActive(false);
+        /*if (AdvancedMain.Inst.allStageEnded)
+        {
+            SceneManager.LoadScene("Intro");
+        }
+        else
+        {
+            AdvancedMain.Inst.StartFlow();   
+        }*/
         AdvancedMain.Inst.StartFlow();
     }
     public void GoToNextStage()
