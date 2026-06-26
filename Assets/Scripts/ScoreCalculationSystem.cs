@@ -5,7 +5,7 @@ public class ScoreCalculationSystem : MonoBehaviour
 
     public int customerReputation { get; private set; } = 0;
     public int stageReputation { get; private set; } = 0;
-    public int totalReputation { get; private set; } = 0;
+    public int totalReputation = 0;
 
     [SerializeField] private int perfectScore = 30;
     [SerializeField] private int incompleteScore = 15;
