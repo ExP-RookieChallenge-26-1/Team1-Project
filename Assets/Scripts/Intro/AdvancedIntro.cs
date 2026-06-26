@@ -19,6 +19,9 @@ public class AdvancedIntro : MonoBehaviour
     public Image resetBg;
     
 
+    bool _presseed;
+
+
     private void Awake()
     {
 
@@ -35,6 +38,9 @@ public class AdvancedIntro : MonoBehaviour
 
     public void OnClickOpen()
     {
+        if(_presseed)
+            return;
+        _presseed = true;
         StartCoroutine(CorAnim());
     }
 

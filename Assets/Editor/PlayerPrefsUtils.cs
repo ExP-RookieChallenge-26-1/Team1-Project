@@ -12,6 +12,7 @@ public static class PlayerPrefsUtils
         Debug.Log("PlayerPrefs cleared!");
     }
 
+
     [MenuItem("Tools/Go To Stage 5")]
     public static void GoToStage5()
     {
@@ -35,4 +36,20 @@ public static class PlayerPrefsUtils
         Stage5Mode.Inst.SetTimeForTest(5f);
         Debug.Log("Stage 5 timer set to 5 seconds.");
     }
+
+    [MenuItem("Tools/Go To 5Stage")]
+    public static void GoTo5Stage()
+    {
+
+        PlayerPrefs.SetInt("SavedStage", 4);
+        PlayerPrefs.SetInt("SavedServedCount", 0);
+        PlayerPrefs.Save();
+
+        Debug.Log("Go to 5 stage!");
+    }
 }
+
+
+    
+   
+

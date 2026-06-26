@@ -52,6 +52,7 @@ public class Stage4Customer : SpecialBase
         hand.gameObject.SetActive(true);
         mouth.gameObject.SetActive(true);
         //97
+        SFXPlayer.Instance.Play(openClip);
         var newObj = Instantiate(copyTarget, stage4CustomerRect);
         var newRect = newObj.GetComponent<RectTransform>();
         newRect.transform.SetParent(hand);
