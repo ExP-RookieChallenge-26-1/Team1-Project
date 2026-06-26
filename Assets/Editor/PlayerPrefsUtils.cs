@@ -23,6 +23,17 @@ public static class PlayerPrefsUtils
 
         Debug.Log("Moved to Stage 5!");
     }
+    
+    [MenuItem("Tools/Go To Stage 6")]
+    public static void GoToStage6()
+    {
+        PlayerPrefs.SetInt("SavedStage", 5);
+        PlayerPrefs.SetInt("SavedServedCount", 0);
+        PlayerPrefs.SetInt("SavedReputation", 0);
+        PlayerPrefs.Save();
+
+        Debug.Log("Moved to Stage 6!");
+    }
 
     [MenuItem("Tools/Stage 5/Set Timer To 5 Seconds")]
     public static void SetStage5TimerTo5Seconds()

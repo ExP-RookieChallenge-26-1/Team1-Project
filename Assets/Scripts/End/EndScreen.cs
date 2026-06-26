@@ -36,7 +36,10 @@ public class EndScreen : MonoBehaviour
     IEnumerator GoToNextStageRoutine()
     {
         windowGroup.DOFade(0, 0.5f);
-        yield return StartCoroutine(CalenderCanvas.Inst.PlayRoutine(StageFlowManager.Inst.currentStageIndex - 1));
+        if (StageFlowManager.Inst.currentStageIndex > 5)
+            yield return new WaitForSeconds(0);
+        else
+            yield return StartCoroutine(CalenderCanvas.Inst.PlayRoutine(StageFlowManager.Inst.currentStageIndex - 1));
         endCanvas.SetActive(false);
         AdvancedMain.Inst.StartFlow();
     }

@@ -244,7 +244,7 @@ public class Stage5Mode : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         EndScreen.Inst.ShowEndScreen(finalScore, 200);
-        CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
+        CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex-1);
     }
 
     private void ShowTime()
