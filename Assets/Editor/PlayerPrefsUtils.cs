@@ -58,6 +58,18 @@ public static class PlayerPrefsUtils
 
         Debug.Log("Go to final!");
     }
+    
+    [MenuItem("Tools/Go To Final-1000SCore")]
+    public static void GoTo5Stage100Score()
+    {
+
+        PlayerPrefs.SetInt("SavedStage", 5);
+        PlayerPrefs.SetInt("SavedServedCount", 2);
+        PlayerPrefs.SetInt("SavedReputation", 1000);
+        PlayerPrefs.Save();
+
+        Debug.Log("Go to final!");
+    }
 }
 
 
