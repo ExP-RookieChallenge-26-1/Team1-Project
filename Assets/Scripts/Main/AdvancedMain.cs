@@ -108,7 +108,7 @@ public class AdvancedMain : MonoBehaviour
             specialEndingText.text = "당신은 최선을 다했지만 성공하지 못했다.";
             specialEndingPanel.SetActive(true);
 
-            yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame));
+            yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.anyKey.wasPressedThisFrame));
             SaveEndingResetData(currentEndingIndex);
             StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
             StageFlowManager.Inst.isAllGameCleared = false;
@@ -121,7 +121,7 @@ public class AdvancedMain : MonoBehaviour
         int enterCount = 0;
         while (!AdvancedDialogue.Inst.isDialogEnd)
         {
-            if (Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame))
+            if (Keyboard.current != null && (Keyboard.current.anyKey.wasPressedThisFrame))
             {
                 enterCount++;
                 if (enterCount == enterCountForImage)
@@ -153,13 +153,13 @@ public class AdvancedMain : MonoBehaviour
         }
 
         yield return null;
-        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame);
+        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
         CustomerStateManager.Inst.HideCustomer();
         AdvancedDialogue.Inst.CloseChat();
 
         yield return new WaitForSeconds(0.5f);
 
-        yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame));
+        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
         SaveEndingResetData(currentEndingIndex);
         StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
         StageFlowManager.Inst.isAllGameCleared = false;
