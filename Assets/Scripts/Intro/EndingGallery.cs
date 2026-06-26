@@ -5,8 +5,10 @@ public class EndingGallery : MonoBehaviour
 {
     public Image[] endingSprites;
 
-    void Start()
+    void Awake()
     {
+
+        Debug.Log("Ä¼¿Ë");
         RefreshIntroEndings();
     }
 
@@ -14,12 +16,15 @@ public class EndingGallery : MonoBehaviour
     {
         for (int i = 0; i < endingSprites.Length; i++)
         {
-            if (endingSprites[i] != null) continue;
+            Debug.Log($"this is {i}th result :{PlayerPrefs.GetInt("SeenEnding: " + i, 0)}");
+            if (endingSprites[i] != null)
+            {
+                Debug.Log($"°ü¹® 1 Åë°ú with {i}");
+                int hasSeen = PlayerPrefs.GetInt("SeenEnding: " + i, 0);
 
-            int hasSeen = PlayerPrefs.GetInt("SeenEnding: " + 1, 0);
-
-            if (hasSeen == 1) endingSprites[i].gameObject.SetActive(true);
-            else endingSprites[i].gameObject.SetActive(false);
+                if (hasSeen == 1) endingSprites[i].gameObject.SetActive(true);
+                else endingSprites[i].gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -43,7 +43,7 @@ public class AdvancedMain : MonoBehaviour
 
     public void StartFlow()
     {
-        if (StageFlowManager.Inst.isAllGameCleared || allStageEnded)
+        if (StageFlowManager.Inst.isAllGameCleared)
         {
             StopAllCoroutines();
             int totalReputation = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
@@ -97,6 +97,7 @@ public class AdvancedMain : MonoBehaviour
             yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame));
             SaveEndingResetData(currentEndingIndex);
             StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
+            StageFlowManager.Inst.isAllGameCleared = false;
             UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
             yield break;
         }
@@ -147,6 +148,7 @@ public class AdvancedMain : MonoBehaviour
         yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame));
         SaveEndingResetData(currentEndingIndex);
         StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
+        StageFlowManager.Inst.isAllGameCleared = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
     
@@ -350,7 +352,7 @@ public class AdvancedMain : MonoBehaviour
 
         for (int i=0; i<4; i++)
         {
-            if (backupEndings[i] == 1) PlayerPrefs.SetInt("SeenEnding: " + 1, 1);
+            if (backupEndings[i] == 1) PlayerPrefs.SetInt("SeenEnding: " + i, 1);
         }
 
         PlayerPrefs.Save();
