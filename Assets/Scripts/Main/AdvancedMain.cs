@@ -5,7 +5,10 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 using Random = UnityEngine.Random;
+
+using UnityEngine.InputSystem;
 
 public class AdvancedMain : MonoBehaviour
 {
@@ -33,6 +36,11 @@ public class AdvancedMain : MonoBehaviour
     public bool allStageEnded;
     public bool enableSubmit;
     private bool _stageEnded;
+    public GameObject specialEndingPanel;
+    public UnityEngine.UI.Image specialEndingImage;
+    public TMPro.TextMeshProUGUI specialEndingTitle;
+    public TMPro.TextMeshProUGUI specialEndingText;
+    public Sprite[] endingSprites;
 
     private void Awake()
     {
@@ -49,48 +57,113 @@ public class AdvancedMain : MonoBehaviour
 
     public void StartFlow()
     {
-        if (StageFlowManager.Inst.isAllGameCleared || allStageEnded)
+        if (StageFlowManager.Inst.isAllGameCleared)
         {
             StopAllCoroutines();
-            StartCoroutine(CorPlayFinalVIPEnding());
+            int totalReputation = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
+            StartCoroutine(CorPlaySpecialEnding(totalReputation));
             return;
         }
 
         StartCoroutine(CorStartGame());
     }
 
-    IEnumerator CorPlayFinalVIPEnding()
+    IEnumerator CorPlaySpecialEnding(int totalReputation)
     {
-        if (EndScreen.Inst != null) EndScreen.Inst.gameObject.SetActive(false);
+        int currentEndingIndex = 0;
+        int enterCountForImage = 3;
+        Sprite endingSprite = null;
+        string endingTitle = "";
+        string endingText = "";
 
-        int totalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation;
-        EndingManager.Inst.PlayEnding(totalScore);
+        if (totalReputation >= 750)
+        {
+            currentEndingIndex = 0;
+            enterCountForImage = 8;
+            if (endingSprites.Length > 0) endingSprite = endingSprites[0];
+            endingTitle = "퍼펙트 엔딩";
+            endingText = "최고의 식당으로 등극했다.";
+        }
+        else if (totalReputation >= 600)
+        {
+            currentEndingIndex = 1;
+            enterCountForImage = 8;
+            if (endingSprites.Length > 1) endingSprite = endingSprites[1];
+            endingTitle = "해피 엔딩";
+            endingText = "당신의 노력은 결실을 맺었다.";
+        }
+        else if (totalReputation >= 450)
+        {
+            currentEndingIndex = 2;
+            enterCountForImage = 3;
+            if (endingSprites.Length > 2) endingSprite = endingSprites[2];
+            endingTitle = "노말 엔딩";
+            endingText = "당신은 인기보다 더 가치있는 것을 얻었다.";
+        }
+        else
+        {
+            currentEndingIndex = 3;
+            if (endingSprites.Length > 3) specialEndingImage.sprite = endingSprites[3];
+            specialEndingTitle.text = "폐업 엔딩";
+            specialEndingText.text = "당신은 최선을 다했지만 성공하지 못했다.";
+            specialEndingPanel.SetActive(true);
 
-        AdvancedDialogue.Inst.isDialogEnd = false;
-        AdvancedDialogue.Inst.ShowNextDialogue();
+            yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame));
+            SaveEndingResetData(currentEndingIndex);
+            StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
+            StageFlowManager.Inst.isAllGameCleared = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
+            yield break;
+        }
 
-        var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
-        chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(533);
-        var previewRect = AdvancedDialogue.Inst.previewBg.GetComponent<RectTransform>();
-        previewRect.anchoredPosition3D = previewRect.anchoredPosition3D.SetY(670);
+        EndingManager.Inst.PlayEnding(totalReputation);
 
+        int enterCount = 0;
         while (!AdvancedDialogue.Inst.isDialogEnd)
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame))
             {
-                AdvancedDialogue.Inst.ShowNextDialogue();
+                enterCount++;
+                if (enterCount == enterCountForImage)
+                {
+                    if (specialEndingImage != null && endingSprite != null)
+                    {
+                        specialEndingImage.sprite = endingSprite;
+                    }
+
+                    if (specialEndingTitle != null)
+                    {
+                        specialEndingTitle.text = endingTitle;
+                    }
+
+                    if (specialEndingText != null)
+                    {
+                        specialEndingText.text = endingText;
+                    }
+                    
+                    if (specialEndingPanel != null)
+                    {
+                        specialEndingPanel.SetActive(true);
+                    }
+                }
+
+                else specialEndingPanel.SetActive(false);
             }
             yield return null;
         }
 
-        AdvancedDialogue.Inst.CloseChat();
+        yield return null;
+        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame);
         CustomerStateManager.Inst.HideCustomer();
+        AdvancedDialogue.Inst.CloseChat();
 
         yield return new WaitForSeconds(0.5f);
 
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.KeypadEnter));
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene"); 
+        yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame));
+        SaveEndingResetData(currentEndingIndex);
+        StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
+        StageFlowManager.Inst.isAllGameCleared = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
     
     private void GameEventsOnOnAllStagesCleared()
@@ -364,4 +437,34 @@ public class AdvancedMain : MonoBehaviour
         }
     }
 
+    private void SaveEndingResetData(int endingIndex)
+    {
+        float backupBGM = PlayerPrefs.GetFloat("BgmVolume", 1f);
+        float backupSFX = PlayerPrefs.GetFloat("SfxVolume", 1f);
+
+        int[] backupEndings = new int[4];
+        for (int i=0; i<4; i++)
+        {
+            backupEndings[i] = PlayerPrefs.GetInt("SeenEnding: " + i, 0);
+        }
+
+        backupEndings[endingIndex] = 1;
+
+        PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetFloat("BgmVolume", backupBGM);
+        PlayerPrefs.SetFloat("SfxVolume", backupSFX);
+
+        for (int i=0; i<4; i++)
+        {
+            if (backupEndings[i] == 1) PlayerPrefs.SetInt("SeenEnding: " + i, 1);
+        }
+
+        PlayerPrefs.Save();
+
+        if (StageFlowManager.Inst != null && StageFlowManager.Inst.ScoreCalculationSystem != null)
+        {
+            StageFlowManager.Inst.ScoreCalculationSystem.totalReputation = 0;
+        }
+    }
 }
