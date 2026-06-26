@@ -11,4 +11,15 @@ public static class PlayerPrefsUtils
 
         Debug.Log("PlayerPrefs cleared!");
     }
+    
+    [MenuItem("Tools/Go To 5Stage")]
+    public static void GoTo5Stage()
+    {
+        
+        PlayerPrefs.SetInt("SavedStage", 4);
+        PlayerPrefs.SetInt("SavedServedCount", 0);
+        PlayerPrefs.Save();
+
+        Debug.Log("Go to 5 stage!");
+    }
 }

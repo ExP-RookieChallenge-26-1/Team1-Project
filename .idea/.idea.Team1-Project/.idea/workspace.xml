@@ -6,26 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="700ad2fc-e90e-464f-8a59-c3cb1f5120f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team1-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/New Kansas Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NotoSansKR-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Pretendard-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/PlayerPrefsUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/PlayerPrefsUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/2-4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/2-4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/6-3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Customers/6-3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Stages/Stage6.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedDialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AdvancedMain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage5Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage5Customer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SideBurgerMaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SideBurgerMaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_angry.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_angry.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_coldglance.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_coldglance.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_default.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_default.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_encounter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_encounter.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_happy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_happy.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_transition.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Customer/Special/6Stage_N/judge_transition.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Intro/AdvancedIntro.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Intro/AdvancedIntro.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage4Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpecialCustomer/Stage4Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +149,7 @@
       <workItem from="1782301103462" duration="4000" />
       <workItem from="1782301111909" duration="8653000" />
       <workItem from="1782364944220" duration="8741000" />
+      <workItem from="1782438475571" duration="304000" />
     </task>
     <servers />
   </component>
