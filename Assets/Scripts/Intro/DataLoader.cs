@@ -25,6 +25,7 @@ public class DataLoader : MonoBehaviour
     {
         //Test
         Screen.SetResolution(540, 1170, FullScreenMode.Windowed);
+        ApplyValue();
     }
 
     void LoadData()
@@ -70,6 +71,7 @@ public class DataLoader : MonoBehaviour
 
     public static void ApplyValue()
     {
+        
         if (Mixer != null)
         {
             float bgm = Mathf.Clamp(BGMValue, 0.0001f, 1f);

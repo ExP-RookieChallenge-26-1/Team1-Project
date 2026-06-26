@@ -17,9 +17,12 @@ public class AdvancedIntro : MonoBehaviour
     public RectTransform resetWindow;
     public CanvasGroup resetGroup;
     public Image resetBg;
+    
 
     private void Awake()
     {
+
+ 
         neonSignEffect = GetComponent<NeonSignEffect>();
     }
     
@@ -90,7 +93,11 @@ public class AdvancedIntro : MonoBehaviour
 
     public void ResetData()
     {
+        float backupBGM = PlayerPrefs.GetFloat("BgmVolume", 1f);
+        float backupSFX = PlayerPrefs.GetFloat("SfxVolume", 1f);
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetFloat("BgmVolume", backupBGM);
+        PlayerPrefs.SetFloat("SfxVolume", backupSFX);
         PlayerPrefs.Save();
         SceneManager.LoadScene("Intro");
     }
