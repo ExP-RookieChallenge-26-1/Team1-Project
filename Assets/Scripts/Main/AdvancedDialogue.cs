@@ -119,6 +119,7 @@ public class AdvancedDialogue : MonoBehaviour
                     }
 
                     AdvancedMain.Inst.tong.enableDrag = true;
+                    AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[1];
                     actionByIndexDic = null;
                     onEndChat?.Invoke();
                 }
@@ -127,7 +128,11 @@ public class AdvancedDialogue : MonoBehaviour
                 {
                     ShowNextDialogue();
                     if (_dialogueIndex > _dialogues.Count - 1)
+                    {
                         AdvancedMain.Inst.tong.enableDrag = true;
+                        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[1];
+                    }
+                        
                 }
             }
         }

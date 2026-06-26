@@ -15,6 +15,9 @@ public class AdvancedMain : MonoBehaviour
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
+    public Image fadeImg;
+    public Image bellImg;
+    public Sprite[] bells, tongs;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
     private CustomerRuntimeState _oldstate;
@@ -36,11 +39,13 @@ public class AdvancedMain : MonoBehaviour
     public bool allStageEnded;
     public bool enableSubmit;
     private bool _stageEnded;
-    public GameObject specialEndingPanel;
+    public GameObject specialEndingCanvas;
+    public Image endingPanelBG;
     public UnityEngine.UI.Image specialEndingImage;
     public TMPro.TextMeshProUGUI specialEndingTitle;
     public TMPro.TextMeshProUGUI specialEndingText;
     public Sprite[] endingSprites;
+    private bool _movingToIntro;
 
     private void Awake()
     {
@@ -106,13 +111,17 @@ public class AdvancedMain : MonoBehaviour
             if (endingSprites.Length > 3) specialEndingImage.sprite = endingSprites[3];
             specialEndingTitle.text = "폐업 엔딩";
             specialEndingText.text = "당신은 최선을 다했지만 성공하지 못했다.";
-            specialEndingPanel.SetActive(true);
+            specialEndingCanvas.SetActive(true);
+            StartCoroutine(PlayEndingStickerAnimation());
 
             yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.anyKey.wasPressedThisFrame));
             SaveEndingResetData(currentEndingIndex);
             StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
             StageFlowManager.Inst.isAllGameCleared = false;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
+            fadeImg.DOFade(1, 0.8f).OnComplete(() =>
+            {
+                GoToGameScene();
+            }); 
             yield break;
         }
 
@@ -141,13 +150,14 @@ public class AdvancedMain : MonoBehaviour
                         specialEndingText.text = endingText;
                     }
                     
-                    if (specialEndingPanel != null)
+                    if (specialEndingCanvas != null)
                     {
-                        specialEndingPanel.SetActive(true);
+                        specialEndingCanvas.SetActive(true);
+                        StartCoroutine(PlayEndingStickerAnimation());
                     }
                 }
 
-                else specialEndingPanel.SetActive(false);
+                else specialEndingCanvas.SetActive(false);
             }
             yield return null;
         }
@@ -163,7 +173,51 @@ public class AdvancedMain : MonoBehaviour
         SaveEndingResetData(currentEndingIndex);
         StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
         StageFlowManager.Inst.isAllGameCleared = false;
+        if (!_movingToIntro)
+        {
+            _movingToIntro = true;
+            fadeImg.DOFade(1, 0.8f).OnComplete(() =>
+            {
+                GoToGameScene();
+            });   
+        }
+    }
+
+
+    void GoToGameScene()
+    {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
+        if (PausedController.Inst)
+        {
+            PausedController.Inst.fullFadeImg.gameObject.SetActive(true);
+            PausedController.Inst.fullFadeImg.color = Color.black;
+            PausedController.Inst.fullFadeImg.DOFade(0, 1f).SetDelay(1.5f).OnComplete(() =>
+            {
+                PausedController.Inst.fullFadeImg.gameObject.SetActive(false);
+            });
+        }
+    }
+
+    IEnumerator PlayEndingStickerAnimation()
+    {
+        endingPanelBG.color = Color.black.SetAlpha(0.9f);
+        var endingImg = specialEndingImage.GetComponent<RectTransform>();
+        endingImg.localScale = Vector3.one * 0.7f;
+        specialEndingImage.color = Color.white.SetAlpha(0);
+        specialEndingText.color = specialEndingText.color.SetAlpha(0);
+        specialEndingTitle.color = specialEndingTitle.color.SetAlpha(0);
+                        
+        //yield return new WaitForSeconds(1);
+        //endingPanelBG.DOFade(0.7f, 0.5f);
+        yield return new WaitForSeconds(1);
+                        
+        DOTween.Sequence()
+            .Join(endingImg.DOScale(1f, 0.3f).SetEase(Ease.OutBack))
+            .Join(specialEndingImage.DOFade(1f, 0.2f)).OnComplete(delegate
+            {
+                specialEndingTitle.DOFade(1, 0.5f).SetDelay(0.5f);
+                specialEndingText.DOFade(1, 0.5f).SetDelay(0.7f);
+            }).Play();
     }
     
     private void GameEventsOnOnAllStagesCleared()
@@ -187,8 +241,10 @@ public class AdvancedMain : MonoBehaviour
     IEnumerator CorStartGame()
     {
         enableSubmit = false;
+        bellImg.sprite = bells[0];
         tong.ResetTong();
         tong.enableDrag = false;
+        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[0];
         CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
         yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
         var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
@@ -290,7 +346,9 @@ public class AdvancedMain : MonoBehaviour
     public void OnEndDragTong()
     {
         enableSubmit = true;
+        bellImg.sprite = bells[1];
         tong.enableDrag = false;
+        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[0];
         SFXPlayer.Instance.Play(unplugTongClip);
         GameManager.Inst.StartGame();
         if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
@@ -310,10 +368,12 @@ public class AdvancedMain : MonoBehaviour
         {
             Stage5Mode.Inst.Submit();
             enableSubmit = Stage5Mode.Inst.IsPlaying();
+            bellImg.sprite = bells[enableSubmit ? 1 : 0];
             return;
         }
         StartCoroutine(CorSubmitBurger());
         enableSubmit = false;
+        bellImg.sprite = bells[0];
     }
 
     public int DebugScore;

@@ -16,10 +16,10 @@ public class EndingConfig
     public EndingTier tier;
     public string endingTitle;
 
-    [Header("¿£µù µîÀåÀÎ¹°")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î¹ï¿½")]
     public Sprite endingBody;
 
-    [Header("¿£µù ´ë»ç")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½")]
     [TextArea(2, 4)]
     public string[] dialogues;
 }

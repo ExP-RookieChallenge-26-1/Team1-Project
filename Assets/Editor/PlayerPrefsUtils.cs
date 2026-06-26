@@ -48,15 +48,15 @@ public static class PlayerPrefsUtils
         Debug.Log("Stage 5 timer set to 5 seconds.");
     }
 
-    [MenuItem("Tools/Go To 5Stage")]
+    [MenuItem("Tools/Go To Final")]
     public static void GoTo5Stage()
     {
 
-        PlayerPrefs.SetInt("SavedStage", 4);
-        PlayerPrefs.SetInt("SavedServedCount", 0);
+        PlayerPrefs.SetInt("SavedStage", 5);
+        PlayerPrefs.SetInt("SavedServedCount", 2);
         PlayerPrefs.Save();
 
-        Debug.Log("Go to 5 stage!");
+        Debug.Log("Go to final!");
     }
 }
 
