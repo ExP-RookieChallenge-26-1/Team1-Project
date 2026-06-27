@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class Stage5Mode : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Stage5Mode : MonoBehaviour
     public TMP_Text countText;
     public float limit = 60f;
     public int goalCount = 10;
+    public CanvasGroup previewInCounter;
 
     private float time;
     private int count;
@@ -29,6 +31,7 @@ public class Stage5Mode : MonoBehaviour
 
     private void Awake()
     {
+        previewInCounter = GameObject.Find("PreviewI").GetComponent<CanvasGroup>();
         Inst = this;
         timeUpClip = Resources.Load<AudioClip>("SFX/Stage5TimeUp");
     }
@@ -80,7 +83,7 @@ public class Stage5Mode : MonoBehaviour
         EnsureCountText();
 
         countText.gameObject.SetActive(true);
-        countText.text = "X 0";
+        countText.text = "Perfect\nBurger\nX 0";
 
         StartCoroutine(CalenderCanvas.Inst.PlayTimerRoutine(Mathf.CeilToInt(time)));
         ShowTime();
@@ -108,7 +111,7 @@ public class Stage5Mode : MonoBehaviour
 
             if (countText != null)
             {
-                countText.text = $"X {count}";
+                countText.text = $"Perfect\nBurger\nX {count}";
             }
         }
 
@@ -221,6 +224,8 @@ public class Stage5Mode : MonoBehaviour
 
         MainUIManager.Inst.CloseGameView();
         GameManager.Inst.OnResetInput();
+        previewInCounter.DOFade(0, 0.2f);
+        yield return StartCoroutine(SideBurgerMaker.Inst.FadeOutPreviewRoutine());
 
         StageFlowManager.Inst.FinishStage5(result, reward);
         CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
@@ -290,7 +295,7 @@ public class Stage5Mode : MonoBehaviour
         countText = obj.AddComponent<TextMeshProUGUI>();
         countText.font = baseText.font;
         countText.fontSize = 56;
-        countText.color = Color.black;
+        countText.color = Color.white;
         countText.alignment = TextAlignmentOptions.Center;
         countText.raycastTarget = false;
 
@@ -298,7 +303,7 @@ public class Stage5Mode : MonoBehaviour
         rect.anchorMin = new Vector2(0f, 1f);
         rect.anchorMax = new Vector2(0f, 1f);
         rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.sizeDelta = new Vector2(160f, 80f);
-        rect.anchoredPosition = new Vector2(350f, -255f);
+        rect.sizeDelta = new Vector2(320f, 80f);
+        rect.anchoredPosition = new Vector2(409f, -387f);
     }
 }
