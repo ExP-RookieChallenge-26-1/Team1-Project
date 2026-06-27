@@ -25,6 +25,7 @@ public class DataLoader : MonoBehaviour
     {
         //Test
         Screen.SetResolution(540, 1170, FullScreenMode.Windowed);
+        Application.targetFrameRate = 120;
         ApplyValue();
     }
 
