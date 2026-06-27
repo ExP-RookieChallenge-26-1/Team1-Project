@@ -24,9 +24,7 @@ public class InputManager : MonoBehaviour
         if (UnityEngine.InputSystem.Keyboard.current.leftArrowKey.wasPressedThisFrame || CheckSlide() == "Left") gameManager.OnMoveInput("Left");
         if (UnityEngine.InputSystem.Keyboard.current.upArrowKey.wasPressedThisFrame || CheckSlide() == "Up") gameManager.OnMoveInput("Up");
         if (UnityEngine.InputSystem.Keyboard.current.downArrowKey.wasPressedThisFrame || CheckSlide() == "Down") gameManager.OnMoveInput("Down");
-
-        // ?쒖텧 ?낅젰 泥섎━ (Space)
-        if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.tabKey.wasPressedThisFrame) gameManager.OnSubmitInput();
+        
 
         // 珥덇린??諛??ъ떆???낅젰 泥섎━ (R)
         //if (UnityEngine.InputSystem.Keyboard.current.rKey.wasPressedThisFrame) gameManager.OnResetInput();

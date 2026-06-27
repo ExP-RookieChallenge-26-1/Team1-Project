@@ -5,9 +5,8 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 using Random = UnityEngine.Random;
-
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using UnityEngine.InputSystem;
 
 public class AdvancedMain : MonoBehaviour
@@ -72,6 +71,7 @@ public class AdvancedMain : MonoBehaviour
 
         StartCoroutine(CorStartGame());
     }
+    
 
     IEnumerator CorPlaySpecialEnding(int totalReputation)
     {
@@ -114,7 +114,21 @@ public class AdvancedMain : MonoBehaviour
             specialEndingCanvas.SetActive(true);
             StartCoroutine(PlayEndingStickerAnimation());
 
-            yield return new WaitUntil(() => Keyboard.current != null && (Keyboard.current.anyKey.wasPressedThisFrame));
+            yield return new WaitUntil(() =>
+            {
+                // 키보드
+                if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+                    return true;
+
+                // 터치
+                foreach (var touch in Touch.activeTouches)
+                {
+                    if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+                        return true;
+                }
+
+                return false;
+            });
             SaveEndingResetData(currentEndingIndex);
             StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
             StageFlowManager.Inst.isAllGameCleared = false;
@@ -394,6 +408,7 @@ public class AdvancedMain : MonoBehaviour
 
         if (isFaking)
         {
+            GameManager.Inst.OnSubmitInput();
             AdvancedDialogue.Inst.ResumeDialogue();
             AdvancedDialogue.Inst.ShowNextDialogue();
             AdvancedDialogue.Inst.blockDialogInput = false;
