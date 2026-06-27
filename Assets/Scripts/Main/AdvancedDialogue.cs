@@ -4,7 +4,9 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public enum DialogueType {Text, Preview}
 
@@ -76,6 +78,16 @@ public class AdvancedDialogue : MonoBehaviour
     {
         Inst = this;
     }
+    
+    private void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();
+    }
+
+    private void OnDisable()
+    {
+        EnhancedTouchSupport.Disable();
+    }
 
     private void Start()
     {
@@ -90,7 +102,17 @@ public class AdvancedDialogue : MonoBehaviour
             if (blockDialogInput)
                 return;
 
-            if (Keyboard.current.anyKey.wasPressedThisFrame)
+
+            bool wasPressedThisFrame = false;
+            foreach (var touch in Touch.activeTouches)
+            {
+                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+                {
+                    wasPressedThisFrame = true;
+                }
+            }
+
+            if (Keyboard.current.anyKey.wasPressedThisFrame || wasPressedThisFrame)
             {
                 if (_dialogueIndex + 1 > _dialogues.Count || _isFakePreview)
                 {
