@@ -28,4 +28,4 @@ public class CustomerStateDB : ScriptableObject
     }
 }
 
-public enum CustomerEmotion { Happy, Neutral, Angry };
+public enum CustomerEmotion { Neutral, Happy, Angry };

@@ -65,8 +65,11 @@ public class StageFlowManager : MonoBehaviour
     {
         // ���� ���� ���� ��������
         CustomerData currentCustomer = customerQueueManager.GetCurrentCustomer();
-        if (currentCustomer == null) return ReputationResult.Incomplete;
-
+        if (currentCustomer == null)
+        {
+            Debug.Log("예외처리된점수계산");
+            return ReputationResult.Incomplete;
+        }
         // �� ��� ��������
         ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
         Debug.Log($"캬옹:{result}");

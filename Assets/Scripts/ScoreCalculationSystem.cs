@@ -19,14 +19,17 @@ public class ScoreCalculationSystem : MonoBehaviour
         {
             // ������ Perfect��� perfectScore��ŭ ���� ����
             case ReputationResult.Perfect:
+                Debug.Log("완벽! ");
                 customerReputation += perfectScore;
                 break;
             // ������ Incomplete��� incompleteScore��ŭ ���� ����
             case ReputationResult.Incomplete:
+                Debug.Log("기본! ");
                 customerReputation += incompleteScore;
                 break;
             // ������ Wrong�̶�� wrongScore��ŭ ���� ����(�ּ� ���� 0��)
             case ReputationResult.Wrong:
+                Debug.Log("실패! ");
                 customerReputation = wrongScore;
                 break;
         }

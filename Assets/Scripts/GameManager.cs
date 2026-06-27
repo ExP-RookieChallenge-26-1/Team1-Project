@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
             list.Add(data);
         }
 
-        list.Reverse();
+        //list.Reverse();
         return list;
     }
 
