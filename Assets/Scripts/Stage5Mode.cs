@@ -211,12 +211,12 @@ public class Stage5Mode : MonoBehaviour
         if (count >= goalCount)
         {
             result = ReputationResult.Perfect;
-            reward = 200;
+            reward = 100;
         }
         else if (count >= 5)
         {
             result = ReputationResult.Incomplete;
-            reward = 150;
+            reward = 50;
         }
 
         int finalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalReputation + reward;

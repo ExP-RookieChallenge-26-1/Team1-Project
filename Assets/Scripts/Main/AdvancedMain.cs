@@ -81,7 +81,7 @@ public class AdvancedMain : MonoBehaviour
         string endingTitle = "";
         string endingText = "";
 
-        if (totalReputation >= 750)
+        if (totalReputation >= 550)
         {
             currentEndingIndex = 0;
             enterCountForImage = 8;
@@ -89,7 +89,7 @@ public class AdvancedMain : MonoBehaviour
             endingTitle = "퍼펙트 엔딩";
             endingText = "최고의 식당으로 등극했다.";
         }
-        else if (totalReputation >= 600)
+        else if (totalReputation >= 400)
         {
             currentEndingIndex = 1;
             enterCountForImage = 8;
@@ -97,7 +97,7 @@ public class AdvancedMain : MonoBehaviour
             endingTitle = "해피 엔딩";
             endingText = "당신의 노력은 결실을 맺었다.";
         }
-        else if (totalReputation >= 450)
+        else if (totalReputation >= 250)
         {
             currentEndingIndex = 2;
             enterCountForImage = 3;
