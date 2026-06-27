@@ -33,7 +33,7 @@ public class Stage1Customer : SpecialBase
 
     public override void UpdateEmotion(CustomerEmotion emotion)
     {
-        base.UpdateEmotion(emotion);
+        //base.UpdateEmotion(emotion);
         body.sprite = sprites[(int)emotion];
     }
 
