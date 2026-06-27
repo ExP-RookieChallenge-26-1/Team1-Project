@@ -168,22 +168,95 @@ public class AdvancedMain : MonoBehaviour
                     {
                         specialEndingCanvas.SetActive(true);
                         StartCoroutine(PlayEndingStickerAnimation());
+                        yield return new WaitUntil(() =>
+                        {
+                            // 키보드
+                            if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+                                return true;
+
+                            // 터치
+                            foreach (var touch in Touch.activeTouches)
+                            {
+                                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+                                    return true;
+                            }
+
+                            return false;
+                        });
+                        SaveEndingResetData(currentEndingIndex);
+                        StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
+                        StageFlowManager.Inst.isAllGameCleared = false;
+                        fadeImg.DOFade(1, 0.8f).OnComplete(() =>
+                        {
+                            GoToGameScene();
+                        });
+                        yield break;
                     }
                 }
 
                 else specialEndingCanvas.SetActive(false);
             }
+            foreach (var touch in Touch.activeTouches)
+            {
+                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+                {
+
+                    {
+                        enterCount++;
+                        if (enterCount == enterCountForImage)
+                        {
+                            if (specialEndingImage != null && endingSprite != null)
+                            {
+                                specialEndingImage.sprite = endingSprite;
+                            }
+
+                            if (specialEndingTitle != null)
+                            {
+                                specialEndingTitle.text = endingTitle;
+                            }
+
+                            if (specialEndingText != null)
+                            {
+                                specialEndingText.text = endingText;
+                            }
+
+                            if (specialEndingCanvas != null)
+                            {
+                                specialEndingCanvas.SetActive(true);
+                                StartCoroutine(PlayEndingStickerAnimation());
+                            }
+                        }
+
+                        else specialEndingCanvas.SetActive(false);
+                    }
+                }
+              
+            }
             yield return null;
         }
 
         yield return null;
-        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
+        yield return new WaitUntil(() =>
+        {
+            // 키보드
+            if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+                return true;
+
+            // 터치
+            foreach (var touch in Touch.activeTouches)
+            {
+                if (touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+                    return true;
+            }
+
+            return false;
+        });
         CustomerStateManager.Inst.HideCustomer();
         AdvancedDialogue.Inst.CloseChat();
 
         yield return new WaitForSeconds(0.5f);
 
-        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
+        
         SaveEndingResetData(currentEndingIndex);
         StageFlowManager.Inst.CustomerQueueManager.ResetCustomerQueue();
         StageFlowManager.Inst.isAllGameCleared = false;

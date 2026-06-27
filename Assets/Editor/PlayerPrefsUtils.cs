@@ -11,7 +11,16 @@ public static class PlayerPrefsUtils
 
         Debug.Log("PlayerPrefs cleared!");
     }
+    [MenuItem("Tools/Go To Stage 4")]
+    public static void GoToStage4()
+    {
+        PlayerPrefs.SetInt("SavedStage", 3);
+        PlayerPrefs.SetInt("SavedServedCount", 0);
+        PlayerPrefs.SetInt("SavedReputation", 0);
+        PlayerPrefs.Save();
 
+        Debug.Log("Moved to Stage 4!");
+    }
 
     [MenuItem("Tools/Go To Stage 5")]
     public static void GoToStage5()
@@ -29,7 +38,7 @@ public static class PlayerPrefsUtils
     {
         PlayerPrefs.SetInt("SavedStage", 5);
         PlayerPrefs.SetInt("SavedServedCount", 0);
-        PlayerPrefs.SetInt("SavedReputation", 0);
+       
         PlayerPrefs.Save();
 
         Debug.Log("Moved to Stage 6!");
@@ -65,7 +74,41 @@ public static class PlayerPrefsUtils
 
         PlayerPrefs.SetInt("SavedStage", 5);
         PlayerPrefs.SetInt("SavedServedCount", 2);
-        PlayerPrefs.SetInt("SavedReputation", 1000);
+        PlayerPrefs.SetInt("SavedTotalReputation", 1000);
+        PlayerPrefs.Save();
+
+        Debug.Log("Go to final!");
+    }
+    [MenuItem("Tools/set score-600SCore")]
+    public static void scoreset_600()
+    {
+
+        PlayerPrefs.SetInt("SavedTotalReputation", 600);
+        PlayerPrefs.Save();
+
+    }
+    [MenuItem("Tools/set score-450SCore")]
+    public static void scoreset_450()
+    {
+
+        PlayerPrefs.SetInt("SavedTotalReputation", 450);
+        PlayerPrefs.Save();
+
+    }
+    [MenuItem("Tools/set score-300SCore")]
+    public static void scoreset_300()
+    {
+
+        PlayerPrefs.SetInt("SavedTotalReputation", 300);
+        PlayerPrefs.Save();
+
+        Debug.Log("Go to final!");
+    }
+    [MenuItem("Tools/set score-0SCore")]
+    public static void scoreset_0()
+    {
+
+        PlayerPrefs.SetInt("SavedTotalReputation", 0);
         PlayerPrefs.Save();
 
         Debug.Log("Go to final!");

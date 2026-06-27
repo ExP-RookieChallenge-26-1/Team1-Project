@@ -49,9 +49,9 @@ public class EndingManager : MonoBehaviour
 
     private EndingTier GetTier(int score)
     {
-        if (score >= 750) return EndingTier.Perfect;
-        if (score >= 600) return EndingTier.Good;
-        if (score >= 450) return EndingTier.Normal;
+        if (score >= 550) return EndingTier.Perfect;
+        if (score >= 400) return EndingTier.Good;
+        if (score >= 250) return EndingTier.Normal;
         return EndingTier.Bad;
     }
 }
