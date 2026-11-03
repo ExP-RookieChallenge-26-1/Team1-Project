@@ -1,25 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public static class GameEvents
 {
-    // ���� ������ �ٲ�� ���
-    public static event Action<int> OnReputationChanged;
-
-    // �� �մ��� �����ϸ� ���
+    // 새 손님이 등장하면 호출
     public static event Action<CustomerRuntimeState> OnNewCustomerAppeared;
 
-    // �������� ���� �� ���
+    // 스테이지가 바뀌면 호출
     public static event Action<int> OnStageChanged;
-
-    // �������� ���� Ŭ���� �� ���
-    public static event Action OnAllStagesCleared;
-
-    public static void TriggerReputationChanged(int currentReputation)
-    {
-        OnReputationChanged?.Invoke(currentReputation);
-    }
-
 
     public static void TriggerNewCustomerAppeared(CustomerRuntimeState customerState)
     {
@@ -29,10 +17,5 @@ public static class GameEvents
     public static void TriggerStageChanged(int stageLevel)
     {
         OnStageChanged?.Invoke(stageLevel);
-    }
-
-    public static void TriggerAllStagesCleared()
-    {
-        OnAllStagesCleared?.Invoke();
     }
 }

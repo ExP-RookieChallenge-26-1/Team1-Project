@@ -1,31 +1,29 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class CustomerRuntimeState
 {
     public CustomerData BaseData;
+<<<<<<< Updated upstream
     public CustomerGender Gender;
     public CustomerSkin Skin;
     public CustomerClothes Clothes;
     public CustomerHair Hair;
     public string DialogueText;
+=======
+    public CustomerAppearance Appearance;
+>>>>>>> Stashed changes
 
-    private CustomerEmotion currentEmotion;
-    public CustomerEmotion CurrentEmotion => currentEmotion;
-
-    // ¼Õ´Ô ÃÊ±â ¿ÜÇü, ´ë»ç, °¨Á¤
+    // ì†ë‹˜ ì´ˆê¸° ì™¸í˜•
     public CustomerRuntimeState(CustomerData data)
     {
         BaseData = data;
-        DialogueText = data.GetDialogue();
-        currentEmotion = CustomerEmotion.Neutral;
 
         data.SetState(this);
     }
 
-    // ÆòÆÇ¿¡ µû¸¥ ¼Õ´Ô °¨Á¤ º¯È­
-    public CustomerEmotion UpdateEmotion(ReputationResult result)
+    // ìš”êµ¬ì‚¬í•­ ì¶©ì¡± ì—¬ë¶€ì— ë”°ë¥¸ ì†ë‹˜ ê°ì • ë³€í™”
+    public CustomerEmotion UpdateEmotion(OrderResult result)
     {
-        currentEmotion = BaseData.GetEmotion(result);
-        return currentEmotion;
+        return BaseData.GetEmotion(result);
     }
 }

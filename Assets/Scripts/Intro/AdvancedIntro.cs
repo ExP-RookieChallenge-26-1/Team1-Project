@@ -1,7 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -90,7 +89,15 @@ public class AdvancedIntro : MonoBehaviour
 
     public void ResetData()
     {
+<<<<<<< Updated upstream
         PlayerPrefs.DeleteAll();
+=======
+        float backupBGM = PlayerPrefs.GetFloat(DataLoader.BGM_KEY, DataLoader.DEFAULT_BGM_VALUE);
+        float backupSFX = PlayerPrefs.GetFloat(DataLoader.SFX_KEY, DataLoader.DEFAULT_SFX_VALUE);
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetFloat(DataLoader.BGM_KEY, backupBGM);
+        PlayerPrefs.SetFloat(DataLoader.SFX_KEY, backupSFX);
+>>>>>>> Stashed changes
         PlayerPrefs.Save();
         SceneManager.LoadScene("Intro");
     }

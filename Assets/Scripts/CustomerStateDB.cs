@@ -1,5 +1,19 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
+<<<<<<< Updated upstream
+=======
+// ê°œìˆ˜ë³„ ì†ë‹˜ state ì¢…ë¥˜
+[System.Serializable]
+public class GenderSpriteSet
+{
+    [Header("Appearance Types")]
+    public Sprite[] bodyTypes;
+    public Sprite[] clothesTypes;
+    public Sprite[] hairTypes;
+    public Sprite[] faceTypes;
+}
+
+>>>>>>> Stashed changes
 [CreateAssetMenu(fileName = "CustomerStateDB", menuName = "Objects/CustomerStateDB")]
 
 // default ¼Õ´Ô Á¾·ù ÀÌ¹ÌÁö

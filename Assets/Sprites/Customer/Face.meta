@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Sprites/Customer/Face.meta
 guid: 2eb22354a7e4b114585c786c7f81b480
+========
+guid: 78470ac2ae8e13b469c35727d86e5222
+>>>>>>>> Stashed changes:Assets/Scripts/Editor.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

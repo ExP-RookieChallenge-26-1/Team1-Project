@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/Resources/PerformanceTestRunInfo.json.meta
 guid: a1b9c7a14baf2b949bcd190d67aaef18
 TextScriptImporter:
+========
+guid: 237744bb87a5d144cb97babf7faefa00
+DefaultImporter:
+>>>>>>>> Stashed changes:Library/PackageCache/com.unity.inputsystem@57d0e36f6123/Samples~/GamepadMouseCursor/GamepadMouseCursorSample.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

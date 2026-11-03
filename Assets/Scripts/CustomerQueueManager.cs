@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class CustomerQueueManager : MonoBehaviour
@@ -9,7 +9,7 @@ public class CustomerQueueManager : MonoBehaviour
 
     public void PrepareQueue(IReadOnlyList<CustomerData> customerPool)
     {
-        // �մ� ������ Queue�� ����
+        // 손님 명단을 Queue에 저장
         customerQueue = new Queue<CustomerData>(customerPool);
     }
 
@@ -21,16 +21,29 @@ public class CustomerQueueManager : MonoBehaviour
             currentCustomerData = customerQueue.Dequeue();
             currentCustomerState = new CustomerRuntimeState(currentCustomerData);
             GameEvents.TriggerNewCustomerAppeared(currentCustomerState);
-            // ���� �մ� ���� ��ȯ
+            // 다음 손님 정보 반환
             return currentCustomerData;
         }
 
-        // ��⿭�� �մ��� ���� ��� null ��ȯ
+        // 대기열에 손님이 없을 경우 null 반환
         currentCustomerData = null;
         currentCustomerState = null;
         return null;
     }
 
+<<<<<<< Updated upstream
     public CustomerData GetCurrentCustomer() => currentCustomerData;    // ���� �մ� ���� Ȯ��
     public CustomerRuntimeState GetCurrentCustomerState() => currentCustomerState;  // ���� �մ� ���� Ȯ��
+=======
+    public CustomerData GetCurrentCustomer() => currentCustomerData;    // 현재 손님 정보 확인
+    public CustomerRuntimeState GetCurrentCustomerState() => currentCustomerState;  // 현재 손님 상태 확인
+
+    public void ResetCustomerQueue()
+    {
+        if (customerQueue != null) customerQueue.Clear();
+
+        currentCustomerData = null;
+        currentCustomerState = null;
+    }
+>>>>>>> Stashed changes
 }

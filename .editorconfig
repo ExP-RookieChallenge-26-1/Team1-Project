@@ -1,0 +1,5 @@
+root = true
+
+# C# 스크립트는 항상 UTF-8(BOM 포함)로 저장해 한글 주석이 깨지지 않게 한다
+[*.cs]
+charset = utf-8-bom

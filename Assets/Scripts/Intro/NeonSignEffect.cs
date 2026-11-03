@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class NeonSignEffect : MonoBehaviour
@@ -23,7 +23,6 @@ public class NeonSignEffect : MonoBehaviour
 
     private bool flashing = false;
     private float flashTimer = 0f;
-    public float FlashTimer => flashTimer;
 
     public float flashDuration = 0.1f;
 

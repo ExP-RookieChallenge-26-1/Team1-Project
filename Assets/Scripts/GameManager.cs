@@ -1,51 +1,54 @@
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>
+/// 보드 게임 연결: 재료 버튼 → 생성, 스와이프 → 이동, 버튼/카운터 미리보기 갱신.
+/// 손님 흐름(AdvancedMain)이 BeginRound로 시작하고 TakeBestStack으로 제출받는다.
+/// 손님 흐름이 없는 씬에서는 바로 플레이 가능 상태로 시작한다 (보드 단독 테스트용).
+/// </summary>
 public class GameManager : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public static GameManager Inst;
     public Image nextIngrdient;
     private VisualManager visualManager;
     private BurgerTile[,] gameBoard = new BurgerTile[4, 5];
+=======
+    public static GameManager Inst { get; private set; }
+>>>>>>> Stashed changes
 
-    // ?꾩옱 ?ㅽ룿 ?湲?以묒씤 ?⑥? 二쇰Ц 由ъ뒪??
-    public List<IngredientType> orderList = new List<IngredientType>();
+    [SerializeField] int boardSize = 4;
+    [SerializeField] BoardView boardView;
+    [SerializeField] SwipeInput swipeInput;
+    [SerializeField] IngredientButton[] ingredientButtons;
+    [Tooltip("씬에 AdvancedMain이 없으면 시작하자마자 플레이 가능 상태로 둔다 (보드 단독 테스트용)")]
+    [SerializeField] bool autoStartWithoutFlow = true;
 
-    // 泥섏쓬 寃뚯엫 ?쒖옉 ???ㅼ뼱???꾩껜 二쇰Ц 由ъ뒪??(?쒖텧 ??鍮꾧탳??
-    private List<IngredientType> initialOrderList = new List<IngredientType>();
+    /// <summary>재료 버튼으로 재료가 보드에 생성됐을 때. 손님 제한시간 시작에 사용.</summary>
+    public event Action<Ingredient> IngredientSpawned;
 
-    public bool isPlaying = false;
+    public BoardSystem Model { get; private set; }
+    /// <summary>재료 생성/슬라이드가 가능한 상태인지 (손님 응대 중).</summary>
+    public bool IsPlaying { get; private set; }
 
-    // ?щ즺 UI ?대룞 ?좊땲硫붿씠?섏쓣 ?꾪븳 ?대룞 湲곕줉
-    public class TileMoveRecord
-    {
-        public Vector2Int from;
-        public Vector2Int to;
-        public bool merged;
-        public int step;
-    }
-
-    private readonly List<TileMoveRecord> moveRecords = new List<TileMoveRecord>();
-    private bool isAnimating = false;
-
-    private void Awake()
+    void Awake()
     {
         Inst = this;
+        Model = new BoardSystem(boardSize);
     }
 
     void Start()
     {
-        visualManager = GetComponent<VisualManager>();
-        visualManager.SetBackgroundColor();
-        InitializeBoard();
-        visualManager.DrawBackgroundGrid();
+        boardView.Build(boardSize);
+        swipeInput.Swiped += OnSwiped;
+        if (autoStartWithoutFlow && AdvancedMain.Inst == null) BeginRound();
+        else RefreshState();
     }
 
-    void InitializeBoard()
+    void OnDestroy()
     {
+<<<<<<< Updated upstream
         for (int y = 0; y < 5; y++)
         {
             for (int x = 0; x < 4; x++)
@@ -55,19 +58,24 @@ public class GameManager : MonoBehaviour
                 if (y == 0) gameBoard[x, y].isGrill = true;
             }
         }
+=======
+        if (swipeInput != null) swipeInput.Swiped -= OnSwiped;
+        if (Inst == this) Inst = null;
+>>>>>>> Stashed changes
     }
 
-    //?ㅼ쭛媛쒕? 異⑸텇???쒕옒洹명빐?? 議곕━??씠 ?щ씪?붿쓣???몄텧?⑸땲??
-    public void OnTongEndDrag()
+    /// <summary>새 손님 응대 시작: 보드를 비우고 입력을 연다.</summary>
+    public void BeginRound()
     {
-        //?ш린遺??寃뚯엫 濡쒖쭅???쒖옉?섎㈃ ??寃?媛숈븘??
-        Debug.Log("OnTongEndDrag");
-        StartGame();
+        ClearBoard();
+        IsPlaying = true;
+        RefreshState();
     }
 
-    [ContextMenu("START")]
-    public void StartGame()
+    /// <summary>입력을 막는다 (제출 연출, 시간 초과 등). 보드는 그대로 둔다.</summary>
+    public void EndRound()
     {
+<<<<<<< Updated upstream
 
         if (StageFlowManager.Inst)
         {
@@ -95,68 +103,58 @@ public class GameManager : MonoBehaviour
 
         SpawnNextIngredient();
         UpdateAllVisuals();
+=======
+        IsPlaying = false;
+        RefreshState();
+>>>>>>> Stashed changes
     }
 
-    public void UpdateOrderVisual()
+    /// <summary>
+    /// 지금 제출하면 나갈 버거 (가장 높은 더미, 동점이면 오른쪽 위에 가까운 것). 보드는 그대로.
+    /// 얼린 패티는 버거에 들어가지 않는다 (미리보기/쌓이는 연출/요구사항 판정 모두 제외).
+    /// </summary>
+    public List<Ingredient> PeekBestStack()
     {
-        visualManager.DrawOrderList(orderList);
+        var best = Model.GetBestStack();
+        var burger = best == null ? new List<Ingredient>() : new List<Ingredient>(best.Stack);
+        burger.RemoveAll(i => i == Ingredient.RawPatty);
+        return burger;
     }
 
-    public void OnMoveInput(string direction)
+    /// <summary>제출: 가장 높은 더미를 꺼내고 보드를 전부 비운다 (다음 손님 준비).</summary>
+    public List<Ingredient> TakeBestStack()
     {
-        if (!isPlaying) return;
-        if (isAnimating) return;
-
-        StartCoroutine(CorMoveInput(direction));
+        var stack = PeekBestStack();
+        ClearBoard();
+        RefreshState();
+        return stack;
     }
 
-    // ?대룞 ?낅젰??泥섎━?섍퀬, ?ㅼ젣 UI ?대룞 ?좊땲硫붿씠?섏씠 ?앸궃 ??理쒖쥌 ?붾㈃??媛깆떊?쒕떎.
-    private IEnumerator CorMoveInput(string direction)
+    public void SpawnIngredient(Ingredient ingredient)
     {
-        isAnimating = true;
-        moveRecords.Clear();
-
-        bool hasMoved = MoveTiles(direction, moveRecords);
-
-        if (hasMoved)
-        {
-           // Debug.Log($"[{direction}] 諛⑺뼢?쇰줈 ?ㅼ??댄봽 ?꾨즺");
-
-            // ?ㅼ젣 ?щ즺 UI瑜?異쒕컻 移몄뿉???꾩갑 移멸퉴吏 ?대룞?쒗궓??
-            yield return StartCoroutine(visualManager.PlayMoveAnimation(moveRecords));
-
-            // ?대룞???앸궃 ?????щ즺瑜??ㅽ룿?쒕떎.
-            SpawnNextIngredient();
-        }
-
-        UpdateAllVisuals();
-        isAnimating = false;
+        if (!IsPlaying || boardView.IsAnimating) return;
+        // 패티 버튼은 항상 얼린 패티(RawPatty)를 꺼낸다. 4행에 생성되면 바로 구워진다.
+        if (!Model.TrySpawn(ingredient, out var tile, out int row, out int col, out bool cooked)) return;   // 빈 칸 없음
+        boardView.AddTile(tile, row, col);
+        if (cooked) PlayCookedSfx();
+        RefreshState();
+        IngredientSpawned?.Invoke(ingredient);
     }
 
-    public void OnSubmitInput()
+    void OnSwiped(Direction dir)
     {
-        if (!isPlaying) return;
-
-        BurgerTile bestBurger = GetBestBurger();
-        string submittedIngredients = (bestBurger != null && bestBurger.stackedIngredients.Count > 0)
-            ? string.Join(", ", bestBurger.stackedIngredients)
-            : "鍮??묒떆";
-
-        string initialOrder = string.Join(", ", initialOrderList);
-
-        // 肄섏넄???쒖텧 寃곌낵 異쒕젰
-        Debug.Log("=========================");
-        Debug.Log("?뵒 踰꾧굅 ?꾩꽦 諛??쒖텧!");
-        Debug.Log($"紐⑺몴 二쇰Ц: {initialOrder}");
-        Debug.Log($"?쒖텧??踰꾧굅: {submittedIngredients}");
-        Debug.Log("=========================");
-
-        SubmitAndClear();
-        UpdateAllVisuals();
+        if (!IsPlaying || boardView.IsAnimating) return;
+        var result = Model.Move(dir);
+        if (!result.Changed) return;
+        if (result.CookedTiles.Count > 0) PlayCookedSfx();
+        // 슬라이드 후에는 새 재료를 만들지 않는다
+        boardView.PlayMove(result, RefreshState);
     }
 
-    public IReadOnlyList<IngredientData> GetBestBurgerData()
+    // 패티가 구워질 때 효과음 (기존 AdvancedMain.cookedClip 사용, 손님 흐름이 있는 씬에서만)
+    void PlayCookedSfx()
     {
+<<<<<<< Updated upstream
         var list = new List<IngredientData>();
         BurgerTile bestBurger = GetBestBurger();
         if (bestBurger == null)
@@ -173,10 +171,15 @@ public class GameManager : MonoBehaviour
 
         list.Reverse();
         return list;
+=======
+        if (AdvancedMain.Inst != null && AdvancedMain.Inst.cookedClip != null && SFXPlayer.Instance != null)
+            SFXPlayer.Instance.Play(AdvancedMain.Inst.cookedClip);
+>>>>>>> Stashed changes
     }
 
-    public void OnResetInput()
+    void ClearBoard()
     {
+<<<<<<< Updated upstream
         Debug.Log("蹂대뱶??諛?二쇰Ц 珥덇린?붾맖");
 
         orderList.Clear();
@@ -208,14 +211,26 @@ public class GameManager : MonoBehaviour
         UpdateAllVisuals();
     }
     private void UpdateAllVisuals()
-    {
-        visualManager.UpdateVisuals(gameBoard);
-        visualManager.DrawPreview(GetBestBurger());
+=======
+        Model.Reset();
+        boardView.Clear();
     }
 
-    // ?곗긽??3, 0)?먯꽌 媛??媛源뚯슫 理쒓퀬??釉붾줉 ?먯깋 (嫄곕━ ?숈씪 ???믪씠(Y異? ?곗꽑)
-    public BurgerTile GetBestBurger()
+    void RefreshState()
+>>>>>>> Stashed changes
     {
+        bool canSpawn = IsPlaying && Model.HasEmptyCell;
+        foreach (var b in ingredientButtons)
+            if (b != null && b.Button != null) b.Button.interactable = canSpawn;
+
+        UpdateCounterPreview();
+    }
+
+    // 카운터 위에 "지금 제출하면 나갈 버거"를 미리 보여준다 (SideBurgerMaker가 있는 씬에서만).
+    // 플레이 중에만 갱신한다: 제출 연출(FallingRoutine)이 이 미리보기를 그대로 사용하기 때문.
+    void UpdateCounterPreview()
+    {
+<<<<<<< Updated upstream
         BurgerTile best = null;
         int maxHeight = 0;
         float minDistance = float.MaxValue;
@@ -447,6 +462,11 @@ public class GameManager : MonoBehaviour
                 gameBoard[x, y].stackedIngredients.Clear();
             }
         }
+=======
+        if (SideBurgerMaker.Inst == null || !IsPlaying) return;
+        var stack = PeekBestStack();
+        if (stack.Count == 0) SideBurgerMaker.Inst.ClearPreview();
+        else SideBurgerMaker.Inst.Make(stack, isChat: false);
+>>>>>>> Stashed changes
     }
 }
-

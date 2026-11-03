@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -31,7 +31,10 @@ public class Stage1Customer : SpecialBase
 
     public override void UpdateEmotion(CustomerEmotion emotion)
     {
+<<<<<<< Updated upstream
         base.UpdateEmotion(emotion);
+=======
+>>>>>>> Stashed changes
         body.sprite = sprites[(int)emotion];
     }
 

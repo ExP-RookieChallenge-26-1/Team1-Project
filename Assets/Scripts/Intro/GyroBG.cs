@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+﻿using TMPro;
+>>>>>>> Stashed changes
 using UnityEngine;
 
 public class GyroBG : MonoBehaviour
@@ -8,7 +12,16 @@ public class GyroBG : MonoBehaviour
 
     void Start()
     {
+<<<<<<< Updated upstream
         Input.gyro.enabled = true;
+=======
+        parent = target.parent as RectTransform;
+
+        if (GravitySensor.current != null)
+        {
+            InputSystem.EnableDevice(GravitySensor.current);
+        }
+>>>>>>> Stashed changes
     }
 
     void Update()

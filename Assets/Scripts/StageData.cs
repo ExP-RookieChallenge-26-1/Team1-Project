@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Stage", menuName = "Objects/Stage")]
 public class StageData : ScriptableObject
 {
-    [SerializeField] private int stageLevel;    // ÇöÀç ½ºÅ×ÀÌÁö
+    [SerializeField] private int stageLevel;    // í˜„ì¬ ìŠ¤í…Œì´ì§€
     public int StageLevel => stageLevel;
-    [SerializeField] private List<CustomerData> customerPool;   // ¼Õ´Ô ¸í´Ü
+    [SerializeField] private List<CustomerData> customerPool;   // ì†ë‹˜ ëª…ë‹¨
     public IReadOnlyList<CustomerData> CustomerPool => customerPool.AsReadOnly();
-    [SerializeField] private int targetClearCount;  // ¸ñÇ¥ ¼Õ´Ô ¼ö
+    [SerializeField] private int targetClearCount;  // ëª©í‘œ ì†ë‹˜ ìˆ˜
     public int TargetClearCount => targetClearCount;
 
 }

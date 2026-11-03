@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -9,6 +9,10 @@ public class DataLoader : MonoBehaviour
     
     public static float BGMValue;
     public static float SFXValue;
+
+    // 저장 키. 데이터 초기화(엔딩, 처음부터) 때 음량을 백업/복원하는 곳도 이 키를 써야 한다.
+    public const string BGM_KEY = "BGMValue";
+    public const string SFX_KEY = "SFXValue";
 
     public const float DEFAULT_BGM_VALUE = 1;
     public const float DEFAULT_SFX_VALUE = 0.7f;
@@ -34,8 +38,8 @@ public class DataLoader : MonoBehaviour
 
         Loaded = true;
         
-        BGMValue = PlayerPrefs.GetFloat("BGMValue", DEFAULT_BGM_VALUE);
-        SFXValue = PlayerPrefs.GetFloat("SFXValue", DEFAULT_SFX_VALUE);
+        BGMValue = PlayerPrefs.GetFloat(BGM_KEY, DEFAULT_BGM_VALUE);
+        SFXValue = PlayerPrefs.GetFloat(SFX_KEY, DEFAULT_SFX_VALUE);
         
         Debug.Log($"BGMValue: {BGMValue} | SFXValue: {SFXValue}");
         ApplyValue();
@@ -48,7 +52,7 @@ public class DataLoader : MonoBehaviour
     public static void SetBGMValue(float v)
     {
         BGMValue = v;
-        PlayerPrefs.SetFloat("BGMValue", v);
+        PlayerPrefs.SetFloat(BGM_KEY, v);
         PlayerPrefs.Save();
         
         Debug.Log($"BGMValue: {BGMValue}");
@@ -61,7 +65,7 @@ public class DataLoader : MonoBehaviour
     public static void SetSFXValue(float v)
     {
         SFXValue = v;
-        PlayerPrefs.SetFloat("SFXValue", v);
+        PlayerPrefs.SetFloat(SFX_KEY, v);
         PlayerPrefs.Save();
         
         Debug.Log($"SFXValue: {SFXValue}");

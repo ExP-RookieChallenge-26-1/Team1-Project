@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
@@ -51,14 +51,6 @@ public class EndScreen : MonoBehaviour
     {
         StartCoroutine(GoToNextStageRoutine());
     }
-
-    /*private void Update()
-    {
-        if (Keyboard.current.pKey.wasPressedThisFrame)
-        {
-            ShowEndScreen(65,100);
-        }
-    }*/
 
     public void ShowEndScreen(float score, float maxScore)
     {

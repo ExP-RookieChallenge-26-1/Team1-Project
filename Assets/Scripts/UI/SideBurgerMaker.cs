@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -25,14 +25,14 @@ public class SideBurgerMaker : MonoBehaviour
         Inst = this;
     }
 
-    public void Make(List<IngredientType> list, bool isChat = true)
+    public void Make(List<Ingredient> list, bool isChat = true)
     {
         StartCoroutine(MakeBurgerRoutine(list, isChat));
     }
     
     
 
-    IEnumerator MakeBurgerRoutine(List<IngredientType> list, bool isChat = true)
+    IEnumerator MakeBurgerRoutine(List<Ingredient> list, bool isChat = true)
     {
         if(isChat)
             dialogueGroup.alpha = 0;
@@ -52,7 +52,7 @@ public class SideBurgerMaker : MonoBehaviour
             counterPreviewPivot.gameObject.SetActive(true);
         }
     }
-    public void MakeBurger(List<IngredientType> list, bool isChat = true)
+    public void MakeBurger(List<Ingredient> list, bool isChat = true)
     {
         var curContainer = isChat ? container : counterContainer;
         foreach (Transform t in curContainer)
@@ -65,7 +65,7 @@ public class SideBurgerMaker : MonoBehaviour
         var rect = bottom.GetComponent<RectTransform>();
         rect.pivot = new Vector2(0.5f, 0.52f);
         
-        foreach (IngredientType inType in list)
+        foreach (Ingredient inType in list)
         {
             var ing = Instantiate(burgerPrefab, curContainer);
             ing.sprite = GetRandomBurgerSprite(inType);
@@ -137,24 +137,11 @@ public class SideBurgerMaker : MonoBehaviour
         }
     }
     
-    Sprite GetRandomBurgerSprite(IngredientType ingredient)
+    // burgerSprites 순서: [0] 얼린 패티, [1] 구운 패티, [2] 치즈, [3] 양파, [4] 양상추, [5] 토마토
+    // (얼린 패티만 값이 -1이라 0번으로 바꾸고, 나머지는 Ingredient 값과 같다)
+    Sprite GetRandomBurgerSprite(Ingredient ingredient)
     {
-        switch (ingredient)
-        {
-            case IngredientType.RawPatty:
-                return burgerSprites[0];
-            case IngredientType.CookedPatty:
-                return burgerSprites[1];
-            case IngredientType.Cheese:
-                return burgerSprites[2];
-            case IngredientType.Onion:
-                return burgerSprites[3];
-            case IngredientType.Lettuce:
-                return burgerSprites[4];
-            case IngredientType.Tomato:
-                return burgerSprites[5];
-            default:
-                return null;
-        }
+        int index = ingredient == Ingredient.RawPatty ? 0 : (int)ingredient;
+        return index >= 0 && index < burgerSprites.Length ? burgerSprites[index] : null;
     }
 }

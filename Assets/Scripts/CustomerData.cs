@@ -1,31 +1,29 @@
-using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Customer", menuName = "Objects/Customer")]
 public abstract class CustomerData : ScriptableObject
 {
 
-    [SerializeField] private string customerName;   // �մ� �̸�
+    [SerializeField] private string customerName;   // 손님 이름
     public string CustomerName => customerName;
 
-    [SerializeField] private List<IngredientData> recipe;   // �ֹ��� �޴�
-    public IReadOnlyList<IngredientData> Recipe => recipe.AsReadOnly();
+    [Header("선호조건 (손님당 1개)")]
+    [SerializeField] private CustomerRequirement requirement = new CustomerRequirement();
+    public CustomerRequirement Requirement => requirement;
 
-    // ���� ����� ���� �մ� ǥ��
-    public virtual CustomerEmotion GetEmotion(ReputationResult result)
+    [Tooltip("이 손님의 제한시간(초). 0 이하이면 AdvancedMain의 기본 제한시간을 사용")]
+    [SerializeField] private float timeLimit = 0f;
+    public float TimeLimit => timeLimit;
+
+    // 요구사항 충족 여부에 따른 손님 표정: 충족 → 기쁨, 미충족 → 화남
+    public virtual CustomerEmotion GetEmotion(OrderResult result)
     {
-        switch (result)
-        {
-            case ReputationResult.Perfect: return CustomerEmotion.Happy;
-            case ReputationResult.Incomplete: return CustomerEmotion.Neutral;
-            default: return CustomerEmotion.Angry;
-        }
+        return result == OrderResult.Satisfied ? CustomerEmotion.Happy : CustomerEmotion.Angry;
     }
-    public virtual int GetBonusScore(ReputationResult result) => 0;
 
     public abstract string GetDialogue();
 
-    public abstract bool GetReputationDialogue(ReputationResult result, out string dialogue);
+    public abstract bool GetResultDialogue(OrderResult result, out string dialogue);
 
     public virtual void SetState(CustomerRuntimeState state) { }
 }
