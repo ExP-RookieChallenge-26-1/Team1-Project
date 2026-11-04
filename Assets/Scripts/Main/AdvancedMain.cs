@@ -5,46 +5,23 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using UnityEngine.InputSystem;
 
 public class AdvancedMain : MonoBehaviour
 {
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
-    public Image fadeImg;
-    public Image bellImg;
-    public Sprite[] bells, tongs;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
-    private CustomerRuntimeState _oldstate;
-    public AudioClip[] manClips, womanClips;
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
-    public Stage2Customer stage2Customer;
-    public Stage3Customer stage3Customer;
-    public Stage4Customer stage4Customer;
     public Stage5Customer stage5Customer;
-    public Stage6Customer stage6Customer;
-    public bool isFaking;
-
-    public Action onResultNormal;
-    public Action onResultBad;
     
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
     public bool enableSubmit;
     private bool _stageEnded;
-    public GameObject specialEndingCanvas;
-    public Image endingPanelBG;
-    public UnityEngine.UI.Image specialEndingImage;
-    public TMPro.TextMeshProUGUI specialEndingTitle;
-    public TMPro.TextMeshProUGUI specialEndingText;
-    public Sprite[] endingSprites;
-    private bool _movingToIntro;
 
     [Header("제한시간 / 점수")]
     [Tooltip("손님 데이터에 제한시간이 없을 때(0 이하) 쓰는 손님당 제한시간(초)")]
@@ -342,10 +319,8 @@ public class AdvancedMain : MonoBehaviour
     IEnumerator CorStartGame()
     {
         enableSubmit = false;
-        bellImg.sprite = bells[0];
         tong.ResetTong();
         tong.enableDrag = false;
-        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[0];
         CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
         yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
         var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
@@ -354,18 +329,6 @@ public class AdvancedMain : MonoBehaviour
         Debug.Log("WGY??????????????????????????" +StageFlowManager.Inst.currentStageIndex);
         
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
-
-        if (current == null)
-        {
-            yield break;
-        }
-
-        var currentState = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomerState();
-        _oldstate = currentState;
-        Debug.Log($"오래된성별:{_oldstate.Appearance.Gender}");
-        AdvancedDialogue.Inst.currentHummingClip = currentState.Appearance.Gender == CustomerGender.Male
-            ? manClips[Random.Range(0, manClips.Length)]
-            : womanClips[Random.Range(0, womanClips.Length)];
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
         // 레시피 미리보기 대신 손님 대사로 요구사항을 전달한다: 손님 대사 → 요구사항 대사 순서.
         // 둘 다 비어 있으면 요구사항 설명(예: "Onion 빼기")을 대신 보여준다.
@@ -394,34 +357,6 @@ public class AdvancedMain : MonoBehaviour
             CustomerStateManager.Inst.currentSpecialCustomer = stage5Customer;
             stage5Customer.StartAnimation();
         }
-        //3스테이지
-        else if (current.CustomerName == "Influencer")
-        {
-            AdvancedDialogue.Inst.blockDialogInput = true;
-            CustomerStateManager.Inst.currentSpecialCustomer = stage3Customer;
-            stage3Customer.StartAnimation();
-        }
-        //4스테이지
-        else if (current.CustomerName == "mukbang")
-        {
-            AdvancedDialogue.Inst.blockDialogInput = true;
-            CustomerStateManager.Inst.currentSpecialCustomer = stage4Customer;
-            stage4Customer.StartAnimation();
-        }
-        //6스테이지
-        else if (current.CustomerName == "Jury")
-        {
-            AdvancedDialogue.Inst.blockDialogInput = true;
-            CustomerStateManager.Inst.currentSpecialCustomer = stage6Customer;
-            stage6Customer.StartAnimation();
-        }
-        //2스테이지
-        else if (current.CustomerName == "Knight")
-        {
-            AdvancedDialogue.Inst.blockDialogInput = true;
-            CustomerStateManager.Inst.currentSpecialCustomer = stage2Customer;
-            stage2Customer.StartAnimation();
-        }
         else
         {
             yield return new WaitForSeconds(1);
@@ -439,9 +374,7 @@ public class AdvancedMain : MonoBehaviour
     public void OnEndDragTong()
     {
         enableSubmit = true;
-        bellImg.sprite = bells[1];
         tong.enableDrag = false;
-        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[0];
         SFXPlayer.Instance.Play(unplugTongClip);
         GameManager.Inst.BeginRound();   // 보드를 비우고 재료 생성/슬라이드 시작
         // 6스테이지 가짜 주문 뒤에는 남은 주문 대사가 끝날 때 다시 집게를 켜야 하므로 유지한다
@@ -489,7 +422,6 @@ public class AdvancedMain : MonoBehaviour
         _timer.Stop();
         StartCoroutine(CorSubmitBurger());
         enableSubmit = false;
-        bellImg.sprite = bells[0];
     }
 
     IEnumerator CorSubmitBurger()
@@ -602,7 +534,6 @@ public class AdvancedMain : MonoBehaviour
             EndScreen.Inst.ShowEndScreen(stageScore, maxScore);
 
             StageFlowManager.Inst.ScoreCalculationSystem.ResetStageScore();
-
         }
         else
         {

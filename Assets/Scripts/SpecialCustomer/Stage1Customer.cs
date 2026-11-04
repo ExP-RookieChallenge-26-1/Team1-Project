@@ -8,12 +8,10 @@ public class Stage1Customer : SpecialBase
     public CanvasGroup canvasGroup;
     public RectTransform handRect, bodyRect, hand2Rect;
     public Sprite[] sprites;
-    public AudioClip kidClip;
     public Image body;
     
     public override IEnumerator AnimationRoutine()
     {
-        AdvancedDialogue.Inst.currentHummingClip = kidClip;
         var chatRect = AdvancedDialogue.Inst.chatImg.GetComponent<RectTransform>();
         chatRect.anchoredPosition3D = chatRect.anchoredPosition3D.SetY(198);
             
@@ -64,10 +62,7 @@ public class Stage1Customer : SpecialBase
 
     public override void HideAnimation()
     {
-
         base.HideAnimation();
         canvasGroup.DOFade(0, 0.5f);
-
-
     }
 }

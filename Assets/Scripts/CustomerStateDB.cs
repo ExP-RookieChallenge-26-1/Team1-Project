@@ -13,19 +13,21 @@ public class GenderSpriteSet
 
 [CreateAssetMenu(fileName = "CustomerStateDB", menuName = "Objects/CustomerStateDB")]
 
+// default 손님 종류 이미지
 public class CustomerStateDB : ScriptableObject
 {
-    [Header("Gender Specific Sets")]
-    public GenderSpriteSet maleSet;
-    public GenderSpriteSet femaleSet;
+    [Header("Gender Sprites (Male, Female)")]
+    public Sprite[] genderSprites;
 
-    [Header("Common Sprites")]
+    [Header("Skin Sprites (Light, Medium, Tan, Dark)")]
+    public Sprite[] skinSprites;
+
+    [Header("Emotion Sprites (Happy, Neutral, Angry)")]
     public Sprite[] emotionSprites;
 
-    public GenderSpriteSet GetSpriteSet(CustomerGender gender)
-    {
-        return gender == CustomerGender.Male ? maleSet : femaleSet;
-    }
-}
+    [Header("Hair Sprites (Style1, Style2, Style3)")]
+    public Sprite[] hairSprites;
 
-public enum CustomerEmotion { Neutral, Happy, Angry };
+    [Header("Clothes Sprites (Style1, Style2, Style3)")]
+    public Sprite[] clothesSprites;
+}

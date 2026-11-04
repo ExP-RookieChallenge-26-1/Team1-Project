@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using JetBrains.Annotations;
-using UnityEngine.Analytics;
 
 public class CustomerStateManager : MonoBehaviour
 {
@@ -19,15 +17,14 @@ public class CustomerStateManager : MonoBehaviour
     [Tooltip("퇴장 연출 시간(초). 다음 손님이 나오기 전에 끝나도록 0.5초 안팎을 권장")]
     public float exitDuration = 0.5f;
     
-    [Header("Appearance")] 
+    [Header("UI References")] 
     public RectTransform customerRect;
-    public Image bodyTypeImage;
-    public Image clothesTypeImage;
-    public Image hairTypeImage;
-    public Image specialImage;
-
-    [Header("Emotion")]
+    public Image genderImage;
+    public Image skinImage;
     public Image emotionImage;
+    public Image clothesImage;
+    public Image hairImage;
+    public Image specialImage;
 
     [Header("Databases")]
     public CustomerStateDB stateDB;
@@ -47,11 +44,6 @@ public class CustomerStateManager : MonoBehaviour
 
     public void ShowCustomer(CustomerData data, CustomerRuntimeState state)
     {
-        if (data == null)
-        {
-            return;
-        }
-
         currentCustomerData = data;
 
         string appLog = state != null ? $"성별:{state.Appearance.Gender}, Body:{state.Appearance.BodyTypeIndex}, Clothes:{state.Appearance.ClothesTypeIndex}, Hair:{state.Appearance.HairTypeIndex}" : "상태값 없음(Null)";
@@ -59,29 +51,56 @@ public class CustomerStateManager : MonoBehaviour
 
         if (data is SpecialCustomerData specialData)
         {
-            SetStandardAppearanceActive(false);
-            if (specialImage != null) specialImage.gameObject.SetActive(false);
-            if (emotionImage != null) emotionImage.gameObject.SetActive(false);
-        }
-        else if (data is DefaultCustomerData)
-        {
-            if (currentSpecialCustomer != null)
+            if (specialImage != null && specialData.specialSprites.Length > 0)
             {
-                currentSpecialCustomer.gameObject.SetActive(false);
-                currentSpecialCustomer = null;
+                specialImage.gameObject.SetActive(true);
+                specialImage.sprite = specialData.specialSprites[0];
             }
 
+            if (genderImage != null) genderImage.gameObject.SetActive(false);
+            if (skinImage != null) skinImage.gameObject.SetActive(false);
+            if (clothesImage != null) clothesImage.gameObject.SetActive(false);
+            if (hairImage != null) hairImage.gameObject.SetActive(false);
+            if (emotionImage != null) emotionImage.gameObject.SetActive(false);
+        }
+
+        else if (data is DefaultCustomerData)
+        {
             if (specialImage != null) specialImage.gameObject.SetActive(false);
+
+            if (genderImage != null)
+            {
+                genderImage.gameObject.SetActive(true);
+                genderImage.sprite = stateDB.genderSprites[(int)state.Gender];    
+            }
+
+
+            if (skinImage != null)
+            {
+                skinImage.gameObject.SetActive(true);
+                skinImage.sprite = stateDB.skinSprites[(int)state.Skin];
+            }
+
+
+            if (clothesImage != null)
+            {
+                clothesImage.gameObject.SetActive(true);
+                clothesImage.sprite = stateDB.clothesSprites[(int)state.Clothes];
+            }
+
+
+            if (hairImage != null)
+            {
+                hairImage.gameObject.SetActive(true);
+                hairImage.sprite = stateDB.hairSprites[(int)state.Hair];
+            }
 
             if (emotionImage != null)
             {
                 emotionImage.gameObject.SetActive(true);
                 emotionImage.sprite = stateDB.emotionSprites[1];
             }
-            ApplyAppearanceSprites(state.Appearance);
-            SetStandardAppearanceActive(true);
-
- 
+                
 
             gameObject.SetActive(true);
         }
@@ -219,7 +238,6 @@ public class CustomerStateManager : MonoBehaviour
         }
   
         if (emotionImage == null) return;
-        
         emotionImage.gameObject.SetActive(true);
         if (currentCustomerData is SpecialCustomerData specialData)
         {
@@ -230,21 +248,10 @@ public class CustomerStateManager : MonoBehaviour
                 emotionImage.SetNativeSize();
             }
         }
-        else if (appearance.HasValue)
+        else
         {
-            var app = appearance.Value;
-            Debug.Log(app.Gender);
-            emotionImage.sprite = stateDB.GetSpriteSet(app.Gender).faceTypes[app.FaceTypeIndex +(int)newEmotion *2];
+            emotionImage.sprite = stateDB.emotionSprites[(int)newEmotion];
             emotionImage.SetNativeSize();
         }
-    }
-
-
-    public void ApplyEndingAppearance(Sprite body, Sprite clothes, Sprite hair, Sprite emotion)
-    {
-        if (bodyTypeImage != null && body != null) bodyTypeImage.sprite = body;
-        if (clothesTypeImage != null && clothes != null) clothesTypeImage.sprite = clothes;
-        if (hairTypeImage != null && hair != null) hairTypeImage.sprite = hair;
-        if (emotionImage != null && emotion != null) emotionImage.sprite = emotion;
     }
 }

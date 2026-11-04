@@ -7,8 +7,7 @@ public class SaveDataManager
     {
         PlayerPrefs.SetInt("SavedStage", stageIndex);
         PlayerPrefs.SetInt("SavedServedCount", servedCount);
-        PlayerPrefs.SetInt("SavedTotalReputation", totalReputation);
-        PlayerPrefs.SetInt("SavedStageReputation", stageReputation);
+        PlayerPrefs.SetInt("SavedReputation", reputation);
         PlayerPrefs.Save();
     }
 
@@ -17,7 +16,6 @@ public class SaveDataManager
     {
         stageIndex = PlayerPrefs.GetInt("SavedStage", 0);
         servedCount = PlayerPrefs.GetInt("SavedServedCount", 0);
-        totalReputation = PlayerPrefs.GetInt("SavedTotalReputation", 0);
-        stageReputation = PlayerPrefs.GetInt("SavedStageReputation", 0);
+        reputation = PlayerPrefs.GetInt("SavedReputation", 0);
     }
 }

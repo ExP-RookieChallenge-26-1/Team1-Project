@@ -23,7 +23,6 @@ public class PausedController : MonoBehaviour
 
     private void Awake()
     {
-       
         //싱글톤
         if (Inst)
         {

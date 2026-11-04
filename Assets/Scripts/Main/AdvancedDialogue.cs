@@ -51,21 +51,10 @@ public class AdvancedDialogue : MonoBehaviour
     private List<Dialogue> _dialogues;
     private bool _isDialoging;
     private int _dialogueIndex;
-    private bool _isFakePreview;
-
+    
     private void Awake()
     {
         Inst = this;
-    }
-    
-    private void OnEnable()
-    {
-        EnhancedTouchSupport.Enable();
-    }
-
-    private void OnDisable()
-    {
-        EnhancedTouchSupport.Disable();
     }
 
     private void Start()
@@ -78,10 +67,9 @@ public class AdvancedDialogue : MonoBehaviour
     {
         if (_isDialoging)
         {
-            if (blockDialogInput)
+            if(blockDialogInput)
                 return;
-
-
+            
             bool wasPressedThisFrame = false;
             foreach (var touch in Touch.activeTouches)
             {
@@ -91,7 +79,7 @@ public class AdvancedDialogue : MonoBehaviour
                 }
             }
 
-            if (Keyboard.current.anyKey.wasPressedThisFrame || wasPressedThisFrame)
+            if ((Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame) || wasPressedThisFrame)
             {
                 if (_dialogueIndex + 1 > _dialogues.Count || _isFakePreview)
                 {
@@ -109,7 +97,6 @@ public class AdvancedDialogue : MonoBehaviour
                     if (enableTongOnEnd) EnableTong();
                     actionByIndexDic = null;
                 }
-
                 else
                 {
                     ShowNextDialogue();
@@ -153,9 +140,8 @@ public class AdvancedDialogue : MonoBehaviour
     public void ShowNextDialogue()
     {
         if (_dialogueIndex >= _dialogues.Count) return;
-
+        
         var dialogue = _dialogues[_dialogueIndex];
-        _isFakePreview = dialogue.isFakeRecipe;
         if (dialogue.dialogueType == DialogueType.Text)
         {
             ShowTextChat(dialogue.text);
@@ -164,20 +150,11 @@ public class AdvancedDialogue : MonoBehaviour
         {
             ShowPreviewChat(dialogue.types);
         }
-
-
-        if (actionByIndexDic != null && actionByIndexDic.TryGetValue(_dialogueIndex, out var action))
-        {
-            action?.Invoke();
-        }
-        
-        if(currentHummingClip != null)
-            SFXPlayer.Instance.PlayRandomPitch(currentHummingClip);
         
         
-
         _dialogueIndex += 1;
     }
+
     void ShowTextChat(string text)
     {
         chatImg.alpha = 0;
@@ -221,30 +198,13 @@ public class AdvancedDialogue : MonoBehaviour
         chatImg.DOFade(0, 0.3f);
         previewBg.DOFade(0, 0.3f);
 
-        if (!_isFakePreview)
-        {
-            _dialogueIndex = 0;
-            _dialogues.Clear();   
-        }
-    }
-
-    public void CloseChatOnlyVisual()
-    {
-        chatImg.DOFade(0, 0.3f);
-        previewBg.DOFade(0, 0.3f);
+        _dialogueIndex = 0;
+        _dialogues.Clear();
     }
 
     public void ShowPreviewChat(List<Ingredient> stack)
     {
         chatImg.alpha = 0;
         SideBurgerMaker.Inst.Make(stack);
-    }
-
-    public void StartEndingDialogue(string[] endingText)
-    {
-        isPlayingEndingDialogue = true;
-        SetTexts(endingText);
-
-        ShowNextDialogue();
     }
 }

@@ -17,8 +17,6 @@ public class StageFlowManager : MonoBehaviour
     public int servedCount { get; private set; } = 0;    // 이번 스테이지에서 응대한 손님 수
     public CustomerEmotion oldEmotion;
 
-    public bool isAllGameCleared = false;
-
     private void Awake()
     {
         Inst = this;
@@ -28,7 +26,7 @@ public class StageFlowManager : MonoBehaviour
 
     private void Start()
     {
-        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedTotalScore, out int savedStageScore);
+        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedScore); ;
         currentStageIndex = savedStage;
         servedCount = savedServed;
         scoreCalculationSystem.SetLoadedScore(savedTotalScore, savedStageScore);
@@ -109,7 +107,6 @@ public class StageFlowManager : MonoBehaviour
             if (servedCount >= stages[currentStageIndex].TargetClearCount)
             {
                 LoadStage(currentStageIndex);
-
                 AdvanceToNextStage();
             }
             else

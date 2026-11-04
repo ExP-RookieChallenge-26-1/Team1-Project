@@ -1,13 +1,11 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class AdvancedTong : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform _rect;
     private Vector3 _startPos;
-    public Image tongImg;
     
     private bool _isTweening;
 
