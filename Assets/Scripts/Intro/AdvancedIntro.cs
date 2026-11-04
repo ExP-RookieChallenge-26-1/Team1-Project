@@ -16,9 +16,15 @@ public class AdvancedIntro : MonoBehaviour
     public RectTransform resetWindow;
     public CanvasGroup resetGroup;
     public Image resetBg;
+    
+
+    bool _presseed;
+
 
     private void Awake()
     {
+
+ 
         neonSignEffect = GetComponent<NeonSignEffect>();
     }
     
@@ -31,6 +37,9 @@ public class AdvancedIntro : MonoBehaviour
 
     public void OnClickOpen()
     {
+        if(_presseed)
+            return;
+        _presseed = true;
         StartCoroutine(CorAnim());
     }
 
@@ -89,15 +98,11 @@ public class AdvancedIntro : MonoBehaviour
 
     public void ResetData()
     {
-<<<<<<< Updated upstream
-        PlayerPrefs.DeleteAll();
-=======
         float backupBGM = PlayerPrefs.GetFloat(DataLoader.BGM_KEY, DataLoader.DEFAULT_BGM_VALUE);
         float backupSFX = PlayerPrefs.GetFloat(DataLoader.SFX_KEY, DataLoader.DEFAULT_SFX_VALUE);
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetFloat(DataLoader.BGM_KEY, backupBGM);
         PlayerPrefs.SetFloat(DataLoader.SFX_KEY, backupSFX);
->>>>>>> Stashed changes
         PlayerPrefs.Save();
         SceneManager.LoadScene("Intro");
     }

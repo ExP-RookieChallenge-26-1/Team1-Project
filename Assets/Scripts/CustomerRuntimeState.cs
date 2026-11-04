@@ -3,15 +3,7 @@
 public class CustomerRuntimeState
 {
     public CustomerData BaseData;
-<<<<<<< Updated upstream
-    public CustomerGender Gender;
-    public CustomerSkin Skin;
-    public CustomerClothes Clothes;
-    public CustomerHair Hair;
-    public string DialogueText;
-=======
     public CustomerAppearance Appearance;
->>>>>>> Stashed changes
 
     // 손님 초기 외형
     public CustomerRuntimeState(CustomerData data)

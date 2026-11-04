@@ -17,6 +17,8 @@ public class StageFlowManager : MonoBehaviour
     public int servedCount { get; private set; } = 0;    // 이번 스테이지에서 응대한 손님 수
     public CustomerEmotion oldEmotion;
 
+    public bool isAllGameCleared = false;
+
     private void Awake()
     {
         Inst = this;
@@ -26,14 +28,10 @@ public class StageFlowManager : MonoBehaviour
 
     private void Start()
     {
-        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedScore); ;
+        SaveDataManager.LoadProgress(out int savedStage, out int savedServed, out int savedTotalScore, out int savedStageScore);
         currentStageIndex = savedStage;
         servedCount = savedServed;
-<<<<<<< Updated upstream
-        scoreCalculationSystem.SetReputation(savedScore);
-=======
         scoreCalculationSystem.SetLoadedScore(savedTotalScore, savedStageScore);
->>>>>>> Stashed changes
 
         LoadStage(currentStageIndex);
         AdvancedMain.Inst.StartFlow();
@@ -44,11 +42,7 @@ public class StageFlowManager : MonoBehaviour
         // 남은 스테이지가 없다면 게임 클리어
         if (index >= stages.Count)
         {
-<<<<<<< Updated upstream
-            GameEvents.TriggerAllStagesCleared();
-=======
             isAllGameCleared = true;
->>>>>>> Stashed changes
             return;
         }
 
@@ -66,16 +60,6 @@ public class StageFlowManager : MonoBehaviour
     public OrderResult OnBurgerSubmitted(IReadOnlyList<Ingredient> playerBurger, out int score)
     {
         CustomerData currentCustomer = customerQueueManager.GetCurrentCustomer();
-<<<<<<< Updated upstream
-        if (currentCustomer == null) return ReputationResult.Incomplete;
-
-        // �� ��� ��������
-        ReputationResult result = evaluator.Evaluate(currentCustomer.Recipe, playerBurger);
-
-        // ���� ���
-        int bonus = currentCustomer.GetBonusScore(result);
-        scoreCalculationSystem.AddReputation(result, bonus);
-=======
         if (currentCustomer == null)
         {
             score = 0;
@@ -87,7 +71,6 @@ public class StageFlowManager : MonoBehaviour
         Debug.Log($"[제출] {currentCustomer.CustomerName} | 요구사항: {currentCustomer.Requirement?.Describe()} | " +
                   $"재료 {playerBurger.Count}개 → {result}, {score}점");
         scoreCalculationSystem.AddScore(score);
->>>>>>> Stashed changes
 
         CustomerRuntimeState currentState = customerQueueManager.GetCurrentCustomerState();
         if (currentState != null)
@@ -95,25 +78,13 @@ public class StageFlowManager : MonoBehaviour
             oldEmotion = currentState.UpdateEmotion(result);
         }
 
-<<<<<<< Updated upstream
-        if (stages[currentStageIndex].CustomerPool[servedCount] != currentCustomer)
-        {
-            servedCount++;
-    
-        }
-        
-        SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.CurrentReputation);
-=======
         servedCount++;
 
         SaveDataManager.SaveProgress(currentStageIndex, servedCount, scoreCalculationSystem.totalScore, scoreCalculationSystem.stageScore);
->>>>>>> Stashed changes
 
         CheckStageProgress();
         return result;
     }
-<<<<<<< Updated upstream
-=======
 
     // 5스테이지(PD) 전용: 제한시간 동안 여러 번 제출한 결과를 한 번에 반영
     public void FinishStage5(OrderResult result, int score)
@@ -131,19 +102,14 @@ public class StageFlowManager : MonoBehaviour
         CheckStageProgress();
     }
 
->>>>>>> Stashed changes
     private void CheckStageProgress()
     {
         {
             // 이번 스테이지의 목표 손님 수를 채웠다면 다음 스테이지로
             if (servedCount >= stages[currentStageIndex].TargetClearCount)
             {
-<<<<<<< Updated upstream
-                //currentStageIndex++;
-                Debug.Log("CHECK!!!");
-=======
->>>>>>> Stashed changes
                 LoadStage(currentStageIndex);
+
                 AdvanceToNextStage();
             }
             else

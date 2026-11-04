@@ -11,9 +11,6 @@ public static class PlayerPrefsUtils
 
         Debug.Log("PlayerPrefs cleared!");
     }
-<<<<<<< Updated upstream:Assets/Editor/PlayerPrefsUtils.cs
-}
-=======
     [MenuItem("Tools/Go To Stage 4")]
     public static void GoToStage4()
     {
@@ -120,4 +117,3 @@ public static class PlayerPrefsUtils
     
    
 
->>>>>>> Stashed changes:Assets/Scripts/Editor/PlayerPrefsUtils.cs

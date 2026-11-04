@@ -1,7 +1,5 @@
 ï»¿using UnityEngine;
 
-<<<<<<< Updated upstream
-=======
 // ê°œìˆ˜ë³„ ì†ë‹˜ state ì¢…ë¥˜
 [System.Serializable]
 public class GenderSpriteSet
@@ -13,24 +11,21 @@ public class GenderSpriteSet
     public Sprite[] faceTypes;
 }
 
->>>>>>> Stashed changes
 [CreateAssetMenu(fileName = "CustomerStateDB", menuName = "Objects/CustomerStateDB")]
 
-// default ¼Õ´Ô Á¾·ù ÀÌ¹ÌÁö
 public class CustomerStateDB : ScriptableObject
 {
-    [Header("Gender Sprites (Male, Female)")]
-    public Sprite[] genderSprites;
+    [Header("Gender Specific Sets")]
+    public GenderSpriteSet maleSet;
+    public GenderSpriteSet femaleSet;
 
-    [Header("Skin Sprites (Light, Medium, Tan, Dark)")]
-    public Sprite[] skinSprites;
-
-    [Header("Emotion Sprites (Happy, Neutral, Angry)")]
+    [Header("Common Sprites")]
     public Sprite[] emotionSprites;
 
-    [Header("Hair Sprites (Style1, Style2, Style3)")]
-    public Sprite[] hairSprites;
-
-    [Header("Clothes Sprites (Style1, Style2, Style3)")]
-    public Sprite[] clothesSprites;
+    public GenderSpriteSet GetSpriteSet(CustomerGender gender)
+    {
+        return gender == CustomerGender.Male ? maleSet : femaleSet;
+    }
 }
+
+public enum CustomerEmotion { Neutral, Happy, Angry };

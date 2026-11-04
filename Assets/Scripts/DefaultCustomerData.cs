@@ -4,18 +4,12 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "DefaultCustomer", menuName = "Objects/Customer/Default")]
 public class DefaultCustomerData : CustomerData
 {
-<<<<<<< Updated upstream
-=======
     private ICustomerAppearanceGenerator apperanceGenerator = new RandomAppearanceGenerator();
 
->>>>>>> Stashed changes
     // 기본 손님 state
     public override void SetState(CustomerRuntimeState state)
     {
-        state.Gender = (CustomerGender)Random.Range(0, 2);
-        state.Skin = (CustomerSkin)Random.Range(0, 4);
-        state.Clothes = (CustomerClothes)Random.Range(0, 3);
-        state.Hair = (CustomerHair)Random.Range(0, 3);
+        state.Appearance = apperanceGenerator.Generate();
     }
 
     [TextArea] public string[] randomDialogues;

@@ -31,10 +31,6 @@ public class CustomerQueueManager : MonoBehaviour
         return null;
     }
 
-<<<<<<< Updated upstream
-    public CustomerData GetCurrentCustomer() => currentCustomerData;    // ���� �մ� ���� Ȯ��
-    public CustomerRuntimeState GetCurrentCustomerState() => currentCustomerState;  // ���� �մ� ���� Ȯ��
-=======
     public CustomerData GetCurrentCustomer() => currentCustomerData;    // 현재 손님 정보 확인
     public CustomerRuntimeState GetCurrentCustomerState() => currentCustomerState;  // 현재 손님 상태 확인
 
@@ -45,5 +41,4 @@ public class CustomerQueueManager : MonoBehaviour
         currentCustomerData = null;
         currentCustomerState = null;
     }
->>>>>>> Stashed changes
 }

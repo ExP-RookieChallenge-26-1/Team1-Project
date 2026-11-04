@@ -5,23 +5,46 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using UnityEngine.InputSystem;
 
 public class AdvancedMain : MonoBehaviour
 {
     public static AdvancedMain Inst;
 
     public AdvancedTong tong;
+    public Image fadeImg;
+    public Image bellImg;
+    public Sprite[] bells, tongs;
     public AudioClip unplugTongClip, swipeClip, cookedClip, mergeClip, bellClip, doorbellClip, doorbell2Clip;
     public CanvasGroup previewInCounter;
+    private CustomerRuntimeState _oldstate;
+    public AudioClip[] manClips, womanClips;
 
     [Header("SPECIAL CUSTOMER")] 
     public Stage1Customer stage1Customer;
+    public Stage2Customer stage2Customer;
+    public Stage3Customer stage3Customer;
+    public Stage4Customer stage4Customer;
     public Stage5Customer stage5Customer;
+    public Stage6Customer stage6Customer;
+    public bool isFaking;
+
+    public Action onResultNormal;
+    public Action onResultBad;
     
     private CustomerRuntimeState _currentCustomerState;
     public bool allStageEnded;
     public bool enableSubmit;
     private bool _stageEnded;
+    public GameObject specialEndingCanvas;
+    public Image endingPanelBG;
+    public UnityEngine.UI.Image specialEndingImage;
+    public TMPro.TextMeshProUGUI specialEndingTitle;
+    public TMPro.TextMeshProUGUI specialEndingText;
+    public Sprite[] endingSprites;
+    private bool _movingToIntro;
 
     [Header("제한시간 / 점수")]
     [Tooltip("손님 데이터에 제한시간이 없을 때(0 이하) 쓰는 손님당 제한시간(초)")]
@@ -34,15 +57,12 @@ public class AdvancedMain : MonoBehaviour
     private void Awake()
     {
         Inst = this;
-<<<<<<< Updated upstream
-=======
         if (Stage5Mode.Inst == null)
         {
             gameObject.AddComponent<Stage5Mode>();
         }
         _timer = GetComponent<CustomerTimer>();
         if (_timer == null) _timer = gameObject.AddComponent<CustomerTimer>();
->>>>>>> Stashed changes
         
         GameEvents.OnNewCustomerAppeared += GameEventsOnOnNewCustomerAppeared;
         GameEvents.OnStageChanged += GameEventsOnOnStageChanged;
@@ -59,14 +79,8 @@ public class AdvancedMain : MonoBehaviour
         _timer.BeginCountdown();
     }
 
-    /*private void Start()
+    public void StartFlow()
     {
-<<<<<<< Updated upstream
-        StartFlow();
-    }*/
-
-    public void StartFlow() => StartCoroutine(CorStartGame());
-=======
         if (StageFlowManager.Inst.isAllGameCleared)
         {
             StopAllCoroutines();
@@ -312,7 +326,6 @@ public class AdvancedMain : MonoBehaviour
                 specialEndingText.DOFade(1, 0.5f).SetDelay(0.7f);
             }).Play();
     }
->>>>>>> Stashed changes
     
     private void GameEventsOnOnStageChanged(int index)
     {
@@ -329,8 +342,10 @@ public class AdvancedMain : MonoBehaviour
     IEnumerator CorStartGame()
     {
         enableSubmit = false;
+        bellImg.sprite = bells[0];
         tong.ResetTong();
         tong.enableDrag = false;
+        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[0];
         CalenderCanvas.Inst.SetDayTxt(StageFlowManager.Inst.currentStageIndex);
         yield return new WaitForSeconds(StageFlowManager.Inst.currentStageIndex == 0 && StageFlowManager.Inst.servedCount == 0 ? 3.5f : 1);
         var clip = UnityEngine.Random.Range(0, 2) == 0 ? doorbellClip : doorbell2Clip;
@@ -339,22 +354,19 @@ public class AdvancedMain : MonoBehaviour
         Debug.Log("WGY??????????????????????????" +StageFlowManager.Inst.currentStageIndex);
         
         var current = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
+
+        if (current == null)
+        {
+            yield break;
+        }
+
+        var currentState = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomerState();
+        _oldstate = currentState;
+        Debug.Log($"오래된성별:{_oldstate.Appearance.Gender}");
+        AdvancedDialogue.Inst.currentHummingClip = currentState.Appearance.Gender == CustomerGender.Male
+            ? manClips[Random.Range(0, manClips.Length)]
+            : womanClips[Random.Range(0, womanClips.Length)];
         CustomerStateManager.Inst.ShowCustomer(current, _currentCustomerState);
-<<<<<<< Updated upstream
-        if (!string.IsNullOrEmpty(current.GetDialogue()))
-        {
-            var texts = current.GetDialogue().Split('\n');
-            AdvancedDialogue.Inst.SetTexts(texts);    
-        }
-        
-        List<IngredientType> types = new();
-        
-        foreach (var t in current.Recipe)
-        {
-            types.Add(t.IngredientType);
-        }
-        AdvancedDialogue.Inst.SetPreview(types);
-=======
         // 레시피 미리보기 대신 손님 대사로 요구사항을 전달한다: 손님 대사 → 요구사항 대사 순서.
         // 둘 다 비어 있으면 요구사항 설명(예: "Onion 빼기")을 대신 보여준다.
         string dialogueText = current.GetDialogue();
@@ -368,7 +380,6 @@ public class AdvancedMain : MonoBehaviour
         Debug.Log($"[손님] {current.CustomerName} | 요구사항: {current.Requirement?.Describe()}");
 
         AdvancedDialogue.Inst.actionByIndexDic = null;
->>>>>>> Stashed changes
         
         if (current.CustomerName == "Kid")
         {
@@ -382,6 +393,34 @@ public class AdvancedMain : MonoBehaviour
             AdvancedDialogue.Inst.blockDialogInput = true;
             CustomerStateManager.Inst.currentSpecialCustomer = stage5Customer;
             stage5Customer.StartAnimation();
+        }
+        //3스테이지
+        else if (current.CustomerName == "Influencer")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage3Customer;
+            stage3Customer.StartAnimation();
+        }
+        //4스테이지
+        else if (current.CustomerName == "mukbang")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage4Customer;
+            stage4Customer.StartAnimation();
+        }
+        //6스테이지
+        else if (current.CustomerName == "Jury")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage6Customer;
+            stage6Customer.StartAnimation();
+        }
+        //2스테이지
+        else if (current.CustomerName == "Knight")
+        {
+            AdvancedDialogue.Inst.blockDialogInput = true;
+            CustomerStateManager.Inst.currentSpecialCustomer = stage2Customer;
+            stage2Customer.StartAnimation();
         }
         else
         {
@@ -400,11 +439,10 @@ public class AdvancedMain : MonoBehaviour
     public void OnEndDragTong()
     {
         enableSubmit = true;
+        bellImg.sprite = bells[1];
         tong.enableDrag = false;
+        AdvancedMain.Inst.tong.tongImg.sprite = AdvancedMain.Inst.tongs[0];
         SFXPlayer.Instance.Play(unplugTongClip);
-<<<<<<< Updated upstream
-        GameManager.Inst.StartGame();
-=======
         GameManager.Inst.BeginRound();   // 보드를 비우고 재료 생성/슬라이드 시작
         // 6스테이지 가짜 주문 뒤에는 남은 주문 대사가 끝날 때 다시 집게를 켜야 하므로 유지한다
         if (!isFaking) AdvancedDialogue.Inst.enableTongOnEnd = false;
@@ -419,7 +457,6 @@ public class AdvancedMain : MonoBehaviour
             float limit = customer != null && customer.TimeLimit > 0 ? customer.TimeLimit : defaultTimeLimit;
             _timer.StartTimer(limit, OnTimeUp, waitForStart: true);
         }
->>>>>>> Stashed changes
         AdvancedDialogue.Inst.CloseChat();
     }
 
@@ -429,8 +466,6 @@ public class AdvancedMain : MonoBehaviour
         if(!enableSubmit)
             return;
         SFXPlayer.Instance.Play(bellClip);
-<<<<<<< Updated upstream
-=======
         if (Stage5Mode.Inst != null && Stage5Mode.Inst.IsOn())
         {
             Stage5Mode.Inst.Submit();
@@ -452,9 +487,9 @@ public class AdvancedMain : MonoBehaviour
     {
         if (_submitting) return;
         _timer.Stop();
->>>>>>> Stashed changes
         StartCoroutine(CorSubmitBurger());
         enableSubmit = false;
+        bellImg.sprite = bells[0];
     }
 
     IEnumerator CorSubmitBurger()
@@ -467,11 +502,6 @@ public class AdvancedMain : MonoBehaviour
        
         yield return StartCoroutine(SideBurgerMaker.Inst.FallingRoutine());
         yield return new WaitForSeconds(2);
-<<<<<<< Updated upstream
-        SideBurgerMaker.Inst.ClearPreview();
-        var data = GameManager.Inst.GetBestBurgerData();
-        GameManager.Inst.OnSubmitInput();
-=======
 
         if (isFaking)
         {
@@ -497,18 +527,9 @@ public class AdvancedMain : MonoBehaviour
 
         // 가장 높은 더미 1개 제출 (동점이면 오른쪽 위에 가까운 것) → 보드 전부 비우기
         var data = GameManager.Inst.TakeBestStack();
->>>>>>> Stashed changes
         var oldCustomer = StageFlowManager.Inst.CustomerQueueManager.GetCurrentCustomer();
         var result = StageFlowManager.Inst.OnBurgerSubmitted(data, out int earned);
         
-<<<<<<< Updated upstream
-        //CustomerStateManager.Inst.UpdateEmotionUI(_currentCustomerState.CurrentEmotion);
-        //표정, 대사 적용
-        var oldReput = StageFlowManager.Inst.ScoreCalculationSystem.oldReputation;
-        //Debug.Log($"평판: {StageFlowManager.Inst.ScoreCalculationSystem.CurrentReputation}");
-        CustomerStateManager.Inst.UpdateEmotionUI(StageFlowManager.Inst.oldEmotion);
-        if (oldCustomer.GetReputationDialogue(result, out string dialogue))
-=======
         // 특수 손님 연출 분기: 충족 → Normal, 미충족 → Bad
         if(result == OrderResult.Satisfied)
             onResultNormal?.Invoke();
@@ -542,7 +563,6 @@ public class AdvancedMain : MonoBehaviour
         }
 
         if (oldCustomer.GetResultDialogue(result, out string dialogue))
->>>>>>> Stashed changes
         {
             var txts = dialogue.Split('\n');
             AdvancedDialogue.Inst.SetTexts(txts);
@@ -560,16 +580,6 @@ public class AdvancedMain : MonoBehaviour
         
         yield return new WaitForSeconds(1);
 
-<<<<<<< Updated upstream
-        if (_stageEnded)
-        {
-            int currentStageIndex = StageFlowManager.Inst.currentStageIndex;
-            StageData currentStage = StageFlowManager.Inst.Stages[currentStageIndex];
-            int maxScore = 0;
-            foreach (var customer in currentStage.CustomerPool)
-            {
-                maxScore += 30;
-=======
 
 
         int totalScore = StageFlowManager.Inst.ScoreCalculationSystem.totalScore;
@@ -592,23 +602,13 @@ public class AdvancedMain : MonoBehaviour
             EndScreen.Inst.ShowEndScreen(stageScore, maxScore);
 
             StageFlowManager.Inst.ScoreCalculationSystem.ResetStageScore();
->>>>>>> Stashed changes
 
-                if (customer is SpecialCustomerData)
-                {
-                    maxScore += 15;
-                }
-            }
-            EndScreen.Inst.ShowEndScreen(oldReput, maxScore);
         }
         else
         {
             StartFlow();
         }
     }
-<<<<<<< Updated upstream
-    
-=======
 
     private void SaveEndingResetData(int endingIndex)
     {
@@ -640,5 +640,4 @@ public class AdvancedMain : MonoBehaviour
             StageFlowManager.Inst.ScoreCalculationSystem.totalScore = 0;
         }
     }
->>>>>>> Stashed changes
 }
